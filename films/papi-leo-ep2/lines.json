@@ -1,0 +1,11 @@
+[
+ {"id":"l1","who":"leo","text":"Papi, c'est quoi ce truc ? T'as pas de GPS ?","voice":"fr-FR-EloiseNeural","rate":"+6%"},
+ {"id":"l2","who":"papi","text":"Non. Je demande aux gens.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? À des inconnus ?","voice":"fr-FR-EloiseNeural","rate":"+6%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"on appelait ça des voisins.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l5","who":"leo","text":"Et si tu te perds ?","voice":"fr-FR-EloiseNeural","rate":"+0%"},
+ {"id":"l6","who":"papi","text":"C'est en me perdant que j'ai rencontré ta grand-mère.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"},
+ {"id":"l7","who":"leo","text":"On se perd ensemble, dimanche ?","voice":"fr-FR-EloiseNeural","rate":"-10%","pitch":"-4Hz"},
+ {"id":"l8","who":"papi","text":"Laisse ton téléphone ici.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"}
+]
