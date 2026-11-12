@@ -15,3 +15,12 @@ sh films/papi-serieux-opening/add-opening.sh films/papi-leo-ep5/papi-leo-ep5.mp4
 
 Le résultat est écrit à côté, sous le nom `papi-leo-ep5-opening.mp4` (ou le nom donné en deuxième argument). Si un `.srt` du même nom existe, une copie décalée de 1,5 s est écrite aussi.
 Dans le `build.sh` d'un épisode, c'est la même ligne à la fin, avec `"$HERE/../papi-serieux-opening/add-opening.sh"`.
+
+## La carte-titre d'un épisode, en une ligne
+
+```sh
+sh films/papi-serieux-opening/make-card.sh 5 "Le titre"
+```
+
+Écrit `cards/papi-serieux-ep5.jpg` (1080×1920) : le médaillon, « Épisode 5 », « Aujourd'hui », puis le titre. Une copie nommée `carte-titre.jpg` est mise dans `films/papi-leo-ep5/` si ce dossier existe.
+Un troisième argument remplace le mot « Aujourd'hui ».
