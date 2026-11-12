@@ -1,0 +1,13 @@
+[
+ {"id":"l1","who":"leo","text":"Papi ! Y a plus de Wi-Fi !","say":"Papi ! Y a plus de wifi !","voice":"fr-FR-EloiseNeural","rate":"+12%"},
+ {"id":"l2","who":"papi","text":"Appelle les pompiers.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? Je fais quoi, moi, sans Internet ?","voice":"fr-FR-EloiseNeural","rate":"+6%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"on s'ennuyait.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4c","who":"papi","text":"C'était très bien organisé.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l5","who":"papi","text":"Assieds-toi. Je t'apprends la belote.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l6","who":"leo","text":"C'est quoi, le mot de passe ?","voice":"fr-FR-EloiseNeural","rate":"+0%"},
+ {"id":"l7","who":"papi","text":"Atout cœur.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"},
+ {"id":"l8","who":"leo","text":"Encore une partie.","voice":"fr-FR-EloiseNeural","rate":"-4%"},
+ {"id":"l9","who":"papi","text":"Tu vas encore perdre.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"}
+]

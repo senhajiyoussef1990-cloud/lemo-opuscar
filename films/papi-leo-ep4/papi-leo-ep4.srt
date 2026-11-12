@@ -1,0 +1,43 @@
+1
+00:00:01,600 --> 00:00:03,950
+Papi ! Y a plus de Wi-Fi !
+
+2
+00:00:04,600 --> 00:00:07,000
+Appelle les pompiers.
+
+3
+00:00:07,700 --> 00:00:11,950
+Papi, sérieux ? Je fais quoi, moi, sans Internet ?
+
+4
+00:00:13,000 --> 00:00:14,950
+Dans mon temps…
+
+5
+00:00:15,000 --> 00:00:16,550
+… on s’ennuyait.
+
+6
+00:00:16,600 --> 00:00:18,950
+C’était très bien organisé.
+
+7
+00:00:19,600 --> 00:00:22,950
+Assieds-toi. Je t’apprends la belote.
+
+8
+00:00:23,600 --> 00:00:25,950
+C’est quoi, le mot de passe ?
+
+9
+00:00:26,700 --> 00:00:28,450
+Atout cœur.
+
+10
+00:00:30,600 --> 00:00:32,900
+Encore une partie.
+
+11
+00:00:33,600 --> 00:00:35,600
+Tu vas encore perdre.
