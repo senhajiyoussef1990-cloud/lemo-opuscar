@@ -1,0 +1,20 @@
+Papi & Léo — Épisode 3 : « Les likes » — third-party assets
+
+Voices
+- Microsoft neural voices through edge-tts (online service): fr-FR-HenriNeural (Papi), fr-FR-EloiseNeural (Léo).
+  Check Microsoft's terms yourself before using the voices commercially.
+
+Music (original score, music/score.py), played with free sample libraries:
+- VS Chamber Orchestra: Community Edition (Versilian Studios / Sam Gossner) — CC0 1.0: trumpet, muted trumpet, trombone, clarinet, tuba, upright piano, snare, cymbals, bass drum.
+- Versilian Community Sample Library (VCSL) — CC0 1.0: woodblock, xylophone.
+- Salamander Grand Piano V3 by Alexander Holm (FreePats FLAC version) — CC BY 3.0 (attribution required): the piano solo in the middle.
+- Slide whistle and all sound effects: synthesised in code (mix.py, core/audio/sfx.py).
+
+Fonts (SIL Open Font License 1.1, licences in fonts/OFL-*.txt)
+- IM Fell English SC (Igino Marini), Limelight (Sorkin Type), Shrikhand (Jonny Pinhorn; fetched with the others, not shown in the film).
+
+Code
+- toon.js, parts.js, film.js and the painting helpers in kitchen.js are adapted from the library's 1930s Rubber Hose Cartoon style (see the library's LICENSE).
+
+Story
+- Characters, dialogue and storyboard: the author's own production file (Papi & Léo, Épisode 3).

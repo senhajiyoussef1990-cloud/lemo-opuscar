@@ -1,0 +1,12 @@
+[
+ {"id":"l1","who":"leo","text":"Papi, ma vidéo a fait trois likes. Ma vie est finie.","voice":"fr-FR-EloiseNeural","rate":"+0%"},
+ {"id":"l2","who":"papi","text":"Trois ? À mon mariage, on était douze. C'était parfait.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? Y en a qui ont un million de likes !","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"on avait un seul like.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l4c","who":"papi","text":"Ça s'appelait un ami.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l5","who":"papi","text":"Montre-la-moi, ta vidéo.","voice":"fr-FR-HenriNeural","rate":"-6%","pitch":"-12Hz"},
+ {"id":"l6","who":"papi","text":"Elle est très bien, ta vidéo.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"},
+ {"id":"l7","who":"leo","text":"Ça fait quatre.","voice":"fr-FR-EloiseNeural","rate":"-10%","pitch":"-4Hz"},
+ {"id":"l8","who":"papi","text":"Le quatrième compte double.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"}
+]
