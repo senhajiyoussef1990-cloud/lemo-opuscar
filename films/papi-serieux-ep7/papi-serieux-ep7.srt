@@ -1,0 +1,39 @@
+1
+00:00:02,000 --> 00:00:04,950
+Papi, ton mot de passe, c’est « motdepasse » ?!
+
+2
+00:00:05,500 --> 00:00:08,800
+Oui. Comme ça, je m’en souviens.
+
+3
+00:00:09,300 --> 00:00:12,800
+Papi, sérieux ? Tout le monde peut entrer !
+
+4
+00:00:13,800 --> 00:00:15,950
+Dans mon temps…
+
+5
+00:00:16,000 --> 00:00:19,500
+On avait une clé. Sous le paillasson.
+
+6
+00:00:21,100 --> 00:00:23,450
+Il faut un truc que personne peut deviner.
+
+7
+00:00:28,200 --> 00:00:28,950
+Voilà.
+
+8
+00:00:29,000 --> 00:00:29,750
+Voilà.
+
+9
+00:00:29,800 --> 00:00:31,950
+C’est quoi ?
+
+10
+00:00:33,100 --> 00:00:35,700
+Le jour où t’es né.

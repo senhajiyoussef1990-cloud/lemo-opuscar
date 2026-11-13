@@ -1,0 +1,11 @@
+[
+ {"id":"l1","who":"leo","text":"Papi, ton mot de passe, c'est « motdepasse » ?!","say":"Papi, ton mot de passe, c'est mot de passe ?!","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l2","who":"papi","text":"Oui. Comme ça, je m'en souviens.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? Tout le monde peut entrer !","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"On avait une clé. Sous le paillasson.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l5","who":"leo","text":"Il faut un truc que personne peut deviner.","voice":"fr-FR-EloiseNeural","rate":"+2%"},
+ {"id":"l6","who":"papi","text":"Voilà.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"},
+ {"id":"l7","who":"leo","text":"C'est quoi ?","voice":"fr-FR-EloiseNeural","rate":"-6%"},
+ {"id":"l8","who":"papi","text":"Le jour où t'es né.","voice":"fr-FR-HenriNeural","rate":"-14%","pitch":"-12Hz"}
+]
