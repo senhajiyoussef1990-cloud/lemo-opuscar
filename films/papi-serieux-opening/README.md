@@ -24,3 +24,12 @@ sh films/papi-serieux-opening/make-card.sh 5 "Le titre"
 
 Écrit `cards/papi-serieux-ep5.jpg` (1080×1920) : le médaillon, « Épisode 5 », « Aujourd'hui », puis le titre. Une copie nommée `carte-titre.jpg` est mise dans `films/papi-leo-ep5/` si ce dossier existe.
 Un troisième argument remplace le mot « Aujourd'hui ».
+
+## L'outro et l'épisode complet, en une ligne
+
+```sh
+sh films/papi-serieux-opening/assemble.sh films/papi-serieux-ep6/out/episode.mp4 "Demain : Papi contre le mot de passe" films/papi-serieux-ep6/papi-serieux-ep6.mp4
+```
+
+Colle l'opening, l'épisode et l'outro (3 s : le médaillon, « Demain », la question), et décale les sous-titres de 1,5 s.
+`make-outro.sh "<question>" out.mp4` rend l'outro seule.

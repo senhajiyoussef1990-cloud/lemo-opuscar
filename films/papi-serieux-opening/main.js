@@ -1,6 +1,7 @@
 // main.js — « Papi, sérieux ? »: the 1.5 s opening, and the per-episode title card (a still).
 //   opening:     index.html                         (window.render(t), t in 0…1.5)
 //   title card:  index.html?card=1&n=3&title=Les%20likes   (a still; make-card.sh renders it)
+//   outro:       index.html?outro=1&text=Demain%20%3A%20…  (3 s; make-outro.sh renders it, assemble.sh puts it after an episode)
 // Papi and Léo are the rigs of episode 3 (people.js, unchanged); the film damage is the series' film.js. ?clean=1 hides the damage.
 import * as T from './toon.js';
 import { P } from './parts.js';
@@ -9,7 +10,7 @@ import { makeFilm, post } from './film.js';
 import { clamp, lerp, seg, ss, back, TAU } from '/core/lib.js';
 
 const DUR = 1.5, TITLE = 'Papi, sérieux ?', FONT = '"IM Fell English SC"';
-const cv = document.getElementById('c'), Q = new URLSearchParams(location.search), CARD = Q.get('card') === '1';
+const cv = document.getElementById('c'), Q = new URLSearchParams(location.search), CARD = Q.get('card') === '1', OUTRO = Q.get('outro') === '1', OUT_DUR = 3.0, OUT_TEXT = Q.get('text') || 'Demain : …';
 await document.fonts.ready; for (const f of [`104px ${FONT}`, '60px Limelight']) await document.fonts.load(f);
 const F = makeFilm(cv), sg = F.sg; T.init(F.scene);
 const twos = t => Math.floor(t * 12 + 1e-6) / 12;
@@ -91,13 +92,45 @@ function card() {
   sg.restore();
 }
 
-window.DUR = DUR;
+// ———————————————————— the outro (3 s): the medallion again, waving, and tomorrow's question ————————————————————
+function frameRules() {
+  sg.save(); sg.setTransform(1, 0, 0, 1, 0, 0); sg.fillStyle = P.paper; sg.strokeStyle = P.paper;
+  const x0 = 56, y0 = 206, w = 968, h = 1508;
+  sg.lineWidth = 4; sg.beginPath(); sg.roundRect(x0, y0, w, h, 26); sg.stroke();
+  sg.lineWidth = 1.6; sg.beginPath(); sg.roundRect(x0 + 13, y0 + 13, w - 26, h - 26, 18); sg.stroke();
+  for (const [sx, sy] of [[1, 1], [-1, 1], [1, -1], [-1, -1]]) { const ax = sx > 0 ? x0 + 44 : x0 + w - 44, ay = sy > 0 ? y0 + 44 : y0 + h - 44; sg.beginPath(); sg.arc(ax, ay, 6, 0, 7); sg.fill(); sg.lineWidth = 2.2; sg.beginPath(); sg.arc(ax, ay, 14, 0, 7); sg.stroke(); }
+  sg.restore();
+}
+function wrap(text, font, size, maxW) {   // greedy wrap; the question mark and its space never start a line
+  sg.font = `${size}px ${font}`; const words = text.replace(/ ([?!:;»])/g, '\u00a0$1').replace(/(«) /g, '$1\u00a0').split(' '), lines = [];
+  let cur = ''; for (const w of words) { const t = cur ? cur + ' ' + w : w; if (cur && sg.measureText(t).width > maxW) { lines.push(cur); cur = w; } else cur = t; }
+  if (cur) lines.push(cur); return lines;
+}
+function outro(t) {
+  const C = { x: 540, y: 790, R: 300 }, tw = t < .3 ? t : .3 + ((t - .3) % .9);   // they keep waving
+  frameRules(); medallion(tw, C); title(1.45, C);
+  const k = seg(t, .3, .65); if (k <= 0) return;
+  const s = k < 1 ? back(k, 2.4) : 1, i = OUT_TEXT.indexOf(':'), headTxt = i > 0 && i < 14 ? OUT_TEXT.slice(0, i).trim() : '', body = (headTxt ? OUT_TEXT.slice(i + 1) : OUT_TEXT).trim();
+  sg.save(); sg.setTransform(1, 0, 0, 1, 0, 0); sg.translate(540, 1400); sg.scale(s, s); sg.translate(-540, -1400);
+  sg.textAlign = 'center'; sg.textBaseline = 'middle'; sg.fillStyle = P.paper; sg.strokeStyle = P.paper;
+  let y = 1262;
+  if (headTxt) {
+    const hd = headTxt.toUpperCase(); sg.font = '62px Limelight'; const ew = sg.measureText(hd).width; sg.fillText(hd, 540, y);
+    for (const d of [-1, 1]) { const xa = 540 + d * (ew / 2 + 34), xb = 540 + d * 400; sg.lineWidth = 3; sg.beginPath(); sg.moveTo(xa, y - 6); sg.lineTo(xb, y - 6); sg.stroke(); sg.lineWidth = 1.2; sg.beginPath(); sg.moveTo(xa, y + 6); sg.lineTo(xb, y + 6); sg.stroke(); sg.beginPath(); sg.arc(xb + d * 12, y, 5, 0, 7); sg.fill(); }
+    y += 118;
+  } else y += 40;
+  let size = 96, lines = wrap(body, FONT, size, 840); while (lines.length > 3 && size > 56) { size -= 6; lines = wrap(body, FONT, size, 840); }
+  sg.font = `${size}px ${FONT}`; lines.forEach((l, j) => sg.fillText(l, 540, y + (j + (3 - lines.length) * .5) * size * 1.12));
+  sg.restore();
+}
+
+window.DUR = OUTRO ? OUT_DUR : DUR;
 window.TEXTS = t => t >= .8 ? [{ id: 'title', text: TITLE, x0: 120, y0: 360, x1: 960, y1: 640, pass: true }] : [];
 window.EV = [{ t: 0, type: 'iris' }, { t: .3, type: 'wave' }, { t: .4, type: 'title' }, { t: 1.2, type: 'hold' }];
 window.render = t => {
-  t = Math.min(Math.max(t, 0), DUR - 1e-4);
+  t = Math.min(Math.max(t, 0), (OUTRO ? OUT_DUR : DUR) - 1e-4);
   sg.setTransform(1, 0, 0, 1, 0, 0); sg.fillStyle = '#060606'; sg.fillRect(0, 0, 1080, 1920);
-  if (CARD) card(); else { const C = { x: 540, y: 1040, R: 455 }; medallion(t, C); title(t, C); }
+  if (OUTRO) outro(t); else if (CARD) card(); else { const C = { x: 540, y: 1040, R: 455 }; medallion(t, C); title(t, C); }
   post(F, CARD ? 3.1 + (parseInt(EP_N, 10) || 0) * 1.37 : t, { clean: Q.get('clean') === '1' });   // a card gets its own scratches and dust
 };
 window.READY = true;
