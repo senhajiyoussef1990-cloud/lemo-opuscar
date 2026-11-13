@@ -1,0 +1,12 @@
+[
+ {"id":"l1","who":"leo","text":"Papi, mamie t'a laissé un vocal de sept minutes.","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l2","who":"papi","text":"Sept minutes ? Elle va bien, alors.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? Écoute-le en vitesse fois deux !","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"Ça s'appelait une conversation. Et on pouvait répondre.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l5","who":"leo","text":"Ben réponds-lui un vocal !","voice":"fr-FR-EloiseNeural","rate":"+6%"},
+ {"id":"l6","who":"papi","text":"ALLÔ ?","say":"Allô ?!","voice":"fr-FR-HenriNeural","rate":"-4%","pitch":"+0Hz"},
+ {"id":"l7","who":"papi","text":"Je vais lui répondre.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l7b","who":"leo","text":"Tu vas où ?","voice":"fr-FR-EloiseNeural","rate":"+0%"},
+ {"id":"l8","who":"papi","text":"Elle est dans le jardin.","voice":"fr-FR-HenriNeural","rate":"-14%","pitch":"-12Hz"}
+]
