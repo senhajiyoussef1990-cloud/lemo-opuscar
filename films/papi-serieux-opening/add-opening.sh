@@ -12,7 +12,7 @@ OUT=${2:-${EP%.mp4}-opening.mp4}
 # both are re-encoded together, so the cut is frame-accurate and the sound stays in sync
 ffmpeg -y -loglevel error -i "$OPEN" -i "$EP" -filter_complex \
   "[0:v]fps=24,scale=1080:1920,setsar=1,format=yuv420p[v0];[1:v]fps=24,scale=1080:1920,setsar=1,format=yuv420p[v1];[0:a]aresample=48000,aformat=channel_layouts=stereo[a0];[1:a]aresample=48000,aformat=channel_layouts=stereo[a1];[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]" \
-  -map "[v]" -map "[a]" -c:v libx264 -preset medium -crf 16 -tune grain -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart "$OUT"
+  -map "[v]" -map "[a]" -c:v libx264 -preset medium -crf 20 -tune grain -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart "$OUT"
 echo "$OUT"
 SRT=${EP%.mp4}.srt
 if [ -f "$SRT" ]; then

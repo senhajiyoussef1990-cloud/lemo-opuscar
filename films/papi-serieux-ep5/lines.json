@@ -1,0 +1,11 @@
+[
+ {"id":"l1","who":"leo","text":"Papi ! J'ai plus que 2 % de batterie !","say":"Papi ! J'ai plus que deux pour cent de batterie !","voice":"fr-FR-EloiseNeural","rate":"+14%"},
+ {"id":"l2","who":"papi","text":"Moi aussi. Depuis vingt ans.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? Il est où, ton chargeur ?","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"On se rechargeait avec une sieste.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l5","who":"leo","text":"Il est mort…","voice":"fr-FR-EloiseNeural","rate":"-12%","pitch":"-4Hz"},
+ {"id":"l6","who":"papi","text":"Assieds-toi. On se recharge.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l7","who":"leo","text":"Papi… t'es à combien, là ?","voice":"fr-FR-EloiseNeural","rate":"-14%","pitch":"-4Hz"},
+ {"id":"l8","who":"papi","text":"Cent pour cent.","voice":"fr-FR-HenriNeural","rate":"-14%","pitch":"-12Hz"}
+]

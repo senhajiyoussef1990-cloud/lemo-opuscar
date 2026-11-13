@@ -1,7 +1,7 @@
 #!/bin/sh
 # The title card of an episode (a 1080×1920 still), in one line:
 #   sh films/papi-serieux-opening/make-card.sh 5 "Le titre"
-# → writes cards/papi-serieux-ep5.jpg here, and a copy named carte-titre.jpg in films/papi-leo-ep5/ when that folder exists.
+# → writes cards/papi-serieux-ep5.jpg here, and a copy named carte-titre.jpg in the episode's folder (films/papi-serieux-ep5/ or films/papi-leo-ep5/) when it exists.
 # A third argument replaces the word above the title (default: Aujourd’hui).
 set -e
 HERE=$(cd "$(dirname "$0")" && pwd)
@@ -17,4 +17,4 @@ OUT="$HERE/cards/papi-serieux-ep$N.jpg"
 # the same film grain as the episodes (mux.sh, grain 3)
 ffmpeg -y -loglevel error -i "$TMP/ep${N}_1.jpg" -vf "noise=c0s=3:allf=t" -frames:v 1 -q:v 2 "$OUT"
 echo "$OUT"
-EP="$HERE/../papi-leo-ep$N"; if [ -d "$EP" ]; then cp "$OUT" "$EP/carte-titre.jpg"; echo "$EP/carte-titre.jpg"; fi
+for EP in "$HERE/../papi-leo-ep$N" "$HERE/../papi-serieux-ep$N"; do if [ -d "$EP" ]; then cp "$OUT" "$EP/carte-titre.jpg"; echo "$EP/carte-titre.jpg"; fi; done

@@ -1,0 +1,35 @@
+1
+00:00:01,900 --> 00:00:04,950
+Papi ! J’ai plus que 2 % de batterie !
+
+2
+00:00:05,500 --> 00:00:08,800
+Moi aussi. Depuis vingt ans.
+
+3
+00:00:09,200 --> 00:00:12,950
+Papi, sérieux ? Il est où, ton chargeur ?
+
+4
+00:00:13,800 --> 00:00:15,950
+Dans mon temps…
+
+5
+00:00:16,000 --> 00:00:19,100
+On se rechargeait avec une sieste.
+
+6
+00:00:22,200 --> 00:00:23,950
+Il est mort…
+
+7
+00:00:24,900 --> 00:00:27,950
+Assieds-toi. On se recharge.
+
+8
+00:00:29,100 --> 00:00:32,100
+Papi… t’es à combien, là ?
+
+9
+00:00:33,500 --> 00:00:35,700
+Cent pour cent.
