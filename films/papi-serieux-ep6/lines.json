@@ -1,0 +1,11 @@
+[
+ {"id":"l1","who":"leo","text":"Papi, t'as répondu à maman avec un pouce. Elle croit que t'es fâché.","voice":"fr-FR-EloiseNeural","rate":"+12%"},
+ {"id":"l2","who":"papi","text":"J'ai dit oui. Avec le doigt.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? Faut mettre un cœur, ou un smiley !","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"Quand on était fâché, on le disait en face.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l5","who":"leo","text":"Vas-y. Envoie-lui un cœur.","voice":"fr-FR-EloiseNeural","rate":"+2%"},
+ {"id":"l6","who":"papi","text":"J'ai appuyé partout.","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l7","who":"leo","text":"Elle a répondu : « Je t'aime aussi, papa. »","say":"Elle a répondu : je t'aime aussi, papa.","voice":"fr-FR-EloiseNeural","rate":"-8%","pitch":"-4Hz"},
+ {"id":"l8","who":"papi","text":"Tu vois. Elle a compris.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"}
+]
