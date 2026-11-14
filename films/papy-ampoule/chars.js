@@ -15,9 +15,12 @@ export const PAL = {
 // —— face parts (big white eyes + tiny pupils; parametric mouths) ——
 export function eye(cx, cy, rx, ry, { lid = 0, look = [0, 0], pupil = 4.5, skin = PAL.skinP, closed = false, lw = 6, jitter = 0, lower = 0 } = {}) {
   if (closed) { stroke(arc(cx, cy + ry * .15, rx * .8, ry * .45, Math.PI * .1, Math.PI * .9, 14), lw); return; }
+  const yl = cy - ry + lid * 2 * ry, yb = cy + ry - lower * 2 * ry;
+  if (yb - yl < pupil * 1.6) { stroke(quad([cx - rx * .9, (yl + yb) / 2], [cx, (yl + yb) / 2 + ry * .12], [cx + rx * .9, (yl + yb) / 2], 10), lw); return; }   // almost shut: a line
   shape(ell(cx, cy, rx, ry, 36), {
     fill: PAL.white, lw, shade: () => {
-      dot(cx + look[0] * rx * .55 + jitter, cy + look[1] * ry * .5, pupil);
+      const py = Math.min(yb - pupil * 1.1, Math.max(yl + pupil * 1.1, cy + look[1] * ry * .5));   // the pupil always shows in the slit
+      dot(cx + look[0] * rx * .55 + jitter, py, pupil);
       if (lid > 0) {
         const yl = cy - ry + lid * 2 * ry;
         fillOnly([[cx - rx * 1.3, cy - ry * 1.4], [cx + rx * 1.3, cy - ry * 1.4], [cx + rx * 1.3, yl], [cx - rx * 1.3, yl + ry * .08]], skin, { boil: .5 });
