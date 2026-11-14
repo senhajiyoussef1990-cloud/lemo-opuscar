@@ -1,6 +1,7 @@
 // main.js — « Papi, sérieux ? »: the 1.5 s opening, and the per-episode title card (a still).
 //   opening:     index.html                         (window.render(t), t in 0…1.5)
 //   title card:  index.html?card=1&n=3&title=Les%20likes   (a still; make-card.sh renders it)
+//   title clip:  the same card as a 2 s clip (make-title.sh), placed between the opening and the episode by assemble.sh
 //   outro:       index.html?outro=1&text=Demain%20%3A%20…  (3 s; make-outro.sh renders it, assemble.sh puts it after an episode)
 // Papi and Léo are the rigs of episode 3 (people.js, unchanged); the film damage is the series' film.js. ?clean=1 hides the damage.
 import * as T from './toon.js';
@@ -71,7 +72,7 @@ function title(t, C) {
 // ———————————————————— the episode title card (a still) ————————————————————
 const EP_N = Q.get('n') || '1', EP_TITLE = Q.get('title') || 'Titre', EP_WORD = Q.get('word') || 'Aujourd’hui';
 function fit(text, font, size, maxW) { sg.font = `${size}px ${font}`; const w = sg.measureText(text).width; return w > maxW ? size * maxW / w : size; }
-function card() {
+function card(t = 1) {
   const C = { x: 540, y: 800, R: 318 };
   medallion(1.45, C); title(1.45, C);
   sg.save(); sg.setTransform(1, 0, 0, 1, 0, 0); sg.textAlign = 'center'; sg.textBaseline = 'middle'; sg.fillStyle = P.paper; sg.strokeStyle = P.paper;
@@ -80,6 +81,9 @@ function card() {
   sg.lineWidth = 4; sg.beginPath(); sg.roundRect(x0, y0, w, h, 26); sg.stroke();
   sg.lineWidth = 1.6; sg.beginPath(); sg.roundRect(x0 + 13, y0 + 13, w - 26, h - 26, 18); sg.stroke();
   for (const [sx, sy] of [[1, 1], [-1, 1], [1, -1], [-1, -1]]) { const ax = sx > 0 ? x0 + 44 : x0 + w - 44, ay = sy > 0 ? y0 + 44 : y0 + h - 44; sg.beginPath(); sg.arc(ax, ay, 6, 0, 7); sg.fill(); sg.lineWidth = 2.2; sg.beginPath(); sg.arc(ax, ay, 14, 0, 7); sg.stroke(); }
+  // the lettering pops in (in the 2 s clip; the still is taken once it has landed)
+  const pk = seg(t, .08, .4), ps = pk < 1 ? back(pk, 2.2) : 1; if (pk <= 0) { sg.restore(); return; }
+  sg.translate(540, 1420); sg.scale(ps, ps); sg.translate(-540, -1420);
   // ÉPISODE N, between two rules
   const ep = `ÉPISODE  ${EP_N}`; sg.font = '66px Limelight'; const ew = sg.measureText(ep).width; sg.fillText(ep, 540, 1262);
   for (const s of [-1, 1]) { const xa = 540 + s * (ew / 2 + 34), xb = 540 + s * 400; sg.lineWidth = 3; sg.beginPath(); sg.moveTo(xa, 1256); sg.lineTo(xb, 1256); sg.stroke(); sg.lineWidth = 1.2; sg.beginPath(); sg.moveTo(xa, 1268); sg.lineTo(xb, 1268); sg.stroke(); sg.beginPath(); sg.arc(xb + s * 12, 1262, 5, 0, 7); sg.fill(); }
@@ -124,13 +128,14 @@ function outro(t) {
   sg.restore();
 }
 
-window.DUR = OUTRO ? OUT_DUR : DUR;
+const CARD_DUR = 2.0, LEN = OUTRO ? OUT_DUR : CARD ? CARD_DUR : DUR;
+window.DUR = LEN;
 window.TEXTS = t => t >= .8 ? [{ id: 'title', text: TITLE, x0: 120, y0: 360, x1: 960, y1: 640, pass: true }] : [];
 window.EV = [{ t: 0, type: 'iris' }, { t: .3, type: 'wave' }, { t: .4, type: 'title' }, { t: 1.2, type: 'hold' }];
 window.render = t => {
-  t = Math.min(Math.max(t, 0), (OUTRO ? OUT_DUR : DUR) - 1e-4);
+  t = Math.min(Math.max(t, 0), LEN - 1e-4);
   sg.setTransform(1, 0, 0, 1, 0, 0); sg.fillStyle = '#060606'; sg.fillRect(0, 0, 1080, 1920);
-  if (OUTRO) outro(t); else if (CARD) card(); else { const C = { x: 540, y: 1040, R: 455 }; medallion(t, C); title(t, C); }
-  post(F, CARD ? 3.1 + (parseInt(EP_N, 10) || 0) * 1.37 : t, { clean: Q.get('clean') === '1' });   // a card gets its own scratches and dust
+  if (OUTRO) outro(t); else if (CARD) card(t); else { const C = { x: 540, y: 1040, R: 455 }; medallion(t, C); title(t, C); }
+  post(F, CARD ? 3.1 + (parseInt(EP_N, 10) || 0) * 1.37 + t : t, { clean: Q.get('clean') === '1' });   // a card gets its own scratches and dust
 };
 window.READY = true;
