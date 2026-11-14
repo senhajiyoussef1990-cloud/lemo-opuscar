@@ -12,7 +12,7 @@
   "who": "PAPY",
   "text": "Un dinosaure. Trois voitures. Zéro goûter.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -28,7 +28,7 @@
   "who": "PAPY",
   "text": "Personne. Enfin… tout le monde. C'est long à expliquer.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -36,7 +36,7 @@
   "who": "PAPY",
   "text": "Ou alors… on va voir.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -52,7 +52,7 @@
   "who": "PAPY",
   "text": "Le Livre de Papy. Édition voyage.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -68,7 +68,7 @@
   "who": "PAPY",
   "text": "Mets ton sac sur le dos. On garde les mains libres.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -76,7 +76,7 @@
   "who": "PAPY",
   "text": "Depuis très longtemps, dans plein de régions, on porte des charges sur le dos.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -84,7 +84,7 @@
   "who": "PAPY",
   "text": "Des paniers, des sacs, des supports. On attache la charge, et on avance.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -100,7 +100,7 @@
   "who": "PAPY",
   "text": "Une charge mal placée, ça fait mal. Alors les formes changent.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -116,7 +116,7 @@
   "who": "PAPY",
   "text": "Dix-neuvième siècle. Les soldats ont déjà des sacs : des havresacs.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz",
   "say": "Dix-neuvième siècle. Les soldats ont déjà des sacs : des havre-sacs."
  },
@@ -125,7 +125,7 @@
   "who": "PAPY",
   "text": "Vêtements, matériel. Certains sont rigides. D'autres en toile, avec des sangles.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -141,7 +141,7 @@
   "who": "PAPY",
   "text": "Non.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -149,7 +149,7 @@
   "who": "PAPY",
   "text": "Vingtième siècle. Les sacs de randonnée se perfectionnent.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -157,7 +157,7 @@
   "who": "PAPY",
   "text": "Une armature tient le sac et la charge. En bois. Puis en métal.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -173,7 +173,7 @@
   "who": "PAPY",
   "text": "Suède, 1960. Åke Nordin crée son entreprise, Fjällräven.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz",
   "say": "Suède, mille neuf cent soixante. Ôké Nordine crée son entreprise, Fiel-rêvène."
  },
@@ -182,7 +182,7 @@
   "who": "PAPY",
   "text": "Des sacs de randonnée avec une armature en aluminium.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -190,7 +190,7 @@
   "who": "PAPY",
   "text": "Et des matières synthétiques. Léger. Solide.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -206,7 +206,7 @@
   "who": "PAPY",
   "text": "États-Unis, 1967. JanSport naît, et équipe les randonneurs.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz",
   "say": "États-Unis, mille neuf cent soixante-sept. Djanne-Sport naît, et équipe les randonneurs."
  },
@@ -223,7 +223,7 @@
   "who": "PAPY",
   "text": "Pour protéger leurs livres de la pluie. Le sac entre dans la vie de tous les jours.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -231,7 +231,7 @@
   "who": "PAPY",
   "text": "Suède, encore. 1978. Le Kånken, pour les écoliers.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz",
   "say": "Suède, encore. Mille neuf cent soixante-dix-huit. Le Konne-kène, pour les écoliers."
  },
@@ -240,7 +240,7 @@
   "who": "PAPY",
   "text": "Carré, pour les livres. Et sur les deux épaules.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -256,7 +256,7 @@
   "who": "PAPY",
   "text": "Aujourd'hui : des sacs pour l'école, la rando, le sport, les voyages.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -264,7 +264,7 @@
   "who": "PAPY",
   "text": "Les poches et les bretelles changent selon ce qu'on emporte.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -280,7 +280,7 @@
   "who": "PAPY",
   "text": "Nous voilà prêts. Le dinosaure… attendra à la maison.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -296,7 +296,7 @@
   "who": "PAPY",
   "text": "Il a vu le dix-neuvième siècle. Il s'en remettra.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -304,7 +304,7 @@
   "who": "PAPY",
   "text": "C'était Le Livre de Papy. Chaque jour, un objet du quotidien et son histoire.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  },
  {
@@ -312,7 +312,7 @@
   "who": "PAPY",
   "text": "Abonne-toi. Et pour le prochain voyage… prends un goûter.",
   "voice": "fr-FR-HenriNeural",
-  "rate": "-6%",
+  "rate": "+8%",
   "pitch": "-6Hz"
  }
 ]

@@ -111,7 +111,7 @@ export function papy(P) {
   }
   push(); rotate(P.lean ?? .03);
   const shB = [-66, -455], shF = [62, -452];
-  const armB = P.armB || { h: [-16, 186], bend: 14 }, armF = P.armF || { h: [40, 180], bend: 20 };
+  const armB = P.armB || { h: [-16, 186], bend: 14 }, armF = P.armF || { h: [10, 188], bend: -8 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]], ang = Math.atan2(hp[1] - sh[1], hp[0] - sh[0]);
     shape(noodle(sh, hp, arm.bend ?? 0, 46, 40), { fill: PAL.coat, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.coatS, { boil: .3 }) });
@@ -120,8 +120,6 @@ export function papy(P) {
     if (hold === 'dino') { dino(hp[0] - 30, hp[1] + 10, .6, { a: -.1, look: [1, 0] }); }
     hand(hp[0], hp[1], ang, 22, PAL.skinP, { fist: !!hold });
   };
-  const fBehind = !P.holdF && !P.armF;
-  if (fBehind) drawArm(shF, armF, null);
   // mustard roll-neck jumper under the coat
   shape(spline([[-40, -490], [40, -490], [64, -330], [56, -210], [-56, -210], [-64, -330]]), { fill: PAL.shirt, lw: 7, shade: () => { fillOnly(rect(20, -500, 60, 300), PAL.shirtS, { boil: .3 }); for (let k = 0; k < 6; k++) stroke([[-50, -440 + k * 36], [50, -440 + k * 36]], 3, { line: PAL.shirtS }); } });
   // mint-green lab coat to the knees, open at the front, patched pockets full of pencils
@@ -135,7 +133,7 @@ export function papy(P) {
   shape(noodle([0, -486], [6, -520], 0, 40, 40), { fill: PAL.skinP, lw: 6 });
   drawArm(shB, armB, P.holdB);
   push(); translate(10, -616); rotate(P.headTilt ?? .04); headPapy(P); pop();
-  if (!fBehind) drawArm(shF, armF, P.holdF);
+  drawArm(shF, armF, P.holdF);   // his right arm: in front of the body, close against it
   pop();
   if (P.sweat != null) sweat(140, -700 + (P.sweat % 1) * 20, 1.1);
   pop();
@@ -148,18 +146,19 @@ function headPapy(P) {
   shape(spline([[-62, -92], [-86, -100], [-108, -72], [-114, -36], [-102, -4], [-110, 26], [-92, 34], [-78, 10], [-82, -30], [-68, -62]]), { fill: PAL.beard, lw: 6, shade: () => fillOnly(ell(-102, 0, 14, 30, 12), PAL.beardS, { boil: .3 }) });
   // eyes (heavy lids = deadpan)
   const lid = P.blink ? 1 : clamp(P.lid ?? .48, 0, 1), look = P.look || [0, 0];
-  eye(6, -16, 30, 33, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4.5 });
-  eye(56, -18, 24, 29, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4 });
+  eye(6, -16, 30, 33, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4.5, lower: P.lower ?? .14 });
+  eye(56, -18, 24, 29, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4, lower: P.lower ?? .14 });
+  for (const [cx, r] of [[-30, 20], [84, 16]]) fillOnly(ell(cx, 40, r, r * .7, 14), 'rgba(240,120,110,.35)', { boil: .3 });   // rosy cheeks
   for (const [ex, rx] of [[6, 24], [56, 19]]) stroke(arc(ex, 20, rx, 8, Math.PI * .15, Math.PI * .85, 10), 4);
   // bushy white brows
   const br = P.brow ?? 0;
-  for (const [bx, bw] of [[4, 40], [58, 32]]) shape(spline([[bx - bw, -50 - br * 4], [bx - bw * .3, -66 - br * 10], [bx + bw * .6, -62 - br * 6], [bx + bw, -52], [bx + bw * .2, -46 - br * 4], [bx - bw * .6, -42 - br * 2]]), { fill: PAL.beard, lw: 5 });
+  for (const [bx, bw] of [[4, 38], [58, 30]]) shape(spline([[bx - bw, -46 - br * 3], [bx - bw * .4, -64 - br * 8], [bx + bw * .4, -66 - br * 8], [bx + bw, -48 - br * 3], [bx + bw * .3, -54 - br * 6], [bx - bw * .3, -54 - br * 6]]), { fill: PAL.beard, lw: 5 });   // soft arched brows
   // nose
   shape(spline([[30, -14], [44, 14], [70, 30], [62, 48], [36, 44], [26, 30]]), { fill: PAL.skinP, lw: 6, shade: () => fillOnly(ell(58, 42, 14, 8, 12), PAL.skinPs, { boil: .3 }) });
   // clean-shaven chin with a little shadow (the bushy white moustache stays: it is his)
   stroke(arc(30, 96, 30, 10, Math.PI * .2, Math.PI * .8, 10), 4, { line: PAL.skinPs });
   const m = P.mouth || {};
-  mouth(36, 82, 56, { o: m.o || 0, w: m.w ?? 1, sm: m.sm ?? -.2, lw: 6 });
+  mouth(36, 90, 60, { o: m.o || 0, w: m.w ?? 1, sm: m.sm ?? -.2, lw: 6 });
   shape(spline([[-6, 58], [30, 50], [60, 54], [90, 66], [72, 76], [36, 66], [4, 72]]), { fill: PAL.beard, lw: 6 });   // moustache over the mouth
 }
 

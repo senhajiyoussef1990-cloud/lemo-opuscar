@@ -42,7 +42,7 @@ function state(t) {
 // —— default poses ——
 function P_(t, o = {}) {
   const m = talk('PAPY', t), tq = q(t), sp = speaking(t);
-  return { x: PX, y: FLOOR, face: -1, lid: .5, look: sp === 'MALIK' ? [.6, .2] : [.2, .1], blink: blinkP(t), mouth: { o: m.o, w: m.w, sm: -.2 }, sq: 1 + .008 * Math.sin(tq * 2.3), headTilt: .04 + (m.talking ? (m.o - .3) * .06 : 0), ...o };
+  return { x: PX, y: FLOOR, face: -1, lid: .36, brow: .2, look: sp === 'MALIK' ? [.6, .2] : [.2, .1], blink: blinkP(t), mouth: { o: m.o, w: m.w, sm: .55 }, sq: 1 + .008 * Math.sin(tq * 2.3), headTilt: .04 + (m.talking ? (m.o - .3) * .06 : 0), ...o };
 }
 function M_(t, o = {}) {
   const m = talk('MALIK', t), tq = q(t), sp = speaking(t), st = state(t);
@@ -78,13 +78,13 @@ function shotLine(t, s) {
   let p = P_(t), m = M_(t);
   if (w === 'home' && portalOpenHome) { p.holdF = 'book'; p.bookOpen = 1; p.armF = { h: [-20, 150], bend: 20 }; m.nerv = .8; m.eyeS = 1.12; m.look = [.4, -.8]; }
   if (w === 'w5') { m.sweat = null; }
-  if (id === 'h1') { const wk = seg(tq, t0, t0 + 1.3); m.x = lerp(-180, MX, ss(wk)); m.legs = legsWalk(tq, wk < 1); m.mouth.sm = .6; m.nerv = 0; p.lid = .55; }
+  if (id === 'h1') { const wk = seg(tq, t0, t0 + 1.3); m.x = lerp(-180, MX, ss(wk)); m.legs = legsWalk(tq, wk < 1); m.mouth.sm = .6; m.nerv = 0; }
   if (id === 'h2' || id === 'a3' || id === 'b4' || id === 'c3' || id === 'f3') m.nerv = .6;
   if (id === 'h6' || id === 'h8') { m.nerv = 1.1; m.pupil = 2.8; m.eyeS = 1.18; m.sweat = t * 1.3; }
   if (id === 'h7') { p.holdF = 'book'; const op = seg(tq, VO.h7 + vdur('h7') - .2, VO.h7 + vdur('h7') + .2); p.bookOpen = op; p.armF = { h: [lerp(26, -20, ss(seg(tq, t0, t0 + .5))), lerp(190, 150, ss(seg(tq, t0, t0 + .5)))], bend: 20 }; }
   if (id === 'a3') { m.look = [-1, -.2]; m.face = 1; }
   if (id === 'c3') { m.nerv = 1.3; m.lid = .1; m.mouth.sm = -.9; }
-  if (id === 'd4') { p.lid = .62; m.mouth.sm = .4; m.brow = .2; }
+  if (id === 'd4') { p.lid = .45; m.mouth.sm = .4; m.brow = .2; }
   if (id === 'g3') { m.mouth.sm = .9; m.nerv = 0; m.brow = -.3; }
   if (id === 'b5') { p.lid = .66; m.nerv = .9; }
   if (id === 'z1') { const st = state(t); p.holdF = st.dinoTable ? null : 'dino'; p.armF = st.dinoTable ? undefined : { h: [-60, 120], bend: 20, fist: true }; }
@@ -139,7 +139,7 @@ function shotBeat(t, s) {
     else malik({ ...m, sq: landSq(t, t0 + .45), mouth: { o: 0, sm: .5 } });
     papy(p); return;
   }
-  if (name === 'stare') { cam(lerp(300, 260, u), lerp(1200, 1180, u), lerp(1.5, 1.6, u)); world(w, t); duo(t, { ...p, lid: .6, look: [1, .3] }, { ...m, look: [-1, .5], nerv: .5 }); return; }
+  if (name === 'stare') { cam(lerp(300, 260, u), lerp(1200, 1180, u), lerp(1.5, 1.6, u)); world(w, t); duo(t, { ...p, lid: .4, look: [1, .3] }, { ...m, look: [-1, .5], nerv: .5 }); return; }
   if (name === 'silence') {   // home again: a long silence, a very slow push; Papy takes the dino out of the bag
     cam(lerp(540, 520, u), lerp(1000, 1020, u), lerp(1.0, 1.12, u)); world(w, t);
     const reach = ss(seg(tq, t0 + .8, t0 + 1.3)) * (1 - ss(seg(tq, t0 + 1.5, t0 + 2.0)));
