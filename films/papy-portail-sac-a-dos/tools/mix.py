@@ -65,7 +65,7 @@ mix = mus * .6 * duck[:, None] + sfxb * .8 + vob + amb * .9
 from scipy.signal import resample_poly
 mix = np.stack([lp(mix[:, c], 15000) for c in range(2)], 1)
 up = np.abs(np.stack([resample_poly(mix[:, c], 4, 1) for c in range(2)], 1)).max(1).reshape(-1, 4).max(1)[:N]
-need = np.minimum(1, .5 / (up + 1e-9)); w = int(.005 * SR)
+need = np.minimum(1, .45 / (up + 1e-9)); w = int(.005 * SR)
 gain = -maximum_filter1d(-need, 2 * w + 1); gain = uniform_filter1d(gain, w)
 mix = mix * gain[:, None] / .5 * .5
 sf.write(os.path.join(ROOT, 'out', 'mix.wav'), mix.astype(np.float32), SR)
