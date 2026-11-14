@@ -137,7 +137,8 @@ function leoPose(t0) {
 function photoShot(t) {
   const sg = SG, tq = twos(t); sg.setTransform(1, 0, 0, 1, 0, 0); sg.fillStyle = '#7C7972'; sg.fillRect(0, 0, 1080, 1920);
   const k = seg(t, 26.5, 30.0), z = lerp(1.0, 1.06, ss(k));
-  T.frame(t); T.transform(z, 0, 0, z, 540 * (1 - z), 960 * (1 - z)); T.translate(540, 900); T.rotate(-.035); T.translate(-540, -900);
+  const lift = new URLSearchParams(location.search).get('subs') === 'v2' ? -190 : 0;   // v2: the higher subtitle must not hide the baby
+  T.frame(t); T.transform(z, 0, 0, z, 540 * (1 - z), 960 * (1 - z) + lift); T.translate(540, 900); T.rotate(-.035); T.translate(-540, -900);
   // the print: a white border, a folded corner
   T.shape([[150, 380], [840, 380], [930, 470], [930, 1420], [150, 1420]], { fill: P.paper });
   T.shape([[840, 380], [840, 470], [930, 470]], { fill: P.light, lw: T.S.lw * .8 });
@@ -157,8 +158,8 @@ function photoShot(t) {
   sg.restore();
   T.outline(img, 4, '#55534E');
   // the glove that holds it, and Léo leaning in
-  T.reset(); T.transform(z, 0, 0, z, 540 * (1 - z), 960 * (1 - z));
-  hose([1180, 1760], [900, 1450], -40, 46); glove(900, 1450, -2.5, 'grab', 3.0, { flip: true });
+  T.reset(); T.transform(z, 0, 0, z, 540 * (1 - z), 960 * (1 - z) + lift);
+  hose([1180, 1760 - lift], [900, 1450], -40, 46); glove(900, 1450, -2.5, 'grab', 3.0, { flip: true });
   const lean = ss(seg(tq, 26.6, 27.2));
   leo({ x: lerp(-60, 150, lean), y: 2060, k: 2.0, seated: true, turn: .6, lean: .12, look: { lx: .8, ly: -.5 }, eyes: 'wide', brows: 'up', browUp: 1, mouth: { type: 'o' }, talk: talkOf('leo', tq), hair: .3, armA: { x: -40, y: -60 }, armB: { x: 40, y: -60 } });
 }
