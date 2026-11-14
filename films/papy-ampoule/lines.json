@@ -1,0 +1,323 @@
+[
+ {
+  "id": "h1",
+  "who": "MALIK",
+  "text": "Papy ! L'ampoule a fait « pop » !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h2",
+  "who": "PAPY",
+  "text": "Elle a bien travaillé. Elle mérite sa retraite.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h3",
+  "who": "MALIK",
+  "text": "C'est qui qui a inventé l'ampoule ? Edison ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h4",
+  "who": "PAPY",
+  "text": "Edison… et quelques autres. Il faut aller voir.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h5",
+  "who": "MALIK",
+  "text": "Oh non. Pas le livre.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h6",
+  "who": "PAPY",
+  "text": "Le Livre de Papy. Édition lumière.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h7",
+  "who": "MALIK",
+  "text": "Papy, il va faire tout noir dans le passé !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a1",
+  "who": "PAPY",
+  "text": "Pendant des siècles, on s'éclaire avec des flammes : des bougies, des lampes à huile.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a2",
+  "who": "PAPY",
+  "text": "Ça éclaire un peu. Ça fume beaucoup.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a3",
+  "who": "MALIK",
+  "text": "Et ça sent le gâteau d'anniversaire.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b1",
+  "who": "PAPY",
+  "text": "Au dix-neuvième siècle, les grandes villes s'éclairent au gaz.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b2",
+  "who": "PAPY",
+  "text": "Chaque soir, un allumeur passe allumer les réverbères, un par un.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b3",
+  "who": "MALIK",
+  "text": "Il fait ça tous les soirs ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b4",
+  "who": "PAPY",
+  "text": "Et le matin, il les éteint.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c1",
+  "who": "PAPY",
+  "text": "Les savants cherchent une lumière électrique. Le courant chauffe un fil très fin, jusqu'à ce qu'il brille.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c2",
+  "who": "PAPY",
+  "text": "En Angleterre, Joseph Swan montre sa lampe à filament de carbone en 1879.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "En Angleterre, Joseph Souane montre sa lampe à filament de carbone, en mille huit cent soixante-dix-neuf."
+ },
+ {
+  "id": "c3",
+  "who": "MALIK",
+  "text": "Elle va griller ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c4",
+  "who": "PAPY",
+  "text": "C'est tout le problème : il faut qu'elle dure.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d1",
+  "who": "PAPY",
+  "text": "Aux États-Unis, Thomas Edison et son équipe testent des milliers de filaments.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Aux États-Unis, Thomas Édisonne et son équipe testent des milliers de filaments."
+ },
+ {
+  "id": "d2",
+  "who": "PAPY",
+  "text": "Fin 1879, leur lampe tient des heures. Avec du bambou carbonisé, elle dure bien plus.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Fin mille huit cent soixante-dix-neuf, leur lampe tient des heures. Avec du bambou carbonisé, elle dure bien plus."
+ },
+ {
+  "id": "d3",
+  "who": "PAPY",
+  "text": "Edison construit aussi tout autour : centrale, câbles, compteurs. En 1882, un quartier de New York s'allume.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Édisonne construit aussi tout autour : centrale, câbles, compteurs. En mille huit cent quatre-vingt-deux, un quartier de New York s'allume."
+ },
+ {
+  "id": "d4",
+  "who": "MALIK",
+  "text": "Donc l'ampoule, c'est pas une personne… c'est une équipe.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d5",
+  "who": "PAPY",
+  "text": "Tu as compris plus vite que certains livres.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e1",
+  "who": "PAPY",
+  "text": "Au début du vingtième siècle, le filament devient du tungstène, un métal qui supporte la chaleur.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Au début du vingtième siècle, le filament devient du tung-stène, un métal qui supporte la chaleur."
+ },
+ {
+  "id": "e2",
+  "who": "PAPY",
+  "text": "Et on remplit l'ampoule de gaz pour qu'elle dure plus longtemps.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e3",
+  "who": "MALIK",
+  "text": "Aïe ! Elle est brûlante !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e4",
+  "who": "PAPY",
+  "text": "Une ampoule à filament, c'est surtout un petit radiateur qui fait un peu de lumière.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "f1",
+  "who": "PAPY",
+  "text": "En 1962, aux États-Unis, Nick Holonyak crée la première LED à lumière visible. Elle est rouge.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "En mille neuf cent soixante-deux, aux États-Unis, Nick Olonyak crée la première LED à lumière visible. Elle est rouge."
+ },
+ {
+  "id": "f2",
+  "who": "MALIK",
+  "text": "Elle est minuscule ! Et elle chauffe pas !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "f3",
+  "who": "PAPY",
+  "text": "Il faudra attendre les LED bleues, dans les années 1990, pour faire de la lumière blanche.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Il faudra attendre les LED bleues, dans les années quatre-vingt-dix, pour faire de la lumière blanche."
+ },
+ {
+  "id": "g1",
+  "who": "PAPY",
+  "text": "Aujourd'hui, une ampoule LED consomme beaucoup moins d'énergie, et dure des milliers d'heures.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g2",
+  "who": "PAPY",
+  "text": "Et en Californie, dans une caserne de pompiers, une vieille ampoule brille depuis 1901.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Et en Californie, dans une caserne de pompiers, une vieille ampoule brille depuis mille neuf cent un."
+ },
+ {
+  "id": "g3",
+  "who": "MALIK",
+  "text": "Depuis 1901 ? Elle a jamais fait « pop » ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz",
+  "say": "Depuis mille neuf cent un ? Elle a jamais fait « pop » ?"
+ },
+ {
+  "id": "g4",
+  "who": "PAPY",
+  "text": "Elle, elle a de la volonté.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z1",
+  "who": "PAPY",
+  "text": "Voilà. Une LED. On en reparle dans vingt ans.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z2",
+  "who": "MALIK",
+  "text": "Papy… elle s'allume pas.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z3",
+  "who": "PAPY",
+  "text": "Il faut appuyer sur l'interrupteur.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "o1",
+  "who": "PAPY",
+  "text": "C'était Le Livre de Papy. Chaque jour, un objet du quotidien et son histoire.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "o2",
+  "who": "PAPY",
+  "text": "Abonne-toi. Et éteins la lumière en partant.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ }
+]
