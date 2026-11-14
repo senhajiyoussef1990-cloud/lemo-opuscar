@@ -1,0 +1,337 @@
+{
+ "lines": [
+  {
+   "id": "l01",
+   "who": "papy",
+   "text": "L’histoire du sac à dos.",
+   "t0": 0.7,
+   "t1": 2.063,
+   "s0": 0.7,
+   "s1": 2.913
+  },
+  {
+   "id": "l02",
+   "who": "malik",
+   "text": "Papy, mon sac est prêt pour notre promenade !",
+   "t0": 2.963,
+   "t1": 5.592,
+   "s0": 2.963,
+   "s1": 6.192
+  },
+  {
+   "id": "l03",
+   "who": "papy",
+   "text": "Même ce dinosaure et ces trois voitures ?",
+   "t0": 5.942,
+   "t1": 8.43,
+   "s0": 5.942,
+   "s1": 9.03
+  },
+  {
+   "id": "l04",
+   "who": "malik",
+   "text": "On ne sait jamais ! Qui a inventé le sac à dos ?",
+   "t0": 8.78,
+   "t1": 11.865,
+   "s0": 8.78,
+   "s1": 12.465
+  },
+  {
+   "id": "l05",
+   "who": "papy",
+   "text": "Pas une seule personne. Cette idée a une longue histoire.",
+   "t0": 12.215,
+   "t1": 15.837,
+   "s0": 12.215,
+   "s1": 16.437
+  },
+  {
+   "id": "l06",
+   "who": "papy",
+   "text": "Imagine marcher longtemps avec tes provisions dans les bras.",
+   "t0": 16.337,
+   "t1": 19.512,
+   "s0": 16.337,
+   "s1": 20.112
+  },
+  {
+   "id": "l07",
+   "who": "papy",
+   "text": "Sur le dos, on garde les mains libres.",
+   "t0": 20.012,
+   "t1": 22.339,
+   "s0": 20.012,
+   "s1": 22.939
+  },
+  {
+   "id": "l08",
+   "who": "papy",
+   "text": "Ouvrons le livre. Notre promenade commence dans le passé !",
+   "t0": 22.839,
+   "t1": 26.667,
+   "s0": 22.839,
+   "s1": 29.017
+  },
+  {
+   "id": "l09",
+   "who": "papy",
+   "text": "Depuis longtemps, dans de nombreuses régions, on porte des charges sur le dos.",
+   "t0": 29.067,
+   "t1": 33.36,
+   "s0": 29.067,
+   "s1": 33.96
+  },
+  {
+   "id": "l10",
+   "who": "papy",
+   "text": "On utilise des paniers, des sacs et différents supports.",
+   "t0": 33.86,
+   "t1": 37.212,
+   "s0": 33.86,
+   "s1": 37.812
+  },
+  {
+   "id": "l11",
+   "who": "papy",
+   "text": "On attache la charge pour avancer avec elle.",
+   "t0": 37.712,
+   "t1": 40.365,
+   "s0": 37.712,
+   "s1": 40.965
+  },
+  {
+   "id": "l12",
+   "who": "papy",
+   "text": "Mais une charge mal placée devient vite inconfortable.",
+   "t0": 40.865,
+   "t1": 44.114,
+   "s0": 40.865,
+   "s1": 44.714
+  },
+  {
+   "id": "l13",
+   "who": "papy",
+   "text": "Les formes changent selon les besoins.",
+   "t0": 44.614,
+   "t1": 46.663,
+   "s0": 44.614,
+   "s1": 47.263
+  },
+  {
+   "id": "l14",
+   "who": "papy",
+   "text": "Au dix-neuvième siècle, les soldats utilisent déjà des sacs appelés havresacs.",
+   "t0": 47.163,
+   "t1": 51.791,
+   "s0": 47.163,
+   "s1": 52.391
+  },
+  {
+   "id": "l15",
+   "who": "papy",
+   "text": "Ils y rangent des vêtements et du matériel.",
+   "t0": 52.291,
+   "t1": 54.787,
+   "s0": 52.291,
+   "s1": 55.387
+  },
+  {
+   "id": "l16",
+   "who": "papy",
+   "text": "Certains sont rigides. D’autres, en toile, se ferment avec des sangles.",
+   "t0": 55.287,
+   "t1": 60.325,
+   "s0": 55.287,
+   "s1": 60.925
+  },
+  {
+   "id": "l17",
+   "who": "papy",
+   "text": "Les voyageurs cherchent aussi à mieux transporter leurs affaires.",
+   "t0": 60.825,
+   "t1": 64.088,
+   "s0": 60.825,
+   "s1": 64.688
+  },
+  {
+   "id": "l18",
+   "who": "malik",
+   "text": "Le mien préfère transporter des goûters !",
+   "t0": 64.438,
+   "t1": 66.479,
+   "s0": 64.438,
+   "s1": 67.079
+  },
+  {
+   "id": "l19",
+   "who": "papy",
+   "text": "Au vingtième siècle, les sacs de randonnée se perfectionnent.",
+   "t0": 66.829,
+   "t1": 70.472,
+   "s0": 66.829,
+   "s1": 71.072
+  },
+  {
+   "id": "l20",
+   "who": "papy",
+   "text": "Une armature aide à maintenir le sac et la charge.",
+   "t0": 70.972,
+   "t1": 73.884,
+   "s0": 70.972,
+   "s1": 74.484
+  },
+  {
+   "id": "l21",
+   "who": "papy",
+   "text": "Le bois est utilisé sur certains modèles. Des structures métalliques se développent aussi.",
+   "t0": 74.384,
+   "t1": 79.897,
+   "s0": 74.384,
+   "s1": 80.497
+  },
+  {
+   "id": "l22",
+   "who": "papy",
+   "text": "En Suède, Åke Nordin crée son entreprise Fjällräven en 1960.",
+   "t0": 80.397,
+   "t1": 86.21,
+   "s0": 80.397,
+   "s1": 86.81
+  },
+  {
+   "id": "l23",
+   "who": "papy",
+   "text": "Il propose notamment des sacs de randonnée avec une armature en aluminium.",
+   "t0": 86.71,
+   "t1": 91.096,
+   "s0": 86.71,
+   "s1": 91.696
+  },
+  {
+   "id": "l24",
+   "who": "papy",
+   "text": "Les matières synthétiques permettent aussi de fabriquer des sacs légers et résistants.",
+   "t0": 91.596,
+   "t1": 95.898,
+   "s0": 91.596,
+   "s1": 96.498
+  },
+  {
+   "id": "l25",
+   "who": "papy",
+   "text": "Aux États-Unis, JanSport naît en 1967 et équipe les randonneurs.",
+   "t0": 96.398,
+   "t1": 101.146,
+   "s0": 96.398,
+   "s1": 101.746
+  },
+  {
+   "id": "l26",
+   "who": "papy",
+   "text": "Des étudiants adoptent ses sacs pour protéger leurs livres de la pluie.",
+   "t0": 101.646,
+   "t1": 105.533,
+   "s0": 101.646,
+   "s1": 106.133
+  },
+  {
+   "id": "l27",
+   "who": "papy",
+   "text": "Le sac à dos trouve peu à peu sa place dans la vie quotidienne.",
+   "t0": 106.033,
+   "t1": 109.331,
+   "s0": 106.033,
+   "s1": 109.931
+  },
+  {
+   "id": "l28",
+   "who": "papy",
+   "text": "En 1978, en Suède, le Kånken est lancé pour les écoliers.",
+   "t0": 109.831,
+   "t1": 114.813,
+   "s0": 109.831,
+   "s1": 115.413
+  },
+  {
+   "id": "l29",
+   "who": "papy",
+   "text": "Ce sac carré est conçu pour accueillir leurs livres et se porter sur les deux épaules.",
+   "t0": 115.313,
+   "t1": 119.748,
+   "s0": 115.313,
+   "s1": 120.348
+  },
+  {
+   "id": "l30",
+   "who": "papy",
+   "text": "Aujourd’hui, il existe des sacs pour l’école, la randonnée, le sport et les voyages.",
+   "t0": 120.248,
+   "t1": 125.76,
+   "s0": 120.248,
+   "s1": 126.36
+  },
+  {
+   "id": "l31",
+   "who": "papy",
+   "text": "Les poches et les bretelles changent selon ce qu’on veut emporter.",
+   "t0": 126.26,
+   "t1": 129.525,
+   "s0": 126.26,
+   "s1": 130.125
+  },
+  {
+   "id": "l32",
+   "who": "malik",
+   "text": "Dans le mien, je garde une place pour le goûter !",
+   "t0": 129.875,
+   "t1": 132.339,
+   "s0": 129.875,
+   "s1": 134.339
+  },
+  {
+   "id": "l33",
+   "who": "papy",
+   "text": "Nous voilà prêts. Le dinosaure attendra à la maison.",
+   "t0": 134.389,
+   "t1": 138.128,
+   "s0": 134.389,
+   "s1": 138.728
+  },
+  {
+   "id": "l34",
+   "who": "papy",
+   "text": "C’était Le Livre de Papy !",
+   "t0": 138.628,
+   "t1": 140.169,
+   "s0": 138.628,
+   "s1": 140.819
+  },
+  {
+   "id": "l35",
+   "who": "papy",
+   "text": "Chaque jour, découvre un nouvel objet du quotidien et son histoire étonnante !",
+   "t0": 140.869,
+   "t1": 145.414,
+   "s0": 140.869,
+   "s1": 146.014
+  },
+  {
+   "id": "l36",
+   "who": "papy",
+   "text": "Alors abonne-toi pour ne rien rater de nos prochains voyages !",
+   "t0": 145.914,
+   "t1": 149.107,
+   "s0": 145.914,
+   "s1": 150.96
+  }
+ ],
+ "marks": {
+  "dive": 27.067,
+  "walk": 28.167,
+  "back": 132.589,
+  "room2": 133.589,
+  "close": 138.928,
+  "end": 151.21
+ },
+ "dur": 151.21
+}

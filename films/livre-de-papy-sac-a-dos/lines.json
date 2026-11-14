@@ -1,0 +1,290 @@
+[
+ {
+  "id": "l01",
+  "who": "papy",
+  "text": "L’histoire du sac à dos.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l02",
+  "who": "malik",
+  "text": "Papy, mon sac est prêt pour notre promenade !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+4%"
+ },
+ {
+  "id": "l03",
+  "who": "papy",
+  "text": "Même ce dinosaure et ces trois voitures ?",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l04",
+  "who": "malik",
+  "text": "On ne sait jamais ! Qui a inventé le sac à dos ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+4%"
+ },
+ {
+  "id": "l05",
+  "who": "papy",
+  "text": "Pas une seule personne. Cette idée a une longue histoire.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l06",
+  "who": "papy",
+  "text": "Imagine marcher longtemps avec tes provisions dans les bras.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l07",
+  "who": "papy",
+  "text": "Sur le dos, on garde les mains libres.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l08",
+  "who": "papy",
+  "text": "Ouvrons le livre. Notre promenade commence dans le passé !",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l09",
+  "who": "papy",
+  "text": "Depuis longtemps, dans de nombreuses régions, on porte des charges sur le dos.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l10",
+  "who": "papy",
+  "text": "On utilise des paniers, des sacs et différents supports.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l11",
+  "who": "papy",
+  "text": "On attache la charge pour avancer avec elle.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l12",
+  "who": "papy",
+  "text": "Mais une charge mal placée devient vite inconfortable.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l13",
+  "who": "papy",
+  "text": "Les formes changent selon les besoins.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l14",
+  "who": "papy",
+  "text": "Au dix-neuvième siècle, les soldats utilisent déjà des sacs appelés havresacs.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz",
+  "say": "Au dix-neuvième siècle, les soldats utilisent déjà des sacs appelés havresacs."
+ },
+ {
+  "id": "l15",
+  "who": "papy",
+  "text": "Ils y rangent des vêtements et du matériel.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l16",
+  "who": "papy",
+  "text": "Certains sont rigides. D’autres, en toile, se ferment avec des sangles.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l17",
+  "who": "papy",
+  "text": "Les voyageurs cherchent aussi à mieux transporter leurs affaires.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l18",
+  "who": "malik",
+  "text": "Le mien préfère transporter des goûters !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+4%"
+ },
+ {
+  "id": "l19",
+  "who": "papy",
+  "text": "Au vingtième siècle, les sacs de randonnée se perfectionnent.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l20",
+  "who": "papy",
+  "text": "Une armature aide à maintenir le sac et la charge.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l21",
+  "who": "papy",
+  "text": "Le bois est utilisé sur certains modèles. Des structures métalliques se développent aussi.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l22",
+  "who": "papy",
+  "text": "En Suède, Åke Nordin crée son entreprise Fjällräven en 1960.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz",
+  "say": "En Suède, Ôké Nordine crée son entreprise, Fiel-rêvène, en mille neuf cent soixante."
+ },
+ {
+  "id": "l23",
+  "who": "papy",
+  "text": "Il propose notamment des sacs de randonnée avec une armature en aluminium.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l24",
+  "who": "papy",
+  "text": "Les matières synthétiques permettent aussi de fabriquer des sacs légers et résistants.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l25",
+  "who": "papy",
+  "text": "Aux États-Unis, JanSport naît en 1967 et équipe les randonneurs.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz",
+  "say": "Aux États-Unis, Djanne-Sport naît en mille neuf cent soixante-sept et équipe les randonneurs."
+ },
+ {
+  "id": "l26",
+  "who": "papy",
+  "text": "Des étudiants adoptent ses sacs pour protéger leurs livres de la pluie.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l27",
+  "who": "papy",
+  "text": "Le sac à dos trouve peu à peu sa place dans la vie quotidienne.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l28",
+  "who": "papy",
+  "text": "En 1978, en Suède, le Kånken est lancé pour les écoliers.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz",
+  "say": "En mille neuf cent soixante-dix-huit, en Suède, le Konne-kène est lancé pour les écoliers."
+ },
+ {
+  "id": "l29",
+  "who": "papy",
+  "text": "Ce sac carré est conçu pour accueillir leurs livres et se porter sur les deux épaules.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l30",
+  "who": "papy",
+  "text": "Aujourd’hui, il existe des sacs pour l’école, la randonnée, le sport et les voyages.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l31",
+  "who": "papy",
+  "text": "Les poches et les bretelles changent selon ce qu’on veut emporter.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l32",
+  "who": "malik",
+  "text": "Dans le mien, je garde une place pour le goûter !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+4%"
+ },
+ {
+  "id": "l33",
+  "who": "papy",
+  "text": "Nous voilà prêts. Le dinosaure attendra à la maison.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l34",
+  "who": "papy",
+  "text": "C’était Le Livre de Papy !",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l35",
+  "who": "papy",
+  "text": "Chaque jour, découvre un nouvel objet du quotidien et son histoire étonnante !",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ },
+ {
+  "id": "l36",
+  "who": "papy",
+  "text": "Alors abonne-toi pour ne rien rater de nos prochains voyages !",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-10%",
+  "pitch": "-8Hz"
+ }
+]

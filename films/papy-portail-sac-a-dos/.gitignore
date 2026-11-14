@@ -1,0 +1,7 @@
+raw/
+out/
+voices/*.wav
+stills/
+events.json
+*.mp4
+fonts/*.woff2

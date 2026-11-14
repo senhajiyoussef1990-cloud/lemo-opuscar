@@ -1,0 +1,318 @@
+[
+ {
+  "id": "h1",
+  "who": "MALIK",
+  "text": "Papy ! Mon sac est prêt pour la promenade !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h2",
+  "who": "PAPY",
+  "text": "Un dinosaure. Trois voitures. Zéro goûter.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "h3",
+  "who": "MALIK",
+  "text": "On ne sait jamais ! Au fait… qui a inventé le sac à dos ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h4",
+  "who": "PAPY",
+  "text": "Personne. Enfin… tout le monde. C'est long à expliquer.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "h5",
+  "who": "PAPY",
+  "text": "Ou alors… on va voir.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "h6",
+  "who": "MALIK",
+  "text": "Voir ? Voir comment ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h7",
+  "who": "PAPY",
+  "text": "Le Livre de Papy. Édition voyage.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "h8",
+  "who": "MALIK",
+  "text": "Papy, ton livre fait de la lumière. Et du bruit !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h9",
+  "who": "PAPY",
+  "text": "Mets ton sac sur le dos. On garde les mains libres.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "a1",
+  "who": "PAPY",
+  "text": "Depuis très longtemps, dans plein de régions, on porte des charges sur le dos.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "a2",
+  "who": "PAPY",
+  "text": "Des paniers, des sacs, des supports. On attache la charge, et on avance.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "a3",
+  "who": "MALIK",
+  "text": "Lui, il n'a pas l'air bien.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a4",
+  "who": "PAPY",
+  "text": "Une charge mal placée, ça fait mal. Alors les formes changent.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "b1",
+  "who": "MALIK",
+  "text": "Papy… on est dans un camp de soldats.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b2",
+  "who": "PAPY",
+  "text": "Dix-neuvième siècle. Les soldats ont déjà des sacs : des havresacs.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz",
+  "say": "Dix-neuvième siècle. Les soldats ont déjà des sacs : des havre-sacs."
+ },
+ {
+  "id": "b3",
+  "who": "PAPY",
+  "text": "Vêtements, matériel. Certains sont rigides. D'autres en toile, avec des sangles.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "b4",
+  "who": "MALIK",
+  "text": "Et les goûters ? Personne ne pense aux goûters ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b5",
+  "who": "PAPY",
+  "text": "Non.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "c1",
+  "who": "PAPY",
+  "text": "Vingtième siècle. Les sacs de randonnée se perfectionnent.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "c2",
+  "who": "PAPY",
+  "text": "Une armature tient le sac et la charge. En bois. Puis en métal.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "c3",
+  "who": "MALIK",
+  "text": "Papy, j'ai froid.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d1",
+  "who": "PAPY",
+  "text": "Suède, 1960. Åke Nordin crée son entreprise, Fjällräven.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz",
+  "say": "Suède, mille neuf cent soixante. Ôké Nordine crée son entreprise, Fiel-rêvène."
+ },
+ {
+  "id": "d2",
+  "who": "PAPY",
+  "text": "Des sacs de randonnée avec une armature en aluminium.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "d3",
+  "who": "PAPY",
+  "text": "Et des matières synthétiques. Léger. Solide.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "d4",
+  "who": "MALIK",
+  "text": "C'est la première fois que tu dis un truc gentil sur un objet.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e1",
+  "who": "PAPY",
+  "text": "États-Unis, 1967. JanSport naît, et équipe les randonneurs.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz",
+  "say": "États-Unis, mille neuf cent soixante-sept. Djanne-Sport naît, et équipe les randonneurs."
+ },
+ {
+  "id": "e2",
+  "who": "MALIK",
+  "text": "Pourquoi tous les étudiants ont un sac sur le dos ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e3",
+  "who": "PAPY",
+  "text": "Pour protéger leurs livres de la pluie. Le sac entre dans la vie de tous les jours.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "f1",
+  "who": "PAPY",
+  "text": "Suède, encore. 1978. Le Kånken, pour les écoliers.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz",
+  "say": "Suède, encore. Mille neuf cent soixante-dix-huit. Le Konne-kène, pour les écoliers."
+ },
+ {
+  "id": "f2",
+  "who": "PAPY",
+  "text": "Carré, pour les livres. Et sur les deux épaules.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "f3",
+  "who": "MALIK",
+  "text": "Papy, on rentre ? Mon dinosaure a le mal du portail.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g1",
+  "who": "PAPY",
+  "text": "Aujourd'hui : des sacs pour l'école, la rando, le sport, les voyages.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "g2",
+  "who": "PAPY",
+  "text": "Les poches et les bretelles changent selon ce qu'on emporte.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "g3",
+  "who": "MALIK",
+  "text": "Dans le mien, il y aura toujours une place pour le goûter.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z1",
+  "who": "PAPY",
+  "text": "Nous voilà prêts. Le dinosaure… attendra à la maison.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "z2",
+  "who": "MALIK",
+  "text": "Il va s'ennuyer.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z3",
+  "who": "PAPY",
+  "text": "Il a vu le dix-neuvième siècle. Il s'en remettra.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "o1",
+  "who": "PAPY",
+  "text": "C'était Le Livre de Papy. Chaque jour, un objet du quotidien et son histoire.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ },
+ {
+  "id": "o2",
+  "who": "PAPY",
+  "text": "Abonne-toi. Et pour le prochain voyage… prends un goûter.",
+  "voice": "fr-FR-RemyMultilingualNeural",
+  "rate": "-3%",
+  "pitch": "-10Hz"
+ }
+]
