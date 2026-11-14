@@ -77,6 +77,9 @@ export function w1(t) {
   // the insert: a table with candles and an oil lamp
   shape(rr(820, 1230, 300, 28, 6), { fill: '#7a4a24', lw: 6 }); for (const lx of [840, 1090]) shape(rect(lx, 1256, 16, 100), { fill: '#5b341d', lw: 5 });
   candle(880, 1232, .9, t, 0); candle(930, 1232, .7, t, 1); oilLamp(1020, 1232, .8, t);
+  tree(-170, FLOOR - 60, .9, '#3a5a3a'); birds(t * .5, 160, 2);
+  for (const [x, s] of [[620, .9], [680, .7]]) shape(spline([[x - 30 * s, FLOOR - 40], [x - 42 * s, FLOOR - 90 * s], [x - 18 * s, FLOOR - 130 * s], [x + 18 * s, FLOOR - 130 * s], [x + 42 * s, FLOOR - 90 * s], [x + 30 * s, FLOOR - 40]]), { fill: '#a8572a', lw: 5 });
+  bgPerson(1240, FLOOR - 90, .7, t, { coat: '#c86a3a', hat: 'scarf', skin: '#a8714a', face: -1 }); candle(1210, FLOOR - 260, .45, t, 7);
   // someone carrying a candle past
   const wx = ((t * 35) % 1600) - 300; bgPerson(wx, FLOOR - 140, .55, t, { coat: '#6a5a8a', walk: 1, skin: '#e7b48c' }); candle(wx + 30, FLOOR - 300, .4, t, 5);
 }
@@ -92,6 +95,9 @@ export function w2(t) {
     stroke([[x, FLOOR - 30], [x, FLOOR - 520]], 9); shape([[x - 40, FLOOR - 600], [x + 40, FLOOR - 600], [x + 28, FLOOR - 520], [x - 28, FLOOR - 520]], { fill: i < lit || i === 2 ? '#ffe08a' : '#2a3a44', lw: 6 }); shape([[x - 50, FLOOR - 600], [x, FLOOR - 650], [x + 50, FLOOR - 600]], { fill: '#1d2a30', lw: 6 });
     if (i < lit || i === 2) { glowRing(x, FLOOR - 560, 80, 'rgba(255,214,120,A)', .25 * flick(t, i)); fillOnly([[x - 30, FLOOR - 520], [x + 30, FLOOR - 520], [x + 160, FLOOR + 40], [x - 160, FLOOR + 40]], 'rgba(255,214,120,.1)', { boil: .2 }); }
   });
+  groundBits(23, '#3a3e48', '#5a6a58');
+  for (let i = 0; i < 3; i++) bgPerson(((t * 40 + i * 520) % 1800) - 400, FLOOR - 180, .45, t, { coat: ['#5a3a8a', '#2a2430', '#8a3a3a'][i], hat: i === 1 ? 'cap' : null, walk: 1, skin: '#e7b48c' });   // passers-by in the evening
+  push(); translate(620, FLOOR - 40); shape(rr(-60, -90, 120, 90, 8), { fill: '#6b3a1e', lw: 5 }); for (const x of [-40, 40]) shape(ell(x, 0, 26, 26, 14), { fill: '#3a3340', lw: 5 }); pop();   // a cart
   // the lamplighter with his long pole, at the insert lamp
   push(); translate(1060, FLOOR - 10); bgPerson(0, 0, .8, t, { coat: '#2a2430', hat: 'cap', skin: '#e7b48c', face: -1 }); stroke([[-20, -200], [-100, -560]], 6, { line: '#7a4a24' }); const f = flick(t, 9); shape(spline([[-100, -580 - 10 * f], [-90, -560], [-100, -548], [-110, -560]]), { fill: '#ffb23f', lw: 3 }); pop();
 }
@@ -108,6 +114,8 @@ export function w3(t) {
   stroke(spline([[886, 1060], [920, 1030], [960, 1080], [950, 1110]], false), 4, { line: '#c22f3a' });
   const on = ((t * .7) % 1) > .25 ? 1 : .4;   // it glows, wavers
   shape(rect(940, 1150, 40, 20), { fill: '#c9a46a', lw: 4 }); bulb(960, 1150, .7, { on: on * .8, t, kind: 'carbon' });
+  shape(rr(-260, 1000, 300, 200, 10), { fill: '#f1e3c2', lw: 6 }); for (let i = 0; i < 4; i++) stroke([[-230, 1040 + i * 36], [-20 - 40 * hash(i), 1040 + i * 36]], 4, { line: '#8a3a32' });   // notes pinned to the wall
+  stroke(spline([[600, 1150], [700, 1080], [800, 1120]], false), 4, { line: '#c22f3a' });
   // a bearded scientist looking at it (an anonymous figure of the time)
   bgPerson(1120, FLOOR - 10, .8, t, { coat: '#2a2430', skin: '#f2c9a0', hair: '#8a8a8a', face: -1 }); shape(spline([[1090, FLOOR - 228], [1120, FLOOR - 214], [1140, FLOOR - 180], [1110, FLOOR - 170]]), { fill: '#9a9a9a', lw: 4 });
 }
@@ -123,6 +131,8 @@ export function w4(t) {
   // jars of materials to test (the insert): bamboo wins
   for (const [i, l] of ['COTON', 'PAPIER', 'LIN', 'BAMBOU'].entries()) { const x = 830 + i * 90; shape(rr(x, 920, 76, 110, 10), { fill: 'rgba(220,235,240,.85)', lw: 5 }); shape(rr(x + 6, 1036, 64, 30, 4), { fill: '#f1e3c2', lw: 3 }); text(l, x + 38, 1052, { font: '800 18px "Baloo 2"', fill: '#2a2430' }); }
   for (let k = 0; k < 3; k++) stroke([[1110 + k * 14, 1020], [1104 + k * 14, 940]], 6, { line: '#c9b25a' });
+  for (const [x, y] of [[-200, 760], [-60, 820], [80, 760]]) shape(rr(x, y, 110, 70, 6), { fill: '#f1e3c2', lw: 4 });   // sketches of filaments
+  for (let i = 0; i < 3; i++) stroke(quad([-180 + i * 140, 790], [-150 + i * 140, 760 - 20 * i], [-120 + i * 140, 790], 8), 4, { line: '#e9b949' });
   // a dynamo and two of the team
   shape(ell(1180, 1290, 80, 60, 20), { fill: '#3a3340', lw: 6 }); shape(ell(1180, 1290, 30, 30, 14), { fill: '#e9b949', lw: 5 }); stroke([[1180, 1290], [1180 + Math.cos(t * 9) * 26, 1290 + Math.sin(t * 9) * 26]], 4);
   bgPerson(1000, FLOOR - 230, .5, t, { coat: '#f1e3c2', skin: '#e7b48c', face: -1 }); bgPerson(760, FLOOR - 230, .5, t, { coat: '#3a3340', skin: '#f2c9a0', hat: 'cap' });
@@ -138,6 +148,9 @@ export function w5(t) {
   shape(rect(920, 1160, 80, 180), { fill: '#6e6878', lw: 6 }); bulb(960, 1170, 1.0, { on: 1, t, kind: 'tungsten' });
   for (let k = 0; k < 3; k++) { const u = (t * .8 + k / 3) % 1; stroke(spline([[900 + k * 60, 990 - u * 140], [912 + k * 60, 970 - u * 140], [896 + k * 60, 950 - u * 140], [910 + k * 60, 930 - u * 140]], false), 4, { line: `rgba(255,160,90,${.6 * (1 - u)})` }); }
   text('GAZ', 1060, 1040, { font: '800 30px "Baloo 2"', fill: '#e9b949' });
+  for (let i = 0; i < 2; i++) bgPerson(((t * 45 + i * 800) % 1800) - 400, FLOOR - 140, .55, t, { coat: '#6e6878', hat: 'cap', walk: 1, skin: '#e7b48c' });   // workers
+  for (let i = 0; i < 4; i++) { const u = (t * .3 + i / 4) % 1; fillOnly(ell(1100 + i * 30, 300 - u * 300, 40 + u * 40, 30 + u * 30, 16), `rgba(120,110,120,${.5 * (1 - u)})`, { boil: .4 }); }   // smoke from the chimney
+  shape(rr(1080, 300, 60, 260, 6), { fill: '#6e6878', lw: 6 });
 }
 // ———————————————————— w6: USA 1962, the first visible LED (lab white, signal red, cool grey) ————————————————————
 export function w6(t) {
@@ -152,6 +165,8 @@ export function w6(t) {
   glowRing(0, -12, 30, 'rgba(255,60,60,A)', .4 * flick(t, 2)); shape(spline([[-14, 0], [-14, -16], [-8, -26], [8, -26], [14, -16], [14, 0]]), { fill: '#ff3b3b', lw: 4 }); pop();
   text('LED', 1100, 1080, { font: '400 40px Bungee', fill: '#e8452f', outlineW: 6 });
   bgPerson(1200, FLOOR - 40, .7, t, { coat: '#f4f7fb', skin: '#e7b48c', hair: '#3a2416', face: -1 });
+  shape(rr(300, 560, 260, 180, 10), { fill: '#fff', lw: 6 }); text('1962', 430, 650, { font: '400 70px Bungee', fill: '#e8452f' });   // a calendar
+  for (let i = 0; i < 4; i++) shape(rr(-240 + i * 120, 1060, 90, 110, 8), { fill: '#d3d8de', lw: 5, shade: () => fillOnly(rect(-230 + i * 120, 1070, 70, 30), '#2f8a5a', { boil: .2 }) });   // instruments on a shelf
 }
 // ———————————————————— w7: today — LED bulbs, and the old bulb that has been on since 1901 (mint, coral) ————————————————————
 export function w7(t) {
@@ -165,4 +180,7 @@ export function w7(t) {
   shape(rr(820, 680, 300, 70, 8), { fill: '#fff6e0', lw: 5 }); text('CASERNE', 970, 716, { font: '400 40px Bungee', fill: '#c22f3a' });
   stroke([[960, 760], [960, 830]], 4); bulb(960, 880, .45, { on: .6, t, kind: 'old' });
   shape(rr(880, 1000, 160, 70, 8), { fill: '#e9b949', lw: 5 }); text('DEPUIS 1901', 960, 1036, { font: '800 26px "Baloo 2"', fill: '#2a2430' });
+  push(); translate(1180, FLOOR - 10); shape(rr(-90, -150, 180, 150, 16), { fill: '#c22f3a', lw: 6 }); for (const x of [-60, 60]) shape(ell(x, 0, 28, 28, 14), { fill: '#2a2430', lw: 5 }); shape(rr(-70, -130, 60, 50, 6), { fill: '#bfe9ff', lw: 4 }); pop();   // a little fire engine
+  bgPerson(((t * 40) % 1700) - 300, FLOOR - 80, .65, t, { coat: '#3f5bd6', walk: 1, skin: '#b9794f' });   // a passer-by
+  groundBits(71, '#ef8274', '#2fbf9b');
 }
