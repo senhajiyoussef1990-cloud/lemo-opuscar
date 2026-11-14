@@ -141,10 +141,11 @@ export function papy(P) {
 function headPapy(P) {
   shape(ell(-78, 4, 18, 26, 18), { fill: PAL.skinP, lw: 6, shade: () => fillOnly(ell(-74, 6, 7, 13, 12), PAL.skinPs, { boil: .3 }) });   // ear
   shape(spline([[-10, -104], [60, -96], [92, -50], [96, 20], [80, 80], [10, 104], [-60, 84], [-90, 30], [-92, -40], [-60, -94]]), { fill: PAL.skinP, lw: 7, shade: () => fillOnly(spline([[-100, -40], [-60, -110], [-110, -110]]), PAL.skinPs, { boil: .3 }) });
-  // kufi: a cream dome cap, with welding goggles pushed up on it (his one absurd idea)
-  shape([...arc(4, -78, 96, 52, Math.PI, TAU, 30), [100, -74], [-92, -74]], { fill: PAL.kufi, lw: 7, shade: () => { fillOnly(ell(50, -100, 46, 30, 16), PAL.kufiS, { boil: .3 }); for (let i = 0; i < 7; i++) stroke([[-70 + i * 24, -86], [-66 + i * 24, -104]], 3, { line: PAL.kufiS }); } });
-  fillOnly(rect(-96, -92, 196, 12), '#3a3340', { boil: .4 });
-  for (const [gx, gr] of [[0, 22], [54, 19]]) shape(ell(gx, -96, gr, gr * .82, 22), { fill: PAL.gogF, lw: 6, shade: () => { fillOnly(ell(gx, -96, gr * .64, gr * .54, 18), PAL.gogL, { boil: .3 }); fillOnly(ell(gx - gr * .25, -101, gr * .2, gr * .14, 10), '#fff6d8', { boil: 0 }); } });
+  // bald dome with a shine, and a soft white fringe of hair around the back of the head
+  shape([...arc(4, -70, 96, 62, Math.PI, TAU, 30), [100, -60], [-92, -60]], { fill: PAL.skinP, lw: 7, line: null, stroke: false });
+  stroke(arc(4, -70, 96, 62, Math.PI * 1.04, Math.PI * 1.96, 30), 7);
+  fillOnly(ell(30, -112, 26, 10, 14), '#f6d2b4', { boil: .3 }); fillOnly(ell(64, -104, 8, 5, 8), '#f6d2b4', { boil: .3 });
+  shape(spline([[-60, -86], [-84, -96], [-104, -70], [-112, -36], [-100, -4], [-108, 26], [-90, 34], [-76, 10], [-80, -30], [-66, -60]]), { fill: PAL.beard, lw: 6, shade: () => fillOnly(ell(-100, 0, 14, 30, 12), PAL.beardS, { boil: .3 }) });
   // eyes (heavy lids = deadpan)
   const lid = P.blink ? 1 : clamp(P.lid ?? .48, 0, 1), look = P.look || [0, 0];
   eye(6, -16, 30, 33, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4.5 });
