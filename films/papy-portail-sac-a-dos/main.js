@@ -92,7 +92,7 @@ function shotLine(t, s) {
   if (id === 'z3') { p.lid = .4; p.mouth.sm = .3; }
   // camera
   if (shot === 'two') { cam(lerp(540, 545, u), lerp(1080, 1065, u), lerp(1.2, 1.25, u)); base(); duo(t, p, m); }
-  else if (shot === 'wide') { cam(540, 1040, lerp(.95, 1.0, u)); base(); duo(t, p, m); }
+  else if (shot === 'wide') { const pan = ss(seg(u, 0, .5)); /* a pan across the world, then the two of them */ cam(lerp(980, 540, pan), 1040, lerp(.9, 1.0, pan)); base(); duo(t, p, m); }
   else if (shot === 'cuP') { const z = id === 'h5' ? lerp(2.0, 2.5, ss(u)) : id === 'b5' ? lerp(2.1, 2.35, u) : 2.05; cam(PX - 10, 850, z); base(); duo(t, p, m); }
   else if (shot === 'cuM') { const sh = id === 'h8' ? 10 * (1 - seg(t, t0 + .4, t0 + 1.2)) * (t > t0 + .3 ? 1 : 0) : 0; cam(MX + 20, 1100, 2.2, sh, t); base(); duo(t, p, m); }
   else if (shot === 'bag') { cam(370, 1260, 2.3); base(); duo(t, p, m); }

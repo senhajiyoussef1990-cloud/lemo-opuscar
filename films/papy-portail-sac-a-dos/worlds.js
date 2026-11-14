@@ -72,6 +72,7 @@ export function w1(t) {
   shape([...arc(1060, 1120, 180, 150, Math.PI, TAU, 24), [1240, 1340], [880, 1340]], { fill: '#f0c27a', lw: 7 });
   shape(spline([[860, 1130], [1060, 900], [1260, 1130], [1060, 1080]]), { fill: '#c98a3a', lw: 7 });
   shape(rr(1020, 1220, 80, 120, 30), { fill: '#6b3a1e', lw: 6 });
+  w1Details(t);
   porter(-60, FLOOR - 10, t, 0);
   // the insert: a woven basket carried on a forehead strap, on a post
   basketProp(980, 1350);
@@ -115,6 +116,7 @@ export function w2(t) {
   // a campfire
   for (let i = 0; i < 3; i++) shape(spline([[180 + i * 26, FLOOR + 10], [192 + i * 26, FLOOR - 60 - 20 * Math.sin(t * 9 + i)], [206 + i * 26, FLOOR + 10]]), { fill: i % 2 ? '#ffb23f' : '#ff6a2f', lw: 5 });
   // the insert: a havresac on a crate — open, clothes inside; a rigid one beside, straps and buckles
+  w2Details(t);
   havresacProp(930, FLOOR - 10, t);
   pigeon(1040, FLOOR - 248, t);
 }
@@ -149,6 +151,7 @@ export function w3(t) {
   // snow falling
   for (let i = 0; i < 40; i++) { const x = (hash(i) * 2200 - 500 + Math.sin(t + i) * 30), y = ((hash(i + 9) * 2000 + t * 120) % 2000) - 200; dot(x, y, 4 + hash(i + 1) * 3, '#ffffff'); }
   // a hiker passing with a frame pack (wood)
+  w3Details(t);
   framePack(980, FLOOR - 10, 'wood');
   framePack(1150, FLOOR - 10, 'metal');
   marmot(80, FLOOR + 10, t);
@@ -185,6 +188,7 @@ export function w4(t) {
   shape(rr(860, 1180, 330, 30, 6), { fill: '#e9b949', lw: 6 }); for (const lx of [880, 1160]) shape(rect(lx, 1208, 18, 140), { fill: '#b88a2a', lw: 5 });
   push(); translate(980, 1180); scale(.62); framePack(0, 0, 'metal'); pop();
   shape(rr(1080, 1120, 100, 60, 28), { fill: '#3fb6a0', lw: 5 }); stroke(arc(1110, 1150, 16, 20, 0, TAU, 12), 3);
+  w4Details(t);
   fox(160, FLOOR + 6, t);
 }
 function fox(x, y, t) {   // a polar fox that just stares
@@ -209,6 +213,7 @@ export function w5(t, { rain = 1 } = {}) {
   shape(ell(140, FLOOR + 90, 140, 32, 30), { fill: '#8fa3b0', lw: 6 });
   for (const ex of [100, 170]) eye(ex, FLOOR + 82, 14, 12, { lid: blink(t, 3) ? 1 : .2, skin: '#8fa3b0', lw: 4, pupil: 3.5, look: [.5, 0] });
   // students with backpacks
+  w5Details(t);
   for (const [x, c] of [[940, '#3a6f4a'], [1140, '#8a3a5a']]) student(x, FLOOR - 10, c, t);
   if (rain) for (let i = 0; i < 70; i++) { const x = hash(i) * 2000 - 400, y = ((hash(i + 3) * 2200 + t * 1500) % 2200) - 200; stroke([[x, y], [x - 8, y + 46]], 4, { line: '#dfe8ee', boil: .2 }); }
 }
@@ -230,6 +235,7 @@ export function w6(t) {
   text('SKOLA', 560, 640, { font: '400 64px Bungee', fill: '#ff6fae', outlineW: 10 });
   ground('#ff6fae'); for (let k = 0; k < 5; k++) stroke([[X0, FLOOR + 40 + k * 70], [X1, FLOOR + 40 + k * 70]], 4, { line: '#e04f92' });
   // kids with square backpacks
+  w6Details(t);
   for (const [x, c] of [[930, '#ffd21f'], [1130, '#3fb6e8']]) kid(x, FLOOR - 6, c, t);
   walkingBook(130 + Math.sin(t * 1.2) * 60, FLOOR + 10, t);
 }
@@ -267,6 +273,7 @@ export function w7(t) {
   ground('#ff9d8f'); for (let x = -800; x < 2000; x += 120) stroke([[x, FLOOR - 40], [x - 60, 2400]], 4, { line: '#ef8274' });
   shape(rr(860, 1140, 340, 200, 14), { fill: '#fff', lw: 7 });   // a counter
   text('SOLDES : 0 %', 1030, 1240, { font: '400 40px VT323', fill: '#ff7a6b' });
+  w7Details(t);
 }
 // the insert in w7: one modern pack, all pockets and straps
 export function modernPack(x, y, s = 1) {
@@ -275,4 +282,99 @@ export function modernPack(x, y, s = 1) {
   for (const [px, py, w, h, c] of [[-70, -120, 140, 90, '#2fbf9b'], [-104, -200, 40, 110, '#ffcf3a'], [64, -200, 40, 110, '#ffcf3a'], [-50, -240, 100, 50, '#ff7a6b']]) shape(rr(px, py, w, h, 12), { fill: c, lw: 5 });
   for (const zx of [-56, 56]) stroke([[zx, -100], [zx, -40]], 3);
   pop();
+}
+
+// ———————————————————— extra details for the journeys ————————————————————
+// little things on the ground in front (stones, tufts) and in the sky (clouds)
+function groundBits(seed, stone, tuft) {
+  for (let i = 0; i < 14; i++) { const x = -300 + hash(seed + i) * 1700, y = FLOOR + 30 + hash(seed + i + 40) * 160;
+    if (i % 2) shape(ell(x, y, 14 + hash(i + seed) * 12, 9, 12), { fill: stone, lw: 4 });
+    else for (const d of [-10, 0, 10]) stroke([[x + d, y], [x + d * 1.6, y - 22]], 4, { line: tuft }); }
+}
+function clouds(t, y0, col = '#ffffff') { for (let i = 0; i < 3; i++) { const x = ((t * 12 + i * 600) % 1900) - 400, y = y0 + i * 90; shape(spline([[x - 120, y], [x - 90, y - 50], [x - 20, y - 70], [x + 50, y - 60], [x + 110, y - 30], [x + 120, y], [x, y + 16]]), { fill: col, lw: 6 }); } }
+// a small background person: s = scale, walk = phase (0 = standing), pack: 'basket' | 'havre' | 'frame' | 'square' | 'modern' | null
+export function bgPerson(x, y, s, t, { coat = '#3f7f9a', skin = '#a8714a', hair = '#2a1a10', hat = null, pack = null, packCol = '#c9b27a', face = 1, walk = 0, umbrella = null, legs = '#2c3550' } = {}) {
+  push(); translate(x, y); scale(s * face, s);
+  const ph = walk ? Math.floor(t * 8) % 2 : 0, lg = walk ? (ph ? 14 : -14) : 0;
+  if (pack === 'basket') shape(spline([[-70, -300], [20, -300], [10, -160], [-60, -160]]), { fill: '#e0b062', lw: 6, shade: () => { for (let k = 0; k < 4; k++) stroke([[-80, -280 + k * 32], [30, -280 + k * 32]], 3, { line: '#b88438' }); } });
+  if (pack === 'havre') { shape(rr(-74, -270, 56, 90, 8), { fill: packCol, lw: 5 }); shape(rr(-80, -296, 70, 30, 14), { fill: '#3f5aa8', lw: 4 }); }
+  if (pack === 'frame') { for (const sx of [-70, -26]) shape(rr(sx - 5, -330, 10, 220, 4), { fill: '#b9c2cf', lw: 4 }); shape(rr(-78, -300, 60, 120, 14), { fill: packCol, lw: 5 }); }
+  if (pack === 'square') shape(rr(-74, -270, 56, 80, 8), { fill: packCol, lw: 5 });
+  if (pack === 'modern') { shape(rr(-74, -276, 58, 96, 16), { fill: packCol, lw: 5 }); shape(rr(-68, -220, 46, 30, 8), { fill: '#ffcf3a', lw: 4 }); }
+  for (const [lx, d] of [[-14, lg], [14, -lg]]) shape(noodle([lx, -150], [lx + d, -6], 0, 24, 20), { fill: legs, lw: 5 });
+  shape(spline([[-38, -270], [38, -270], [46, -140], [-46, -140]]), { fill: coat, lw: 6 });
+  if (umbrella) { stroke([[30, -250], [30, -440]], 5); shape([...arc(30, -430, 120, 70, Math.PI, TAU, 18), [150, -430], [-90, -430]], { fill: umbrella, lw: 6 }); }
+  shape(ell(6, -310, 40, 42, 22), { fill: skin, lw: 6 });
+  shape([...arc(6, -318, 44, 36, Math.PI, TAU, 14), [50, -312], [-38, -312]], { fill: hair, lw: 5 });
+  if (hat === 'shako') shape(rr(-30, -400, 70, 62, 6), { fill: '#1d2a55', lw: 5, shade: () => fillOnly(rect(-30, -352, 70, 10), '#c22f3a', { boil: .2 }) });
+  if (hat === 'cap') shape([...arc(6, -334, 44, 26, Math.PI, TAU, 12), [70, -330], [-38, -330]], { fill: '#c22f3a', lw: 5 });
+  if (hat === 'scarf') shape([...arc(6, -318, 48, 44, Math.PI * .9, TAU * 1.05, 14), [52, -290], [-40, -290]], { fill: '#e07b39', lw: 5 });
+  eye(22, -312, 8, 9, { lid: .25, skin, lw: 3, pupil: 2.6 });
+  pop();
+}
+const birds = (t, y0 = 200, n = 4) => { for (let i = 0; i < n; i++) { const x = ((t * 60 + i * 260) % 1600) - 300, y = y0 + i * 40 + Math.sin(t * 2 + i) * 12, f = Math.sin(t * 10 + i) * 8; stroke([[x - 22, y - f], [x, y], [x + 22, y - f]], 5); } };
+function tree(x, y, s = 1, col = '#4f9a3a', trunk = '#7a4a24') { push(); translate(x, y); scale(s); shape(rr(-14, -200, 28, 200, 8), { fill: trunk, lw: 6 }); shape(spline([[-130, -200], [-110, -300], [-40, -350], [40, -350], [110, -300], [130, -200], [0, -170]]), { fill: col, lw: 6 }); pop(); }
+function pine(x, y, s = 1, col = '#2f6b4a') { push(); translate(x, y); scale(s); shape(rect(-10, -40, 20, 40), { fill: '#6b3a1e', lw: 5 }); for (const [w, yy] of [[90, -40], [70, -130], [48, -210]]) shape([[-w, yy], [0, yy - 120], [w, yy]], { fill: col, lw: 6 }); pop(); }
+function signpost(x, y, lines, col = '#9a6232') { push(); translate(x, y); shape(rect(-8, -220, 16, 220), { fill: col, lw: 5 }); lines.forEach((l, i) => { shape([[-90, -210 + i * 54], [80, -210 + i * 54], [100, -186 + i * 54], [80, -162 + i * 54], [-90, -162 + i * 54]], { fill: '#f1d3a0', lw: 5 }); text(l, -2, -186 + i * 54, { font: '800 26px "Baloo 2"', fill: '#2a2430' }); }); pop(); }
+
+export function w1Details(t) {
+  birds(t, 160); clouds(t, 360); groundBits(11, '#a8572a', '#6c9a3a');
+  tree(-170, FLOOR - 60, .9, '#6c9a3a');
+  for (const [x, s] of [[820, .9], [870, .7], [770, .75]]) shape(spline([[x - 30 * s, FLOOR - 40], [x - 42 * s, FLOOR - 90 * s], [x - 18 * s, FLOOR - 130 * s], [x + 18 * s, FLOOR - 130 * s], [x + 42 * s, FLOOR - 90 * s], [x + 30 * s, FLOOR - 40]]), { fill: '#c86a3a', lw: 5 });   // clay pots
+  const wx = ((t * 40) % 1600) - 300;   // a porter walking along the far path
+  bgPerson(wx, FLOOR - 150, .55, t, { coat: '#e07b39', pack: 'basket', walk: 1 });
+  bgPerson(1150, FLOOR - 120, .6, t, { coat: '#3f7f9a', hat: 'scarf', pack: 'basket', face: -1 });
+}
+export function w2Details(t) {
+  groundBits(23, '#36452a', '#7a8540');
+  for (const x of [380, 620]) { push(); translate(x, FLOOR - 170); scale(.45); shape([[-200, 0], [0, -300], [200, 0]], { fill: '#f1e3c2', lw: 9 }); pop(); }   // far tents
+  for (let i = 0; i < 5; i++) bgPerson(((t * 30 + i * 90) % 1700) - 400, FLOOR - 200, .38, t, { coat: '#c22f3a', hat: 'shako', pack: 'havre', walk: 1, skin: '#e7b48c' });   // a column marching past
+  bgPerson(80, FLOOR - 40, .75, t, { coat: '#c22f3a', hat: 'shako', pack: 'havre', skin: '#e7b48c', face: 1 });
+  shape(ell(150, FLOOR - 70, 30, 34, 18), { fill: '#e9d7a8', lw: 5 }); stroke([[130, FLOOR - 100], [170, FLOOR - 40]], 4);   // a drum
+  shape(rr(700, FLOOR - 110, 120, 80, 6), { fill: '#9a6232', lw: 5 }); text('VIVRES', 760, FLOOR - 70, { font: '800 22px "Baloo 2"', fill: '#2a2430' });
+  stroke([[880, FLOOR - 40], [880, FLOOR - 380]], 6); shape([[880, FLOOR - 380], [990, FLOOR - 350], [880, FLOOR - 320]], { fill: '#f1e3c2', lw: 5 });
+}
+export function w3Details(t) {
+  clouds(t, 300); groundBits(31, '#b9c2cf', '#9fb3c8');
+  for (const [x, s] of [[-140, 1.1], [860, .8], [-40, .7], [1180, 1]]) pine(x, FLOOR - 40, s);
+  signpost(140, FLOOR - 30, ['SOMMET 2 h', 'REFUGE 30 min']);
+  for (const [x, w] of [[700, 70], [760, 40]]) shape(spline([[x - w, FLOOR - 30], [x - w * .6, FLOOR - 30 - w * .8], [x + w * .4, FLOOR - 30 - w], [x + w, FLOOR - 30]]), { fill: '#b9c2cf', lw: 5 });
+  const u = (t * .03) % 1; bgPerson(lerp(-300, 900, u), lerp(1080, 760, u), .35, t, { coat: '#c22f3a', hat: 'cap', pack: 'frame', packCol: '#6e8a3a', walk: 1, skin: '#e7b48c' });   // a hiker climbing far away
+}
+export function w4Details(t) {
+  clouds(t, 380); groundBits(47, '#e3b400', '#3a62e6');
+  shape(rr(880, 760, 300, 40, 6), { fill: '#e9b949', lw: 5 }); text('ATELIER', 1030, 780, { font: '400 32px Bungee', fill: '#1b2a7a' });
+  shape(rr(900, 860, 250, 18, 4), { fill: '#b88a2a', lw: 5 });   // a shelf of fabric rolls
+  ['#3fb6a0', '#e8452f', '#ffd21f', '#2a2430'].forEach((c, i) => shape(rr(910 + i * 60, 800, 50, 60, 22), { fill: c, lw: 5 }));
+  shape(rr(900, 920, 110, 80, 4), { fill: '#fff6e0', lw: 5 }); framePackMini(955, 990);   // a sketch pinned on the wall
+  // a sewing machine on the bench
+  shape(spline([[1080, 1180], [1080, 1120], [1150, 1110], [1160, 1140], [1120, 1145], [1120, 1180]]), { fill: '#2a2430', lw: 5 });
+  for (const x of [-120, 70]) { shape(rr(x - 10, 900, 20, 440, 6), { fill: '#f4f7fb', lw: 5 }); for (let k = 0; k < 4; k++) stroke([[x - 8, 960 + k * 90], [x + 6, 960 + k * 90]], 4); }   // birches
+  birds(t, 260, 3);
+}
+function framePackMini(x, y) { push(); translate(x, y); scale(.3); framePack(0, 0, 'metal'); pop(); }
+export function w5Details(t) {
+  groundBits(53, '#4a5428', '#8a9a40');
+  stroke([[40, FLOOR - 30], [40, FLOOR - 420]], 9); shape(rr(10, FLOOR - 460, 60, 50, 10), { fill: '#ffe08a', lw: 6 });   // a lamp post
+  tree(-190, FLOOR - 40, .8, '#4f6a2a');
+  for (let i = 0; i < 3; i++) bgPerson(((t * 50 + i * 420) % 1800) - 400, FLOOR - 160, .5, t, { coat: ['#3a6f4a', '#8a3a5a', '#3f5bd6'][i], pack: 'modern', packCol: '#e8742a', walk: 1, umbrella: ['#e8452f', '#ffd21f', '#2a2430'][i], skin: ['#e7b48c', '#b9794f', '#f2c9a0'][i] });
+  // a bicycle
+  push(); translate(760, FLOOR - 20); for (const x of [-50, 50]) shape(ell(x, 0, 34, 34, 20), { fill: 'rgba(0,0,0,0)', lw: 5 }); stroke([[-50, 0], [0, -40], [50, 0], [-10, 0], [-50, 0]], 5); stroke([[0, -40], [10, -60]], 5); pop();
+}
+export function w6Details(t) {
+  for (let i = 0; i < 12; i++) { const x = -200 + i * 120; shape([[x, 560], [x + 100, 560], [x + 50, 620]], { fill: ['#ffd21f', '#3fb6e8', '#8be04a', '#ff6fae'][i % 4], lw: 5 }); } stroke([[-260, 556], [1300, 556]], 4);   // bunting
+  clouds(t, 300);
+  for (let i = 0; i < 4; i++) { const x = 300 + i * 70; shape(rect(x, FLOOR + 60, 60, 60), { fill: 'rgba(255,255,255,.0)', lw: 4, line: '#fff6e0' }); text(String(i + 1), x + 30, FLOOR + 92, { font: '800 30px "Baloo 2"', fill: '#fff6e0' }); }   // hopscotch in chalk
+  shape(ell(560, 700, 50, 50, 24), { fill: '#fff6e0', lw: 6 }); stroke([[560, 700], [560, 670]], 5); stroke([[560, 700], [585, 710]], 5);   // school clock
+  for (let i = 0; i < 2; i++) bgPerson(((t * 70 + i * 700) % 1700) - 300, FLOOR - 120, .55, t, { coat: ['#ff6fae', '#8be04a'][i], pack: 'square', packCol: ['#ffd21f', '#3fb6e8'][i], walk: 1, skin: ['#f2c9a0', '#b9794f'][i], hair: '#f3d36a' });
+  push(); translate(-120, FLOOR - 20); for (let k = 0; k < 3; k++) { for (const x of [-30, 30]) shape(ell(k * 90 + x, 0, 24, 24, 16), { fill: 'rgba(0,0,0,0)', lw: 4 }); stroke([[k * 90 - 30, 0], [k * 90, -30], [k * 90 + 30, 0]], 4); } pop();   // bicycles
+  shape(ell(820, FLOOR + 40, 22, 22, 16), { fill: '#e8452f', lw: 5 });   // a ball
+}
+export function w7Details(t) {
+  for (const x of [100, 540, 980]) { stroke([[x, 0], [x, 160]], 4); shape([...arc(x, 200, 70, 44, Math.PI, TAU, 14), [x + 70, 200], [x - 70, 200]], { fill: '#ffcf3a', lw: 5 }); }   // hanging lamps
+  const signs = ['ÉCOLE', 'RANDO', 'SPORT', 'VOYAGE'];
+  signs.forEach((s, i) => { shape(rr(-240 + i * 400, 300, 220, 60, 12), { fill: '#ff7a6b', lw: 5 }); text(s, -130 + i * 400, 330, { font: '400 34px Bungee', fill: '#fff' }); });
+  for (let r = 0; r < 4; r++) for (let i = 0; i < 9; i += 2) { const x = -260 + i * 190 + (r % 2) * 50 + 90, y = 520 + r * 190 - 30; shape(rr(x, y, 44, 26, 4), { fill: '#fff', lw: 3 }); text(['19 €', '35 €', '49 €', '25 €'][(i + r) % 4], x + 22, y + 13, { font: '800 16px "Baloo 2"', fill: '#2a2430' }); }
+  bgPerson(((t * 35) % 1700) - 300, FLOOR - 60, .7, t, { coat: '#8a3df0', pack: 'modern', packCol: '#2fbf9b', walk: 1, skin: '#e7b48c', face: 1 });
+  push(); translate(-60, FLOOR - 40); shape(rr(-20, -60, 40, 60, 6), { fill: '#ff7a6b', lw: 5 }); for (const [a, l] of [[-.5, 120], [0, 150], [.5, 110]]) shape(spline([[0, -60], [Math.sin(a) * l * .5 - 14, -60 - l * .6], [Math.sin(a) * l, -60 - l], [Math.sin(a) * l * .5 + 14, -60 - l * .6]]), { fill: '#2fbf9b', lw: 4 }); pop();
 }
