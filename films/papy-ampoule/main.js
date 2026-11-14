@@ -33,7 +33,7 @@ const blinkM = t => { const k = Math.floor(t * 12); return k % 31 === 0 || k % 3
 // —— the state of the story at time t (what Malik's bag holds, where the dino is) ——
 function state(t) {   // the ceiling bulb: lit, blows on Malik's first line, the new LED lights after the switch (z3)
   const blown = t >= VO.h1 - .25, relit = t >= VO.z3 + vdur('z3') + .15, screwed = t >= B('home2', 'SILENCE')[0] + 1.1;
-  return { pack: 'back', dinoInPack: false, dinoHeldM: false, light: !blown ? 1 : relit ? 2 : 0, screwed };
+  return { pack: null, dinoInPack: false, dinoHeldM: false, light: !blown ? 1 : relit ? 2 : 0, screwed };
 }
 // —— default poses ——
 function P_(t, o = {}) {
@@ -185,7 +185,7 @@ function wrap(str, max = 920) {
 }
 function subs(t) {
   const s = SUBS.filter(x => t >= x.t0 && t < x.t1).slice(-1)[0]; if (!s) return;
-  const lines = wrap(s.text), lh = 70, y0 = 1700 - (lines.length - 1) * lh;
+  const lines = wrap(s.text), lh = 70, y0 = 1560 - (lines.length - 1) * lh;
   reset();
   push(); translate(W / 2, y0 - 82); scale(back(seg(t, s.t0, s.t0 + .12), 2));
   g.font = '800 30px "Baloo 2"'; const nw = g.measureText(s.who).width + 40;
