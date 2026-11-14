@@ -7,7 +7,7 @@ export const PAL = {
   skinP: '#e7b48c', skinPs: '#c98f66', tunic: '#f3e6cc', tunicS: '#d9c6a2', vest: '#7a4a2c', vestS: '#5b341d', kufi: '#f6ecd6', kufiS: '#dccdb0',
   beard: '#ffffff', beardS: '#d9dde6', sandal: '#8a5a34', gogF: '#2f8f83', gogL: '#ffd23f',
   skinM: '#b9794f', skinMs: '#94592f', hair: '#3b2416', hairS: '#24140b', hood: '#3157d6', hoodS: '#2140a6', jeans: '#2c3550', jeansS: '#1d2338', sneak: '#ffffff', sneakS: '#d8d8e0', sole: '#e8452f',
-  coat: '#cfeedd', coatS: '#a5d4bd', shirt: '#e9b949', shirtS: '#c9962a', pants: '#5b3d7a', pantsS: '#432a5c', boot: '#3a2f45',
+  coat: '#f8f7f2', coatS: '#d5d8e0', shirt: '#e9b949', shirtS: '#c9962a', pants: '#5b3d7a', pantsS: '#432a5c', boot: '#3a2f45',
   pack: '#d08a45', packS: '#a86a2f', strap: '#7a4a24', dino: '#5cbf4a', dinoS: '#3f9634', car1: '#e8452f', car2: '#ffcf3a', car3: '#3fb6e8',
   mouthIn: '#4a1a2a', tongue: '#e8637a', white: '#ffffff', book: '#7b2f6b', bookS: '#5a1f4e', page: '#fff6e0', gold: '#e9b949',
 };
@@ -111,7 +111,7 @@ export function papy(P) {
   }
   push(); rotate(P.lean ?? .03);
   const shB = [-66, -455], shF = [62, -452];
-  const armB = P.armB || { h: [-70, 184], bend: -22 }, armF = P.armF || { h: [40, 180], bend: 20 };
+  const armB = P.armB || { h: [-16, 186], bend: 14 }, armF = P.armF || { h: [40, 180], bend: 20 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]], ang = Math.atan2(hp[1] - sh[1], hp[0] - sh[0]);
     shape(noodle(sh, hp, arm.bend ?? 0, 46, 40), { fill: PAL.coat, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.coatS, { boil: .3 }) });
@@ -156,8 +156,8 @@ function headPapy(P) {
   for (const [bx, bw] of [[4, 40], [58, 32]]) shape(spline([[bx - bw, -50 - br * 4], [bx - bw * .3, -66 - br * 10], [bx + bw * .6, -62 - br * 6], [bx + bw, -52], [bx + bw * .2, -46 - br * 4], [bx - bw * .6, -42 - br * 2]]), { fill: PAL.beard, lw: 5 });
   // nose
   shape(spline([[30, -14], [44, 14], [70, 30], [62, 48], [36, 44], [26, 30]]), { fill: PAL.skinP, lw: 6, shade: () => fillOnly(ell(58, 42, 14, 8, 12), PAL.skinPs, { boil: .3 }) });
-  // big block beard (the white of his silhouette), the mouth set into it
-  shape(spline([[-62, 40], [-30, 56], [20, 60], [86, 40], [94, 90], [70, 170], [20, 210], [-30, 186], [-70, 120]]), { fill: PAL.beard, lw: 7, shade: () => { fillOnly(spline([[60, 80], [110, 60], [100, 180], [40, 220]]), PAL.beardS, { boil: .3 }); for (let i = 0; i < 5; i++) stroke(quad([-20 + i * 20, 120], [-14 + i * 20, 150], [-18 + i * 18, 178], 6), 3, { line: PAL.beardS }); } });
+  // clean-shaven chin with a little shadow (the bushy white moustache stays: it is his)
+  stroke(arc(30, 96, 30, 10, Math.PI * .2, Math.PI * .8, 10), 4, { line: PAL.skinPs });
   const m = P.mouth || {};
   mouth(36, 82, 56, { o: m.o || 0, w: m.w ?? 1, sm: m.sm ?? -.2, lw: 6 });
   shape(spline([[-6, 58], [30, 50], [60, 54], [90, 66], [72, 76], [36, 66], [4, 72]]), { fill: PAL.beard, lw: 6 });   // moustache over the mouth
@@ -178,7 +178,7 @@ export function malik(P) {
   }
   push(); rotate(P.lean ?? 0);
   const shB = [-60, -250], shF = [58, -250];
-  const armB = P.armB || { h: [-46, 100], bend: -18 }, armF = P.armF || { h: [26, 102], bend: 18 };
+  const armB = P.armB || { h: [-10, 102], bend: 10 }, armF = P.armF || { h: [26, 102], bend: 18 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]];
     shape(noodle(sh, hp, arm.bend ?? 0, 36, 32), { fill: PAL.hood, lw: 6 });
