@@ -177,15 +177,13 @@ export function malik(P) {
   }
   push(); rotate(P.lean ?? 0);
   const shB = [-60, -250], shF = [58, -250];
-  const armB = P.armB || { h: [-10, 102], bend: 10 }, armF = P.armF || { h: [26, 102], bend: 18 };
+  const armB = P.armB || { h: [-10, 104], bend: 10 }, armF = P.armF || { h: [8, 104], bend: -6 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]];
     shape(noodle(sh, hp, arm.bend ?? 0, 36, 32), { fill: PAL.hood, lw: 6 });
     if (hold === 'dino') dino(hp[0] + 10, hp[1] + 26, .55, { a: -.15, sick: P.dinoSick || 0, look: [-1, 0] });
     hand(hp[0], hp[1], Math.atan2(hp[1] - sh[1], hp[0] - sh[0]), 16, PAL.skinM, { fist: arm.fist });
   };
-  const fBehind = !P.holdF && !P.armF;
-  if (fBehind) drawArm(shF, armF);
   // oversized royal-blue hoodie
   shape(spline([[0, -282], [62, -262], [86, -190], [84, -112], [0, -100], [-84, -112], [-86, -190], [-62, -262]]), {
     fill: PAL.hood, lw: 7, shade: () => { fillOnly(spline([[24, -290], [96, -260], [110, -110], [40, -96], [70, -190]]), PAL.hoodS, { boil: .4 }); fillOnly(rect(-90, -124, 180, 14), PAL.hoodS, { boil: .3 }); }
@@ -196,7 +194,7 @@ export function malik(P) {
   push(); translate(0, -360); rotate(P.headTilt ?? 0); headMalik(P, ner); pop();
   drawArm(shB, armB);
   if (P.pack === 'arms') backpack(28, -110, .8, { ...(P.packP || {}) });
-  if (!fBehind) drawArm(shF, armF, P.holdF);
+  drawArm(shF, armF, P.holdF);   // both arms in front, along the body (as Papy)
   pop();
   if (P.sweat != null) { const u = P.sweat % 1; sweat(-84, -470 + u * 40, 1); sweat(92, -450 + ((u + .5) % 1) * 40, .8); }
   pop();
