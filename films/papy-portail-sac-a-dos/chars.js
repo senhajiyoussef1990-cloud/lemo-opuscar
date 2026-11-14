@@ -111,7 +111,7 @@ export function papy(P) {
   }
   push(); rotate(P.lean ?? .03);
   const shB = [-66, -455], shF = [62, -452];
-  const armB = P.armB || { h: [-24, 190], bend: -16 }, armF = P.armF || { h: [26, 190], bend: 16 };
+  const armB = P.armB || { h: [-84, 176], bend: -26 }, armF = P.armF || { h: [26, 190], bend: 16 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]], ang = Math.atan2(hp[1] - sh[1], hp[0] - sh[0]);
     shape(noodle(sh, hp, arm.bend ?? 0, 46, 40), { fill: PAL.coat, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.coatS, { boil: .3 }) });
@@ -178,7 +178,7 @@ export function malik(P) {
   }
   push(); rotate(P.lean ?? 0);
   const shB = [-60, -250], shF = [58, -250];
-  const armB = P.armB || { h: [-12, 104], bend: -16 }, armF = P.armF || { h: [12, 104], bend: 16 };
+  const armB = P.armB || { h: [-56, 98], bend: -20 }, armF = P.armF || { h: [12, 104], bend: 16 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]];
     shape(noodle(sh, hp, arm.bend ?? 0, 36, 32), { fill: PAL.hood, lw: 6 });
