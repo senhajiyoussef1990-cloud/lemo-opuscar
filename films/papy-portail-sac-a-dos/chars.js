@@ -7,6 +7,7 @@ export const PAL = {
   skinP: '#e7b48c', skinPs: '#c98f66', tunic: '#f3e6cc', tunicS: '#d9c6a2', vest: '#7a4a2c', vestS: '#5b341d', kufi: '#f6ecd6', kufiS: '#dccdb0',
   beard: '#ffffff', beardS: '#d9dde6', sandal: '#8a5a34', gogF: '#2f8f83', gogL: '#ffd23f',
   skinM: '#b9794f', skinMs: '#94592f', hair: '#3b2416', hairS: '#24140b', hood: '#3157d6', hoodS: '#2140a6', jeans: '#2c3550', jeansS: '#1d2338', sneak: '#ffffff', sneakS: '#d8d8e0', sole: '#e8452f',
+  coat: '#cfeedd', coatS: '#a5d4bd', shirt: '#e9b949', shirtS: '#c9962a', pants: '#5b3d7a', pantsS: '#432a5c', boot: '#3a2f45',
   pack: '#d08a45', packS: '#a86a2f', strap: '#7a4a24', dino: '#5cbf4a', dinoS: '#3f9634', car1: '#e8452f', car2: '#ffcf3a', car3: '#3fb6e8',
   mouthIn: '#4a1a2a', tongue: '#e8637a', white: '#ffffff', book: '#7b2f6b', bookS: '#5a1f4e', page: '#fff6e0', gold: '#e9b949',
 };
@@ -102,33 +103,33 @@ export function papy(P) {
   const f = P.face ?? 1;
   push(); translate(P.x, P.y + (P.bob || 0)); scale((P.s ?? 1) * f, (P.s ?? 1) * (P.sq ?? 1));
   const legs = P.legs || [[0, 0], [0, 0]];
-  // sandals (under the tunic)
+  // plum trousers + dark ankle boots
   for (const [sx, lg] of [[-1, legs[0]], [1, legs[1]]]) {
     const ax = sx * 34 + lg[0], ay = -10 + lg[1];
-    shape(noodle([sx * 30 + lg[0] * .6, -80], [ax, ay - 12], 0, 26, 24), { fill: PAL.skinP, lw: 6 });
-    shape(spline([[ax - 34, ay + 12], [ax - 30, ay - 4], [ax + 30, ay - 6], [ax + 48, ay + 6], [ax + 44, ay + 14]]), { fill: PAL.sandal, lw: 6 });
-    stroke([[ax - 14, ay - 4], [ax + 4, ay - 14], [ax + 22, ay - 4]], 5);
+    shape(noodle([sx * 30 + lg[0] * .4, -230], [ax, ay - 16], 0, 44, 38), { fill: PAL.pants, lw: 7, shade: () => fillOnly(rect(sx > 0 ? 10 : -60, -240, 18, 240), PAL.pantsS, { boil: .3 }) });
+    shape(spline([[ax - 34, ay + 12], [ax - 28, ay - 22], [ax + 18, ay - 24], [ax + 50, ay + 4], [ax + 46, ay + 14]]), { fill: PAL.boot, lw: 6, shade: () => fillOnly(rect(ax - 40, ay + 6, 100, 12), '#1f1a24', { boil: .3 }) });
   }
   push(); rotate(P.lean ?? .03);
   const shB = [-66, -455], shF = [62, -452];
   const armB = P.armB || { h: [-24, 190], bend: -16 }, armF = P.armF || { h: [26, 190], bend: 16 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]], ang = Math.atan2(hp[1] - sh[1], hp[0] - sh[0]);
-    shape(noodle(sh, hp, arm.bend ?? 0, 44, 36), { fill: PAL.tunic, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.tunicS, { boil: .3 }) });
+    shape(noodle(sh, hp, arm.bend ?? 0, 46, 40), { fill: PAL.coat, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.coatS, { boil: .3 }) });
+    shape(ell(hp[0] - Math.cos(ang) * 6, hp[1] - Math.sin(ang) * 6, 21, 21, 18), { fill: PAL.shirt, lw: 6 });
     if (hold === 'book') { book(hp[0] + 40, hp[1] - 30, -.15 - (P.lean ?? 0), { open: P.bookOpen ?? 0, s: .8 }); }
     if (hold === 'dino') { dino(hp[0] - 30, hp[1] + 10, .6, { a: -.1, look: [1, 0] }); }
     hand(hp[0], hp[1], ang, 22, PAL.skinP, { fist: !!hold });
   };
   drawArm(shB, armB, P.holdB);
-  // long cream tunic (to the ankles)
-  shape(spline([[-36, -490], [-92, -460], [-110, -300], [-126, -70], [0, -56], [126, -70], [110, -300], [92, -460], [36, -490]]), {
-    fill: PAL.tunic, lw: 7, shade: () => { fillOnly(spline([[40, -500], [130, -460], [150, -60], [60, -50], [90, -300]]), PAL.tunicS, { boil: .4 }); for (const x of [-60, -10, 40]) stroke([[x, -240], [x * 1.2, -70]], 3.5, { line: PAL.tunicS }); }
-  });
-  // brown vest, open at the front
-  shape(spline([[-34, -488], [-90, -458], [-102, -330], [-96, -230], [-18, -224], [-10, -400]]), { fill: PAL.vest, lw: 7, shade: () => fillOnly(rect(-130, -500, 40, 300), PAL.vestS, { boil: .3 }) });
-  shape(spline([[34, -488], [90, -458], [102, -330], [96, -230], [22, -224], [14, -400]]), { fill: PAL.vest, lw: 7, shade: () => fillOnly(rect(60, -500, 60, 300), PAL.vestS, { boil: .3 }) });
-  shape(rr(-80, -320, 40, 34, 6), { fill: PAL.vestS, lw: 5 });   // pocket, with a pencil
-  shape(rr(-70, -346, 9, 30, 3), { fill: '#ffcf3a', lw: 4 });
+  // mustard roll-neck jumper under the coat
+  shape(spline([[-40, -490], [40, -490], [64, -330], [56, -210], [-56, -210], [-64, -330]]), { fill: PAL.shirt, lw: 7, shade: () => { fillOnly(rect(20, -500, 60, 300), PAL.shirtS, { boil: .3 }); for (let k = 0; k < 6; k++) stroke([[-50, -440 + k * 36], [50, -440 + k * 36]], 3, { line: PAL.shirtS }); } });
+  // mint-green lab coat to the knees, open at the front, patched pockets full of pencils
+  shape(spline([[-34, -492], [-96, -462], [-114, -300], [-132, -170], [-40, -160], [-20, -300], [-16, -460]]), { fill: PAL.coat, lw: 7, shade: () => fillOnly(rect(-150, -500, 46, 360), PAL.coatS, { boil: .3 }) });
+  shape(spline([[34, -492], [96, -462], [114, -300], [132, -170], [40, -160], [22, -300], [18, -460]]), { fill: PAL.coat, lw: 7, shade: () => fillOnly(rect(70, -500, 80, 360), PAL.coatS, { boil: .3 }) });
+  stroke([[-30, -488], [-50, -420], [-22, -380]], 5); stroke([[30, -488], [50, -420], [22, -380]], 5);   // lapels
+  for (const [px, py] of [[-104, -280], [52, -280]]) { shape(rr(px, py, 52, 50, 6), { fill: PAL.coatS, lw: 5 }); }
+  [['#e8452f', -98], ['#3f5bd6', -86], ['#ffcf3a', -74], ['#2fbf9b', 60], ['#e8452f', 74]].forEach(([c, x]) => shape(rr(x, -306, 9, 30, 3), { fill: c, lw: 4 }));
+  shape(rr(-90, -400, 46, 18, 4), { fill: '#ff7a6b', lw: 4 });   // a patch
   // neck + head
   shape(noodle([0, -486], [6, -520], 0, 40, 40), { fill: PAL.skinP, lw: 6 });
   push(); translate(10, -616); rotate(P.headTilt ?? .04); headPapy(P); pop();
