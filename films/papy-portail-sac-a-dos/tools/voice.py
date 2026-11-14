@@ -19,8 +19,7 @@ for l in L:
     y = y[max(0, i0 - 1900): i1 + 1900]
     y = y / (np.abs(y).max() + 1e-9) * .9
     if l['who'] == 'PAPY':
-        sat = np.tanh(y * 2.6) / np.tanh(2.6); y = .72 * y + .28 * sat
-        y = peq(y, 180, 2.5, .8); y = peq(y, 2800, -1.5, 1.0)
+        y = peq(y, 160, 1.5, .8)   # natural voice: no saturation, no pitch shift, just a little warmth
     else: y = peq(y, 3200, 2.0, .9)
     y = y / (np.abs(y).max() + 1e-9) * .9
     sf.write(os.path.join(HERE, 'voices', l['id'] + '.wav'), y.astype(np.float32), SR)
