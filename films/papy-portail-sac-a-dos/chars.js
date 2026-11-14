@@ -110,8 +110,8 @@ export function papy(P) {
     shape(spline([[ax - 34, ay + 12], [ax - 28, ay - 22], [ax + 18, ay - 24], [ax + 50, ay + 4], [ax + 46, ay + 14]]), { fill: PAL.boot, lw: 6, shade: () => fillOnly(rect(ax - 40, ay + 6, 100, 12), '#1f1a24', { boil: .3 }) });
   }
   push(); rotate(P.lean ?? .03);
-  const shB = [-66, -455], shF = [62, -452];
-  const armB = P.armB || { h: [-86, 180], bend: 10 }, armF = P.armF || { h: [86, 180], bend: -10 };
+  const shB = [-100, -452], shF = [96, -450];   // shoulders at the outer edge of the coat
+  const armB = P.armB || { h: [-30, 184], bend: 6 }, armF = P.armF || { h: [30, 184], bend: -6 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]], ang = Math.atan2(hp[1] - sh[1], hp[0] - sh[0]);
     shape(noodle(sh, hp, arm.bend ?? 0, 46, 40), { fill: PAL.coat, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.coatS, { boil: .3 }) });
