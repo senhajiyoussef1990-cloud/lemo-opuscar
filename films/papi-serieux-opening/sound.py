@@ -11,7 +11,8 @@ from core.audio.sfx import SR, add, bp, lp, hp, limit   # noqa: E402
 
 OUTRO = len(sys.argv) > 1 and sys.argv[1] == 'outro'   # python sound.py outro → the 3 s closing tag, out/outro.wav
 CARD = len(sys.argv) > 1 and sys.argv[1] == 'card'     # python sound.py card → the 2 s title-card tag, out/card.wav
-DUR = 3.0 if OUTRO else 2.0 if CARD else 1.5; N = int(DUR * SR); R = np.random.default_rng(4 if OUTRO else 6 if CARD else 9)
+DUR = (float(sys.argv[2]) if OUTRO and len(sys.argv) > 2 else 3.0) if OUTRO else 2.0 if CARD else 1.5;   # sound.py outro 4 → a 4 s outro
+N = int(DUR * SR); R = np.random.default_rng(4 if OUTRO else 6 if CARD else 9)
 buf = np.zeros((N + SR, 2), np.float32)
 def play(t, p, d, v=.7, g=1.0, pan=0.0): add(buf, S.note('upright', p, d, v), t, g, pan)
 if CARD:
@@ -28,6 +29,9 @@ elif OUTRO:
         for q in ch: play(t + .02, q, .28, .66, .65, 0)
     for q, v in [('C6', .7), ('E6', .6)]: play(1.3, q, 1.2, v, .7, .15)
     play(1.3, 'C2', 1.2, .6, .8, -.2)
+    if DUR > 3.2:   # the longer outro (v2): one more soft answer under the viewer's question
+        for q, v in [('E5', .55), ('G5', .5)]: play(2.4, q, 1.0, v, .7, .1)
+        play(2.4, 'C3', 1.0, .5, .8, -.2); play(3.2, 'C6', .7, .45, .6, .15)
 else:
     # 0.00–0.30  a run up while the iris opens
     for i, p in enumerate(['G4', 'C5', 'E5', 'G5', 'C6']): play(i * .058, p, .12, .6 + i * .05, .8, .1)

@@ -11,7 +11,7 @@ import { makeFilm, post } from './film.js';
 import { clamp, lerp, seg, ss, back, TAU } from '/core/lib.js';
 
 const DUR = 1.5, TITLE = 'Papi, sérieux ?', FONT = '"IM Fell English SC"';
-const cv = document.getElementById('c'), Q = new URLSearchParams(location.search), CARD = Q.get('card') === '1', OUTRO = Q.get('outro') === '1', OUT_DUR = 3.0, OUT_TEXT = Q.get('text') || 'Demain : …';
+const cv = document.getElementById('c'), Q = new URLSearchParams(location.search), CARD = Q.get('card') === '1', OUTRO = Q.get('outro') === '1', OUT_TEXT = Q.get('text') || 'Demain : …', OUT_CTA = Q.get('cta') || '', OUT_DUR = OUT_CTA ? 4.0 : 3.0;   // v2: a question for the viewer under tomorrow's
 await document.fonts.ready; for (const f of [`104px ${FONT}`, '60px Limelight']) await document.fonts.load(f);
 const F = makeFilm(cv), sg = F.sg; T.init(F.scene);
 const twos = t => Math.floor(t * 12 + 1e-6) / 12;
@@ -111,20 +111,32 @@ function wrap(text, font, size, maxW) {   // greedy wrap; the question mark and 
   if (cur) lines.push(cur); return lines;
 }
 function outro(t) {
-  const C = { x: 540, y: 790, R: 300 }, tw = t < .3 ? t : .3 + ((t - .3) % .9);   // they keep waving
+  const C = OUT_CTA ? { x: 540, y: 690, R: 250 } : { x: 540, y: 790, R: 300 }, tw = t < .3 ? t : .3 + ((t - .3) % .9);   // they keep waving
   frameRules(); medallion(tw, C); title(1.45, C);
   const k = seg(t, .3, .65); if (k <= 0) return;
   const s = k < 1 ? back(k, 2.4) : 1, i = OUT_TEXT.indexOf(':'), headTxt = i > 0 && i < 14 ? OUT_TEXT.slice(0, i).trim() : '', body = (headTxt ? OUT_TEXT.slice(i + 1) : OUT_TEXT).trim();
   sg.save(); sg.setTransform(1, 0, 0, 1, 0, 0); sg.translate(540, 1400); sg.scale(s, s); sg.translate(-540, -1400);
   sg.textAlign = 'center'; sg.textBaseline = 'middle'; sg.fillStyle = P.paper; sg.strokeStyle = P.paper;
-  let y = 1262;
+  let y = OUT_CTA ? 1080 : 1262;
   if (headTxt) {
     const hd = headTxt.toUpperCase(); sg.font = '62px Limelight'; const ew = sg.measureText(hd).width; sg.fillText(hd, 540, y);
     for (const d of [-1, 1]) { const xa = 540 + d * (ew / 2 + 34), xb = 540 + d * 400; sg.lineWidth = 3; sg.beginPath(); sg.moveTo(xa, y - 6); sg.lineTo(xb, y - 6); sg.stroke(); sg.lineWidth = 1.2; sg.beginPath(); sg.moveTo(xa, y + 6); sg.lineTo(xb, y + 6); sg.stroke(); sg.beginPath(); sg.arc(xb + d * 12, y, 5, 0, 7); sg.fill(); }
     y += 118;
   } else y += 40;
-  let size = 96, lines = wrap(body, FONT, size, 840); while (lines.length > 3 && size > 56) { size -= 6; lines = wrap(body, FONT, size, 840); }
-  sg.font = `${size}px ${FONT}`; lines.forEach((l, j) => sg.fillText(l, 540, y + (j + (3 - lines.length) * .5) * size * 1.12));
+  let size = OUT_CTA ? 84 : 96, lines = wrap(body, FONT, size, 840); while (lines.length > (OUT_CTA ? 2 : 3) && size > 56) { size -= 6; lines = wrap(body, FONT, size, 840); }
+  sg.font = `${size}px ${FONT}`;
+  if (OUT_CTA) { lines.forEach((l, j) => sg.fillText(l, 540, y + j * size * 1.12)); y += lines.length * size * 1.12; }
+  else { sg.font = `${size}px ${FONT}`; lines.forEach((l, j) => sg.fillText(l, 540, y + (j + (3 - lines.length) * .5) * size * 1.12)); }
+  sg.restore();
+  if (!OUT_CTA) return;
+  // the viewer's question: a short rule with a dot, then two lines; it pops in a little after
+  const kc = seg(t, .9, 1.25); if (kc <= 0) return;
+  const sc = kc < 1 ? back(kc, 2.4) : 1, yc = Math.max(y + 34, 1430);
+  sg.save(); sg.setTransform(1, 0, 0, 1, 0, 0); sg.translate(540, yc + 90); sg.scale(sc, sc); sg.translate(-540, -(yc + 90));
+  sg.textAlign = 'center'; sg.textBaseline = 'middle'; sg.fillStyle = P.paper; sg.strokeStyle = P.paper;
+  sg.lineWidth = 3; sg.beginPath(); sg.moveTo(400, yc); sg.lineTo(680, yc); sg.stroke(); sg.beginPath(); sg.arc(540, yc, 7, 0, 7); sg.fill();
+  let cs = 74, cl = wrap(OUT_CTA, FONT, cs, 820); while (cl.length > 2 && cs > 50) { cs -= 4; cl = wrap(OUT_CTA, FONT, cs, 820); }
+  sg.font = `${cs}px ${FONT}`; cl.forEach((l, j) => sg.fillText(l, 540, yc + 74 + j * cs * 1.14));
   sg.restore();
 }
 
