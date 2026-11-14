@@ -39,8 +39,8 @@ export function mouth(cx, cy, mw, { o = 0, w = 1, sm = 0, skew = 0, lw = 6, teet
     }
   });
 }
-export function hand(x, y, ang, r = 21, col = PAL.skinP, { fist = false, lw = 6 } = {}) {
-  push(); translate(x, y); rotate(ang);
+export function hand(x, y, ang, r = 21, col = PAL.skinP, { fist = false, lw = 6, flip = false } = {}) {
+  push(); translate(x, y); rotate(ang); if (flip) scale(1, -1);
   const pts = fist ? spline([[-r * .6, -r * .8], [r * .7, -r * .9], [r * 1.1, -r * .1], [r * .8, r * .8], [-r * .5, r * .9], [-r * .9, 0]])
     : spline([[-r * .5, -r * .85], [r * .5, -r * 1.05], [r * 1.35, -r * .75], [r * 1.05, -r * .3], [r * 1.5, -r * .1], [r * 1.1, r * .3], [r * 1.35, r * .7], [r * .6, r * .95], [-r * .6, r * .8], [-r * .95, 0]]);
   shape(pts, { fill: col, lw });
@@ -182,7 +182,7 @@ export function malik(P) {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]];
     shape(noodle(sh, hp, arm.bend ?? 0, 36, 32), { fill: PAL.hood, lw: 6 });
     if (hold === 'dino') dino(hp[0] + 10, hp[1] + 26, .55, { a: -.15, sick: P.dinoSick || 0, look: [-1, 0] });
-    hand(hp[0], hp[1], Math.atan2(hp[1] - sh[1], hp[0] - sh[0]), 16, PAL.skinM, { fist: arm.fist });
+    hand(hp[0], hp[1], Math.atan2(hp[1] - sh[1], hp[0] - sh[0]), 16, PAL.skinM, { fist: arm.fist, flip: sh === shF });   // mirrored hands: both thumbs toward the body
   };
   // oversized royal-blue hoodie
   shape(spline([[0, -282], [62, -262], [86, -190], [84, -112], [0, -100], [-84, -112], [-86, -190], [-62, -262]]), {
