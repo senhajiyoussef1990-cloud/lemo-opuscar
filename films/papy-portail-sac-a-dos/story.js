@@ -35,7 +35,7 @@ for (const [w, items] of PLAN) {
       if (name === 'RUSH') WIPES.push([t, .2]);
       continue;
     }
-    const [id, shot, o = {}] = it, pre = o.pre ?? .18, post = o.post ?? .25, d = vdur(id);
+    const [id, shot, o = {}] = it, pre = o.pre ?? .12, post = o.post ?? .18, d = vdur(id);
     VO[id] = +(t + pre).toFixed(3);
     SHOTS.push([t, t + pre + d + post, shot, w, id]); t += pre + d + post;
   }
