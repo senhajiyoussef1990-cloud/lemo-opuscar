@@ -176,8 +176,8 @@ export function malik(P) {
     shape(spline([[ank[0] - 26, ank[1] + 20], [ank[0] - 22, ank[1] - 6], [ank[0] + 12, ank[1] - 8], [ank[0] + 44, ank[1] + 8], [ank[0] + 42, ank[1] + 22]]), { fill: PAL.sneak, lw: 6, shade: () => fillOnly(rect(ank[0] - 40, ank[1] + 14, 100, 20), PAL.sole, { boil: .3 }) });
   }
   push(); rotate(P.lean ?? 0);
-  const shB = [-60, -250], shF = [58, -250];
-  const armB = P.armB || { h: [-10, 104], bend: 10 }, armF = P.armF || { h: [8, 104], bend: -6 };
+  const shB = [-82, -246], shF = [80, -246];   // shoulders at the outer edge of the hoodie
+  const armB = P.armB || { h: [-14, 106], bend: 4 }, armF = P.armF || { h: [14, 106], bend: -4 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]];
     shape(noodle(sh, hp, arm.bend ?? 0, 36, 32), { fill: PAL.hood, lw: 6 });
