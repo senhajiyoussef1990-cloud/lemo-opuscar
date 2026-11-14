@@ -18,6 +18,18 @@ for l in L:
     a = np.abs(y) > .01 * np.abs(y).max(); i0, i1 = np.argmax(a), len(y) - np.argmax(a[::-1])   # trim silence, keep 40 ms
     y = y[max(0, i0 - 1900): i1 + 1900]
     y = y / (np.abs(y).max() + 1e-9) * .9
+    # shorten the pauses inside a line (after a full stop, an ellipsis): any silence longer than 0.14 s becomes 0.12 s
+    hop_ = int(.01 * SR); fr = np.array([np.sqrt(np.mean(y[i:i + hop_] ** 2)) for i in range(0, len(y), hop_)]); quiet = fr < .02 * fr.max()
+    keep = np.ones(len(y), bool); i = 0
+    while i < len(quiet):
+        if quiet[i]:
+            j = i
+            while j < len(quiet) and quiet[j]: j += 1
+            if i > 5 and j < len(quiet) - 5 and (j - i) * hop_ > .14 * SR:
+                a = i * hop_ + int(.06 * SR); b = j * hop_ - int(.06 * SR); keep[a:b] = False
+            i = j
+        else: i += 1
+    y = y[keep]
     if l['who'] == 'PAPY':
         y = peq(y, 160, 1.5, .8)   # natural voice: no saturation, no pitch shift, just a little warmth
     else: y = peq(y, 3200, 2.0, .9)
