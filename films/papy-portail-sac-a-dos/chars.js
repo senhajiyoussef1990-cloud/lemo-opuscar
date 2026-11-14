@@ -111,7 +111,7 @@ export function papy(P) {
   }
   push(); rotate(P.lean ?? .03);
   const shB = [-66, -455], shF = [62, -452];
-  const armB = P.armB || { h: [-32, 184], bend: 14 }, armF = P.armF || { h: [26, 186], bend: -8 };
+  const armB = P.armB || { h: [-16, 186], bend: 14 }, armF = P.armF || { h: [10, 188], bend: -8 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]], ang = Math.atan2(hp[1] - sh[1], hp[0] - sh[0]);
     shape(noodle(sh, hp, arm.bend ?? 0, 46, 40), { fill: PAL.coat, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.coatS, { boil: .3 }) });
