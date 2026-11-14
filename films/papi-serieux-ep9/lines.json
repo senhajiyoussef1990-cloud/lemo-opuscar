@@ -1,0 +1,11 @@
+[
+ {"id":"l1","who":"leo","text":"Papi, souris, on fait un selfie !","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l2","who":"papi","text":"Je souris.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? J'en ai pris quarante, t'es flou sur toutes !","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"On avait une seule photo. On s'appliquait.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l5","who":"leo","text":"Une seule ? Et si elle était ratée ?","voice":"fr-FR-EloiseNeural","rate":"+2%"},
+ {"id":"l6","who":"papi","text":"On la gardait quand même.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"},
+ {"id":"l7","who":"leo","text":"C'est qui, le bébé ?","voice":"fr-FR-EloiseNeural","rate":"-6%"},
+ {"id":"l8","who":"papi","text":"Ton père. Il était flou aussi.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"}
+]

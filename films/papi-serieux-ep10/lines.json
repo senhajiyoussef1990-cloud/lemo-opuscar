@@ -1,0 +1,11 @@
+[
+ {"id":"l1","who":"leo","text":"Papi, j'ai commandé une pizza. Elle arrive dans dix minutes !","voice":"fr-FR-EloiseNeural","rate":"+10%"},
+ {"id":"l2","who":"papi","text":"Dix minutes ? Elle vient d'où, du couloir ?","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l3","who":"leo","text":"Papi, sérieux ? Y a un livreur. Je le vois sur la carte !","voice":"fr-FR-EloiseNeural","rate":"+8%"},
+ {"id":"l4","who":"papi","text":"Dans mon temps…","voice":"fr-FR-HenriNeural","rate":"-10%","pitch":"-12Hz"},
+ {"id":"l4b","who":"papi","text":"Le livreur, c'était moi. Et je revenais avec le pain.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l5","who":"leo","text":"Quarante-cinq minutes de retard.","voice":"fr-FR-EloiseNeural","rate":"-10%","pitch":"-4Hz"},
+ {"id":"l6","who":"papi","text":"Sors la farine.","voice":"fr-FR-HenriNeural","rate":"-8%","pitch":"-12Hz"},
+ {"id":"l7","who":"leo","text":"Elle sera meilleure que l'autre ?","voice":"fr-FR-EloiseNeural","rate":"+0%"},
+ {"id":"l8","who":"papi","text":"Elle sera à l'heure.","voice":"fr-FR-HenriNeural","rate":"-12%","pitch":"-12Hz"}
+]

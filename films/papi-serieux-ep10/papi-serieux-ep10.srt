@@ -1,0 +1,43 @@
+1
+00:00:03,900 --> 00:00:05,850
+Papi, j’ai commandé une pizza.
+
+2
+00:00:05,900 --> 00:00:07,950
+Elle arrive dans dix minutes !
+
+3
+00:00:08,400 --> 00:00:11,900
+Dix minutes ? Elle vient d’où, du couloir ?
+
+4
+00:00:12,200 --> 00:00:14,900
+Papi, sérieux ? Y a un livreur.
+
+5
+00:00:14,950 --> 00:00:17,450
+Je le vois sur la carte !
+
+6
+00:00:18,400 --> 00:00:20,350
+Dans mon temps…
+
+7
+00:00:20,400 --> 00:00:24,450
+Le livreur, c’était moi. Et je revenais avec le pain.
+
+8
+00:00:25,900 --> 00:00:27,950
+… Quarante-cinq minutes de retard.
+
+9
+00:00:30,100 --> 00:00:31,450
+Sors la farine.
+
+10
+00:00:33,100 --> 00:00:35,700
+Elle sera meilleure que l’autre ?
+
+11
+00:00:36,800 --> 00:00:38,700
+Elle sera à l’heure.
