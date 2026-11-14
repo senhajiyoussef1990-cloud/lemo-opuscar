@@ -36,7 +36,7 @@ function state(t) {
   const packed = t >= B('home', 'PACK')[0] + .45;
   const f3 = VO.f3, f3e = f3 + vdur('f3') + .3;
   const dinoHeldM = t >= f3 - .2 && t < f3e;
-  const taken = t >= take[0] + take[1] * 0 + 1.4;
+  const taken = t >= take[0] + 1.1;
   return { pack: t < B('home', 'PACK')[0] + .45 ? 'arms' : 'back', dinoInPack: !dinoHeldM && !taken, dinoHeldM, taken, dinoTable: t >= VO.z1 + 1.2 };
 }
 // —— default poses ——
@@ -142,9 +142,9 @@ function shotBeat(t, s) {
   if (name === 'stare') { cam(lerp(300, 260, u), lerp(1200, 1180, u), lerp(1.5, 1.6, u)); world(w, t); duo(t, { ...p, lid: .4, look: [1, .3] }, { ...m, look: [-1, .5], nerv: .5 }); return; }
   if (name === 'silence') {   // home again: a long silence, a very slow push; Papy takes the dino out of the bag
     cam(lerp(540, 520, u), lerp(1000, 1020, u), lerp(1.0, 1.12, u)); world(w, t);
-    const reach = ss(seg(tq, t0 + .8, t0 + 1.3)) * (1 - ss(seg(tq, t0 + 1.5, t0 + 2.0)));
+    const reach = ss(seg(tq, t0 + .5, t0 + 1.0)) * (1 - ss(seg(tq, t0 + 1.2, t0 + 1.6)));
     p.lid = .5; p.look = [1, .4];
-    if (tq >= t0 + 1.4) { p.holdF = 'dino'; p.armF = { h: [-60, 120], bend: 20, fist: true }; }
+    if (tq >= t0 + 1.1) { p.holdF = 'dino'; p.armF = { h: [-60, 120], bend: 20, fist: true }; }
     else p.armF = { h: [lerp(26, 290, reach), lerp(190, 80, reach)], bend: 20, fist: reach > .9 };
     m.look = [.3, -.2]; m.nerv = .2;
     duo(t, p, m); return;

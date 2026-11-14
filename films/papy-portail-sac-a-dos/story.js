@@ -11,15 +11,15 @@ export const vdur = id => DURS[id] ?? LINE[id].text.length * .065;
 // The plan: per world, a list of [line id, shot, {pre, post}] or [BEAT, duration]
 // shots: two (two-shot), wide, cuP, cuM, ins (the world's insert object), bag (insert on Malik's bag)
 const PLAN = [
-  ['home', [['h1', 'two', { pre: .7 }], ['h2', 'bag'], ['h3', 'cuM'], ['h4', 'cuP'], ['h5', 'cuP', { pre: .55 }], ['h6', 'cuM'], ['h7', 'two'], ['BURST', 1.0], ['TITLE', 2.3], ['h8', 'cuM'], ['h9', 'two', { post: .2 }], ['PACK', .9], ['RUSH', .4]]],
-  ['w1', [['ARRIVE', 1.3], ['a1', 'wide'], ['a2', 'ins'], ['a3', 'cuM', { pre: .45 }], ['a4', 'two'], ['OUT', .9], ['RUSH', .35]]],
-  ['w2', [['ARRIVE', 1.05], ['b1', 'cuM'], ['b2', 'wide'], ['b3', 'ins'], ['b4', 'cuM'], ['b5', 'cuP', { pre: .5, post: 1.0 }], ['OUT', .7], ['RUSH', .35]]],
+  ['home', [['h1', 'two', { pre: .7 }], ['h2', 'bag'], ['h3', 'cuM'], ['h4', 'cuP'], ['h5', 'cuP', { pre: .3 }], ['h6', 'cuM'], ['h7', 'two'], ['BURST', 1.0], ['TITLE', 2.3], ['h8', 'cuM'], ['h9', 'two', { post: .2 }], ['PACK', .9], ['RUSH', .4]]],
+  ['w1', [['ARRIVE', 1.3], ['a1', 'wide'], ['a2', 'ins'], ['a3', 'cuM', { pre: .2 }], ['a4', 'two'], ['OUT', .9], ['RUSH', .35]]],
+  ['w2', [['ARRIVE', 1.05], ['b1', 'cuM'], ['b2', 'wide'], ['b3', 'ins'], ['b4', 'cuM'], ['b5', 'cuP', { pre: .3, post: .5 }], ['OUT', .7], ['RUSH', .35]]],
   ['w3', [['ARRIVE', 1.05], ['c1', 'wide'], ['c2', 'ins'], ['c3', 'cuM', { post: .6 }], ['OUT', .7], ['RUSH', .35]]],
-  ['w4', [['ARRIVE', 1.05], ['d1', 'two'], ['d2', 'ins'], ['d3', 'cuP'], ['d4', 'cuM', { post: .2 }], ['STARE', 1.3], ['OUT', .7], ['RUSH', .35]]],
+  ['w4', [['ARRIVE', 1.05], ['d1', 'two'], ['d2', 'ins'], ['d3', 'cuP'], ['d4', 'cuM', { post: .2 }], ['STARE', .8], ['OUT', .7], ['RUSH', .35]]],
   ['w5', [['ARRIVE', 1.05], ['e1', 'wide'], ['e2', 'cuM'], ['e3', 'two'], ['OUT', .7], ['RUSH', .35]]],
   ['w6', [['ARRIVE', 1.05], ['f1', 'wide'], ['f2', 'ins'], ['f3', 'cuM'], ['OUT', .7], ['RUSH', .35]]],
   ['w7', [['ARRIVE', 1.05], ['g1', 'wide'], ['g2', 'ins'], ['g3', 'cuM', { post: .5 }], ['OUT', .7], ['RUSH', .35]]],
-  ['home2', [['ARRIVE', 1.05], ['SILENCE', 2.6], ['z1', 'two'], ['z2', 'cuM', { pre: .45 }], ['z3', 'cuP', { pre: .55, post: .8 }], ['END', 0], ['o1', 'end', { pre: .6 }], ['o2', 'end', { pre: .4, post: 1.8 }]]],
+  ['home2', [['ARRIVE', 1.05], ['SILENCE', 1.9], ['z1', 'two'], ['z2', 'cuM', { pre: .2 }], ['z3', 'cuP', { pre: .3, post: .4 }], ['END', 0], ['o1', 'end', { pre: .6 }], ['o2', 'end', { pre: .4, post: 1.8 }]]],
 ];
 
 export const VO = {};          // id → start time
@@ -35,7 +35,7 @@ for (const [w, items] of PLAN) {
       if (name === 'RUSH') WIPES.push([t, .2]);
       continue;
     }
-    const [id, shot, o = {}] = it, pre = o.pre ?? .12, post = o.post ?? .18, d = vdur(id);
+    const [id, shot, o = {}] = it, pre = o.pre ?? .05, post = o.post ?? .08, d = vdur(id);
     VO[id] = +(t + pre).toFixed(3);
     SHOTS.push([t, t + pre + d + post, shot, w, id]); t += pre + d + post;
   }
