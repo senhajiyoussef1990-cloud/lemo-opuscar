@@ -111,7 +111,7 @@ export function papy(P) {
   }
   push(); rotate(P.lean ?? .03);
   const shB = [-66, -455], shF = [62, -452];
-  const armB = P.armB || { h: [-84, 176], bend: -26 }, armF = P.armF || { h: [26, 190], bend: 16 };
+  const armB = P.armB || { h: [-70, 184], bend: -22 }, armF = P.armF || { h: [40, 180], bend: 20 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]], ang = Math.atan2(hp[1] - sh[1], hp[0] - sh[0]);
     shape(noodle(sh, hp, arm.bend ?? 0, 46, 40), { fill: PAL.coat, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.coatS, { boil: .3 }) });
@@ -120,7 +120,8 @@ export function papy(P) {
     if (hold === 'dino') { dino(hp[0] - 30, hp[1] + 10, .6, { a: -.1, look: [1, 0] }); }
     hand(hp[0], hp[1], ang, 22, PAL.skinP, { fist: !!hold });
   };
-  drawArm(shB, armB, P.holdB);
+  const fBehind = !P.holdF && !P.armF;
+  if (fBehind) drawArm(shF, armF, null);
   // mustard roll-neck jumper under the coat
   shape(spline([[-40, -490], [40, -490], [64, -330], [56, -210], [-56, -210], [-64, -330]]), { fill: PAL.shirt, lw: 7, shade: () => { fillOnly(rect(20, -500, 60, 300), PAL.shirtS, { boil: .3 }); for (let k = 0; k < 6; k++) stroke([[-50, -440 + k * 36], [50, -440 + k * 36]], 3, { line: PAL.shirtS }); } });
   // mint-green lab coat to the knees, open at the front, patched pockets full of pencils
@@ -132,20 +133,19 @@ export function papy(P) {
   shape(rr(-90, -400, 46, 18, 4), { fill: '#ff7a6b', lw: 4 });   // a patch
   // neck + head
   shape(noodle([0, -486], [6, -520], 0, 40, 40), { fill: PAL.skinP, lw: 6 });
+  drawArm(shB, armB, P.holdB);
   push(); translate(10, -616); rotate(P.headTilt ?? .04); headPapy(P); pop();
-  drawArm(shF, armF, P.holdF);
+  if (!fBehind) drawArm(shF, armF, P.holdF);
   pop();
   if (P.sweat != null) sweat(140, -700 + (P.sweat % 1) * 20, 1.1);
   pop();
 }
 function headPapy(P) {
   shape(ell(-78, 4, 18, 26, 18), { fill: PAL.skinP, lw: 6, shade: () => fillOnly(ell(-74, 6, 7, 13, 12), PAL.skinPs, { boil: .3 }) });   // ear
-  shape(spline([[-10, -104], [60, -96], [92, -50], [96, 20], [80, 80], [10, 104], [-60, 84], [-90, 30], [-92, -40], [-60, -94]]), { fill: PAL.skinP, lw: 7, shade: () => fillOnly(spline([[-100, -40], [-60, -110], [-110, -110]]), PAL.skinPs, { boil: .3 }) });
-  // bald dome with a shine, and a soft white fringe of hair around the back of the head
-  shape([...arc(4, -70, 96, 62, Math.PI, TAU, 30), [100, -60], [-92, -60]], { fill: PAL.skinP, lw: 7, line: null, stroke: false });
-  stroke(arc(4, -70, 96, 62, Math.PI * 1.04, Math.PI * 1.96, 30), 7);
-  fillOnly(ell(30, -112, 26, 10, 14), '#f6d2b4', { boil: .3 }); fillOnly(ell(64, -104, 8, 5, 8), '#f6d2b4', { boil: .3 });
-  shape(spline([[-60, -86], [-84, -96], [-104, -70], [-112, -36], [-100, -4], [-108, 26], [-90, 34], [-76, 10], [-80, -30], [-66, -60]]), { fill: PAL.beard, lw: 6, shade: () => fillOnly(ell(-100, 0, 14, 30, 12), PAL.beardS, { boil: .3 }) });
+  shape(spline([[0, -138], [62, -126], [94, -76], [98, 10], [82, 78], [10, 104], [-60, 84], [-92, 30], [-98, -50], [-72, -114]]), { fill: PAL.skinP, lw: 7, shade: () => fillOnly(spline([[-110, -40], [-70, -130], [-120, -130]]), PAL.skinPs, { boil: .3 }) });
+  // bald top: a shine, and a soft white fringe of hair around the back of the head
+  fillOnly(ell(26, -114, 28, 10, 14), '#f6d2b4', { boil: .3 }); fillOnly(ell(62, -104, 8, 5, 8), '#f6d2b4', { boil: .3 });
+  shape(spline([[-62, -92], [-86, -100], [-108, -72], [-114, -36], [-102, -4], [-110, 26], [-92, 34], [-78, 10], [-82, -30], [-68, -62]]), { fill: PAL.beard, lw: 6, shade: () => fillOnly(ell(-102, 0, 14, 30, 12), PAL.beardS, { boil: .3 }) });
   // eyes (heavy lids = deadpan)
   const lid = P.blink ? 1 : clamp(P.lid ?? .48, 0, 1), look = P.look || [0, 0];
   eye(6, -16, 30, 33, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4.5 });
@@ -178,14 +178,15 @@ export function malik(P) {
   }
   push(); rotate(P.lean ?? 0);
   const shB = [-60, -250], shF = [58, -250];
-  const armB = P.armB || { h: [-56, 98], bend: -20 }, armF = P.armF || { h: [12, 104], bend: 16 };
+  const armB = P.armB || { h: [-46, 100], bend: -18 }, armF = P.armF || { h: [26, 102], bend: 18 };
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]];
     shape(noodle(sh, hp, arm.bend ?? 0, 36, 32), { fill: PAL.hood, lw: 6 });
     if (hold === 'dino') dino(hp[0] + 10, hp[1] + 26, .55, { a: -.15, sick: P.dinoSick || 0, look: [-1, 0] });
     hand(hp[0], hp[1], Math.atan2(hp[1] - sh[1], hp[0] - sh[0]), 16, PAL.skinM, { fist: arm.fist });
   };
-  drawArm(shB, armB);
+  const fBehind = !P.holdF && !P.armF;
+  if (fBehind) drawArm(shF, armF);
   // oversized royal-blue hoodie
   shape(spline([[0, -282], [62, -262], [86, -190], [84, -112], [0, -100], [-84, -112], [-86, -190], [-62, -262]]), {
     fill: PAL.hood, lw: 7, shade: () => { fillOnly(spline([[24, -290], [96, -260], [110, -110], [40, -96], [70, -190]]), PAL.hoodS, { boil: .4 }); fillOnly(rect(-90, -124, 180, 14), PAL.hoodS, { boil: .3 }); }
@@ -194,8 +195,9 @@ export function malik(P) {
   stroke([[-14, -270], [-18, -222]], 4); stroke([[14, -270], [18, -222]], 4);          // drawstrings
   if (P.pack === 'back') { stroke([[-40, -266], [-46, -150]], 9, { line: PAL.strap }); stroke([[44, -266], [50, -150]], 9, { line: PAL.strap }); }
   push(); translate(0, -360); rotate(P.headTilt ?? 0); headMalik(P, ner); pop();
+  drawArm(shB, armB);
   if (P.pack === 'arms') backpack(28, -110, .8, { ...(P.packP || {}) });
-  drawArm(shF, armF, P.holdF);
+  if (!fBehind) drawArm(shF, armF, P.holdF);
   pop();
   if (P.sweat != null) { const u = P.sweat % 1; sweat(-84, -470 + u * 40, 1); sweat(92, -450 + ((u + .5) % 1) * 40, .8); }
   pop();

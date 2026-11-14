@@ -47,7 +47,7 @@ function P_(t, o = {}) {
 function M_(t, o = {}) {
   const m = talk('MALIK', t), tq = q(t), sp = speaking(t), st = state(t);
   return { x: MX, y: FLOOR, face: 1, t, nerv: .3, look: sp === 'PAPY' ? [.6, -.4] : [.4, -.2], blink: blinkM(t), mouth: { o: m.o * 1.15, w: m.w, sm: -.3 }, pack: st.pack, packP: { dinoOut: st.dinoInPack ? 1 : 0, cars: 1 }, holdF: st.dinoHeldM ? 'dino' : null, dinoSick: 1,
-    armF: st.dinoHeldM ? { h: [40, 60], bend: 20, fist: true } : (st.pack === 'arms' ? { h: [60, 70], bend: 30, fist: true } : { h: [14, 104], bend: 16 }), armB: st.pack === 'arms' ? { h: [70, 60], bend: -30, fist: true } : undefined,
+    armF: st.dinoHeldM ? { h: [40, 60], bend: 20, fist: true } : (st.pack === 'arms' ? { h: [60, 70], bend: 30, fist: true } : undefined), armB: st.pack === 'arms' ? { h: [70, 60], bend: -30, fist: true } : undefined,
     sq: 1 + .012 * Math.sin(tq * 3.1), headTilt: m.talking ? (m.o - .3) * .1 : Math.sin(tq * 1.7) * .03, ...o };
 }
 // sucked into / spat out of the portal

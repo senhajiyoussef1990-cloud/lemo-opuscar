@@ -61,7 +61,13 @@ mus, _ = sf.read(os.path.join(ROOT, 'out', 'score.wav')); mus = mus[:N] if len(m
 act = (np.abs(vob).max(1) > .01).astype(float)
 duck = 1 - .55 * np.clip(uniform_filter1d(maximum_filter1d(act, int(.3 * SR)), int(.15 * SR)), 0, 1)
 mix = mus * .6 * duck[:, None] + sfxb * .8 + vob + amb * .9
-for c in range(2): mix[:, c] = limit(mix[:, c], .95)
+# a gentle top cut, then a look-ahead peak limiter on a 4× oversampled copy (true peaks), so mux.sh can normalise in linear mode
+from scipy.signal import resample_poly
+mix = np.stack([lp(mix[:, c], 15000) for c in range(2)], 1)
+up = np.abs(np.stack([resample_poly(mix[:, c], 4, 1) for c in range(2)], 1)).max(1).reshape(-1, 4).max(1)[:N]
+need = np.minimum(1, .5 / (up + 1e-9)); w = int(.005 * SR)
+gain = -maximum_filter1d(-need, 2 * w + 1); gain = uniform_filter1d(gain, w)
+mix = mix * gain[:, None] / .5 * .5
 sf.write(os.path.join(ROOT, 'out', 'mix.wav'), mix.astype(np.float32), SR)
 def db(x): return 20 * np.log10(np.sqrt((x ** 2).mean()) + 1e-9)
 print('mix peak %.2f | voice %.1f  music %.1f  sfx %.1f  amb %.1f dB' % (np.abs(mix).max(), db(vob), db(mus * .6 * duck[:, None]), db(sfxb * .8), db(amb)))
