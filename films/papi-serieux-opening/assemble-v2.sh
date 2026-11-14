@@ -1,18 +1,19 @@
 #!/bin/sh
 # Version 2 of an episode (series rules, v2): the hook first, at 0 s, then the opening, then the rest of the episode;
-# no title card; bigger subtitles set higher; no black screen before the outro; the outro asks the viewer « Et ton papi, il dit quoi, lui ? ».
+# no title card; bigger subtitles set higher; no black screen before the outro; the 3 s outro asks the viewer « Et ton papi, il dit quoi, lui ? »,
+# then Papi points at the follow button with the follow line (SUB=… to change it), Léo winks, iris.
 #   sh films/papi-serieux-opening/assemble-v2.sh <episode folder> <end of the hook, s> "<tomorrow's question>" <out.mp4>
 #   e.g. sh films/papi-serieux-opening/assemble-v2.sh films/papi-serieux-ep6 5.0 "Demain : Papi contre le mot de passe" films/papi-serieux-ep6/papi-serieux-ep6-v2.mp4
 # Needs the episode's out/mix.wav and out/cues.json (its build.sh makes them). Writes <out>.srt next to the film.
 set -e
 HERE=$(cd "$(dirname "$0")" && pwd); LIB=${LIB:-$(cd "$HERE/../.." && pwd)}
-EP=$(cd "$1" && pwd); H=$2; Q=$3; OUT=$4; CTA="Et ton papi, il dit quoi, lui ?"
+EP=$(cd "$1" && pwd); H=$2; Q=$3; OUT=$4; CTA="Et ton papi, il dit quoi, lui ?"; SUB=${SUB:-"Abonne-toi, petit. Dans mon temps, on disait : reviens demain."}
 [ -f "$EP/out/mix.wav" ] && [ -n "$H" ] && [ -n "$Q" ] && [ -n "$OUT" ] || { echo 'usage: sh assemble-v2.sh <episode folder> <hook end> "<question>" <out.mp4>'; exit 1; }
 case "$OUT" in /*) ;; *) OUT="$PWD/$OUT";; esac
 OPEN="$HERE/papi-serieux-opening.mp4"
 cd "$LIB"
 # 1. the picture again, with the v2 subtitles burnt in; the same mix
-node core/render/video.mjs "$EP" --fps 24 --workers 4 --size 1080x1920 --q 'subs=v2' --out "$EP/out/video-v2.mp4" | tail -1
+if [ ! -f "$EP/out/video-v2.mp4" ] || [ "$EP/scenes.js" -nt "$EP/out/video-v2.mp4" ]; then node core/render/video.mjs "$EP" --fps 24 --workers 4 --size 1080x1920 --q 'subs=v2' --out "$EP/out/video-v2.mp4" | tail -1; fi
 sh core/render/mux.sh "$EP/out/video-v2.mp4" "$EP/out/mix.wav" "$EP/out/episode-v2.mp4" 24 3 | grep LUFS
 # 2. where the closing iris goes fully black: the episode stops there (no black screen before the outro)
 D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$EP/out/episode-v2.mp4")
@@ -22,13 +23,13 @@ d = float(sys.argv[1]); s = [float(x) for x in re.findall(r'black_start:([0-9.]+
 s = [x for x in s if x > d - 4]; print(f'{(s[0] if s else d):.4f}')" "$D")
 echo "hook 0–$H s, episode cut at $B s (of $D)"
 # 3. the outro with the viewer's question
-sh "$HERE/make-outro.sh" "$Q" "$HERE/out/outro-v2.mp4" "$CTA" >/dev/null
+sh "$HERE/make-outro.sh" "$Q" "$HERE/out/outro-v2.mp4" "$CTA" "$SUB" >/dev/null
 # 4. hook, opening, the rest, outro (short fades on the cuts so the music does not click)
 V="fps=24,scale=1080:1920,setsar=1,format=yuv420p"; A="aresample=48000,aformat=channel_layouts=stereo"
 ffmpeg -y -loglevel error -i "$EP/out/episode-v2.mp4" -i "$OPEN" -i "$HERE/out/outro-v2.mp4" -filter_complex "\
-[0:v]trim=0:$H,setpts=PTS-STARTPTS,$V[v0];[0:a]atrim=0:$H,asetpts=PTS-STARTPTS,$A,afade=t=out:st=$(python3 -c "print($H-.03)"):d=.03[a0];\
+[0:v]trim=0:$H,setpts=PTS-STARTPTS,$V[v0];[0:a]atrim=0:$H,asetpts=PTS-STARTPTS,$A,afade=t=out:st=$(python3 -c "print(round($H-0.03,3))"):d=0.03[a0];\
 [1:v]$V[v1];[1:a]$A[a1];\
-[0:v]trim=$H:$B,setpts=PTS-STARTPTS,$V[v2];[0:a]atrim=$H:$B,asetpts=PTS-STARTPTS,$A,afade=t=in:d=.03,afade=t=out:st=$(python3 -c "print($B-$H-.05)"):d=.05[a2];\
+[0:v]trim=$H:$B,setpts=PTS-STARTPTS,$V[v2];[0:a]atrim=$H:$B,asetpts=PTS-STARTPTS,$A,afade=t=in:d=0.03,afade=t=out:st=$(python3 -c "print(round($B-$H-0.05,3))"):d=0.05[a2];\
 [2:v]$V[v3];[2:a]$A[a3];\
 [v0][a0][v1][a1][v2][a2][v3][a3]concat=n=4:v=1:a=1[v][a]" \
   -map "[v]" -map "[a]" -c:v libx264 -preset medium -crf 20 -tune grain -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart "$OUT"

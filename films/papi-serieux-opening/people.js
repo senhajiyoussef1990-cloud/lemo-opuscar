@@ -110,7 +110,7 @@ export function leo(p) {
   const look = p.look || {}, et = p.eyes || 'open';
   [-1, 1].forEach(s => {
     const ex = fx + s * 21, far = s * turn > 0 ? 1 - Math.abs(turn) * .22 : 1;
-    pieEye(ex, -4, 14.5 * far, 21, { lx: look.lx ?? 0, ly: look.ly ?? 0, lid: p.lid ?? 0, lidCol: P.white, type: et, side: -s });
+    pieEye(ex, -4, 14.5 * far, 21, { lx: look.lx ?? 0, ly: look.ly ?? 0, lid: p.lid ?? 0, lidCol: P.white, type: p.wink === s ? 'shut' : et, side: -s });   // wink: −1 / +1 = the eye on that side of the screen
     if (p.brows) brow(ex, -40 - (p.browUp || 0) * 8, 30, p.brows, s);
   });
   stroke(arc(fx + turn * 6, 18, 6, 5, .2, Math.PI - .2, 6), S.lw * .7);                       // nose
