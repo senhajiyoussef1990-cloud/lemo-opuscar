@@ -131,6 +131,9 @@ function havresacProp(x, y, t) {
   shape(spline([[-140, -232], [-90, -290], [-30, -280], [-20, -236]]), { fill: '#c22f3a', lw: 5 });
   shape(rr(-160, -280, 160, 46, 22), { fill: '#3f5aa8', lw: 5 });
   for (const sx of [-110, -50]) { stroke([[sx, -232], [sx, -150]], 7, { line: '#5b3b20' }); shape(rr(sx - 9, -164, 18, 16, 3), { fill: '#e9b949', lw: 3 }); }
+  for (let k = 0; k < 7; k++) stroke([[-136 + k * 18, -126], [-128 + k * 18, -126]], 3, { line: '#8a7340' });
+  for (const sx of [-130, -30]) stroke([[sx, -282], [sx, -236]], 5, { line: '#5b3b20' });
+  for (let k = 0; k < 3; k++) stroke([[60, -230 + k * 40], [140, -230 + k * 40]], 3, { line: '#5a5260' });   // the rigid pack's panels
   pop();
 }
 function pigeon(x, y, t) {
@@ -163,6 +166,10 @@ export function framePack(x, y, kind = 'wood') {
   for (const yy of [-340, -220, -100]) shape(rr(-70, yy - 7, 140, 14, 5), { fill: c, lw: 5 });
   shape(rr(-80, -330, 160, 200, 20), { fill: kind === 'wood' ? '#6e8a3a' : '#c22f3a', lw: 6 });
   shape(rr(-50, -280, 100, 50, 10), { fill: kind === 'wood' ? '#5a7230' : '#9a1f2a', lw: 5 });
+  stroke([[-44, -266], [44, -266]], 3);   // pocket zip
+  for (const sx of [-40, 40]) { stroke([[sx, -330], [sx, -140]], 6, { line: '#5b3b20' }); shape(rr(sx - 8, -200, 16, 12, 3), { fill: '#e9b949', lw: 3 }); }
+  shape(rr(-76, -150, 152, 36, 18), { fill: kind === 'wood' ? '#c9b27a' : '#3f5aa8', lw: 5 }); for (const x of [-50, 0, 50]) stroke([[x, -150], [x, -114]], 3);   // rolled bedroll
+  for (let k = 0; k < 8; k++) stroke([[-72 + k * 19, -318], [-64 + k * 19, -318]], 3, { line: 'rgba(0,0,0,.35)' });   // stitching
   text(kind === 'wood' ? 'BOIS' : 'MÉTAL', 0, -400, { font: '800 30px "Baloo 2"', fill: '#2a2430' });
   pop();
 }
@@ -242,8 +249,12 @@ export function w6(t) {
 export function squarePack(x, y, s = 1, col = '#ffd21f') {
   push(); translate(x, y); scale(s);
   shape(rr(-70, -170, 140, 170, 12), { fill: col, lw: 7, shade: () => fillOnly(rect(30, -180, 50, 190), 'rgba(0,0,0,.12)', { boil: .3 }) });
-  shape(rr(-50, -60, 100, 44, 8), { fill: col, lw: 5 });
-  dot(-40, -146, 9, '#e8452f'); text('A B C', 0, -110, { font: '800 30px "Baloo 2"', fill: '#2a2430' });
+  stroke(quad([-24, -170], [0, -200], [24, -170], 8), 6);   // top handle
+  const zz = rr(-60, -160, 120, 150, 10); stroke(zz, 3, { line: 'rgba(0,0,0,.35)' });   // zip all round
+  shape(rr(52, -150, 10, 18, 3), { fill: '#e9e2d0', lw: 3 });
+  shape(rr(-50, -60, 100, 44, 8), { fill: col, lw: 5 }); stroke([[-44, -50], [44, -50]], 3);
+  shape(rr(-26, -140, 52, 14, 4), { fill: '#e9e2d0', lw: 3 });   // reflective strip
+  dot(-40, -146, 9, '#e8452f'); text('A B C', 0, -104, { font: '800 30px "Baloo 2"', fill: '#2a2430' });
   pop();
 }
 function kid(x, y, col, t) {
@@ -269,7 +280,7 @@ export function w7(t) {
   fillOnly(rect(X0, -1200, X1 - X0, 2700), '#bff0dc', { boil: 0 });
   for (let y = 520; y < 1300; y += 190) shape(rect(-300, y, 1700, 20), { fill: '#ff7a6b', lw: 5 });   // shelves
   const cols = ['#ff7a6b', '#ffcf3a', '#3f5bd6', '#2fbf9b', '#8a3df0', '#2a2430', '#e8452f'];
-  for (let r = 0; r < 4; r++) for (let i = 0; i < 9; i++) { const x = -260 + i * 190 + (r % 2) * 50, y = 520 + r * 190, c = cols[(i + r * 3) % cols.length]; shape(rr(x, y - 130, 110, 130, 18), { fill: c, lw: 5 }); shape(rr(x + 20, y - 70, 70, 44, 10), { fill: c, lw: 4 }); stroke([[x + 30, y - 130], [x + 40, y - 156], [x + 70, y - 156], [x + 80, y - 130]], 4); }
+  for (let r = 0; r < 4; r++) for (let i = 0; i < 9; i++) { const x = -260 + i * 190 + (r % 2) * 50, y = 520 + r * 190, c = cols[(i + r * 3) % cols.length]; shape(rr(x, y - 130, 110, 130, 18), { fill: c, lw: 5 }); shape(rr(x + 20, y - 70, 70, 44, 10), { fill: c, lw: 4 }); stroke([[x + 26, y - 60], [x + 84, y - 60]], 2.5); shape(rr(x + 70, y - 66, 6, 12, 2), { fill: '#e9e2d0', lw: 2 }); stroke([[x + 30, y - 130], [x + 40, y - 156], [x + 70, y - 156], [x + 80, y - 130]], 4); }
   ground('#ff9d8f'); for (let x = -800; x < 2000; x += 120) stroke([[x, FLOOR - 40], [x - 60, 2400]], 4, { line: '#ef8274' });
   shape(rr(860, 1140, 340, 200, 14), { fill: '#fff', lw: 7 });   // a counter
   text('SOLDES : 0 %', 1030, 1240, { font: '400 40px VT323', fill: '#ff7a6b' });
@@ -281,6 +292,12 @@ export function modernPack(x, y, s = 1) {
   shape(spline([[-90, -260], [90, -260], [104, -40], [90, 0], [-90, 0], [-104, -40]]), { fill: '#3f5bd6', lw: 7, shade: () => fillOnly(rect(40, -280, 80, 290), '#2c44b0', { boil: .3 }) });
   for (const [px, py, w, h, c] of [[-70, -120, 140, 90, '#2fbf9b'], [-104, -200, 40, 110, '#ffcf3a'], [64, -200, 40, 110, '#ffcf3a'], [-50, -240, 100, 50, '#ff7a6b']]) shape(rr(px, py, w, h, 12), { fill: c, lw: 5 });
   for (const zx of [-56, 56]) stroke([[zx, -100], [zx, -40]], 3);
+  stroke(quad([-80, -246], [0, -270], [80, -246], 10), 3); for (const zx of [-40, 40]) shape(rr(zx - 5, -264, 10, 18, 3), { fill: '#2a2430', lw: 2 });   // top zips and pulls
+  for (let k = 0; k < 5; k++) for (let j = 0; j < 4; j++) dot(-100 + k * 8, -180 + j * 18, 2.2, 'rgba(0,0,0,.35)');   // mesh pocket
+  shape(rr(-110, -150, 30, 60, 10), { fill: '#ff7a6b', lw: 4 });   // a water bottle in it
+  shape(rr(-60, -30, 120, 12, 4), { fill: '#e9e2d0', lw: 3 });   // reflector
+  stroke([[-50, -196], [50, -196]], 6, { line: '#2a2430' }); shape(rr(-12, -204, 24, 16, 4), { fill: '#ffcf3a', lw: 3 });   // chest strap and clip
+  for (const lx of [-30, 0, 30]) shape(rr(lx - 6, -14, 12, 14, 3), { fill: '#2a2430', lw: 2 });   // gear loops
   pop();
 }
 

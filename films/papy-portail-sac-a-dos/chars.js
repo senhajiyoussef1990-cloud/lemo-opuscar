@@ -91,9 +91,14 @@ export function backpack(x, y, s = 1, { a = 0, dinoOut = 1, cars = 1, open = 0 }
   if (dinoOut > 0) dino(10, -150 + (1 - dinoOut) * 60, .55, { a: -.25 });
   if (cars) { toyCar(-46, -150, .5, PAL.car2, .4); toyCar(48, -146, .45, PAL.car3, -.5); }
   shape(spline([[-70, -150], [70, -150], [84, -60], [76, 0], [-76, 0], [-84, -60]]), { fill: PAL.pack, lw: 7, shade: () => { fillOnly(rect(30, -170, 80, 190), PAL.packS, { boil: .3 }); } });
+  for (let k = 0; k < 9; k++) stroke([[-66 + k * 16, -140], [-60 + k * 16, -140]], 3, { line: PAL.packS });   // stitching under the flap
+  for (const sx of [-1, 1]) shape(rr(sx * 78 - 12, -110, 24, 70, 8), { fill: PAL.packS, lw: 5 });   // side pockets
   shape(rr(-50, -70, 100, 56, 14), { fill: PAL.pack, lw: 6 });
-  stroke([[-50, -50], [50, -50]], 4, { line: PAL.packS });
+  stroke([[-46, -60], [46, -60]], 4); shape(rr(30, -66, 10, 16, 3), { fill: '#e9e2d0', lw: 3 });   // zip and its pull
+  shape(ell(-20, -36, 14, 10, 12), { fill: '#3fb6e8', lw: 4 }); fillOnly(ell(-22, -38, 5, 3, 8), '#ffffff', { boil: .2 });   // a round patch
   shape(spline([[-74, -150], [0, -176 - open * 20], [74, -150], [0, -136]]), { fill: PAL.packS, lw: 6 });
+  for (const sx of [-30, 30]) { stroke([[sx, -146], [sx, -104]], 7, { line: PAL.strap }); shape(rr(sx - 9, -112, 18, 14, 3), { fill: '#e9b949', lw: 3 }); }   // flap straps with buckles
+  stroke(quad([-16, -160], [0, -186], [16, -160], 8), 5, { line: PAL.strap });   // carry loop
   pop();
 }
 
