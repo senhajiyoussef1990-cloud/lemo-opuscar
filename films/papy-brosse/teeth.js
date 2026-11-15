@@ -12,11 +12,43 @@ export const darkness = () => 0;
 // ———— a toothbrush: handle colour, bristle colour, kind 'bone' | 'bamboo' | 'plastic' | 'electric' ————
 export function brush(x, y, s = 1, { a = 0, handle = '#3fb6e8', bristle = '#ffffff', kind = 'plastic', t = 0 } = {}) {
   push(); translate(x, y); rotate(a); scale(s);
-  if (kind === 'electric') { shape(rr(-34, -40, 68, 220, 30), { fill: handle, lw: 6, shade: () => fillOnly(rect(10, -50, 40, 280), 'rgba(0,0,0,.12)', { boil: .3 }) }); shape(ell(0, 40, 14, 14, 12), { fill: '#fff', lw: 4 }); shape(rr(-14, -150, 28, 116, 10), { fill: '#e9ecef', lw: 5 }); const v = Math.sin(t * 60) * 3; shape(ell(v, -170, 24, 26, 16), { fill: bristle, lw: 5 }); stroke(spline([[0, 180], [40, 260], [-30, 330], [60, 420]], false), 5); pop(); return; }
-  if (kind === 'stick') { shape(rr(-12, -150, 24, 350, 10), { fill: '#9a6232', lw: 6, shade: () => fillOnly(rect(4, -160, 12, 370), '#7a4a24', { boil: .3 }) }); for (let k = -4; k <= 4; k++) stroke([[k * 3, -150], [k * 7, -200]], 4, { line: '#c9a46a' }); pop(); return; }
+  const tufts = (x0, y0, cols, rows, w, h, cA, cB, gap = 4) => {   // rows of little bristle tufts, each a rounded bundle with a few hairs
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const tx = x0 + c * (w + gap), ty = y0 + r * (h + gap), col = (r + c) % 3 === 0 && cB ? cB : cA;
+      shape(spline([[tx, ty + h], [tx, ty + 4], [tx + w * .2, ty], [tx + w * .8, ty], [tx + w, ty + 4], [tx + w, ty + h]]), { fill: col, lw: 3 });
+      for (let k = 1; k < 3; k++) stroke([[tx + w * k / 3, ty + 3], [tx + w * k / 3, ty + h - 2]], 1.6, { line: 'rgba(0,0,0,.25)' }); }
+  };
+  if (kind === 'stick') {   // a twig, its bark, a knot, its end chewed into a fibrous brush
+    shape(spline([[-14, 210], [14, 210], [16, 60], [12, -120], [-12, -120], [-16, 60]]), { fill: '#9a6232', lw: 6, shade: () => { fillOnly(rect(4, -130, 14, 350), '#7a4a24', { boil: .3 }); for (let k = 0; k < 6; k++) stroke(quad([-14, -80 + k * 50], [0, -70 + k * 50], [14, -82 + k * 50], 6), 2.5, { line: '#6b3a1e' }); } });
+    shape(ell(8, 40, 8, 12, 10), { fill: '#6b3a1e', lw: 3 });
+    for (let k = -6; k <= 6; k++) stroke(spline([[k * 2, -120], [k * 4, -150], [k * 6 + Math.sin(k) * 3, -186]], false), 2.6, { line: k % 2 ? '#e3c48a' : '#c9a46a' });
+    pop(); return;
+  }
+  if (kind === 'electric') {
+    // body: rounded, a rubber grip, a power button with a light, a charging ring at the base
+    shape(rr(-36, -40, 72, 240, 32), { fill: handle, lw: 6, shade: () => { fillOnly(rect(12, -50, 40, 300), 'rgba(0,0,0,.12)', { boil: .3 }); fillOnly(rr(-26, 60, 18, 110, 8), 'rgba(255,255,255,.6)', { boil: .2 }); } });
+    shape(rr(-36, 30, 72, 70, 20), { fill: '#3fb6e8', lw: 5, shade: () => { for (let k = 0; k < 5; k++) stroke([[-30, 40 + k * 12], [30, 40 + k * 12]], 2.5, { line: 'rgba(0,0,0,.2)' }); } });
+    shape(ell(0, 0, 16, 16, 14), { fill: '#e9ecef', lw: 4 }); dot(0, 0, 5, Math.sin(t * 6) > 0 ? '#2fbf6a' : '#8be04a'); stroke(arc(0, 0, 8, 8, -2.2, -.9, 6), 2.5);
+    shape(rr(-30, 190, 60, 14, 6), { fill: '#c9ced6', lw: 4 });
+    shape(spline([[-14, -40], [14, -40], [10, -140], [-10, -140]]), { fill: '#e9ecef', lw: 5 });   // the neck
+    const v = Math.sin(t * 60) * .25;   // the round head oscillates
+    push(); translate(0, -168); rotate(v); shape(ell(0, 0, 30, 32, 18), { fill: '#e9ecef', lw: 5 }); for (let k = 0; k < 10; k++) { const an = k / 10 * TAU; shape(ell(Math.cos(an) * 18, Math.sin(an) * 18, 5, 5, 8), { fill: k % 2 ? bristle : '#ffffff', lw: 2 }); } shape(ell(0, 0, 8, 8, 8), { fill: bristle, lw: 2 }); pop();
+    stroke(spline([[0, 204], [30, 260], [-20, 320], [50, 400]], false), 6); shape(rr(40, 390, 30, 40, 6), { fill: '#e9ecef', lw: 4 });   // the cord and its plug
+    pop(); return;
+  }
+  // a handle with a shape: wider grip, a thumb rest, a thin neck, the head
   const hc = kind === 'bone' ? '#f1e3c2' : kind === 'bamboo' ? '#c9b25a' : handle;
-  shape(spline([[-12, 200], [12, 200], [16, 20], [12, -120], [-12, -120], [-16, 20]]), { fill: hc, lw: 6, shade: () => { if (kind === 'bamboo') for (const yy of [0, 100]) stroke([[-20, yy], [20, yy]], 4, { line: '#8a7a3a' }); } });
-  for (let i = 0; i < 6; i++) shape(rr(-14 + (i % 2) * 14, -200 + Math.floor(i / 2) * 26, 14, 30, 4), { fill: bristle, lw: 3 });
+  shape(spline([[-14, 210], [14, 210], [20, 120], [16, 20], [8, -60], [10, -110], [14, -126], [-14, -126], [-10, -110], [-8, -60], [-16, 20], [-20, 120]]), { fill: hc, lw: 6, shade: () => {
+    fillOnly(rect(6, -130, 20, 350), 'rgba(0,0,0,.14)', { boil: .3 }); fillOnly(rr(-12, 40, 6, 140, 3), 'rgba(255,255,255,.55)', { boil: .2 });
+    if (kind === 'bamboo') for (const yy of [-10, 90, 180]) { stroke([[-20, yy], [20, yy]], 4, { line: '#8a7a3a' }); stroke([[-18, yy + 6], [18, yy + 6]], 2, { line: '#e3d48a' }); }
+    if (kind === 'bone') { for (const [bx, by] of [[0, 140], [-4, 60], [6, 0]]) fillOnly(ell(bx, by, 5, 9, 8), '#d6c3a0', { boil: .2 }); stroke([[-14, 160], [14, 150]], 2, { line: '#c9b08a' }); }
+    if (kind === 'plastic') { fillOnly(rr(-16, 40, 32, 120, 14), 'rgba(255,255,255,.35)', { boil: .2 }); for (let k = 0; k < 6; k++) stroke([[-12, 60 + k * 16], [12, 60 + k * 16]], 2.5, { line: 'rgba(0,0,0,.18)' }); }
+  } });
+  if (kind === 'plastic') { shape(ell(0, 20, 12, 18, 10), { fill: '#ffffff', lw: 3 }); shape(rr(-6, 190, 12, 10, 4), { fill: '#2a2430', lw: 2 }); }   // thumb rest, hanging hole
+  if (kind === 'bone') { shape(ell(0, 196, 6, 6, 8), { fill: '#3a3340', lw: 2 }); }   // the hole he drilled
+  // the head: a plate, then the tufts in rows
+  shape(rr(-20, -214, 40, 92, 12), { fill: hc, lw: 5 });
+  if (kind === 'plastic') tufts(-17, -212, 3, 5, 8, 14, bristle, '#3fb6e8', 3); else tufts(-17, -212, 3, 5, 8, 14, bristle, null, 3);
+  if (kind === 'bone' || kind === 'bamboo') for (let k = 0; k < 3; k++) stroke([[-20, -190 + k * 26], [20, -186 + k * 26]], 1.5, { line: '#7a4a24' });   // tied with thread
   pop();
 }
 export function titleProp(t) { brush(0, 40, .32, { a: .9, handle: '#3fb6e8' }); }
