@@ -23,9 +23,11 @@ const LOOK = {
   modern:   { top: '#2fbf9b', topS: '#24997c', pants: '#2c3550', shoe: '#ffffff', hood: 1 },
   m_lady:   { top: '#ffcf3a', topS: '#e0b020', pants: '#3f5bd6', shoe: '#ffffff', hair: 'bun' },
 };
+export const FIG_K = 1.75;
 export function figure(x, y, s, t, o = {}) {
   const L = { ...LOOK[o.era || 'modern'], ...o }, f = o.face ?? 1, skin = o.skin || '#e7b48c', skinS = o.skinS || 'rgba(0,0,0,.14)', hairC = o.hairC || '#3a2416';
   const walk = o.walk ? Math.sin(t * 8 + x) : 0, bob = o.walk ? Math.abs(Math.cos(t * 8 + x)) * 4 : 0;
+  s *= FIG_K;   // background people at the scale of the leads (Papy ≈ 720, an adult figure ≈ 450 × s × FIG_K)
   push(); translate(x, y - bob); scale(s * f, s);
   // legs and shoes
   const legC = L.hose || L.pants || L.legs || '#2c3550';
