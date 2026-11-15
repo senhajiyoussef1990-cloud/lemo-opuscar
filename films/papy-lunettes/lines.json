@@ -1,0 +1,302 @@
+[
+ {
+  "id": "h1",
+  "who": "PAPY",
+  "text": "Malik, tu n'as pas vu mes lunettes ?",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h2",
+  "who": "MALIK",
+  "text": "Papy… elles sont sur ton front.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h3",
+  "who": "PAPY",
+  "text": "Ah. Je les cherchais avec mes yeux. C'était ça, le problème.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h4",
+  "who": "MALIK",
+  "text": "D'ailleurs, qui a inventé les lunettes ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h5",
+  "who": "PAPY",
+  "text": "Bonne question. Il faut aller voir ça de près.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h6",
+  "who": "PAPY",
+  "text": "Le Livre de Papy. Édition grand angle.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h7",
+  "who": "MALIK",
+  "text": "Mets bien tes lunettes, Papy, je veux pas qu'on se trompe de siècle !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a1",
+  "who": "PAPY",
+  "text": "Vers l'an mille, pour lire, des moines posent une pierre de lecture sur leurs pages.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Vers l'an mil, pour lire, des moines posent une pierre de lecture sur leurs pages."
+ },
+ {
+  "id": "a2",
+  "who": "PAPY",
+  "text": "C'est un morceau de verre ou de cristal bombé : il grossit les lettres.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a3",
+  "who": "MALIK",
+  "text": "Et pour lire au lit, on fait comment ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a4",
+  "who": "PAPY",
+  "text": "On ne lit pas au lit. On dort.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b1",
+  "who": "PAPY",
+  "text": "À la fin du treizième siècle, en Italie, apparaissent les premières lunettes.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b2",
+  "who": "PAPY",
+  "text": "Deux loupes dans des cercles, reliées par un rivet. On les pose sur le nez.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b3",
+  "who": "MALIK",
+  "text": "Et elles tiennent comment ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b4",
+  "who": "PAPY",
+  "text": "Mal.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c1",
+  "who": "PAPY",
+  "text": "Pendant des siècles, on les tient à la main, ou on les pince sur le nez.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c2",
+  "who": "PAPY",
+  "text": "Au dix-huitième siècle, à Londres, on ajoute enfin des branches posées sur les oreilles.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c3",
+  "who": "MALIK",
+  "text": "Enfin des lunettes qui ne tombent pas !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d1",
+  "who": "PAPY",
+  "text": "Vers 1784, en Amérique, on attribue à Benjamin Franklin les verres à double foyer.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Vers mille sept cent quatre-vingt-quatre, en Amérique, on attribue à Benjamin Franklinne les verres à double foyer."
+ },
+ {
+  "id": "d2",
+  "who": "PAPY",
+  "text": "En haut, pour voir de loin. En bas, pour lire de près.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d3",
+  "who": "MALIK",
+  "text": "Deux paires de lunettes en une ! C'est malin.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d4",
+  "who": "PAPY",
+  "text": "C'est surtout pratique quand on cherche ses lunettes.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e1",
+  "who": "PAPY",
+  "text": "Au dix-neuvième siècle, les élégants portent le pince-nez, ou même un monocle.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e2",
+  "who": "MALIK",
+  "text": "Un seul verre ? Il voit qu'avec un œil ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e3",
+  "who": "PAPY",
+  "text": "Il voit avec un œil. Et il fait chic avec l'autre.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "f1",
+  "who": "PAPY",
+  "text": "En 1929, aux États-Unis, des lunettes de soleil bon marché se vendent au bord de la mer.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "En mille neuf cent vingt-neuf, aux États-Unis, des lunettes de soleil bon marché se vendent au bord de la mer."
+ },
+ {
+  "id": "f2",
+  "who": "MALIK",
+  "text": "Papy, on est trop stylés !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "f3",
+  "who": "PAPY",
+  "text": "Toi, oui.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g1",
+  "who": "PAPY",
+  "text": "En 1961, à Prague, le chimiste Otto Wichterle fabrique des lentilles de contact souples.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "En mille neuf cent soixante et un, à Prague, le chimiste Otto Vikhterlé fabrique des lentilles de contact souples."
+ },
+ {
+  "id": "g2",
+  "who": "PAPY",
+  "text": "Sa machine, il l'a construite avec un jeu de construction pour enfants et une dynamo de vélo.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g3",
+  "who": "MALIK",
+  "text": "Avec un jouet ? Moi aussi, je veux inventer un truc !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g4",
+  "who": "PAPY",
+  "text": "D'abord, range ta chambre.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z1",
+  "who": "PAPY",
+  "text": "Bon. Aujourd'hui, je mets mes lunettes… sur mon nez.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z2",
+  "who": "MALIK",
+  "text": "Papy… ça, ce sont mes lunettes de soleil.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z3",
+  "who": "PAPY",
+  "text": "Ça explique pourquoi il fait nuit.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "o1",
+  "who": "PAPY",
+  "text": "C'était Le Livre de Papy. Chaque jour, un objet du quotidien et son histoire.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "o2",
+  "who": "PAPY",
+  "text": "Abonne-toi. Et ouvre l'œil pour le prochain voyage.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ }
+]
