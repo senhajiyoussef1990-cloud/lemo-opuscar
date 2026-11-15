@@ -1,0 +1,301 @@
+[
+ {
+  "id": "h1",
+  "who": "MALIK",
+  "text": "Papy ! J'ai fini de me brosser les dents !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h2",
+  "who": "PAPY",
+  "text": "Tu as commencé il y a quatre secondes.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h3",
+  "who": "MALIK",
+  "text": "Quatre secondes, c'est rapide et efficace ! D'ailleurs, qui a inventé la brosse à dents ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h4",
+  "who": "PAPY",
+  "text": "Ça, c'est une longue histoire. Plus longue que quatre secondes.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h5",
+  "who": "MALIK",
+  "text": "Oh non. Pas le livre.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h6",
+  "who": "PAPY",
+  "text": "Le Livre de Papy. Édition sourire.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "h7",
+  "who": "MALIK",
+  "text": "Papy, attends, j'ai encore du dentifrice sur le nez !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a1",
+  "who": "PAPY",
+  "text": "Il y a des milliers d'années, on se nettoie déjà les dents… avec des bâtonnets.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a2",
+  "who": "PAPY",
+  "text": "On mâchouille le bout d'une petite branche, jusqu'à ce qu'il devienne comme un pinceau.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "a3",
+  "who": "MALIK",
+  "text": "Ça a un goût de… arbre.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b1",
+  "who": "PAPY",
+  "text": "À la fin du quinzième siècle, en Chine, on fixe des poils sur un manche en os ou en bambou.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b2",
+  "who": "MALIK",
+  "text": "Des poils de quoi ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b3",
+  "who": "PAPY",
+  "text": "De cochon.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "b4",
+  "who": "MALIK",
+  "text": "Je vais plus jamais me brosser les dents.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c1",
+  "who": "PAPY",
+  "text": "Angleterre, vers 1780. William Addis est en prison.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "Angleterre, vers mille sept cent quatre-vingts. William Addisse est en prison."
+ },
+ {
+  "id": "c2",
+  "who": "PAPY",
+  "text": "À l'époque, on se frotte souvent les dents avec un chiffon, de la suie et du sel.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c3",
+  "who": "PAPY",
+  "text": "Alors il garde un petit os de son repas, il le perce, et il y attache des poils.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c4",
+  "who": "MALIK",
+  "text": "Il a fabriqué une brosse à dents… en prison ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "c5",
+  "who": "PAPY",
+  "text": "Et une fois sorti, il en fait son métier.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d1",
+  "who": "PAPY",
+  "text": "Au dix-neuvième siècle, les brosses à dents se répandent. On les fabrique en série.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d2",
+  "who": "PAPY",
+  "text": "Mais les poils d'animaux sèchent mal, et gardent les microbes.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "d3",
+  "who": "MALIK",
+  "text": "Beurk. Et toujours du cochon.",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e1",
+  "who": "PAPY",
+  "text": "États-Unis, 1938. Arrivent les premières brosses à poils en nylon.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "États-Unis, mille neuf cent trente-huit. Arrivent les premières brosses à poils en nylon."
+ },
+ {
+  "id": "e2",
+  "who": "PAPY",
+  "text": "Le nylon sèche vite. Et il ne vient d'aucun cochon.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "e3",
+  "who": "MALIK",
+  "text": "Merci le nylon !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "f1",
+  "who": "PAPY",
+  "text": "En 1954, en Suisse, on invente l'une des premières brosses à dents électriques.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "say": "En mille neuf cent cinquante-quatre, en Suisse, on invente l'une des premières brosses à dents électriques."
+ },
+ {
+  "id": "f2",
+  "who": "MALIK",
+  "text": "Elle se brosse toute seule ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "f3",
+  "who": "PAPY",
+  "text": "Non. Il faut quand même la tenir. Et ouvrir la bouche.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g1",
+  "who": "PAPY",
+  "text": "Aujourd'hui, les dentistes conseillent de se brosser les dents deux minutes, matin et soir.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g2",
+  "who": "PAPY",
+  "text": "Et de changer de brosse environ tous les trois mois.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g3",
+  "who": "MALIK",
+  "text": "Deux minutes ? Mais c'est trente fois quatre secondes !",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "g4",
+  "who": "PAPY",
+  "text": "Ton calcul est bon. Ton brossage, beaucoup moins.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z1",
+  "who": "PAPY",
+  "text": "Voilà. Un sablier de deux minutes.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z2",
+  "who": "MALIK",
+  "text": "Et je fais quoi pendant deux minutes ?",
+  "voice": "fr-FR-EloiseNeural",
+  "rate": "+14%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "z3",
+  "who": "PAPY",
+  "text": "Tu brosses. Et tu chantes dans ta tête.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "o1",
+  "who": "PAPY",
+  "text": "C'était Le Livre de Papy. Chaque jour, un objet du quotidien et son histoire.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ },
+ {
+  "id": "o2",
+  "who": "PAPY",
+  "text": "Abonne-toi. Et brosse-toi les dents avant de dormir.",
+  "voice": "fr-CH-FabriceNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz"
+ }
+]
