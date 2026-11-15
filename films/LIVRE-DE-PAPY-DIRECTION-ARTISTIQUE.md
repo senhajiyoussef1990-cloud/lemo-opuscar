@@ -5,7 +5,7 @@ Style : sitcom de science-fiction animée (Sci-Fi Sitcom Toon), vertical 1080 ×
 ## Personnages
 - **Papy** : chauve, couronne de cheveux blancs derrière la tête, grosse moustache blanche, sourcils blancs arrondis, joues roses, air doux ; blouse blanche (ombres gris-bleu) avec poches pleines de crayons, pull col roulé moutarde, pantalon prune, bottines. Épaules au bord de la blouse, bras le long du corps. Pupilles toujours visibles quand il plisse les yeux.
 - **Malik** : cheveux bouclés bruns, sweat bleu roi, jean, baskets blanches ; épaules au bord du sweat, bras le long du corps, mains symétriques (pouces vers le corps). **Pas de sac** sauf si l'épisode en parle.
-- Voix : Malik = Éloïse. Papy = Fabrice (version complète) ; livrer aussi la **version sans la voix de Papy**, plus `texte-papy.txt` (texte seul, une réplique par ligne) et `timeline-papy.txt` (début → fin + réplique).
+- Voix : Malik = Éloïse. Papy = Fabrice (version complète) ; livrer aussi la **version sans la voix de Papy**, plus **un seul fichier `papy-texte-timeline.txt`** : une réplique par ligne, précédée de son début → fin.
 
 ## Détails (toujours)
 - **L'objet de l'épisode est partout et bien visible** : Malik le tient à la maison, Papy tient la version de chaque époque à côté de lui (pas devant son visage), gros plan agrandi dans chaque époque.
