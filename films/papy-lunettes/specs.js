@@ -3,7 +3,8 @@
 import { clamp, lerp, hash, TAU } from '/core/lib.js';
 import { INK, g, push, pop, translate, rotate, scale, shape, fillOnly, stroke, ell, arc, spline, rr, rect, noodle, quad, dot, text, bands } from './toon.js';
 import { eye } from './chars.js';
-import { figure } from './people.js';
+import { figure, VIEW } from './people.js';
+export { VIEW };
 import { FLOOR, portal, GLOW, ground, hills, blink, birds, tree, groundBits, clouds } from './worlds.js';
 export { FLOOR, portal, GLOW };
 const X0 = -900, X1 = 2000;
@@ -77,7 +78,7 @@ export function w1(t) {
   shape(rr(760, 520, 300, 480, 8), { fill: '#6e4a26', lw: 6 }); for (let r = 0; r < 3; r++) { shape(rect(770, 660 + r * 150, 280, 14), { fill: '#5b341d', lw: 4 }); for (let i = 0; i < 6; i++) if ((i + r) % 3) book(790 + i * 45, 656 + r * 150, 34, 100, ['#7a2a2a', '#2f6a4a', '#5a4a8a'][(i + r) % 3]); else shape(ell(800 + i * 45, 620 + r * 150, 22, 30, 12), { fill: '#f1e3c2', lw: 4 }); }
   shape([[100, 1150], [380, 1110], [380, 1140], [100, 1180]], { fill: '#8f6436', lw: 6 }); for (const lx of [120, 350]) shape(rect(lx, 1170, 16, 170), { fill: '#6e4a26', lw: 5 }); candle(330, 1112, .8, t);
   figure(250, FLOOR - 20, .72, t, { era: 'monk', skin: '#f2c9a0', face: 1, arms: -1.2, hold: (x, y) => stroke([[x, y], [x + 30, y - 60]], 4, { line: '#f4f1ea' }) });
-  figure(((t * 25) % 1700) - 300, FLOOR - 140, .5, t, { era: 'monk', skin: '#e7b48c', walk: 1, hold: (x, y) => book(x, y + 10, 50, 60, '#7a2a2a') });
+  figure(((t * 25) % 1700) - 300, FLOOR - 300, .44, t, { era: 'monk', skin: '#e7b48c', walk: 1, hold: (x, y) => book(x, y + 10, 50, 60, '#7a2a2a') });
   // the insert: an illuminated page under a reading stone, the letters magnified
   shape(rr(800, 1170, 320, 30, 6), { fill: '#8f6436', lw: 6 }); for (const lx of [820, 1090]) shape(rect(lx, 1198, 16, 140), { fill: '#6e4a26', lw: 5 });
   shape(rr(830, 1080, 240, 96, 6), { fill: '#f6efe0', lw: 5, shade: () => { shape(rr(840, 1090, 40, 40, 4), { fill: '#c22f3a', lw: 3 }); text('A', 860, 1112, { font: '800 30px "Baloo 2"', fill: '#e9b949' }); for (let k = 0; k < 4; k++) stroke([[890, 1096 + k * 18], [1060, 1096 + k * 18]], 2.5, { line: '#3a3340' }); } });
@@ -97,7 +98,7 @@ export function w2(t) {
   ground('#b8784a'); for (let i = 0; i < 20; i++) stroke(rr(-400 + (i % 10) * 200 + (Math.floor(i / 10) % 2) * 100, FLOOR + 20 + Math.floor(i / 10) * 80, 180, 60, 6), 3, { line: '#a0663c' });
   // shelves of green glass: bottles, goblets
   shape(rect(560, 660, 240, 16), { fill: '#7a4a24', lw: 4 }); for (let i = 0; i < 4; i++) shape(spline([[580 + i * 56, 656], [576 + i * 56, 610], [590 + i * 56, 590], [590 + i * 56, 560], [602 + i * 56, 560], [602 + i * 56, 590], [616 + i * 56, 610], [612 + i * 56, 656]]), { fill: 'rgba(80,170,120,.7)', lw: 4 });
-  figure(((t * 30) % 1700) - 300, FLOOR - 150, .5, t, { era: 'medieval', skin: '#f2c9a0', walk: 1, top: '#c22f3a', topS: '#9a1f2a', hatC: '#2f6a4a' });
+  figure(((t * 30) % 1700) - 300, FLOOR - 300, .44, t, { era: 'medieval', skin: '#f2c9a0', walk: 1, top: '#c22f3a', topS: '#9a1f2a', hatC: '#2f6a4a' });
   // the insert: the first spectacles on a velvet cushion
   shape(rr(800, 1170, 320, 30, 6), { fill: '#7a4a24', lw: 6 }); for (const lx of [820, 1090]) shape(rect(lx, 1198, 16, 140), { fill: '#5b341d', lw: 5 });
   shape(rr(850, 1110, 220, 64, 26), { fill: '#7a2a5a', lw: 5 }); specs(960, 1110, .9, { kind: 'rivet', frame: '#5a3a24' });
@@ -129,7 +130,7 @@ export function w4(t) {
   push(); translate(260, 520); rotate(.2); shape([[0, -70], [50, 0], [0, 90], [-50, 0]], { fill: '#e9d7a8', lw: 5 }); stroke([[0, -70], [0, 90]], 3); stroke([[-50, 0], [50, 0]], 3); stroke(spline([[0, 90], [20, 150], [-10, 220]], false), 3); pop(); shape(ell(240, 760, 12, 18, 10), { fill: '#e9b949', lw: 4 });
   shape(rr(700, 440, 300, 220, 8), { fill: '#e9d7a8', lw: 6, shade: () => { fillOnly(spline([[740, 520], [800, 480], [880, 520], [940, 500], [960, 600], [760, 610]]), '#9fc8a0', { boil: .3 }); } });
   ground('#7a5a3a'); for (let x = -800; x < 2000; x += 140) stroke([[x, FLOOR - 40], [x + 40, 2400]], 4, { line: '#6a4a2e' });
-  figure(((t * 25) % 1700) - 300, FLOOR - 160, .45, t, { era: 'georgian', top: '#2a3a5a', topS: '#22304c', skin: '#e7b48c', walk: 1 });
+  figure(((t * 25) % 1700) - 300, FLOOR - 300, .44, t, { era: 'georgian', top: '#2a3a5a', topS: '#22304c', skin: '#e7b48c', walk: 1 });
   // the writing desk: quill and inkwell, a letter, a candle, books
   shape(rr(760, 1150, 380, 30, 6), { fill: '#7a4a24', lw: 6 }); for (const lx of [780, 1110]) shape(rect(lx, 1178, 16, 160), { fill: '#5b341d', lw: 5 });
   shape(rr(790, 1100, 60, 50, 8), { fill: '#2a2430', lw: 4 }); stroke(spline([[820, 1100], [840, 1040], [870, 1000]], false), 4, { line: '#f4f1ea' }); for (let k = 0; k < 6; k++) stroke([[836 + k * 5, 1040 - k * 7], [850 + k * 5, 1046 - k * 7]], 2, { line: '#f4f1ea' });
@@ -150,7 +151,7 @@ export function w5(t) {
   // elegant people: a gentleman with a monocle, a lady with a lorgnette, a passer-by with a pince-nez
   figure(560, FLOOR - 40, .7, t, { era: 'victorian', skin: '#f2c9a0', hairC: '#3a2416', beardC: '#3a2416', face: 1 }); specs(560 + 20 * .7, FLOOR - 40 - 410 * .7, .14, { kind: 'monocle' });
   figure(1220, FLOOR - 20, .7, t, { era: 'vlady', skin: '#f2c9a0', hairC: '#7a4a24', face: -1, arms: -1.6, hold: (x, y) => { stroke([[x, y], [x, y - 60]], 4, { line: '#e9b949' }); specs(x, y - 80, .2, { kind: 'pince', frame: '#e9b949' }); } });
-  figure(((t * 35) % 1700) - 300, FLOOR - 150, .5, t, { era: 'victorian', top: '#5a4a3a', skin: '#e7b48c', walk: 1 });
+  figure(((t * 35) % 1700) - 300, FLOOR - 300, .44, t, { era: 'victorian', top: '#5a4a3a', skin: '#e7b48c', walk: 1 });
   // the insert: a pince-nez and a monocle on a little velvet cushion, on a café table
   shape(ell(960, 1200, 170, 30, 24), { fill: '#e9ecef', lw: 6 }); shape(rect(950, 1210, 20, 130), { fill: '#3a3340', lw: 5 });
   shape(rr(860, 1140, 200, 60, 24), { fill: '#7a2a5a', lw: 5 }); specs(920, 1140, .45, { kind: 'pince' }); specs(1030, 1130, .45, { kind: 'monocle' });
@@ -163,7 +164,7 @@ export function w6(t) {
   for (const [x, c] of [[-120, '#e8452f'], [260, '#3f5bd6']]) { stroke([[x, 1120], [x, 940]], 5); shape([...arc(x, 950, 110, 50, Math.PI, TAU, 14), [x + 110, 950], [x - 110, 950]], { fill: c, lw: 5, shade: () => { for (let k = -2; k <= 2; k += 2) fillOnly([[x, 900], [x + k * 25 - 25, 950], [x + k * 25 + 25, 950]], '#fff', { boil: .2 }); } }); }
   // the boardwalk planks
   ground('#b8874f'); for (let x = -800; x < 2000; x += 90) stroke([[x, FLOOR - 40], [x + 20, 2400]], 4, { line: '#8f6436' });
-  figure(((t * 35) % 1700) - 300, FLOOR - 150, .5, t, { era: 'swim', top: '#3f5bd6', topS: '#2c44b0', pants: '#3f5bd6', skin: '#b9794f', walk: 1 });
+  figure(((t * 35) % 1700) - 300, FLOOR - 300, .44, t, { era: 'swim', top: '#3f5bd6', topS: '#2c44b0', pants: '#3f5bd6', skin: '#b9794f', walk: 1 });
   // a stall selling sunglasses (the insert): striped awning, a rack of pairs, a sign
   shape(rect(780, 860, 400, 480), { fill: '#f4f1ea', lw: 7 }); for (let i = 0; i < 6; i++) shape([[780 + i * 67, 820], [847 + i * 67, 820], [840 + i * 67, 880], [787 + i * 67, 880]], { fill: i % 2 ? '#f4f1ea' : '#e8742a', lw: 4 });
   shape(rr(800, 760, 360, 60, 8), { fill: '#e8742a', lw: 5 }); text('LUNETTES DE SOLEIL', 980, 792, { font: '400 26px Bungee', fill: '#fff' });

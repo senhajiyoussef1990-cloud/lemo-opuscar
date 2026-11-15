@@ -3,7 +3,8 @@
 import { clamp, lerp, hash, TAU } from '/core/lib.js';
 import { INK, g, push, pop, translate, rotate, scale, shape, fillOnly, stroke, ell, arc, spline, rr, rect, noodle, quad, dot, text, bands } from './toon.js';
 import { eye } from './chars.js';
-import { figure } from './people.js';
+import { figure, VIEW } from './people.js';
+export { VIEW };
 import { FLOOR, portal, GLOW, ground, hills, blink, birds, tree, pine, groundBits, clouds, bgPerson } from './worlds.js';
 export { FLOOR, portal, GLOW };
 const X0 = -900, X1 = 2000;
@@ -119,12 +120,12 @@ export function w1(t) {
   shape(ell(560, FLOOR + 40, 90, 30, 20), { fill: '#b8784a', lw: 6 }); shape(rect(470, FLOOR - 20, 180, 60), { fill: '#c88a50', lw: 6 }); stroke([[480, FLOOR - 20], [480, FLOOR - 160], [640, FLOOR - 160], [640, FLOOR - 20]], 6, { line: '#7a4a24' });
   for (const [x, s] of [[700, .9], [740, .7], [80, 1]]) jar(x, FLOOR + 10, s);
   push(); translate(250, FLOOR + 20); scale(.9); shape(ell(0, -80, 100, 50, 20), { fill: '#9a9aa0', lw: 5 }); shape(spline([[80, -110], [130, -170], [170, -150], [150, -110], [110, -90]]), { fill: '#9a9aa0', lw: 5 }); for (const ex of [140, 160]) shape([[ex, -165], [ex + 6, -210], [ex + 14, -165]], { fill: '#9a9aa0', lw: 4 }); for (const lx of [-60, -20, 30, 70]) shape(rr(lx, -40, 16, 44, 4), { fill: '#9a9aa0', lw: 4 }); eye(150, -140, 6, 7, { lid: .4, skin: '#9a9aa0', lw: 3, pupil: 2 }); pop();
+  figure(((t * 30) % 1700) - 300, FLOOR - 300, .44, t, { era: 'antique', skin: '#8a5a3a', walk: 1, top: '#e9b949', topS: '#c99a2a', hold: (x, y) => jar(x, y - 10, .5) });
   // the insert: chewing sticks on a cloth, one frayed like a little paintbrush
   shape(rr(820, 1170, 300, 60, 10), { fill: '#c22f3a', lw: 6 });
   for (let i = 0; i < 5; i++) { push(); translate(860 + i * 50, 1170); rotate(-.2 + i * .1); shape(rr(-8, -150, 16, 150, 6), { fill: '#9a6232', lw: 4 }); if (i === 2) for (let k = -3; k <= 3; k++) stroke([[k * 3, -150], [k * 6, -184]], 3, { line: '#c9a46a' }); pop(); }
   // people in tunics; one chews a stick, one carries a jar
-  figure(1080, FLOOR - 40, .62, t, { era: 'antique', skin: '#a8714a', face: -1, hold: (x, y) => { push(); translate(x, y); rotate(-1.1); shape(rr(-6, -110, 12, 110, 4), { fill: '#9a6232', lw: 3 }); pop(); }, arms: -1.6 });
-  figure(((t * 30) % 1700) - 300, FLOOR - 150, .5, t, { era: 'antique', skin: '#8a5a3a', walk: 1, top: '#e9b949', topS: '#c99a2a', hold: (x, y) => jar(x, y - 10, .5) });
+  figure(1330, FLOOR - 40, .62, t, { era: 'antique', skin: '#a8714a', face: -1, hold: (x, y) => { push(); translate(x, y); rotate(-1.1); shape(rr(-6, -110, 12, 110, 4), { fill: '#9a6232', lw: 3 }); pop(); }, arms: -1.6 });
   figure(380, FLOOR - 180, .45, t, { era: 'antique', skin: '#a8714a', top: '#3f7f9a', topS: '#2f6a80', hat: 'wrap', hatC: '#f1e3c2', face: -1 });
 }
 // ———————————————————— w2: China, late 15th century — a pagoda, lanterns, a moon gate (lacquer red, jade, gold) ————————————————————
@@ -141,13 +142,13 @@ export function w2(t) {
   // bamboo
   for (const x of [200, 260]) { for (let k = 0; k < 6; k++) shape(rr(x - 12, FLOOR - 40 - (k + 1) * 120, 24, 118, 6), { fill: '#7ab65a', lw: 4 }); shape(spline([[x, FLOOR - 600], [x + 60, FLOOR - 640], [x + 100, FLOOR - 600], [x + 40, FLOOR - 590]]), { fill: '#4f9a3a', lw: 4 }); }
   ground('#c9a46a'); for (let i = 0; i < 20; i++) stroke(rr(-400 + (i % 10) * 200 + (Math.floor(i / 10) % 2) * 100, FLOOR + 20 + Math.floor(i / 10) * 80, 180, 60, 14), 3, { line: '#b08a50' });
+  figure(((t * 28) % 1700) - 300, FLOOR - 300, .44, t, { era: 'chinese', skin: '#f2c9a0', walk: 1, top: '#c22f3a', topS: '#9a1f2a', hold: (x, y) => { stroke([[x - 60, y - 10], [x + 60, y - 10]], 5, { line: '#7a4a24' }); } });
   // the insert: a lacquer tray, a brush with a bamboo handle and a pig-bristle tuft
   shape(rr(820, 1180, 300, 50, 10), { fill: '#2a2430', lw: 6, shade: () => fillOnly(rect(820, 1180, 300, 12), '#c22f3a', { boil: .2 }) });
   brush(960, 1150, 1.0, { a: Math.PI / 2, kind: 'bamboo', bristle: '#5a4a40' });
   // the pig, who is not pleased (its bristles are on that brush)
   pig(430, FLOOR + 16, .95, t);
-  figure(1180, FLOOR - 40, .62, t, { era: 'chinese', skin: '#f2c9a0', hairC: '#1d1410', face: -1, arms: -.4 });
-  figure(((t * 28) % 1700) - 300, FLOOR - 170, .5, t, { era: 'chinese', skin: '#f2c9a0', walk: 1, top: '#c22f3a', topS: '#9a1f2a', hold: (x, y) => { stroke([[x - 60, y - 10], [x + 60, y - 10]], 5, { line: '#7a4a24' }); } });
+  figure(1330, FLOOR - 40, .62, t, { era: 'chinese', skin: '#f2c9a0', hairC: '#1d1410', face: -1, arms: -.4 });
 }
 // ———————————————————— w3: England, around 1780, a London prison (stone grey, straw, candle) ————————————————————
 export function w3(t) {
@@ -238,7 +239,7 @@ export function w7(t) {
   // the insert: an hourglass and a toothbrush side by side
   shape(rr(820, 1180, 300, 30, 6), { fill: '#fff', lw: 6 }); hourglass(900, 1180, .7, t); brush(1050, 1150, .85, { a: Math.PI / 2 - .3, handle: '#2fbf9b' });
   text('2 MIN', 900, 1240, { font: '400 36px Bungee', fill: '#ff7a6b', outlineW: 6 });
-  figure(((t * 40) % 1700) - 300, FLOOR - 80, .62, t, { era: 'modern', skin: '#b9794f', walk: 1 }); figure(1250, FLOOR - 40, .64, t, { era: 'm_lady', skin: '#f2c9a0', hairC: '#3a2416', face: -1, arms: -1.4, hold: (x, y) => brush(x, y - 40, .35, { handle: '#8a3df0' }) });
+  figure(((t * 40) % 1700) - 300, FLOOR - 300, .44, t, { era: 'modern', skin: '#b9794f', walk: 1 }); figure(1250, FLOOR - 40, .64, t, { era: 'm_lady', skin: '#f2c9a0', hairC: '#3a2416', face: -1, arms: -1.4, hold: (x, y) => brush(x, y - 40, .35, { handle: '#8a3df0' }) });
   groundBits(71, '#ef8274', '#2fbf9b');
 }
 // the brush of each era, held in a hand (x, y = the fist)

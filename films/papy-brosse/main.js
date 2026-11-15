@@ -73,7 +73,7 @@ function duo(t, p, m) {   // the brushes: Papy holds the one of the era he is in
 // ———————————————————— shots ————————————————————
 function shotLine(t, s) {
   const [t0, t1, shot, w, id] = s, tq = q(t), u = seg(t, t0, t1);
-  BR = [w, t];
+  BR = [w, t]; Wd.VIEW.ins = shot === 'ins';
   const glowHome = w === 'home' && t > B('home', 'BURST')[0];
   const portalOpenHome = glowHome && t < worldSpan('home')[1];
   const base = () => { world(w, t, { glow: glowHome ? 1 : 0 }); if (portalOpenHome) Wd.portal(PORT[0], PORT[1] - 120, 200, t); };
@@ -106,7 +106,7 @@ function shotLine(t, s) {
 }
 function shotBeat(t, s) {
   const [t0, t1, name, w] = s, tq = q(t), u = seg(t, t0, t1);
-  BR = [w, t];
+  BR = [w, t]; Wd.VIEW.ins = false;
   let p = P_(t), m = M_(t);
   if (name === 'arrive') {
     cam(540, 990, 1.0); world(w, t);
