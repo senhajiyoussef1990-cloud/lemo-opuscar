@@ -86,7 +86,7 @@ cut_all(b - .02, b + .5)
 # ———————— w4, Sweden 1960: elevator bossa (a little too nice; Papy says something nice about an object) ————————
 a, b = span('w4', .3)
 BC = [([M('F3'), M('A3'), M('C4'), M('E4')], M('F2')), ([M('G3'), M('Bb3'), M('D4'), M('F4')], M('G2')), ([M('E3'), M('G3'), M('Bb3'), M('C4')], M('C2')), ([M('F3'), M('A3'), M('C4'), M('E4')], M('F2'))]
-st = MK['w4.STARE']['t']
+ST_ = MK.get('w4.STARE'); st = ST_['t'] if ST_ else None
 for bi, tb in enumerate(loop(a, b, 2)):
     ch, root = BC[bi % 4]
     for btt, m in [(0, root), (1.5, root + 7), (2, root), (3.5, root + 7)]: B.add(ks(m + 12, .6, 1, .2), tb + btt * BEAT, .38)
@@ -94,7 +94,7 @@ for bi, tb in enumerate(loop(a, b, 2)):
         for i, m in enumerate(ch): H.add(ks(m + 12, .5, 1, .45), tb + btt * BEAT + i * .008, .08, pan=.25)
     for btt in [1, 2.5, 3.5]: D.add(rim(1), tb + btt * BEAT, .1, pan=-.3)
     for j in range(8): D.add(shaker(1), tb + j * BEAT / 2, .06 if j % 2 else .04, pan=.4)
-cut_all(st, st + MK['w4.STARE']['d'], .004)   # the stare: silence
+if ST_: cut_all(st, st + ST_['d'], .004)   # the stare: silence
 cut_all(b - .02, b + .5)
 # ———————— w5, campus 1967 in the rain: surf guitar ————————
 a, b = span('w5', .3)
@@ -141,7 +141,7 @@ def ir(d=2.0, decay=.45, lpf=5000, pre=.015):
 def conv(x, h): return np.stack([fftconvolve(x[:, c], h[:, c])[:N] for c in range(2)], 1)
 send = {'drums': .08, 'bass': 0, 'lead': .3, 'harm': .22, 'fx': .2}
 out = sum(b.b for b in BUS.values()) + conv(sum(BUS[k].b * send[k] for k in BUS), ir()) * .9
-for c0, c1 in [(b5 - .1, VO['b4'] + 1.4), (st, st + MK['w4.STARE']['d']), (a, s1 + .2)]:   # silences stay silent, tails included
+for c0, c1 in [(b5 - .1, VO['b4'] + 1.4), (a, s1 + .2)] + ([(st, st + ST_['d'])] if ST_ else []):   # silences stay silent, tails included
     i0, i1 = int(c0 * SR), int(c1 * SR); out[i0:i1] = 0; f = int(.01 * SR); out[i0 - f:i0] *= np.linspace(1, 0, f)[:, None]
 out = np.stack([hp(out[:, c], 30) for c in range(2)], 1); pk = np.abs(out).max(); out = out / pk * .89
 os.makedirs(os.path.join(ROOT, 'out'), exist_ok=True); sf.write(os.path.join(ROOT, 'out', 'score.wav'), out.astype(np.float32), SR)

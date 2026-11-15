@@ -15,7 +15,7 @@ const PLAN = [
   ['w1', [['ARRIVE', 1.05], ['a1', 'wide'], ['a2', 'ins'], ['a3', 'cuM'], ['a4', 'cuP', { post: .3 }], ['OUT', .7], ['RUSH', .35]]],
   ['w2', [['ARRIVE', 1.05], ['b1', 'wide'], ['b2', 'ins'], ['b3', 'cuM'], ['b4', 'cuP', { pre: .3, post: .6 }], ['OUT', .7], ['RUSH', .35]]],
   ['w3', [['ARRIVE', 1.05], ['c1', 'wide'], ['c2', 'ins'], ['c3', 'cuM', { post: .3 }], ['OUT', .7], ['RUSH', .35]]],
-  ['w4', [['ARRIVE', 1.05], ['d1', 'wide'], ['d2', 'ins'], ['d3', 'cuM'], ['d4', 'cuP', { post: .2 }], ['STARE', .8], ['OUT', .7], ['RUSH', .35]]],
+  ['w4', [['ARRIVE', 1.05], ['d1', 'wide'], ['d2', 'ins'], ['d3', 'cuM'], ['d4', 'cuP', { post: .2 }], ['OUT', .7], ['RUSH', .35]]],
   ['w5', [['ARRIVE', 1.05], ['e1', 'wide'], ['e2', 'cuM'], ['e3', 'ins', { post: .3 }], ['OUT', .7], ['RUSH', .35]]],
   ['w6', [['ARRIVE', 1.05], ['f1', 'wide'], ['f2', 'cuM'], ['f3', 'cuP', { post: .4 }], ['OUT', .7], ['RUSH', .35]]],
   ['w7', [['ARRIVE', 1.05], ['g1', 'wide'], ['g2', 'ins'], ['g3', 'cuM'], ['g4', 'cuP', { post: .3 }], ['OUT', .7], ['RUSH', .35]]],

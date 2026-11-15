@@ -13,6 +13,7 @@ Style : sitcom de science-fiction animée (Sci-Fi Sitcom Toon), vertical 1080 ×
 - **Figurants** (`people.js`) : vrai corps (visage, cou, bras, mains, jambes, chaussures), **habillés selon l'époque** ; plusieurs par époque, certains qui marchent, certains qui font une action liée au thème.
 - **Décors riches qui disent l'époque au premier coup d'œil** : architecture, objets, véhicules et animaux **cohérents avec le lieu** (rien d'anachronique ni de hors-sujet : pas de voiture dans une usine, etc.). Sol détaillé, ciel vivant.
 - **Animaux** : bien dessinés, anatomie lisible, mignons et expressifs.
+- **Pas de temps mort** : aucun plan sans réplique où un personnage regarde ailleurs (pas de « STARE ») ; les seuls silences sont l'ouverture du portail, les arrivées et le retour à la maison.
 - Panoramique sur le décor au début de chaque plan large ; étiquette d'époque en haut ; sous-titres remontés (y ≈ 1560).
 
 ## Faits
