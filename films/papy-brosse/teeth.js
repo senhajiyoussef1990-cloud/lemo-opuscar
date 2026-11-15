@@ -12,6 +12,7 @@ export const darkness = () => 0;
 export function brush(x, y, s = 1, { a = 0, handle = '#3fb6e8', bristle = '#ffffff', kind = 'plastic', t = 0 } = {}) {
   push(); translate(x, y); rotate(a); scale(s);
   if (kind === 'electric') { shape(rr(-34, -40, 68, 220, 30), { fill: handle, lw: 6, shade: () => fillOnly(rect(10, -50, 40, 280), 'rgba(0,0,0,.12)', { boil: .3 }) }); shape(ell(0, 40, 14, 14, 12), { fill: '#fff', lw: 4 }); shape(rr(-14, -150, 28, 116, 10), { fill: '#e9ecef', lw: 5 }); const v = Math.sin(t * 60) * 3; shape(ell(v, -170, 24, 26, 16), { fill: bristle, lw: 5 }); stroke(spline([[0, 180], [40, 260], [-30, 330], [60, 420]], false), 5); pop(); return; }
+  if (kind === 'stick') { shape(rr(-12, -150, 24, 350, 10), { fill: '#9a6232', lw: 6, shade: () => fillOnly(rect(4, -160, 12, 370), '#7a4a24', { boil: .3 }) }); for (let k = -4; k <= 4; k++) stroke([[k * 3, -150], [k * 7, -200]], 4, { line: '#c9a46a' }); pop(); return; }
   const hc = kind === 'bone' ? '#f1e3c2' : kind === 'bamboo' ? '#c9b25a' : handle;
   shape(spline([[-12, 200], [12, 200], [16, 20], [12, -120], [-12, -120], [-16, 20]]), { fill: hc, lw: 6, shade: () => { if (kind === 'bamboo') for (const yy of [0, 100]) stroke([[-20, yy], [20, yy]], 4, { line: '#8a7a3a' }); } });
   for (let i = 0; i < 6; i++) shape(rr(-14 + (i % 2) * 14, -200 + Math.floor(i / 2) * 26, 14, 30, 4), { fill: bristle, lw: 3 });
@@ -79,7 +80,7 @@ export function w2(t) {
   ground('#c9a46a'); groundBits(23, '#9a7c48', '#4f9a3a');
   // the insert: a lacquer tray, a brush with a bamboo handle and pig-bristle tuft
   shape(rr(820, 1180, 300, 50, 10), { fill: '#2a2430', lw: 6, shade: () => fillOnly(rect(820, 1180, 300, 12), '#c22f3a', { boil: .2 }) });
-  brush(960, 1176, .55, { a: Math.PI / 2, kind: 'bamboo', bristle: '#5a4a40' });
+  brush(960, 1150, 1.0, { a: Math.PI / 2, kind: 'bamboo', bristle: '#5a4a40' });
   // and the pig, who is not pleased
   push(); translate(240, FLOOR + 10); shape(ell(0, -60, 90, 60, 24), { fill: '#f4b4c0', lw: 6 }); shape(ell(80, -80, 46, 40, 20), { fill: '#f4b4c0', lw: 6 }); shape(ell(116, -76, 18, 14, 12), { fill: '#e890a0', lw: 4 }); dot(110, -78, 3); dot(122, -78, 3);
   eye(78, -96, 9, 10, { lid: .5, skin: '#f4b4c0', lw: 3, pupil: 3 }); for (const lx of [-50, -10, 30, 60]) shape(rr(lx, -20, 18, 24, 4), { fill: '#f4b4c0', lw: 4 }); stroke(spline([[-90, -70], [-110, -90], [-100, -100], [-112, -110]], false), 4); pop();
@@ -94,7 +95,7 @@ export function w3(t) {
   ground('#4a4a54'); for (let i = 0; i < 30; i++) stroke([[-200 + hash(i) * 600, FLOOR + 20 + hash(i + 3) * 60], [-180 + hash(i) * 600, FLOOR + 5 + hash(i + 3) * 60]], 4, { line: '#e9c46a' });   // straw
   // the little table: a bone, a knife, a rag and a pot of soot (the insert)
   shape(rr(800, 1160, 320, 26, 6), { fill: '#7a5a3a', lw: 6 }); for (const lx of [820, 1090]) shape(rect(lx, 1184, 16, 160), { fill: '#5b3b20', lw: 5 });
-  brush(940, 1150, .5, { a: Math.PI / 2 - .2, kind: 'bone', bristle: '#3a3340' });
+  brush(960, 1130, .95, { a: Math.PI / 2 - .15, kind: 'bone', bristle: '#3a3340' });
   shape(spline([[1010, 1160], [1040, 1120], [1090, 1130], [1100, 1160]]), { fill: '#d8d0c0', lw: 5 }); shape(rr(850, 1100, 50, 60, 8), { fill: '#2a2430', lw: 5 }); text('SUIE', 875, 1130, { font: '800 16px "Baloo 2"', fill: '#fff' });
   // the prisoner at work, a guard passing outside
   bgPerson(1180, FLOOR - 20, .8, t, { coat: '#9a9a8a', skin: '#f2c9a0', hair: '#5a3a24', face: -1 });
@@ -108,7 +109,7 @@ export function w4(t) {
   shape(rr(-220, 420, 400, 120, 10), { fill: '#e9b949', lw: 6 }); text('BROSSES', -20, 482, { font: '400 52px Bungee', fill: '#5a3a8a' });
   // a rack of brushes in rows (the insert), with a few germs sitting in the damp bristles
   shape(rr(780, 900, 380, 300, 10), { fill: '#b8874f', lw: 6 });
-  for (let r = 0; r < 3; r++) for (let c = 0; c < 6; c++) brush(820 + c * 60, 960 + r * 90, .22, { a: 0, kind: 'bone', bristle: '#5a4a40' });
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 5; c++) brush(830 + c * 75, 1000 + r * 130, .3, { a: 0, kind: 'bone', bristle: '#5a4a40' });
   for (const [x, y, i] of [[900, 1020, 1], [1040, 960, 2], [980, 1110, 3]]) microbe(x, y, .55, t, i);
   // a shop counter and a customer
   shape(rr(200, 1140, 380, 200, 10), { fill: '#e9b949', lw: 6 }); bgPerson(380, FLOOR - 180, .55, t, { coat: '#2a2430', hat: 'cap', skin: '#f2c9a0' });
@@ -123,7 +124,7 @@ export function w5(t) {
   // spools of nylon thread, and the brush on its stand drying fast (the insert)
   for (const [x, s] of [[-200, 1], [-60, .8]]) { push(); translate(x, FLOOR - 40); scale(s); shape(rr(-50, -200, 100, 200, 10), { fill: '#f4f7fb', lw: 6 }); for (let k = 0; k < 8; k++) stroke([[-50, -180 + k * 22], [50, -176 + k * 22]], 3, { line: '#c9ced6' }); pop(); }
   shape(rr(820, 1180, 300, 30, 6), { fill: '#c9ced6', lw: 6 }); for (const lx of [840, 1090]) shape(rect(lx, 1208, 16, 140), { fill: '#8a929c', lw: 5 });
-  brush(960, 1170, .6, { a: Math.PI / 2, handle: '#e8452f', bristle: '#ffffff' });
+  brush(960, 1140, 1.0, { a: Math.PI / 2, handle: '#e8452f', bristle: '#ffffff' });
   for (let i = 0; i < 4; i++) { const u = (t * .7 + i / 4) % 1; dot(900 + i * 40, 1090 - u * 80, 6 * (1 - u), `rgba(140,200,255,${1 - u})`); }   // the water leaves quickly
   bgPerson(1180, FLOOR - 40, .7, t, { coat: '#f4f7fb', skin: '#e7b48c', hair: '#3a2416', face: -1 });
   bgPerson(((t * 40) % 1700) - 300, FLOOR - 160, .5, t, { coat: '#3a3340', hat: 'cap', walk: 1, skin: '#b9794f' });
@@ -136,7 +137,7 @@ export function w6(t) {
   ground('#e8452f'); for (let k = 0; k < 4; k++) stroke([[X0, FLOOR + 40 + k * 80], [X1, FLOOR + 40 + k * 80]], 4, { line: '#c22f3a' });
   // the bench, a wall socket, the electric toothbrush plugged in and buzzing (the insert)
   shape(rr(800, 1180, 340, 30, 6), { fill: '#c9ced6', lw: 6 }); for (const lx of [820, 1110]) shape(rect(lx, 1208, 16, 140), { fill: '#8a929c', lw: 5 });
-  brush(960, 1050, .5, { kind: 'electric', handle: '#ffffff', bristle: '#3fb6e8', t });
+  brush(960, 1000, .75, { kind: 'electric', handle: '#ffffff', bristle: '#3fb6e8', t });
   shape(rr(1140, 1080, 50, 70, 8), { fill: '#fff', lw: 5 }); dot(1158, 1110, 4); dot(1172, 1110, 4);
   for (let i = 0; i < 3; i++) stroke(arc(960, 965, 50 + i * 20, 50 + i * 20, -2.4, -.8, 8), 3, { line: '#3fb6e8' });   // bzzz
   bgPerson(1240, FLOOR - 40, .7, t, { coat: '#f4f7fb', skin: '#f2c9a0', hair: '#5a3a24', face: -1 });
@@ -150,7 +151,12 @@ export function w7(t) {
   shape(rr(-120, 820, 70, 80, 10), { fill: '#ffcf3a', lw: 5 }); for (const [a, c] of [[-.3, '#3fb6e8'], [0, '#e8452f'], [.3, '#2fbf9b'], [.5, '#8a3df0']]) brush(-86 + a * 30, 830, .3, { a, handle: c });   // the family cup
   shape(rr(300, 560, 200, 200, 10), { fill: '#fff', lw: 6 }); text('3 MOIS', 400, 620, { font: '400 40px Bungee', fill: '#ff7a6b' }); stroke([[340, 680], [460, 680]], 4); stroke([[340, 720], [430, 720]], 4);   // a reminder on the wall
   // the insert: an hourglass and a toothbrush side by side
-  shape(rr(820, 1180, 300, 30, 6), { fill: '#fff', lw: 6 }); hourglass(900, 1180, .7, t); brush(1040, 1176, .5, { a: Math.PI / 2 - .3, handle: '#2fbf9b' });
+  shape(rr(820, 1180, 300, 30, 6), { fill: '#fff', lw: 6 }); hourglass(900, 1180, .7, t); brush(1050, 1150, .85, { a: Math.PI / 2 - .3, handle: '#2fbf9b' });
   text('2 MIN', 900, 1240, { font: '400 36px Bungee', fill: '#ff7a6b', outlineW: 6 });
   bgPerson(((t * 40) % 1700) - 300, FLOOR - 80, .65, t, { coat: '#3f5bd6', walk: 1, skin: '#b9794f' }); groundBits(71, '#ef8274', '#2fbf9b');
 }
+
+// the brush of each era, held in a hand (x, y = the fist)
+const ERA = { w1: { kind: 'stick' }, w2: { kind: 'bamboo', bristle: '#5a4a40' }, w3: { kind: 'bone', bristle: '#3a3340' }, w4: { kind: 'bone', bristle: '#5a4a40' }, w5: { handle: '#e8452f' }, w6: { kind: 'electric', handle: '#ffffff', bristle: '#3fb6e8' }, w7: { handle: '#2fbf9b' } };
+export function heldBrush(w, t) { const e = ERA[w]; if (!e) return null; return (x, y) => brush(x, y - (e.kind === 'electric' ? 70 : 60), e.kind === 'electric' ? .62 : .75, { ...e, t }); }
+export const malikBrush = (x, y) => brush(x, y - 50, .62, { handle: '#3fb6e8' });

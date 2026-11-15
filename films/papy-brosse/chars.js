@@ -124,6 +124,7 @@ export function papy(P) {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]], ang = Math.atan2(hp[1] - sh[1], hp[0] - sh[0]);
     shape(noodle(sh, hp, arm.bend ?? 0, 46, 40), { fill: PAL.coat, lw: 7, shade: () => fillOnly(ell(sh[0] + 30, sh[1] + 40, 30, 200, 16), PAL.coatS, { boil: .3 }) });
     shape(ell(hp[0] - Math.cos(ang) * 6, hp[1] - Math.sin(ang) * 6, 21, 21, 18), { fill: PAL.shirt, lw: 6 });
+    if (typeof hold === 'function') hold(hp[0], hp[1], ang);
     if (hold === 'book') { book(hp[0] + 40, hp[1] - 30, -.15 - (P.lean ?? 0), { open: P.bookOpen ?? 0, s: .8 }); }
     if (hold === 'dino') { dino(hp[0] - 30, hp[1] + 10, .6, { a: -.1, look: [1, 0] }); }
     hand(hp[0], hp[1], ang, 22, PAL.skinP, { fist: !!hold });
@@ -189,8 +190,9 @@ export function malik(P) {
   const drawArm = (sh, arm, hold) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]];
     shape(noodle(sh, hp, arm.bend ?? 0, 36, 32), { fill: PAL.hood, lw: 6 });
+    if (typeof hold === 'function') hold(hp[0], hp[1], 0);
     if (hold === 'dino') dino(hp[0] + 10, hp[1] + 26, .55, { a: -.15, sick: P.dinoSick || 0, look: [-1, 0] });
-    hand(hp[0], hp[1], Math.atan2(hp[1] - sh[1], hp[0] - sh[0]), 16, PAL.skinM, { fist: arm.fist, flip: sh === shF });   // mirrored hands: both thumbs toward the body
+    hand(hp[0], hp[1], Math.atan2(hp[1] - sh[1], hp[0] - sh[0]), 16, PAL.skinM, { fist: arm.fist || typeof hold === 'function', flip: sh === shF });   // mirrored hands: both thumbs toward the body
   };
   // oversized royal-blue hoodie
   shape(spline([[0, -282], [62, -262], [86, -190], [84, -112], [0, -100], [-84, -112], [-86, -190], [-62, -262]]), {

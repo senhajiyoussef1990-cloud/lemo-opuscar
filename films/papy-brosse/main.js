@@ -62,11 +62,18 @@ function world(w, t, o = {}) {
 const INS = { w1: [960, 1120, 2.3], w2: [960, 1110, 2.3], w3: [960, 1110, 2.4], w4: [960, 1050, 2.0], w5: [960, 1100, 2.4], w6: [960, 1060, 2.0], w7: [960, 1130, 2.3] };
 
 // —— draw both leads with the given poses (Papy is drawn behind when he stands further right) ——
-function duo(t, p, m) { if (p) papy(p); if (m) malik(m); }
+let BR = [null, 0];
+function duo(t, p, m) {   // the brushes: Papy holds the one of the era he is in, Malik holds his own at home
+  const [w] = BR;
+  if (p && !p.holdF && w && w !== 'home' && w !== 'home2') { const h = Wd.heldBrush(w, t); if (h) { p.holdF = h; p.armF = p.armF || { h: [70, 110], bend: -30 }; } }
+  if (m && !m.holdF && (w === 'home' || w === 'home2')) { m.holdF = Wd.malikBrush; m.armF = m.armF || { h: [56, -10], bend: 36 }; }
+  if (p) papy(p); if (m) malik(m);
+}
 
 // ———————————————————— shots ————————————————————
 function shotLine(t, s) {
   const [t0, t1, shot, w, id] = s, tq = q(t), u = seg(t, t0, t1);
+  BR = [w, t];
   const glowHome = w === 'home' && t > B('home', 'BURST')[0];
   const portalOpenHome = glowHome && t < worldSpan('home')[1];
   const base = () => { world(w, t, { glow: glowHome ? 1 : 0 }); if (portalOpenHome) Wd.portal(PORT[0], PORT[1] - 120, 200, t); };
@@ -99,6 +106,7 @@ function shotLine(t, s) {
 }
 function shotBeat(t, s) {
   const [t0, t1, name, w] = s, tq = q(t), u = seg(t, t0, t1);
+  BR = [w, t];
   let p = P_(t), m = M_(t);
   if (name === 'arrive') {
     cam(540, 990, 1.0); world(w, t);
