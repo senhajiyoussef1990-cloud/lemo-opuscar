@@ -51,6 +51,21 @@ export function brush(x, y, s = 1, { a = 0, handle = '#3fb6e8', bristle = '#ffff
   if (kind === 'bone' || kind === 'bamboo') for (let k = 0; k < 3; k++) stroke([[-20, -190 + k * 26], [20, -186 + k * 26]], 1.5, { line: '#7a4a24' });   // tied with thread
   pop();
 }
+export function pig(x, y, s, t) {
+  push(); translate(x, y); scale(s);
+  const P = '#f4b4c0', PS = '#e590a2', D = '#c96a80';
+  for (const [lx, k] of [[-62, 1], [40, 1]]) { shape(rr(lx, -46, 26, 46, 8), { fill: PS, lw: 5 }); shape([[lx, 0], [lx + 12, -10], [lx + 26, 0]], { fill: '#5a3a3a', lw: 4 }); }   // back legs
+  shape(spline([[-120, -60], [-110, -120], [-40, -150], [60, -148], [120, -120], [140, -70], [110, -30], [0, -20], [-100, -30]]), { fill: P, lw: 6, shade: () => { fillOnly(ell(0, -36, 120, 30, 20), PS, { boil: .3 }); for (let k = 0; k < 9; k++) stroke([[-80 + k * 20, -146 + Math.abs(k - 4) * 2], [-76 + k * 20, -160 + Math.abs(k - 4) * 2]], 2.5, { line: D }); } });
+  stroke(spline([[-118, -90], [-140, -100], [-150, -84], [-136, -76], [-146, -64]], false), 4, { line: D });   // curly tail
+  for (const [lx] of [[-30], [80]]) { shape(rr(lx, -40, 26, 46, 8), { fill: P, lw: 5 }); shape([[lx, 6], [lx + 12, -4], [lx + 26, 6]], { fill: '#5a3a3a', lw: 4 }); }   // front legs and hooves
+  // head
+  shape(spline([[90, -150], [150, -170], [196, -140], [206, -90], [180, -60], [120, -60], [96, -100]]), { fill: P, lw: 6 });
+  shape(spline([[110, -158], [104, -210], [140, -176]]), { fill: PS, lw: 5 }); shape(spline([[160, -170], [176, -216], [190, -164]]), { fill: PS, lw: 5 });   // ears
+  shape(ell(212, -96, 22, 26, 16), { fill: PS, lw: 5 }); shape(ell(206, -102, 4, 7, 6), { fill: '#7a3a4a', lw: 0, stroke: false }); shape(ell(218, -92, 4, 7, 6), { fill: '#7a3a4a', lw: 0, stroke: false });   // snout
+  eye(160, -120, 11, 12, { lid: .45, skin: P, lw: 4, pupil: 3.5, look: [.4, 0] }); stroke([[146, -138], [172, -130]], 4);   // a grumpy eye and brow
+  fillOnly(ell(176, -84, 12, 8, 10), 'rgba(240,120,130,.5)', { boil: .2 }); stroke(quad([186, -70], [196, -64], [204, -72], 6), 3);   // cheek, a pout
+  pop();
+}
 export function titleProp(t) { brush(0, 40, .32, { a: .9, handle: '#3fb6e8' }); }
 function hourglass(x, y, s, t, { flowing = 1 } = {}) {
   push(); translate(x, y); scale(s);
@@ -129,9 +144,8 @@ export function w2(t) {
   // the insert: a lacquer tray, a brush with a bamboo handle and a pig-bristle tuft
   shape(rr(820, 1180, 300, 50, 10), { fill: '#2a2430', lw: 6, shade: () => fillOnly(rect(820, 1180, 300, 12), '#c22f3a', { boil: .2 }) });
   brush(960, 1150, 1.0, { a: Math.PI / 2, kind: 'bamboo', bristle: '#5a4a40' });
-  // the pig, who is not pleased
-  push(); translate(420, FLOOR + 10); shape(ell(0, -60, 90, 60, 24), { fill: '#f4b4c0', lw: 6 }); shape(ell(80, -80, 46, 40, 20), { fill: '#f4b4c0', lw: 6 }); shape(ell(116, -76, 18, 14, 12), { fill: '#e890a0', lw: 4 }); dot(110, -78, 3); dot(122, -78, 3);
-  eye(78, -96, 9, 10, { lid: .5, skin: '#f4b4c0', lw: 3, pupil: 3 }); for (const lx of [-50, -10, 30, 60]) shape(rr(lx, -20, 18, 24, 4), { fill: '#f4b4c0', lw: 4 }); stroke(spline([[-90, -70], [-110, -90], [-100, -100], [-112, -110]], false), 4); pop();
+  // the pig, who is not pleased (its bristles are on that brush)
+  pig(430, FLOOR + 16, .95, t);
   figure(1180, FLOOR - 40, .62, t, { era: 'chinese', skin: '#f2c9a0', hairC: '#1d1410', face: -1, arms: -.4 });
   figure(((t * 28) % 1700) - 300, FLOOR - 170, .5, t, { era: 'chinese', skin: '#f2c9a0', walk: 1, top: '#c22f3a', topS: '#9a1f2a', hold: (x, y) => { stroke([[x - 60, y - 10], [x + 60, y - 10]], 5, { line: '#7a4a24' }); } });
 }
@@ -187,8 +201,11 @@ export function w5(t) {
   shape(rr(820, 1180, 300, 30, 6), { fill: '#c9ced6', lw: 6 }); for (const lx of [840, 1090]) shape(rect(lx, 1208, 16, 140), { fill: '#8a929c', lw: 5 });
   brush(960, 1140, 1.0, { a: Math.PI / 2, handle: '#e8452f', bristle: '#ffffff' });
   for (let i = 0; i < 4; i++) { const u = (t * .7 + i / 4) % 1; dot(900 + i * 40, 1060 - u * 80, 6 * (1 - u), `rgba(140,200,255,${1 - u})`); }
-  // a 1930s car rolling past, workers and a lady of the time
-  const cx = ((t * 70) % 2300) - 700; push(); translate(cx, FLOOR - 60); shape(spline([[-200, 0], [-210, -60], [-150, -90], [-90, -160], [60, -160], [120, -90], [210, -70], [220, 0]]), { fill: '#3a3340', lw: 6 }); shape(rr(-80, -150, 120, 60, 10), { fill: '#bfe9ff', lw: 4 }); for (const wx of [-130, 140]) { shape(ell(wx, 0, 44, 44, 18), { fill: '#2a2430', lw: 5 }); shape(ell(wx, 0, 18, 18, 10), { fill: '#e9ecef', lw: 3 }); } shape(rr(200, -60, 20, 30, 4), { fill: '#ffe08a', lw: 3 }); pop();
+  // a conveyor carrying finished brushes into boxes, and a worker pushing a trolley of crates
+  shape(rr(-300, 1200, 560, 40, 8), { fill: '#6e7682', lw: 6 }); for (let i = 0; i < 6; i++) { const bx = -280 + ((i * 100 + t * 50) % 520); brush(bx, 1196, .2, { a: Math.PI / 2, handle: ['#e8452f', '#3fb6e8', '#2fbf9b'][i % 3] }); } for (const lx of [-280, 220]) shape(rect(lx, 1240, 20, 100), { fill: '#4a525c', lw: 5 });
+  shape(rr(280, 1140, 140, 110, 6), { fill: '#c9a46a', lw: 5 }); text('BROSSES', 350, 1196, { font: '800 18px "Baloo 2"', fill: '#5a3a24' });
+  const tx = ((t * 35) % 1900) - 500; push(); translate(tx, FLOOR - 20); shape(rr(-80, -40, 200, 20, 4), { fill: '#6e7682', lw: 4 }); for (const wx of [-60, 100]) shape(ell(wx, -10, 16, 16, 10), { fill: '#2a2430', lw: 4 }); for (let k = 0; k < 2; k++) shape(rr(-70, -150 + k * -0 - k * 0 - (k ? 110 : 0) + 0, 180, 110, 6), { fill: '#c9a46a', lw: 5 }); pop();
+  figure(tx - 120, FLOOR - 20, .62, t, { era: 'thirties', hat: 'cap', hatC: '#3a3340', top: '#5a6a7a', topS: '#4a5a6a', pants: '#3a3340', skin: '#e7b48c', walk: 1, arms: -1.2 });
   figure(1200, FLOOR - 40, .7, t, { era: 'lab', skin: '#e7b48c', hairC: '#3a2416', face: -1 });
   figure(600, FLOOR - 120, .55, t, { era: 'thirties', skin: '#f2c9a0', face: 1 }); figure(680, FLOOR - 120, .52, t, { era: 't_lady', skin: '#b9794f', hairC: '#1d1410', face: -1 });
 }
