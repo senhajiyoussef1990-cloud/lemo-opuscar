@@ -54,4 +54,4 @@ Puis écrire `papy-texte-timeline.txt` (début → fin + réplique de Papy, depu
 Enregistrer sur la branche `le-livre-de-papy` (`git add -f` : le dossier `films/` est ignoré par défaut).
 
 ## Voix enregistrée par l'auteur (CapCut)
-Si l'auteur envoie sa voix : la découper réplique par réplique sur la timeline, la nettoyer, remplacer `voices/<id>.wav` de Papy, relancer `voice.py`… sans retoucher `raw/`, puis events → score → mix → vidéo. Si son débit diffère, recaler toute la vidéo sur sa voix.
+Si l'auteur envoie sa voix : la découper réplique par réplique sur la timeline, la nettoyer, et la mettre à la place de `raw/<id>.wav` des répliques de Papy (en gardant une copie des fichiers de synthèse). Puis relancer `voice.py` (durées et bouche), events → score → mix → vidéo. Si son débit diffère, recaler toute la vidéo sur sa voix.
