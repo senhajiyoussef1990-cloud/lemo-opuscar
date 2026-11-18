@@ -52,8 +52,36 @@ function histBackground(meta,t){
   box(1145,1202,26,142,'#6b513c');
   box(799,1050,365,113,setting==='modern'?'#d6f9f7':'#eee0b9',18);
   for(let i=0;i<3;i++)spark(852+i*110,1007,4);
-  object(965,1100,.83,{kind,t});
+  if(CFG.type==='paper') paperWorkshop(kind,t); else object(965,1100,.83,{kind,t});
 }
+
+function paperWorkshop(kind,t){
+  const phase=(t*.65)%1, sway=Math.sin(t*4)*28;
+  // The worker stays at the table and physically performs the action.
+  figure(650,1370,.64,t,{era:kind==='machine'?'georgian':kind==='recycle'?'modern':kind==='papyrus'?'antique':kind==='fabriano'?'medieval':'chinese',face:1,skin:'#d9a47b',arms:Math.sin(t*4)*.65});
+  const vat=()=>{box(815,1080,350,185,'#886348',25);box(834,1088,310,105,'#8fc8cf',18);};
+  const arm=(x,y)=>{line(760,980,x,y,'#dba57c',22);ring(x,y,16,'#e6b18a');};
+  if(kind==='papyrus'){
+    box(820,1115,335,48,'#b89062');for(let i=0;i<8;i++)line(840+i*38,1110,840+i*38,1010,'#d5ac69',12);
+    arm(915+sway,1030);box(850,985+Math.abs(sway)*.35,255,30,'#8b6947'); // presses the woven strips
+  } else if(kind==='fibre'||kind==='han'){
+    vat();for(let i=0;i<15;i++){let x=850+i*18,y=1120+Math.sin(t*2+i)*25;line(x,y,x+17,y+8,'#d5c69b',5);}
+    const x=972+sway;line(770,940,x,1155,'#9d7651',13);arm(x,1090);
+    // lifting a rectangular sieve out of the water, revealing the wet sheet
+    if(kind==='han'){const lift=45+38*Math.sin(t*2);box(870,1060-lift,205,110,'#7d6045',5);box(883,1072-lift,178,84,'#e9dfb5',4);}
+  } else if(kind==='baghdad'||kind==='fabriano'){
+    vat();box(880,1035,220,120,'#e8ddbb',5);arm(920+sway,1055);
+    if(kind==='fabriano'){box(850,970,280,28,'#6e5a45');box(968,910,32,65,'#765b3c');box(880,1130,220,28,'#c5b493');}
+  } else if(kind==='machine'){
+    box(790,1050,400,185,'#716b65');for(let i=0;i<3;i++){ring(850+i*130,1100,48,'#c1c5bb');ring(850+i*130,1100,14,'#6a7373');}
+    shape(spline([[810,1035],[900,1010],[1020,1020],[1160,995],[1200,1005],[1200,1030],[810,1060]]),{fill:'#f4e7c7',lw:5});
+    arm(815+sway*.25,1015);
+  } else if(kind==='recycle'){
+    vat();for(let i=0;i<9;i++)box(850+i*29,1110+Math.sin(t*3+i)*14,23,14,'#eee9c8',2);
+    arm(970+sway,1100);line(775,940,970+sway,1150,'#937456',12);
+  }
+}
+
 // Individual, hand-drawn family of historical objects.
 export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
  push();translate(x,y);rotate(a);scale(s);
