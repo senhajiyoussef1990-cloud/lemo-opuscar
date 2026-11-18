@@ -37,7 +37,7 @@ function paper(kind,era,t){
    if(s===0){B(919,1010,160,28,'#c5af82');L(950+j*30,973,984+j*30,1080,'#856345',16);artisan(era,t,950+j*30,1020);}
    else if(s===1){L(1005+j*33,965,1010+j*33,1133,'#896947',16);artisan(era,t,1005+j*33,995);}
    else {const y=1003+up; sieve(905,y,t);artisan(era,t,930,y+24);for(let k=0;k<5;k++)L(930+k*37,y+115,930+k*37,y+132+((k+t*20)%18),'#88bfce',3);}
-   if(kind==='fabriano'){B(1090,870,82,105,'#695845');L(1130,890,1130,1020,'#544639',13);B(1067,974+Math.abs(j)*19,115,22,'#7b644c');}
+   if(kind==='fabriano'){B(1090,870,82,105,'#695845');L(1130,890,1130,1020,'#544639',13);B(1067,974+Math.abs(j)*19,115,22,'#7b644c');if(s===2){B(892,1003,240,35,'#d4c5a7');B(889,973+Math.abs(j)*15,246,33,'#725943');artisan(era,t,1017,985+Math.abs(j)*15);}}
  } else if(kind==='machine'){
    B(826,1060,375,175,'#767773');for(let i=0;i<3;i++){C(875+i*133,1095,48,'#c3c6bb');C(875+i*133,1095,9,'#647571');}
    shape(spline([[811,1025],[880,994+wave(t*2)*3],[965,1004],[1040,989],[1154,1007],[1210,1002],[1210,1023],[810,1045]]),{fill:'#f6e9c8',lw:4});
@@ -83,7 +83,7 @@ function umbrella(kind,era,t){
  }else{
    const cy=976+(kind==='sunshade'?0:40);
    const r=kind==='steel'?164:kind==='hanway'?170:170;
-   const open=kind==='auto'?.45+.55*(.5+.5*j):1;
+   const open=kind==='auto' ? (.45+.55*(.5+.5*j)) : 1;
    shape(spline([[-r,0],[-r*.66,-95*open],[-r*.33,-135*open],[0,-145*open],[r*.33,-135*open],[r*.66,-95*open],[r,0],[r*.5,-12],[0,-5],[-r*.5,-12]].map(([x,y])=>[cx+x,cy+y])),{fill:kind==='oilpaper'?'#eaba7e':kind==='steel'?'#8f86c2':kind==='sunshade'?'#f0d18e':'#6aaaba',lw:7});
    for(let i=-2;i<=2;i++)L(cx,cy-145*open,cx+i*65,cy,'#785a4c',5);
    L(cx,cy-140*open,cx,1204,'#5e5858',12);
@@ -128,6 +128,7 @@ function pencil(kind,era,t){
  for(let k=0;k<5;k++)L(917,1080+k*16,1058,1080+k*16,'#d8c6a6',2);
  if(kind==='graphite'){
    B(878,980,236,35,'#45484a');for(let k=0;k<7;k++)L(880+k*32,960,900+k*32,940,'#5b5a59',8);
+   L(900+j*30,906,946+j*30,1010,'#986c48',16);L(903+j*30,911,944+j*30,911,'#74787a',15);
    artisan(era,t,948+j*35,983);
  }else if(kind==='holder'||kind==='wood'){
    B(930,973,225,43,'#c9a465');B(970,980,165,25,'#45494b');
