@@ -13,10 +13,10 @@ export const vdur = id => DURS[id] ?? LINE[id].text.length * .065;
 const PLAN = [
   ['home', [['h1', 'two', { pre: .7 }], ['h2', 'bag'], ['h3', 'cuM'], ['h4', 'cuP'], ['h5', 'cuP', { pre: .3 }], ['h6', 'cuM'], ['h7', 'two'], ['BURST', 1.0], ['TITLE', 2.3], ['h8', 'cuM'], ['h9', 'two', { post: .2 }], ['PACK', .9], ['RUSH', .4]]],
   ['w1', [['ARRIVE', 1.3], ['a1', 'wide'], ['a2', 'ins'], ['a3', 'cuM', { pre: .2 }], ['a4', 'two'], ['OUT', .9], ['RUSH', .35]]],
-  ['w2', [['ARRIVE', 1.05], ['b1', 'cuM'], ['b2', 'wide'], ['b3', 'ins'], ['b4', 'cuM'], ['b5', 'cuP', { pre: .3, post: .5 }], ['OUT', .7], ['RUSH', .35]]],
+  ['w2', [['ARRIVE', 1.05], ['b1', 'wide'], ['b2', 'cuP'], ['b3', 'ins'], ['b4', 'cuM'], ['b5', 'cuP', { pre: .3, post: .5 }], ['OUT', .7], ['RUSH', .35]]],
   ['w3', [['ARRIVE', 1.05], ['c1', 'wide'], ['c2', 'ins'], ['c3', 'cuM', { post: .6 }], ['OUT', .7], ['RUSH', .35]]],
-  ['w4', [['ARRIVE', 1.05], ['d1', 'two'], ['d2', 'ins'], ['d3', 'cuP'], ['d4', 'cuM', { post: .2 }], ['STARE', .8], ['OUT', .7], ['RUSH', .35]]],
-  ['w5', [['ARRIVE', 1.05], ['e1', 'wide'], ['e2', 'cuM'], ['e3', 'two'], ['OUT', .7], ['RUSH', .35]]],
+  ['w4', [['ARRIVE', 1.05], ['d1', 'two'], ['d2', 'ins'], ['d3', 'cuP'], ['d4', 'cuM', { post: .25 }], ['OUT', .7], ['RUSH', .35]]],
+  ['w5', [['ARRIVE', 1.05], ['e1', 'wide'], ['e2', 'cuM'], ['e3', 'ins'], ['OUT', .7], ['RUSH', .35]]],
   ['w6', [['ARRIVE', 1.05], ['f1', 'wide'], ['f2', 'ins'], ['f3', 'cuM'], ['OUT', .7], ['RUSH', .35]]],
   ['w7', [['ARRIVE', 1.05], ['g1', 'wide'], ['g2', 'ins'], ['g3', 'cuM', { post: .5 }], ['OUT', .7], ['RUSH', .35]]],
   ['home2', [['ARRIVE', 1.05], ['SILENCE', 1.9], ['z1', 'two'], ['z2', 'cuM', { pre: .2 }], ['z3', 'cuP', { pre: .3, post: .4 }], ['END', 0], ['o1', 'end', { pre: .6 }], ['o2', 'end', { pre: .4, post: 1.8 }]]],
@@ -48,13 +48,13 @@ export const B = (w, name) => BEATS[`${w}.${name}`];
 
 // World tags (top-left readout): world → [code, description, background, text colour]
 export const TAGS = {
-  w1: ['ÉPOQUE : AUTREFOIS', 'UN PEU PARTOUT', '#e07b39', '#fff'],
-  w2: ['ÉPOQUE : XIXe SIÈCLE', 'CAMP DE SOLDATS', '#c22f3a', '#fff'],
-  w3: ['ÉPOQUE : XXe SIÈCLE', 'SENTIER DE MONTAGNE', '#7b4fd1', '#fff'],
+  w1: ['MONDE ANCIEN · DEPUIS L’ANTIQUITÉ', 'PORTER DES CHARGES', '#e07b39', '#fff'],
+  w2: ['EUROPE · XIXe SIÈCLE', 'CAMP DE SOLDATS', '#c22f3a', '#fff'],
+  w3: ['ALPES · XXe SIÈCLE', 'SENTIER DE MONTAGNE', '#7b4fd1', '#fff'],
   w4: ['SUÈDE · 1960', 'UN ATELIER', '#ffd21f', '#1b2a7a'],
   w5: ['ÉTATS-UNIS · 1967', 'UN CAMPUS, IL PLEUT', '#e8742a', '#fff'],
   w6: ['SUÈDE · 1978', 'UNE ÉCOLE', '#ff6fae', '#fff'],
-  w7: ['AUJOURD’HUI', 'UN MAGASIN DE SACS', '#2fbf9b', '#fff'],
+  w7: ['MONDE · AUJOURD’HUI', 'UN MAGASIN DE SACS', '#2fbf9b', '#fff'],
 };
 // Music cues: one per world, each one's first beat is the cut
 export const CUES = PLAN.map(([w]) => { const [a, b] = worldSpan(w); return { name: w, t0: +a.toFixed(3), t1: +b.toFixed(3) }; });
