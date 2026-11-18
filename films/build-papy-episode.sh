@@ -43,14 +43,8 @@ PY
 echo "::endgroup::"
 
 echo "::group::Image story dans la même direction artistique"
-TITLE_TIME=$(python - "$D" <<'PY'
-import json,sys
-e=json.load(open(f'{sys.argv[1]}/events.json'))
-x=next(x for x in e['ev'] if x['type']=='mark' and x['name']=='home.TITLE')
-print(round(x['t']+max(.2,x['d']*.55),2))
-PY
-)
-node core/render/still.mjs "$D" "$TITLE_TIME" --size 1080x1920 --out "$D/story-base"
+mkdir -p "$D/story-base"
+node films/story-eye-open.mjs "$D" "$D/story-base/cover.jpg"
 python - "$D" "$SLUG" "$TITLE" <<'PY'
 import sys,glob,os
 from PIL import Image, ImageDraw, ImageFont
@@ -60,13 +54,17 @@ assert len(base)==1,base
 im=Image.open(base[0]).convert('RGB')
 overlay=Image.new('RGBA',im.size,(0,0,0,0))
 z=ImageDraw.Draw(overlay)
-z.rounded_rectangle((70,68,1010,270),radius=29,fill=(42,27,69,240),outline=(255,224,102,255),width=8)
+z.rounded_rectangle((70,68,1010,340),radius=29,fill=(42,27,69,240),outline=(255,224,102,255),width=8)
 font='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 small=ImageFont.truetype(font,44)
 large=ImageFont.truetype(font,62)
-z.text((540,122),'NOUVEL ÉPISODE',font=small,anchor='mm',fill=(255,245,214,255))
-z.text((540,206),"AUJOURD'HUI À 18 H",font=large,anchor='mm',fill=(255,224,102,255))
-# Le titre et les personnages restent ceux du rendu de l'épisode, sans les redessiner.
+z.text((540,120),'NOUVEL ÉPISODE',font=small,anchor='mm',fill=(255,245,214,255))
+z.text((540,197),"AUJOURD'HUI À 18 H",font=large,anchor='mm',fill=(255,224,102,255))
+head=ImageFont.truetype(font,52)
+while z.textbbox((0,0),title.upper(),font=head)[2]>790:
+  head=ImageFont.truetype(font,head.size-2)
+z.text((540,287),title.upper(),font=head,anchor='mm',fill=(255,245,214,255))
+# Les personnages sont figés yeux ouverts via cover=1, sans toucher au rendu MP4.
 out=Image.alpha_composite(im.convert('RGBA'),overlay).convert('RGB')
 out.save(f'{d}/story.jpg',quality=94,subsampling=0)
 PY
@@ -80,8 +78,13 @@ echo "::endgroup::"
 
 echo "::group::Vidéo 1080x1920, ${FPS:-24} fps"
 node core/render/video.mjs "$D" --fps "${FPS:-24}" --workers "${RENDER_WORKERS:-3}" --size 1080x1920 --out "$D/out/video.mp4"
-sh core/render/mux.sh "$D/out/video.mp4" "$D/out/mix.wav" "$D/le-livre-de-papy-$SLUG.mp4" "${FPS:-24}" 0
-sh core/render/mux.sh "$D/out/video.mp4" "$D/out/mix-sans-papy.wav" "$D/le-livre-de-papy-$SLUG-sans-voix-papy.mp4" "${FPS:-24}" 0
+# Mode rapide: animer sur les dessins à 12 fps (moteur 2D à 12 fps), livrer une vidéo 24 fps.
+if [[ "${OUTPUT_FPS:-${FPS:-24}}" != "${FPS:-24}" ]]; then
+  ffmpeg -hide_banner -y -loglevel error -i "$D/out/video.mp4" -vf "fps=${OUTPUT_FPS}" -c:v libx264 -preset veryfast -crf 17 -pix_fmt yuv420p -an "$D/out/video-export.mp4"
+  mv "$D/out/video-export.mp4" "$D/out/video.mp4"
+fi
+sh core/render/mux.sh "$D/out/video.mp4" "$D/out/mix.wav" "$D/le-livre-de-papy-$SLUG.mp4" "${OUTPUT_FPS:-${FPS:-24}}" 0
+sh core/render/mux.sh "$D/out/video.mp4" "$D/out/mix-sans-papy.wav" "$D/le-livre-de-papy-$SLUG-sans-voix-papy.mp4" "${OUTPUT_FPS:-${FPS:-24}}" 0
 echo "::endgroup::"
 
 echo "::group::ZIP de livraison"
