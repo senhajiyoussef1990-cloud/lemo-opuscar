@@ -25,7 +25,7 @@ jobs:
           node-version: '22'
       - name: Install graphics and sound tools
         run: |
-          sudo apt-get install -y -qq p7zip-full || true
+          sudo apt-get install -y -qq p7zip-full ffmpeg
           npm ci --no-audit --no-fund
           node node_modules/playwright-core/cli.js install chromium-headless-shell
           python -m venv .venv
