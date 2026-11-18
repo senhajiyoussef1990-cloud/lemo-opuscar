@@ -166,6 +166,10 @@ function headPapy(P) {
   shape(spline([[30, -14], [44, 14], [70, 30], [62, 48], [36, 44], [26, 30]]), { fill: PAL.skinP, lw: 6, shade: () => fillOnly(ell(58, 42, 14, 8, 12), PAL.skinPs, { boil: .3 }) });
   // clean-shaven chin with a little shadow (the bushy white moustache stays: it is his)
   stroke(arc(30, 96, 30, 10, Math.PI * .2, Math.PI * .8, 10), 4, { line: PAL.skinPs });
+  // Papy's round glasses: on his nose, pushed up on his forehead, or (by mistake) Malik's sunglasses
+  if (P.glasses) { const up = P.glasses === 'front' ? -104 : 0, sun = P.glasses === 'sun', fr = '#3a2a20';
+    for (const [gx, gy, r] of [[6, -16, 34], [56, -18, 28]]) shape(ell(gx, gy + up, r, r * .92, 26), { fill: sun ? 'rgba(30,24,40,.88)' : 'rgba(220,240,255,.28)', lw: 6, line: fr, shade: () => fillOnly(ell(gx - r * .35, gy + up - r * .35, r * .25, r * .14, 10), 'rgba(255,255,255,.7)', { boil: .2 }) });
+    stroke(quad([40, -18 + up], [32, -30 + up], [28, -18 + up], 6), 5, { line: fr }); stroke([[-28, -20 + up], [-78, -10 + up]], 5, { line: fr }); }
   const m = P.mouth || {};
   mouth(36, 90, 60, { o: m.o || 0, w: m.w ?? 1, sm: m.sm ?? -.2, lw: 6 });
   shape(spline([[-6, 58], [30, 50], [60, 54], [90, 66], [72, 76], [36, 66], [4, 72]]), { fill: PAL.beard, lw: 6 });   // moustache over the mouth
@@ -225,6 +229,7 @@ function headMalik(P, ner) {
   const look = P.look || [0, 0], shake = ner ? (hash(Math.floor((P.t || 0) * 24) * 1.7) - .5) * 3 * ner : 0, es = P.eyeS ?? 1;
   for (const ex of [-36, 38]) eye(ex, 10, 32 * es, 34 * es, { lid: P.blink ? 1 : (P.lid ?? 0), look, pupil: P.pupil ?? 4, skin: PAL.skinM, jitter: shake, lw: 6 });
   shape(ell(4, 50, 12, 9, 12), { fill: PAL.skinMs, lw: 5 });
+  if (P.sun) { for (const ex of [-36, 38]) shape(rr(ex - 40, -18, 80, 56, 18), { fill: 'rgba(30,24,40,.9)', lw: 6, shade: () => fillOnly(rr(ex - 30, -10, 26, 10, 5), 'rgba(255,255,255,.6)', { boil: .2 }) }); stroke([[-0, 0], [0, 0]], 5); stroke([[-76, 4], [-96, 0]], 5); stroke([[78, 4], [96, 0]], 5); stroke([[-0, 4], [0, 4]], 5); }
   const m = P.mouth || {};
   mouth(2, 76, 46 * (P.mouthS ?? 1), { o: m.o || 0, w: m.w ?? 1, sm: m.sm ?? -.3, lw: 5 });
 }
