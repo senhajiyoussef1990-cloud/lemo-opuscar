@@ -1,4 +1,5 @@
 name: Le Livre de Papy - Savon (episode complet)
+# Dependances audio et polices integrees : synth.py, fonts.css.
 on:
   push:
     branches: [le-livre-de-papy]
