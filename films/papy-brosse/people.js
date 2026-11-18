@@ -17,6 +17,9 @@ const LOOK = {
   fifties:  { top: '#3fb6e8', topS: '#2a8fc2', pants: '#3a3340', shoe: '#2a2430', shirt: '#f4f1ea', hair: 'quiff' },
   f_lady:   { top: '#ff7a9a', topS: '#e05a7a', dress: 1, skirt: 'flare', shoe: '#e8452f', hair: 'pony' },
   lab:      { top: '#f8f7f2', topS: '#d5d8e0', pants: '#4a4250', shoe: '#2a2430', shirt: '#3fb6e8', glasses: 1 },
+  monk:     { top: '#7a4a24', topS: '#5b341d', long: true, belt: '#e9d7a8', hat: 'hood', hatC: '#6b3a1e', shoe: '#3a2414', legs: '#7a4a24', sleeves: 1 },
+  medieval: { top: '#3f7f9a', topS: '#2f6a80', long: true, belt: '#7a4a24', hat: 'coif', hatC: '#c22f3a', shoe: '#5b341d', legs: '#5a4a3a' },
+  swim:     { top: '#e8452f', topS: '#c22f3a', pants: '#e8452f', shoe: '#e7b48c', legs: '#e7b48c', stripes: '#ffffff' },
   modern:   { top: '#2fbf9b', topS: '#24997c', pants: '#2c3550', shoe: '#ffffff', hood: 1 },
   m_lady:   { top: '#ffcf3a', topS: '#e0b020', pants: '#3f5bd6', shoe: '#ffffff', hair: 'bun' },
 };
@@ -48,7 +51,8 @@ export function figure(x, y, s, t, o = {}) {
     if (L.shirt) shape([[-14, -338], [14, -338], [0, -296]], { fill: L.shirt, lw: 4 });
     if (L.tie) shape(spline([[-6, -330], [6, -330], [8, -266], [0, -254], [-8, -266]]), { fill: L.tie, lw: 3 });
     if (L.hood) shape(spline([[-40, -344], [0, -360], [40, -344], [30, -330], [-30, -330]]), { fill: L.topS, lw: 4 });
-    if (L.belt) stroke([[-46, -250], [46, -250]], 6, { line: L.belt }); }
+    if (L.belt) stroke([[-46, -250], [46, -250]], 6, { line: L.belt });
+    if (L.stripes) for (let k = 0; k < 4; k++) stroke([[-46, -320 + k * 36], [46, -320 + k * 36]], 6, { line: L.stripes }); }
   // neck and head
   shape(rr(-10, -362, 20, 30, 6), { fill: skin, lw: 4 });
   push(); translate(4, -404);
@@ -73,6 +77,8 @@ export function figure(x, y, s, t, o = {}) {
   if (L.hat === 'wrap') shape(spline([[-42, -10], [-40, -44], [0, -56], [40, -44], [42, -10], [0, -24]]), { fill: hc, lw: 4 });
   if (L.hat === 'bonnet') shape(spline([[-44, 20], [-50, -30], [0, -54], [44, -34], [30, -14], [-20, -10], [-30, 24]]), { fill: hc, lw: 4 });
   if (L.hat === 'cloche') shape(spline([[-42, -4], [-38, -40], [0, -52], [38, -40], [42, -4], [0, -16]]), { fill: hc, lw: 4 });
+  if (L.hat === 'hood') shape(spline([[-48, 30], [-52, -30], [0, -60], [48, -34], [44, 20], [30, -10], [-20, -20], [-36, 30]]), { fill: hc, lw: 4 });
+  if (L.hat === 'coif') shape(spline([[-42, -6], [-30, -50], [20, -54], [44, -30], [40, -6], [0, -20]]), { fill: hc, lw: 4 });
   if (L.hat === 'cap') { shape([...arc(0, -10, 40, 30, Math.PI, TAU, 12), [60, -10], [-40, -10]], { fill: hc, lw: 4 }); }
   pop();
   // front arm (it may hold something: o.hold(x, y))
