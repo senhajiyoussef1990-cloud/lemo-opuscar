@@ -3,6 +3,10 @@
 import { clamp, lerp, hash, TAU } from '/core/lib.js';
 import { INK, g, push, pop, translate, rotate, scale, shape, fillOnly, stroke, ell, arc, spline, rr, rect, noodle, quad, dot, text } from './toon.js';
 
+// Le mode cover=1 garantit des portraits avec des yeux grands ouverts sur les Stories.
+// Il ne modifie pas les clignements normaux des episodes videos.
+const COVER_EYES = typeof location !== 'undefined' && new URLSearchParams(location.search).get('cover') === '1';
+
 export const PAL = {
   skinP: '#e7b48c', skinPs: '#c98f66', tunic: '#f3e6cc', tunicS: '#d9c6a2', vest: '#7a4a2c', vestS: '#5b341d', kufi: '#f6ecd6', kufiS: '#dccdb0',
   beard: '#ffffff', beardS: '#d9dde6', sandal: '#8a5a34', gogF: '#2f8f83', gogL: '#ffd23f',
@@ -154,9 +158,9 @@ function headPapy(P) {
   fillOnly(ell(26, -114, 28, 10, 14), '#f6d2b4', { boil: .3 }); fillOnly(ell(62, -104, 8, 5, 8), '#f6d2b4', { boil: .3 });
   shape(spline([[-62, -92], [-86, -100], [-108, -72], [-114, -36], [-102, -4], [-110, 26], [-92, 34], [-78, 10], [-82, -30], [-68, -62]]), { fill: PAL.beard, lw: 6, shade: () => fillOnly(ell(-102, 0, 14, 30, 12), PAL.beardS, { boil: .3 }) });
   // eyes (heavy lids = deadpan)
-  const lid = P.blink ? 1 : clamp(P.lid ?? .48, 0, 1), look = P.look || [0, 0];
-  eye(6, -16, 30, 33, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4.5, lower: P.lower ?? .14 });
-  eye(56, -18, 24, 29, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4, lower: P.lower ?? .14 });
+  const lid = COVER_EYES ? .06 : (P.blink ? 1 : clamp(P.lid ?? .48, 0, 1)), look = P.look || [0, 0];
+  eye(6, -16, 30, 33, { lid: P.closed && !COVER_EYES ? 0 : lid, look, closed: Boolean(P.closed) && !COVER_EYES, pupil: 4.5, lower: COVER_EYES ? .02 : (P.lower ?? .14) });
+  eye(56, -18, 24, 29, { lid: P.closed && !COVER_EYES ? 0 : lid, look, closed: Boolean(P.closed) && !COVER_EYES, pupil: 4, lower: COVER_EYES ? .02 : (P.lower ?? .14) });
   for (const [cx, r] of [[-30, 20], [84, 16]]) fillOnly(ell(cx, 40, r, r * .7, 14), 'rgba(240,120,110,.35)', { boil: .3 });   // rosy cheeks
   for (const [ex, rx] of [[6, 24], [56, 19]]) stroke(arc(ex, 20, rx, 8, Math.PI * .15, Math.PI * .85, 10), 4);
   // bushy white brows
@@ -227,7 +231,7 @@ function headMalik(P, ner) {
   stroke([[-66, -32 + br * 2], [-24, -40 - br * 8]], 7); stroke([[66, -32 + br * 2], [24, -40 - br * 8]], 7);
   // big round eyes, trembling pupils
   const look = P.look || [0, 0], shake = ner ? (hash(Math.floor((P.t || 0) * 24) * 1.7) - .5) * 3 * ner : 0, es = P.eyeS ?? 1;
-  for (const ex of [-36, 38]) eye(ex, 10, 32 * es, 34 * es, { lid: P.blink ? 1 : (P.lid ?? 0), look, pupil: P.pupil ?? 4, skin: PAL.skinM, jitter: shake, lw: 6 });
+  for (const ex of [-36, 38]) eye(ex, 10, 32 * es, 34 * es, { lid: COVER_EYES ? 0 : (P.blink ? 1 : (P.lid ?? 0)), look, pupil: P.pupil ?? 4, skin: PAL.skinM, jitter: shake, lw: 6 });
   shape(ell(4, 50, 12, 9, 12), { fill: PAL.skinMs, lw: 5 });
   if (P.sun) { for (const ex of [-36, 38]) shape(rr(ex - 40, -18, 80, 56, 18), { fill: 'rgba(30,24,40,.9)', lw: 6, shade: () => fillOnly(rr(ex - 30, -10, 26, 10, 5), 'rgba(255,255,255,.6)', { boil: .2 }) }); stroke([[-0, 0], [0, 0]], 5); stroke([[-76, 4], [-96, 0]], 5); stroke([[78, 4], [96, 0]], 5); stroke([[-0, 4], [0, 4]], 5); }
   const m = P.mouth || {};
