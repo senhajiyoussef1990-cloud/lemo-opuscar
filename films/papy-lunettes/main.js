@@ -166,15 +166,22 @@ function wipe(t) {
     if (d < .03) screenRect('#e6fdff', .7);
   }
 }
+// Historical plaque: readable, centered in the social-video safe area.
 function tag(t) {
   const s = shotAt(t), w = s[3], T = TAGS[w]; if (!T) return;
-  const [a, b] = worldSpan(w), a1 = a + .9, b1 = b - 1.2; if (t < a1 || t >= b1) return;
-  const [id, desc, bg, fg] = T, n = Math.floor((t - a1) * 40), s1 = id.slice(0, n), s2 = desc.slice(0, Math.max(0, n - id.length));
-  reset(); push(); translate(48, 70); scale(back(seg(t, a1, a1 + .18), 2.2));
-  g.font = '400 58px VT323'; const w1 = Math.max(g.measureText('▶ ' + id).width, g.measureText(desc).width * 44 / 58) + 60;
-  shape(rr(0, 0, Math.max(380, w1), 124, 12), { fill: bg, lw: 7 });
-  text('▶ ' + s1 + (n < id.length && Math.floor(t * 6) % 2 ? '█' : ''), 24, 40, { font: '400 58px VT323', fill: fg, align: 'left' });
-  text(s2, 26, 92, { font: '400 44px VT323', fill: fg, align: 'left' });
+  const [a, b] = worldSpan(w), a1 = a + .9, b1 = b - .25;
+  if (t < a1 || t >= b1) return;
+  const [id, desc] = T;
+  const parts = id.split(' · ');
+  const place = parts.length > 1 ? parts[0] : 'ÉPOQUE HISTORIQUE';
+  const period = parts.length > 1 ? parts.slice(1).join(' · ') : id.replace(/^ÉPOQUE\s*:\s*/, '');
+  reset(); push(); translate(W / 2, H * .135);
+  scale(0.92 + 0.08 * back(seg(t, a1, a1 + .3), 1.4));
+  shape(rr(-435, -93, 870, 186, 22), { fill: '#f4dca4', line: '#34291e', lw: 7, boil: 0 });
+  shape(rr(-418, -76, 836, 152, 14), { stroke: true, line: '#a47a44', lw: 2, boil: 0 });
+  text(place, 0, -50, { font: '700 37px "Baloo 2"', fill: '#493625' });
+  text(period, 0, 2, { font: '900 55px "Baloo 2"', fill: '#2a2018' });
+  text(desc, 0, 58, { font: '700 29px "Baloo 2"', fill: '#59422a' });
   pop();
 }
 // subtitles: heavy rounded white type, thick black outline, the speaker pill above
