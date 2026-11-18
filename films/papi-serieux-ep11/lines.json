@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi ! Mon téléphone n'arrête pas de sonner !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "Il a quelque chose à dire, ou il se gratte ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Papi, sérieux ? J'ai cinquante notifications !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+5%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-10%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "Quand on voulait nous parler, on frappait à la porte.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Et si je rate quelque chose d'important ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+2%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "Regarde celui qui est devant toi.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Papi… c'était quoi, ton message ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+0%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "Que ta crêpe refroidit depuis dix minutes !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-10%",
+    "pitch": "-12Hz"
+  }
+]
