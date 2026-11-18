@@ -78,10 +78,10 @@ python "$D/tools/mix.py"
 NO_PAPY=1 MIX_OUT=mix-sans-papy.wav python "$D/tools/mix.py"
 echo "::endgroup::"
 
-echo "::group::Vidéo 1080x1920, 24 fps"
-node core/render/video.mjs "$D" --fps 24 --workers 3 --size 1080x1920 --out "$D/out/video.mp4"
-sh core/render/mux.sh "$D/out/video.mp4" "$D/out/mix.wav" "$D/le-livre-de-papy-$SLUG.mp4" 24 0
-sh core/render/mux.sh "$D/out/video.mp4" "$D/out/mix-sans-papy.wav" "$D/le-livre-de-papy-$SLUG-sans-voix-papy.mp4" 24 0
+echo "::group::Vidéo 1080x1920, ${FPS:-24} fps"
+node core/render/video.mjs "$D" --fps "${FPS:-24}" --workers "${RENDER_WORKERS:-3}" --size 1080x1920 --out "$D/out/video.mp4"
+sh core/render/mux.sh "$D/out/video.mp4" "$D/out/mix.wav" "$D/le-livre-de-papy-$SLUG.mp4" "${FPS:-24}" 0
+sh core/render/mux.sh "$D/out/video.mp4" "$D/out/mix-sans-papy.wav" "$D/le-livre-de-papy-$SLUG-sans-voix-papy.mp4" "${FPS:-24}" 0
 echo "::endgroup::"
 
 echo "::group::ZIP de livraison"
