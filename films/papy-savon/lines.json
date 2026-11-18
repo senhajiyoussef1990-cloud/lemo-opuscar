@@ -1,0 +1,314 @@
+[
+  {
+    "id": "h1",
+    "who": "MALIK",
+    "text": "Papy ! Tu te laves les mains avec ce tout petit bout de savon ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "h2",
+    "who": "PAPY",
+    "text": "Il est petit, mais courageux. Il a déjà vécu beaucoup de lavages.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "h3",
+    "who": "MALIK",
+    "text": "Et le savon, ça existe depuis quand ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "h4",
+    "who": "PAPY",
+    "text": "Depuis bien avant ton dernier bain. Et ça, c'est dire.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "h5",
+    "who": "MALIK",
+    "text": "Hé ! Je me suis lavé hier !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "h6",
+    "who": "PAPY",
+    "text": "Le Livre de Papy. Édition… mains propres.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "h7",
+    "who": "MALIK",
+    "text": "Oh non ! On va encore voyager dans le temps ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "a1",
+    "who": "PAPY",
+    "text": "Mésopotamie, vers deux mille cinq cents ans avant notre ère. On connaît déjà des mélanges pour nettoyer.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "a2",
+    "who": "PAPY",
+    "text": "Avec des graisses, de l'eau et des cendres, on peut fabriquer une matière savonneuse. On nettoie surtout la laine.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "a3",
+    "who": "MALIK",
+    "text": "Beurk ! Ça ne sent pas la fraise !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "a4",
+    "who": "PAPY",
+    "text": "Évidemment. Et ces mélanges anciens ne sont pas nos savons doux d'aujourd'hui.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "b1",
+    "who": "PAPY",
+    "text": "Rome antique. Aux bains, on étale de l'huile sur la peau.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "b2",
+    "who": "PAPY",
+    "text": "Puis on retire l'huile et la saleté avec un racloir appelé strigile.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "b3",
+    "who": "MALIK",
+    "text": "Et le savon, alors ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "b4",
+    "who": "PAPY",
+    "text": "Pas dans ce bain.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "b5",
+    "who": "PAPY",
+    "text": "Mais des Gaulois emploient déjà une pâte de graisse et de cendres, notamment pour les cheveux.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "c1",
+    "who": "PAPY",
+    "text": "Au fil des siècles, à Alep, en Syrie, on développe un véritable savoir-faire du savon.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "c2",
+    "who": "PAPY",
+    "text": "De l'huile d'olive, de l'huile de laurier, de grandes cuves. Puis on découpe les pains et on les laisse sécher.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "c3",
+    "who": "MALIK",
+    "text": "On dirait des milliers de petits cubes !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "c4",
+    "who": "PAPY",
+    "text": "Oui. Et crois-moi, ce ne sont pas des morceaux de fromage.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "d1",
+    "who": "PAPY",
+    "text": "Marseille, en France, seize cent quatre-vingt-huit. Un édit encadre la fabrication du savon.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "d2",
+    "who": "PAPY",
+    "text": "Les savonniers utilisent de l'huile d'olive et travaillent dans de grandes chaudières.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "d3",
+    "who": "MALIK",
+    "text": "C'est donc là qu'apparaît le gros cube vert ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "d4",
+    "who": "PAPY",
+    "text": "Cette tradition se développe. Un savon très pratique, surtout pour laver le linge.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "e1",
+    "who": "PAPY",
+    "text": "France, mille sept cent quatre-vingt-onze. Nicolas Leblanc met au point un procédé pour fabriquer de la soude à partir du sel.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "e2",
+    "who": "PAPY",
+    "text": "Cette soude devient une matière première essentielle. Les savonneries peuvent produire davantage.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "e3",
+    "who": "MALIK",
+    "text": "On passe du petit atelier à la grande usine !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "f1",
+    "who": "PAPY",
+    "text": "En mille huit cent vingt-trois, le chimiste Michel-Eugène Chevreul explique la réaction qui transforme les graisses en savon.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "f2",
+    "who": "PAPY",
+    "text": "Cette réaction a un nom : la saponification.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "f3",
+    "who": "MALIK",
+    "text": "La sapo… la saponi… Je peux juste dire savon ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "g1",
+    "who": "PAPY",
+    "text": "Aujourd'hui, on trouve des savons solides et liquides pour les usages du quotidien.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "g2",
+    "who": "PAPY",
+    "text": "Le savon aide l'eau à décoller la graisse et à emporter les saletés de nos mains.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "g3",
+    "who": "MALIK",
+    "text": "Même après avoir joué avec mon dinosaure ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "g4",
+    "who": "PAPY",
+    "text": "Surtout après le dinosaure. On frotte bien partout, puis on rince.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "z1",
+    "who": "PAPY",
+    "text": "Nous voilà rentrés. Et regarde : mon savon n'a pas disparu.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "z2",
+    "who": "MALIK",
+    "text": "Papy… tu as une grosse tache sur ta blouse !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+14%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "z3",
+    "who": "PAPY",
+    "text": "Et n'oublie pas de te laver les mains !",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "o1",
+    "who": "PAPY",
+    "text": "C'était Le Livre de Papy. Chaque jour, un objet du quotidien et son histoire.",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "id": "o2",
+    "who": "PAPY",
+    "text": "Abonne-toi, et à demain pour notre prochain voyage !",
+    "voice": "fr-CH-FabriceNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  }
+]
