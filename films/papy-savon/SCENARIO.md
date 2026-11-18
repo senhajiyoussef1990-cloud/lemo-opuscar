@@ -10,6 +10,20 @@
 
 *Décor et animation :* Malik tient un petit savon. Papy le taquine. Le livre s’illumine, le vortex cyan/violet s’ouvre. Carton-titre « L’HISTOIRE DU SAVON ».
 
+**Malik :** « Papy ! Tu te laves les mains avec ce tout petit bout de savon ? »
+
+**Papy :** « Il est petit, mais courageux. Il a déjà vécu beaucoup de lavages. »
+
+**Malik :** « Et le savon, ça existe depuis quand ? »
+
+**Papy :** « Depuis bien avant ton dernier bain. Et ça, c'est dire. »
+
+**Malik :** « Hé ! Je me suis lavé hier ! »
+
+**Papy :** « Le Livre de Papy. Édition… mains propres. »
+
+**Malik :** « Oh non ! On va encore voyager dans le temps ? »
+
 ### Mésopotamie — vers 2500 av. J.-C.
 
 *Décor et animation :* Atelier en briques de terre, jarres, laine brute, bol de préparation savonneuse. Figurants en habits antiques. Gros plan sur le mélange, non sur un savon de toilette moderne.
