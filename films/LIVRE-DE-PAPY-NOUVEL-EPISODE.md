@@ -53,5 +53,13 @@ Puis écrire `papy-texte-timeline.txt` (début → fin + réplique de Papy, depu
 1. la vidéo **sans la voix de Papy** ; 2. `papy-texte-timeline.txt` ; 3. la publication (titre YouTube Shorts, texte TikTok/Instagram/Facebook, description YouTube).
 Enregistrer sur la branche `le-livre-de-papy` (`git add -f` : le dossier `films/` est ignoré par défaut).
 
+## Contrôle qualité obligatoire des images Story (yeux ouverts)
+- **Ne jamais utiliser un photogramme aléatoire** pour la Story : Papy et Malik peuvent cligner des yeux.
+- Les personnages doivent avoir des **pupilles clairement visibles**, les paupières ouvertes et le regard expressif.
+- Intégrer dans `chars.js` un mode URL `cover=1` qui force `blink=false`, une ouverture de paupière suffisante (Papy `lid=.06`, `lower=.02`, Malik `lid=0`) et désactive `closed` durant la capture **uniquement**.
+- Créer l'image avec `node films/story-eye-open.mjs "$D" "$D/story-base.jpg"` (plan `home.TITLE`), qui passe `cover=1` automatiquement. Ajouter l'encart de publication.
+- Vérifier visuellement **le visuel Story final** avant de créer le ZIP. Ce mode n'affecte pas le clignement naturel des vidéos.
+- Si seul le visuel Story est à corriger, **conserver les MP4 déjà rendus** et reconditionner le ZIP : ne pas refaire 30 minutes de rendu pour une image.
+
 ## Voix enregistrée par l'auteur (CapCut)
 Si l'auteur envoie sa voix : la découper réplique par réplique sur la timeline, la nettoyer, et la mettre à la place de `raw/<id>.wav` des répliques de Papy (en gardant une copie des fichiers de synthèse). Puis relancer `voice.py` (durées et bouche), events → score → mix → vidéo. Si son débit diffère, recaler toute la vidéo sur sa voix.
