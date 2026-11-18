@@ -42,3 +42,11 @@ Ragtime léger jusqu'au tournant, puis piano doux et lent jusqu'à la fin. Bruit
 
 Un MP4 par épisode, `papi-serieux-epN.mp4` (version 2 : `papi-serieux-epN-v2.mp4`, sans écraser l'original), avec son fichier `.srt`.
 Avant de finir un épisode : quatre images au moins (l'accroche, l'opening, un sous-titre, l'outro) pour vérifier que les personnages sont ceux de l'épisode 3 et que chaque sous-titre est lisible et sans faute.
+
+## Mains et doigts — règle de production obligatoire dès l'épisode 8 corrigé
+
+- Les gants de Gaston et Léo montrent **quatre doigts (index, majeur, annulaire, auriculaire) et un pouce distinct**. Les phalanges repliées doivent rester lisibles.
+- Quand un personnage lève l'index, le doigt levé se situe **du côté du pouce** ; les trois autres doigts sont repliés, séparés par des traits de contour. Le résultat ne doit jamais donner l'impression d'un majeur levé.
+- Les gestes « open », « point », « grab », « thumb » et « fist » utilisent la fonction `glove()` corrigée du fichier `parts.js`. Pour de nouveaux épisodes, recopier ce fichier depuis l'épisode 11 (ou une version ultérieure corrigée), jamais depuis un épisode ancien non corrigé.
+- Vérifier visuellement les mains au moins une fois dans **chaque posture** utilisée (doigt levé, salut, objet tenu, main ouverte), particulièrement en gros plan, et conserver le même style noir et blanc.
+- Ne pas modifier les voix Henri/Éloïse, le visage des personnages, la cuisine, l'accroche, le générique ou l'outro lorsque seules les mains sont en correction.
