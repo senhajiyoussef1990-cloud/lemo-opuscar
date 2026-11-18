@@ -1,0 +1,85 @@
+name: Le Livre de Papy - 5 episodes double format 9x16 et 16x9
+on:
+  push:
+    branches: [le-livre-de-papy]
+    paths: ['.github/workflows/papy-five-dual.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preflight:
+    name: Verifier les 5 decors et les 2 cadrages
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer Chromium
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Verifier scripts et photogrammes dans les deux formats
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          for slug in papier montre parapluie cle crayon; do
+            python films/papy-batch5/prepare.py "$slug"
+            d="films/papy-$slug"
+            node --check "$d/main.js"
+            node --check "$d/story.js"
+            node --check "$d/objects.js"
+            bash "$d/tools/fonts.sh"
+            node core/render/still.mjs "$d" 15 55 95 --size 1080x1920 --out "$d/preflight-9x16"
+            node core/render/still.mjs "$d" 15 55 95 --size 1920x1080 --q wide=1 --out "$d/preflight-16x9"
+          done
+  render:
+    name: Episode ${{ matrix.slug }} - Shorts + YouTube
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        slug: [papier, montre, parapluie, cle, crayon]
+    steps:
+      - name: Recuperer les sources
+        uses: actions/checkout@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Chromium
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Bibliotheques audio, voix et images
+        run: python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Rendu 9:16 + 16:9 (voix Papy et Malik dans les deux)
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: bash films/papy-batch5/build-dual.sh "${{ matrix.slug }}"
+      - name: Livrer un ZIP par episode
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: livre-de-papy-${{ matrix.slug }}-short-plus-youtube
+          path: films/papy-${{ matrix.slug }}/le-livre-de-papy-${{ matrix.slug }}-double-format.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
