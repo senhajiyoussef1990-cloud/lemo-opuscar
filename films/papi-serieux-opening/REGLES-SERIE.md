@@ -50,3 +50,18 @@ Avant de finir un épisode : quatre images au moins (l'accroche, l'opening, un s
 - Les gestes « open », « point », « grab », « thumb » et « fist » utilisent la fonction `glove()` corrigée du fichier `parts.js`. Pour de nouveaux épisodes, recopier ce fichier depuis l'épisode 11 (ou une version ultérieure corrigée), jamais depuis un épisode ancien non corrigé.
 - Vérifier visuellement les mains au moins une fois dans **chaque posture** utilisée (doigt levé, salut, objet tenu, main ouverte), particulièrement en gros plan, et conserver le même style noir et blanc.
 - Ne pas modifier les voix Henri/Éloïse, le visage des personnages, la cuisine, l'accroche, le générique ou l'outro lorsque seules les mains sont en correction.
+
+## Story d'annonce — modèle obligatoire pour tous les prochains épisodes
+
+Chaque épisode est livré avec **une affiche Story 9:16 unique** fondée sur le visuel de référence fourni pour l'épisode 7 et les affiches approuvées des épisodes 8, 9 et 10. La Story est un **visuel illustré**, pas une simple carte-titre, et son intrigue doit correspondre au sujet de l'épisode.
+
+- Univers : dessin animé « Papi, sérieux ? », Gaston et Léo reconnaissables, animation rétro américaine des années 1930, noir et blanc avec dominante sépia/crème, bordure ornementale noire/crème et cuisine cohérente.
+- Texte clairement lisible, en français : « ÉPISODE N », « Papi découvre [sujet] », puis « Disponible aujourd’hui à 18h ». Respecter la vraie numérotation de l'épisode.
+- Illustration principale : Gaston et Léo dans une situation liée exactement à l'épisode (téléphone, pizza, selfie, notifications, etc.). Les mains ont cinq doigts lisibles, avec index correctement identifié.
+- Numéro N également visible dans un médaillon ou sur un emblème en bas ; composition verticale 1080 × 1920 et typographie avec forte lisibilité mobile.
+- Exporter **STORY_EPN.jpg** (JPEG haute qualité) et **STORY_EPN.png** dans le ZIP final, à côté du MP4, du SRT et de PUBLICATIONS-RESEAUX.md. Vérifier l'image réelle avant publication ; une carte générique provisoire ne satisfait pas cette règle.
+- Générer la Story adaptée au scénario de chaque nouvel épisode et enregistrer une copie dans le dossier de l'épisode avant de créer le ZIP.
+
+## Opening de chaque vidéo — règle obligatoire
+
+Conserver l'accroche initiale puis le générique original ; **l'opening doit afficher explicitement « ÉPISODE N — [titre réel de l'épisode] »**, lisible à l'écran. Ne pas se contenter du nom de la série. Ensuite viennent le corps de l'épisode, la conclusion, l'annonce « Demain — Épisode N+1 : [titre] », et la formule « À demain ». Toujours contrôler la version exportée après le montage.
