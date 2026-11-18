@@ -1,0 +1,59 @@
+name: Le Livre de Papy - sac a dos et brosse (refonte lunettes)
+
+on:
+  push:
+    branches: [le-livre-de-papy]
+    paths:
+      - '.github/workflows/papy-remakes.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - episode: papy-brosse
+            slug: brosse-a-dents
+            titre: Brosse a dents
+          - episode: papy-portail-sac-a-dos
+            slug: sac-a-dos
+            titre: Sac a dos
+    steps:
+      - name: Code source
+        uses: actions/checkout@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Librairies JS et navigateur Chromium
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Audio, voix et images
+        run: python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Fabriquer les MP4 et le ZIP
+        env:
+          PYTHONUNBUFFERED: '1'
+          LEMO_ANGLE: swiftshader
+        run: bash films/build-papy-episode.sh 'films/${{ matrix.episode }}' '${{ matrix.slug }}' '${{ matrix.titre }}'
+      - name: Mettre les livrables a disposition
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: le-livre-de-papy-${{ matrix.slug }}
+          path: films/${{ matrix.episode }}/le-livre-de-papy-${{ matrix.slug }}-livraison.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
