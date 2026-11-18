@@ -1,0 +1,66 @@
+name: Le Livre de Papy - corriger les Stories (sans refaire les MP4)
+
+on:
+  push:
+    branches: [le-livre-de-papy]
+    paths: ['.github/workflows/papy-story-eyes.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reconditionner:
+    name: Story - ${{ matrix.slug }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        include:
+          - episode: papy-brosse
+            slug: brosse-a-dents
+            prior_run: 44340482384
+            prior_artifact: le-livre-de-papy-brosse-a-dents
+          - episode: papy-portail-sac-a-dos
+            slug: sac-a-dos
+            prior_run: 44348122870
+            prior_artifact: le-livre-de-papy-sac-a-dos
+    steps:
+      - name: Source actuelle
+        uses: actions/checkout@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Chromium
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Telecharger le ZIP deja calcule
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.prior_artifact }}
+          run-id: ${{ matrix.prior_run }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: anciens
+      - name: Refaire uniquement la Story, yeux ouverts
+        env:
+          LEMO_ANGLE: swiftshader
+        run: bash films/fix-story-zip.sh "films/${{ matrix.episode }}" "${{ matrix.slug }}" anciens
+      - name: Livrer le ZIP corrige
+        uses: actions/upload-artifact@v4
+        with:
+          name: le-livre-de-papy-${{ matrix.slug }}-story-corrigee
+          path: le-livre-de-papy-${{ matrix.slug }}-story-yeux-ouverts.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
