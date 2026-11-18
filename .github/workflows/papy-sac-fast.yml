@@ -1,0 +1,49 @@
+name: Le Livre de Papy - Sac a dos (rendu rapide)
+on:
+  push:
+    branches: [le-livre-de-papy]
+    paths: ['.github/workflows/papy-sac-fast.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sac-a-dos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Code source
+        uses: actions/checkout@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Navigateur Chromium
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Voix et outils audio
+        run: python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Rendu du seul sac a dos
+        env:
+          PYTHONUNBUFFERED: '1'
+          LEMO_ANGLE: swiftshader
+          FPS: '18'
+          RENDER_WORKERS: '4'
+        run: bash films/build-papy-episode.sh films/papy-portail-sac-a-dos sac-a-dos "Sac a dos"
+      - name: ZIP a telecharger
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: le-livre-de-papy-sac-a-dos
+          path: films/papy-portail-sac-a-dos/le-livre-de-papy-sac-a-dos-livraison.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
