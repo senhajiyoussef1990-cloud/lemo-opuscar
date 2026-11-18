@@ -15,7 +15,7 @@ const PLAN = [
   ['w1', [['ARRIVE', 1.05], ['a1', 'wide'], ['a2', 'ins'], ['a3', 'cuM', { post: .3 }], ['OUT', .7], ['RUSH', .35]]],
   ['w2', [['ARRIVE', 1.05], ['b1', 'wide'], ['b2', 'cuM'], ['b3', 'ins', { pre: .3, post: .5 }], ['b4', 'cuM', { post: .3 }], ['OUT', .7], ['RUSH', .35]]],
   ['w3', [['ARRIVE', 1.05], ['c1', 'wide'], ['c2', 'two'], ['c3', 'ins'], ['c4', 'cuM'], ['c5', 'cuP'], ['OUT', .7], ['RUSH', .35]]],
-  ['w4', [['ARRIVE', 1.05], ['d1', 'wide'], ['d2', 'ins'], ['d3', 'cuM', { post: .2 }], ['STARE', .8], ['OUT', .7], ['RUSH', .35]]],
+  ['w4', [['ARRIVE', 1.05], ['d1', 'wide'], ['d2', 'ins'], ['d3', 'cuM', { post: .25 }], ['OUT', .7], ['RUSH', .35]]],
   ['w5', [['ARRIVE', 1.05], ['e1', 'wide'], ['e2', 'ins'], ['e3', 'cuM'], ['OUT', .7], ['RUSH', .35]]],
   ['w6', [['ARRIVE', 1.05], ['f1', 'wide'], ['f2', 'cuM'], ['f3', 'cuP'], ['OUT', .7], ['RUSH', .35]]],
   ['w7', [['ARRIVE', 1.05], ['g1', 'wide'], ['g2', 'ins'], ['g3', 'cuM'], ['g4', 'cuP', { post: .3 }], ['OUT', .7], ['RUSH', .35]]],
@@ -48,13 +48,13 @@ export const B = (w, name) => BEATS[`${w}.${name}`];
 
 // World tags (top-left readout): world → [code, description, background, text colour]
 export const TAGS = {
-  w1: ['ÉPOQUE : ANTIQUITÉ', 'DES BÂTONNETS À MÂCHER', '#e07b39', '#fff'],
+  w1: ['ÉGYPTE ANCIENNE · ANTIQUITÉ', 'DES BÂTONNETS À MÂCHER', '#e07b39', '#fff'],
   w2: ['CHINE · FIN DU XVe SIÈCLE', 'MANCHE EN BAMBOU', '#c22f3a', '#fff'],
   w3: ['ANGLETERRE · VERS 1780', 'UNE PRISON DE LONDRES', '#5a5a6a', '#fff'],
-  w4: ['ÉPOQUE : XIXe SIÈCLE', 'BROSSES EN SÉRIE', '#7b4fd1', '#fff'],
+  w4: ['EUROPE · XIXe SIÈCLE', 'BROSSES EN SÉRIE', '#7b4fd1', '#fff'],
   w5: ['ÉTATS-UNIS · 1938', 'LES POILS EN NYLON', '#2a7f8a', '#fff'],
   w6: ['SUISSE · 1954', 'LA BROSSE ÉLECTRIQUE', '#e8452f', '#fff'],
-  w7: ['AUJOURD’HUI', 'DEUX MINUTES, MATIN ET SOIR', '#2fbf9b', '#fff'],
+  w7: ['MONDE · AUJOURD’HUI', 'DEUX MINUTES, MATIN ET SOIR', '#2fbf9b', '#fff'],
 };
 // Music cues: one per world, each one's first beat is the cut
 export const CUES = PLAN.map(([w]) => { const [a, b] = worldSpan(w); return { name: w, t0: +a.toFixed(3), t1: +b.toFixed(3) }; });
