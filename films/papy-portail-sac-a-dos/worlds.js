@@ -3,6 +3,8 @@
 import { clamp, lerp, hash, vnoise, TAU } from '/core/lib.js';
 import { INK, g, push, pop, translate, rotate, scale, shape, fillOnly, stroke, ell, arc, spline, rr, rect, noodle, quad, dot, text, bands } from './toon.js';
 import { PAL, backpack, toyCar, dino, eye, mouth, book } from './chars.js';
+import { figure, FIG_K, VIEW } from './people.js';
+export { VIEW };
 export const FLOOR = 1380;
 const X0 = -900, X1 = 2000;
 const ground = (col, line = true) => shape(rect(X0, FLOOR - 40, X1 - X0, 1000), { fill: col, lw: line ? 6 : 0, stroke: line });
@@ -87,13 +89,12 @@ function basketProp(x, y) {
 }
 // a porter with a basket on his back, a strap on the forehead
 export function porter(x, y, t, bend = 0, col = '#3f7f9a') {
-  push(); translate(x, y); rotate(bend * .35);
-  shape(spline([[-60, -300], [50, -300], [44, -150], [-54, -150]]), { fill: '#e0b062', lw: 6, shade: () => { for (let k = 0; k < 4; k++) stroke([[-70, -280 + k * 34], [60, -280 + k * 34]], 3, { line: '#b88438' }); } });
-  shape(noodle([0, -150], [0, -10], 0, 26, 22), { fill: '#8a5a3a', lw: 6 });
-  shape(spline([[-30, -250], [40, -250], [52, -120], [-40, -120]]), { fill: col, lw: 6 });
-  shape(ell(20, -290, 40, 40, 24), { fill: '#a8714a', lw: 6 }); stroke(quad([-40, -300], [20, -350], [60, -296], 10), 6, { line: '#7a4a24' });
-  eye(34, -292, 9, 10, { lid: .5, skin: '#a8714a', lw: 4, pupil: 3 });
+  // Le porteur est désormais un figurant anatomique complet, dans l'échelle de Papy.
+  push(); translate(x - 80, y - 30); scale(.78);
+  shape(spline([[-85, -330], [55, -330], [65, -115], [-85, -115]]),
+    { fill: '#e0b062', lw: 6, shade: () => { for (let k = 0; k < 5; k++) stroke([[-84, -310 + k * 35], [64, -310 + k * 35]], 4, { line: '#b88438' }); } });
   pop();
+  figure(x, y, .84, t, { era: 'antique', top: col, topS: '#2f6380', skin: '#a8714a', face: 1, arms: -.6 });
 }
 function beetle(x, y, t) {
   push(); translate(x, y);
@@ -157,6 +158,8 @@ export function w3(t) {
   w3Details(t);
   framePack(980, FLOOR - 10, 'wood');
   framePack(1150, FLOOR - 10, 'metal');
+  figure(-60, FLOOR - 100, .6, t, { era: 'thirties', top: '#c22f3a',
+    skin: '#e7b48c', walk: 1, face: 1 });
   marmot(80, FLOOR + 10, t);
 }
 export function framePack(x, y, kind = 'wood') {
@@ -196,6 +199,10 @@ export function w4(t) {
   push(); translate(980, 1180); scale(.62); framePack(0, 0, 'metal'); pop();
   shape(rr(1080, 1120, 100, 60, 28), { fill: '#3fb6a0', lw: 5 }); stroke(arc(1110, 1150, 16, 20, 0, TAU, 12), 3);
   w4Details(t);
+  // Artisans de l'atelier : visage, mains, pieds et tenue cohérents avec 1960.
+  figure(440, FLOOR - 25, .68, t, { era: 'fifties', skin: '#f2c9a0',
+    face: 1, arms: -.7, top: '#f3e6cc', topS: '#d5d8e0' });
+  figure(1260, FLOOR - 30, .62, t, { era: 'f_lady', skin: '#b9794f', face: -1 });
   fox(160, FLOOR + 6, t);
 }
 function fox(x, y, t) {   // a polar fox that just stares
@@ -222,16 +229,15 @@ export function w5(t, { rain = 1 } = {}) {
   // students with backpacks
   w5Details(t);
   for (const [x, c] of [[940, '#3a6f4a'], [1140, '#8a3a5a']]) student(x, FLOOR - 10, c, t);
+  // Gros plan propre à 1967 : sac de campus en toile sur une table.
+  shape(rr(825, 1250, 350, 28, 7), { fill: '#9a6232', lw: 6 });
+  for (const x of [850, 1135]) shape(rect(x, 1278, 20, 95), { fill: '#7a4a24', lw: 4 });
+  campusPack(980, 1240, 1.0);
   if (rain) for (let i = 0; i < 70; i++) { const x = hash(i) * 2000 - 400, y = ((hash(i + 3) * 2200 + t * 1500) % 2200) - 200; stroke([[x, y], [x - 8, y + 46]], 4, { line: '#dfe8ee', boil: .2 }); }
 }
 function student(x, y, col, t) {
-  push(); translate(x, y);
-  shape(rr(-64, -330, 70, 130, 18), { fill: '#e8742a', lw: 5 });   // backpack, seen from the side, over the books
-  for (const lx of [-16, 16]) shape(noodle([lx, -190], [lx, -10], 0, 26, 22), { fill: '#2c3550', lw: 5 });
-  shape(spline([[-40, -340], [40, -340], [50, -180], [-50, -180]]), { fill: col, lw: 6 });
-  shape(ell(10, -390, 48, 50, 24), { fill: '#e7b48c', lw: 6 }); shape([...arc(10, -400, 52, 44, Math.PI, TAU, 16), [62, -396], [-42, -396]], { fill: '#5a3a24', lw: 5 });
-  eye(26, -392, 10, 11, { lid: .3, skin: '#e7b48c', lw: 4, pupil: 3 });
-  pop();
+  bgPerson(x, y, .75, t, { coat: col, skin: '#e7b48c', hair: '#5a3a24',
+    era: 'modern', pack: 'modern', packCol: '#e8742a', face: -1 });
 }
 
 // ———————————————————— w6: Sweden 1978, a school — candy pink and apple green ————————————————————
@@ -244,6 +250,9 @@ export function w6(t) {
   // kids with square backpacks
   w6Details(t);
   for (const [x, c] of [[930, '#ffd21f'], [1130, '#3fb6e8']]) kid(x, FLOOR - 6, c, t);
+  // Modèle carré de l'époque, bien visible sur un présentoir.
+  shape(rr(890, 1280, 270, 32, 8), { fill: '#fff6e0', lw: 6 });
+  squarePack(1015, 1270, 1.0, '#ffd21f');
   walkingBook(130 + Math.sin(t * 1.2) * 60, FLOOR + 10, t);
 }
 export function squarePack(x, y, s = 1, col = '#ffd21f') {
@@ -258,14 +267,8 @@ export function squarePack(x, y, s = 1, col = '#ffd21f') {
   pop();
 }
 function kid(x, y, col, t) {
-  push(); translate(x, y);
-  squarePack(-40, -150, .7, col);
-  for (const lx of [-12, 12]) shape(noodle([lx, -140], [lx, -8], 0, 22, 20), { fill: '#2c3550', lw: 5 });
-  shape(spline([[-34, -250], [34, -250], [40, -130], [-40, -130]]), { fill: '#fff6e0', lw: 6 });
-  stroke([[-40, -240], [-44, -150]], 7, { line: '#5a3a24' });
-  shape(ell(6, -296, 44, 46, 24), { fill: '#f2c9a0', lw: 6 }); shape([...arc(6, -306, 48, 40, Math.PI, TAU, 16), [54, -300], [-42, -300]], { fill: '#f3d36a', lw: 5 });
-  eye(22, -298, 9, 10, { lid: 0, skin: '#f2c9a0', lw: 4, pupil: 3 });
-  pop();
+  bgPerson(x, y, .53, t, { coat: '#fff6e0', skin: '#f2c9a0',
+    era: 'modern', pack: 'square', packCol: col, hair: '#f3d36a', face: -1 });
 }
 function walkingBook(x, y, t) {
   push(); translate(x, y);
@@ -285,6 +288,7 @@ export function w7(t) {
   shape(rr(860, 1140, 340, 200, 14), { fill: '#fff', lw: 7 });   // a counter
   text('SOLDES : 0 %', 1030, 1240, { font: '400 40px VT323', fill: '#ff7a6b' });
   w7Details(t);
+  modernPack(1030, 1140, 1.08);
 }
 // the insert in w7: one modern pack, all pockets and straps
 export function modernPack(x, y, s = 1) {
@@ -310,24 +314,41 @@ function groundBits(seed, stone, tuft) {
 }
 function clouds(t, y0, col = '#ffffff') { for (let i = 0; i < 3; i++) { const x = ((t * 12 + i * 600) % 1900) - 400, y = y0 + i * 90; shape(spline([[x - 120, y], [x - 90, y - 50], [x - 20, y - 70], [x + 50, y - 60], [x + 110, y - 30], [x + 120, y], [x, y + 16]]), { fill: col, lw: 6 }); } }
 // a small background person: s = scale, walk = phase (0 = standing), pack: 'basket' | 'havre' | 'frame' | 'square' | 'modern' | null
-export function bgPerson(x, y, s, t, { coat = '#3f7f9a', skin = '#a8714a', hair = '#2a1a10', hat = null, pack = null, packCol = '#c9b27a', face = 1, walk = 0, umbrella = null, legs = '#2c3550' } = {}) {
-  push(); translate(x, y); scale(s * face, s);
-  const ph = walk ? Math.floor(t * 8) % 2 : 0, lg = walk ? (ph ? 14 : -14) : 0;
-  if (pack === 'basket') shape(spline([[-70, -300], [20, -300], [10, -160], [-60, -160]]), { fill: '#e0b062', lw: 6, shade: () => { for (let k = 0; k < 4; k++) stroke([[-80, -280 + k * 32], [30, -280 + k * 32]], 3, { line: '#b88438' }); } });
-  if (pack === 'havre') { shape(rr(-74, -270, 56, 90, 8), { fill: packCol, lw: 5 }); shape(rr(-80, -296, 70, 30, 14), { fill: '#3f5aa8', lw: 4 }); }
-  if (pack === 'frame') { for (const sx of [-70, -26]) shape(rr(sx - 5, -330, 10, 220, 4), { fill: '#b9c2cf', lw: 4 }); shape(rr(-78, -300, 60, 120, 14), { fill: packCol, lw: 5 }); }
-  if (pack === 'square') shape(rr(-74, -270, 56, 80, 8), { fill: packCol, lw: 5 });
-  if (pack === 'modern') { shape(rr(-74, -276, 58, 96, 16), { fill: packCol, lw: 5 }); shape(rr(-68, -220, 46, 30, 8), { fill: '#ffcf3a', lw: 4 }); }
-  for (const [lx, d] of [[-14, lg], [14, -lg]]) shape(noodle([lx, -150], [lx + d, -6], 0, 24, 20), { fill: legs, lw: 5 });
-  shape(spline([[-38, -270], [38, -270], [46, -140], [-46, -140]]), { fill: coat, lw: 6 });
-  if (umbrella) { stroke([[30, -250], [30, -440]], 5); shape([...arc(30, -430, 120, 70, Math.PI, TAU, 18), [150, -430], [-90, -430]], { fill: umbrella, lw: 6 }); }
-  shape(ell(6, -310, 40, 42, 22), { fill: skin, lw: 6 });
-  shape([...arc(6, -318, 44, 36, Math.PI, TAU, 14), [50, -312], [-38, -312]], { fill: hair, lw: 5 });
-  if (hat === 'shako') shape(rr(-30, -400, 70, 62, 6), { fill: '#1d2a55', lw: 5, shade: () => fillOnly(rect(-30, -352, 70, 10), '#c22f3a', { boil: .2 }) });
-  if (hat === 'cap') shape([...arc(6, -334, 44, 26, Math.PI, TAU, 12), [70, -330], [-38, -330]], { fill: '#c22f3a', lw: 5 });
-  if (hat === 'scarf') shape([...arc(6, -318, 48, 44, Math.PI * .9, TAU * 1.05, 14), [52, -290], [-40, -290]], { fill: '#e07b39', lw: 5 });
-  eye(22, -312, 8, 9, { lid: .25, skin, lw: 3, pupil: 2.6 });
-  pop();
+export function bgPerson(x, y, s, t, {
+  coat = '#3f7f9a', skin = '#a8714a', hair = '#2a1a10', hat = null,
+  pack = null, packCol = '#c9b27a', face = 1, walk = 0, umbrella = null,
+  legs = '#2c3550', era = null
+} = {}) {
+  if (VIEW.ins && walk) return;
+  const period = era || (hat === 'shako' ? 'guard18'
+    : pack === 'basket' ? 'antique' : pack === 'havre' ? 'victorian'
+    : pack === 'frame' ? 'thirties' : 'modern');
+  // Sac porté derrière le corps : matières, anses, boucles et bretelles.
+  if (pack) {
+    push(); translate(x, y); scale(s * FIG_K * face, s * FIG_K);
+    const c = packCol, w = pack === 'square' ? 102 : 90;
+    if (pack === 'basket') {
+      shape(spline([[-110, -336], [0, -350], [-5, -142], [-100, -152]]), { fill: '#d9a358', lw: 5 });
+      for (let j = 0; j < 6; j++) stroke([[-104, -324 + j * 27], [-8, -331 + j * 29]], 4, { line: '#aa7838' });
+    } else {
+      if (pack === 'frame') {
+        for (const dx of [-108, -15]) shape(rr(dx, -380, 10, 270, 3), { fill: '#b9c2cf', lw: 4 });
+      }
+      shape(rr(-114, -340, w, 162, 12), { fill: c, lw: 5 });
+      shape(rr(-104, -244, w - 20, 50, 7), { fill: pack === 'havre' ? '#c9b27a' : '#3fb6e8', lw: 4 });
+      stroke([[-100, -240], [-42, -240]], 3, { line: '#2a2430' });
+      shape(rr(-72, -250, 10, 18, 3), { fill: '#e9b949', lw: 2 });
+      for (const dx of [-104, -45]) stroke([[dx, -330], [dx + 12, -180]], 4, { line: '#5b3b20' });
+    }
+    pop();
+  }
+  const holding = umbrella ? (hx, hy) => {
+    stroke([[hx, hy], [hx, hy - 195]], 5);
+    shape([...arc(hx, hy - 194, 130, 72, Math.PI, TAU, 18),
+      [hx + 130, hy - 194], [hx - 130, hy - 194]], { fill: umbrella, lw: 6 });
+  } : null;
+  figure(x, y, s, t, { era: period, top: coat, skin, hairC: hair,
+    face, walk, pants: legs, hold: holding, hat: hat === 'shako' ? 'tricorn' : undefined });
 }
 const birds = (t, y0 = 200, n = 4) => { for (let i = 0; i < n; i++) { const x = ((t * 60 + i * 260) % 1600) - 300, y = y0 + i * 40 + Math.sin(t * 2 + i) * 12, f = Math.sin(t * 10 + i) * 8; stroke([[x - 22, y - f], [x, y], [x + 22, y - f]], 5); } };
 function tree(x, y, s = 1, col = '#4f9a3a', trunk = '#7a4a24') { push(); translate(x, y); scale(s); shape(rr(-14, -200, 28, 200, 8), { fill: trunk, lw: 6 }); shape(spline([[-130, -200], [-110, -300], [-40, -350], [40, -350], [110, -300], [130, -200], [0, -170]]), { fill: col, lw: 6 }); pop(); }
@@ -395,3 +416,35 @@ export function w7Details(t) {
   bgPerson(((t * 35) % 1700) - 300, FLOOR - 60, .7, t, { coat: '#8a3df0', pack: 'modern', packCol: '#2fbf9b', walk: 1, skin: '#e7b48c', face: 1 });
   push(); translate(-60, FLOOR - 40); shape(rr(-20, -60, 40, 60, 6), { fill: '#ff7a6b', lw: 5 }); for (const [a, l] of [[-.5, 120], [0, 150], [.5, 110]]) shape(spline([[0, -60], [Math.sin(a) * l * .5 - 14, -60 - l * .6], [Math.sin(a) * l, -60 - l], [Math.sin(a) * l * .5 + 14, -60 - l * .6]]), { fill: '#2fbf9b', lw: 4 }); pop();
 }
+
+/** Les sept versions, tenues par Papy à côté de son visage, comme les lunettes. */
+export function heldPack(w, t) {
+  if (!/^w[1-7]$/.test(w)) return null;
+  return (x, y) => {
+    push(); translate(x + 55, y + 38); scale(.32);
+    if (w === 'w1') basketProp(0, 0);
+    else if (w === 'w2') havresacProp(0, 0, t);
+    else if (w === 'w3') framePack(0, 0, 'wood');
+    else if (w === 'w4') framePack(0, 0, 'metal');
+    else if (w === 'w5') campusPack(0, 0, .98);
+    else if (w === 'w6') squarePack(0, 0, 1, '#ffd21f');
+    else modernPack(0, 0, 1);
+    pop();
+  };
+}
+
+export function campusPack(x, y, s = 1) {
+  push(); translate(x, y); scale(s);
+  shape(rr(-95, -255, 190, 245, 24), { fill: '#6e8a3a', lw: 7,
+    shade: () => fillOnly(rect(35, -260, 56, 260), '#4a6530', { boil: .3 }) });
+  shape(rr(-86, -263, 172, 65, 15), { fill: '#c9b27a', lw: 6 });
+  shape(rr(-78, -126, 156, 98, 14), { fill: '#59753a', lw: 5 });
+  stroke([[-75, -116], [75, -116]], 4, { line: '#2a2430' });
+  for (const xx of [-54, 54]) {
+    stroke([[xx, -240], [xx, -70]], 7, { line: '#b88450' });
+    shape(rr(xx - 10, -126, 20, 18, 3), { fill: '#e9b949', lw: 3 });
+  }
+  stroke(quad([-45, -254], [0, -299], [45, -254], 9), 6);
+  pop();
+}
+export function titleProp(t) { modernPack(0, 30, .32); }
