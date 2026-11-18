@@ -14,7 +14,8 @@ Style : sitcom de science-fiction animée (Sci-Fi Sitcom Toon), vertical 1080 ×
 - **Décors riches qui disent l'époque au premier coup d'œil** : architecture, objets, véhicules et animaux **cohérents avec le lieu** (rien d'anachronique ni de hors-sujet : pas de voiture dans une usine, etc.). Sol détaillé, ciel vivant.
 - **Animaux** : bien dessinés, anatomie lisible, mignons et expressifs.
 - **Pas de temps mort** : aucun plan sans réplique où un personnage regarde ailleurs (pas de « STARE ») ; les seuls silences sont l'ouverture du portail, les arrivées et le retour à la maison.
-- Panoramique sur le décor au début de chaque plan large ; étiquette d'époque en haut ; sous-titres remontés (y ≈ 1560).
+- Panoramique sur le décor au début de chaque plan large ; sous-titres remontés (y ≈ 1560).
+- **Étiquette historique — modèle obligatoire `films/papy-lunettes/main.js`** : cartouche parchemin beige opaque, bord brun foncé, centré horizontalement vers 13–15 % de la hauteur (1080 × 1920). Première ligne : lieu ; deuxième ligne : **année ou période en gros et gras** ; troisième ligne : description. Apparition douce, maintien pendant l'époque, jusqu'à la transition de sortie. Ne plus placer le cartouche en haut à gauche ; préserver les sous-titres.
 
 ## Faits
 - Dates, noms et lieux vérifiés ; pas de logo de marque dessiné ; sources notées dans le dossier de l'épisode.
