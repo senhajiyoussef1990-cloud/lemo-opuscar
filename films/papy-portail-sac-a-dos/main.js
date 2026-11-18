@@ -1,4 +1,4 @@
-// Le Livre de Papy — « L'histoire du sac à dos », sitcom edition (Sci-Fi Sitcom Toon), vertical 1080 × 1920
+// Le Livre de Papy — « L'histoire du sac à dos », modèle visuel papy-lunettes (1080 × 1920)
 import { clamp, lerp, seg, ss, eo, ei, back, hash, TAU } from '/core/lib.js';
 import { W, H, INK, init, frame, g, push, pop, translate, rotate, scale, shape, fillOnly, stroke, ell, arc, rr, rect, spline, dot, text, screenRect, reset } from './toon.js';
 import { papy, malik, PAL, book, dino, backpack } from './chars.js';
@@ -64,14 +64,25 @@ function world(w, t, o = {}) {
   else Wd[w](t, o);
 }
 // insert targets per world: [cx, cy, zoom]
-const INS = { w1: [980, 1180, 2.3], w2: [880, 1160, 2.5], w3: [1060, 1110, 1.7], w4: [1020, 1080, 2.2], w6: [892, 1170, 2.7], w7: [1030, 1060, 2.2] };
+const INS = { w1: [980, 1180, 2.3], w2: [930, 1110, 2.25], w3: [980, 1070, 1.9], w4: [980, 1080, 2.2], w5: [970, 1130, 2.25], w6: [990, 1150, 2.3], w7: [1030, 1060, 2.2] };
+let BR = [null, 0];
 
 // —— draw both leads with the given poses (Papy is drawn behind when he stands further right) ——
-function duo(t, p, m) { if (p) papy(p); if (m) malik(m); }
+function duo(t, p, m) {
+  // Comme dans l'épisode des lunettes, Papy présente l'objet de chaque époque.
+  const [w] = BR;
+  if (p && !p.holdF && w && w !== 'home' && w !== 'home2') {
+    const h = Wd.heldPack(w, t);
+    if (h) { p.holdF = h; p.armF = p.armF || { h: [76, 110], bend: -32 }; }
+  }
+  if (p) papy(p);
+  if (m) malik(m);
+}
 
 // ———————————————————— shots ————————————————————
 function shotLine(t, s) {
   const [t0, t1, shot, w, id] = s, tq = q(t), u = seg(t, t0, t1);
+  BR = [w, t]; Wd.VIEW.ins = shot === 'ins';
   const glowHome = w === 'home' && t > B('home', 'BURST')[0];
   const portalOpenHome = glowHome && t < worldSpan('home')[1];
   const base = () => { world(w, t, { glow: glowHome ? 1 : 0 }); if (portalOpenHome) Wd.portal(PORT[0], PORT[1] - 120, 200, t); };
@@ -96,11 +107,12 @@ function shotLine(t, s) {
   else if (shot === 'cuP') { const z = id === 'h5' ? lerp(2.0, 2.5, ss(u)) : id === 'b5' ? lerp(2.1, 2.35, u) : 2.05; cam(PX - 10, 850, z); base(); duo(t, p, m); }
   else if (shot === 'cuM') { const sh = id === 'h8' ? 10 * (1 - seg(t, t0 + .4, t0 + 1.2)) * (t > t0 + .3 ? 1 : 0) : 0; cam(MX + 20, 1100, 2.2, sh, t); base(); duo(t, p, m); }
   else if (shot === 'bag') { cam(370, 1260, 2.3); base(); duo(t, p, m); }
-  else if (shot === 'ins') { const [cx, cy, z] = INS[w]; cam(cx, cy, z * lerp(1, 1.06, u)); base(); if (w === 'w7') Wd.modernPack(1030, 1140, 1.1); if (w === 'w6') Wd.squarePack(892, 1250, 1.2, '#ffd21f'); }
+  else if (shot === 'ins') { const [cx, cy, z] = INS[w]; cam(cx, cy, z * lerp(1, 1.06, u)); base(); }
   else if (shot === 'end') endCard(t);
 }
 function shotBeat(t, s) {
   const [t0, t1, name, w] = s, tq = q(t), u = seg(t, t0, t1);
+  BR = [w, t]; Wd.VIEW.ins = false;
   let p = P_(t), m = M_(t);
   if (name === 'arrive') {
     cam(540, 990, 1.0); world(w, t);
@@ -139,7 +151,6 @@ function shotBeat(t, s) {
     else malik({ ...m, sq: landSq(t, t0 + .45), mouth: { o: 0, sm: .5 } });
     papy(p); return;
   }
-  if (name === 'stare') { cam(lerp(300, 260, u), lerp(1200, 1180, u), lerp(1.5, 1.6, u)); world(w, t); duo(t, { ...p, lid: .4, look: [1, .3] }, { ...m, look: [-1, .5], nerv: .5 }); return; }
   if (name === 'silence') {   // home again: a long silence, a very slow push; Papy takes the dino out of the bag
     cam(lerp(540, 520, u), lerp(1000, 1020, u), lerp(1.0, 1.12, u)); world(w, t);
     const reach = ss(seg(tq, t0 + .5, t0 + 1.0)) * (1 - ss(seg(tq, t0 + 1.2, t0 + 1.6)));
@@ -163,13 +174,19 @@ function wipe(t) {
 }
 function tag(t) {
   const s = shotAt(t), w = s[3], T = TAGS[w]; if (!T) return;
-  const [a, b] = worldSpan(w), a1 = a + .9, b1 = b - 1.2; if (t < a1 || t >= b1) return;
-  const [id, desc, bg, fg] = T, n = Math.floor((t - a1) * 40), s1 = id.slice(0, n), s2 = desc.slice(0, Math.max(0, n - id.length));
-  reset(); push(); translate(48, 70); scale(back(seg(t, a1, a1 + .18), 2.2));
-  g.font = '400 58px VT323'; const w1 = Math.max(g.measureText('▶ ' + id).width, g.measureText(desc).width * 44 / 58) + 60;
-  shape(rr(0, 0, Math.max(380, w1), 124, 12), { fill: bg, lw: 7 });
-  text('▶ ' + s1 + (n < id.length && Math.floor(t * 6) % 2 ? '█' : ''), 24, 40, { font: '400 58px VT323', fill: fg, align: 'left' });
-  text(s2, 26, 92, { font: '400 44px VT323', fill: fg, align: 'left' });
+  const [a, b] = worldSpan(w), a1 = a + .9, b1 = b - .25;
+  if (t < a1 || t >= b1) return;
+  const [id, desc] = T;
+  const parts = id.split(' · ');
+  const place = parts.length > 1 ? parts[0] : 'ÉPOQUE HISTORIQUE';
+  const period = parts.length > 1 ? parts.slice(1).join(' · ') : id.replace(/^ÉPOQUE\s*:\s*/, '');
+  reset(); push(); translate(W / 2, H * .135);
+  scale(0.92 + 0.08 * back(seg(t, a1, a1 + .3), 1.4));
+  shape(rr(-435, -93, 870, 186, 22), { fill: '#f4dca4', line: '#34291e', lw: 7, boil: 0 });
+  shape(rr(-418, -76, 836, 152, 14), { stroke: true, line: '#a47a44', lw: 2, boil: 0 });
+  text(place, 0, -50, { font: '700 37px "Baloo 2"', fill: '#493625' });
+  text(period, 0, 2, { font: '900 55px "Baloo 2"', fill: '#2a2018' });
+  text(desc, 0, 58, { font: '700 29px "Baloo 2"', fill: '#59422a' });
   pop();
 }
 // subtitles: heavy rounded white type, thick black outline, the speaker pill above
