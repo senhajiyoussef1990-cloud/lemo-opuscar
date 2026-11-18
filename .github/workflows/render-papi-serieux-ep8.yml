@@ -54,7 +54,7 @@ jobs:
           LIB: ${{ github.workspace }}
         run: |
           set -eux
-          sh films/papi-serieux-opening/assemble-v2.sh films/papi-serieux-ep8 3.5 "Demain : Papi contre le selfie" films/papi-serieux-ep8/papi-serieux-ep8-v2.mp4
+          SUB="Abonne-toi, petit. À demain pour l'épisode 9 !" sh films/papi-serieux-opening/assemble-v2.sh films/papi-serieux-ep8 3.5 "Demain — Épisode 9 : Le selfie" films/papi-serieux-ep8/papi-serieux-ep8-v2.mp4
           ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 films/papi-serieux-ep8/papi-serieux-ep8-v2.mp4
       - name: Upload completed film
         if: always()
