@@ -1,4 +1,4 @@
-// Le Livre de Papy — « L'histoire du sac à dos », sitcom edition (Sci-Fi Sitcom Toon), vertical 1080 × 1920
+// Le Livre de Papy — « L'histoire de la brosse à dents », modèle visuel papy-lunettes (1080 × 1920)
 import { clamp, lerp, seg, ss, eo, ei, back, hash, TAU } from '/core/lib.js';
 import { W, H, INK, init, frame, g, push, pop, translate, rotate, scale, shape, fillOnly, stroke, ell, arc, rr, rect, spline, dot, text, screenRect, reset } from './toon.js';
 import { papy, malik, PAL, book, dino, backpack } from './chars.js';
@@ -145,7 +145,6 @@ function shotBeat(t, s) {
     else malik({ ...m, sq: landSq(t, t0 + .45), mouth: { o: 0, sm: .5 } });
     papy(p); return;
   }
-  if (name === 'stare') { cam(lerp(300, 260, u), lerp(1200, 1180, u), lerp(1.5, 1.6, u)); world(w, t); duo(t, { ...p, lid: .4, look: [1, .3] }, { ...m, look: [-1, .5], nerv: .5 }); return; }
   if (name === 'silence') {   // home again: Papy puts a two-minute hourglass on the table
     cam(lerp(560, 600, u), lerp(1000, 1020, u), lerp(1.0, 1.08, u)); world(w, t);
     const reach = ss(seg(tq, t0 + .3, t0 + .9)) * (1 - ss(seg(tq, t0 + 1.3, t0 + 1.7)));
@@ -167,13 +166,19 @@ function wipe(t) {
 }
 function tag(t) {
   const s = shotAt(t), w = s[3], T = TAGS[w]; if (!T) return;
-  const [a, b] = worldSpan(w), a1 = a + .9, b1 = b - 1.2; if (t < a1 || t >= b1) return;
-  const [id, desc, bg, fg] = T, n = Math.floor((t - a1) * 40), s1 = id.slice(0, n), s2 = desc.slice(0, Math.max(0, n - id.length));
-  reset(); push(); translate(48, 70); scale(back(seg(t, a1, a1 + .18), 2.2));
-  g.font = '400 58px VT323'; const w1 = Math.max(g.measureText('▶ ' + id).width, g.measureText(desc).width * 44 / 58) + 60;
-  shape(rr(0, 0, Math.max(380, w1), 124, 12), { fill: bg, lw: 7 });
-  text('▶ ' + s1 + (n < id.length && Math.floor(t * 6) % 2 ? '█' : ''), 24, 40, { font: '400 58px VT323', fill: fg, align: 'left' });
-  text(s2, 26, 92, { font: '400 44px VT323', fill: fg, align: 'left' });
+  const [a, b] = worldSpan(w), a1 = a + .9, b1 = b - .25;
+  if (t < a1 || t >= b1) return;
+  const [id, desc] = T;
+  const parts = id.split(' · ');
+  const place = parts.length > 1 ? parts[0] : 'ÉPOQUE HISTORIQUE';
+  const period = parts.length > 1 ? parts.slice(1).join(' · ') : id.replace(/^ÉPOQUE\s*:\s*/, '');
+  reset(); push(); translate(W / 2, H * .135);
+  scale(0.92 + 0.08 * back(seg(t, a1, a1 + .3), 1.4));
+  shape(rr(-435, -93, 870, 186, 22), { fill: '#f4dca4', line: '#34291e', lw: 7, boil: 0 });
+  shape(rr(-418, -76, 836, 152, 14), { stroke: true, line: '#a47a44', lw: 2, boil: 0 });
+  text(place, 0, -50, { font: '700 37px "Baloo 2"', fill: '#493625' });
+  text(period, 0, 2, { font: '900 55px "Baloo 2"', fill: '#2a2018' });
+  text(desc, 0, 58, { font: '700 29px "Baloo 2"', fill: '#59422a' });
   pop();
 }
 // subtitles: heavy rounded white type, thick black outline, the speaker pill above
