@@ -21,6 +21,7 @@ out.mkdir(parents=True,exist_ok=True)
 for name in ['chars.js','people.js','worlds.js','index.html']:
     shutil.copy2(BASE/name,out/name)
 shutil.copy2(BATCH/'objects.js',out/'objects.js')
+shutil.copy2(BATCH/'workshops.js',out/'workshops.js')
 for name in ['score.py','synth.py','mix.py','voice.py','foley.py','fonts.sh']:
     shutil.copy2(BASE/'tools'/name,out/'tools'/name)
 shutil.copy2(BASE/'fonts/fonts.css',out/'fonts/fonts.css')
@@ -55,6 +56,14 @@ checks=[
 for a,b in checks:
     if a not in main: raise RuntimeError('Template changed, missing: '+a)
     main=main.replace(a,b)
+# Synchronize artisan activity and materials with the currently spoken line,
+# including the moving worker's hand during the full insert shot.
+assert "BR = [w, t]; Wd.VIEW.ins = shot === 'ins';" in main
+main=main.replace("BR = [w, t]; Wd.VIEW.ins = shot === 'ins';",
+                  "BR = [w, t]; Wd.setAction(id,u); Wd.VIEW.ins = shot === 'ins';")
+assert "BR = [w, t]; Wd.SUN.on = false;" in main
+main=main.replace("BR = [w, t]; Wd.SUN.on = false;",
+                  "BR = [w, t]; Wd.setAction(null,0); Wd.SUN.on = false;")
 main=main.replace("vertical 1080 × 1920","dual 9:16 et 16:9")
 (out/'main.js').write_text(main,encoding='utf8')
 story=(BASE/'story.js').read_text(encoding='utf8')
