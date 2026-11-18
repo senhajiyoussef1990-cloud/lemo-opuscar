@@ -48,12 +48,7 @@ function histBackground(meta,t){
   figure(265,FLOOR-20,.61,t,{era,skin:'#d5a277',face:1,arms:-.6});
   figure(-250+((t*25)%1700),FLOOR-300,.41,t,{era,skin:'#e4b78b',walk:1,face:1});
   figure(1300,FLOOR-230,.37,t,{era,skin:'#b98462',face:-1});
-  // Display counter, prominently showing the historical object during each insert shot.
-  box(772,1170,420,35,setting==='modern'?'#8aafba':'#926d4f');
-  box(809,1202,26,142,'#6b513c');
-  box(1145,1202,26,142,'#6b513c');
-  box(799,1050,365,113,setting==='modern'?'#d6f9f7':'#eee0b9',18);
-  for(let i=0;i<3;i++)spark(852+i*110,1007,4);
+  // Documentary animation dominates the insert: no decorative display counter.
   renderWorkshop(CFG.type,kind,era,t);
 }
 
