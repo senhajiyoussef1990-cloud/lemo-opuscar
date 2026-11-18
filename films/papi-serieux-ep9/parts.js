@@ -122,25 +122,64 @@ export function mouth(cx, cy, w, type = 'smile', o = {}) {
   if (type === 'grin' || type === 'beam') { stroke(arc(cx - w / 2 - 3, cy - w * up, w * .08, w * .1, Math.PI * .5, Math.PI * 1.5, 6), lw * .8); stroke(arc(cx + w / 2 + 3, cy - w * up, w * .08, w * .1, -Math.PI * .5, Math.PI * .5, 6), lw * .8); }
 }
 
-// White glove: in local coordinates the wrist is at the origin, fingers point +x; type: open fist point grab wave thumb
+// Anatomically readable 1930s rubber-hose gloves: four fingers plus a separate thumb.
+// Especially important: a raised index finger must NEVER resemble a raised middle finger.
 export function glove(x, y, ang, type = 'open', k = 1, o = {}) {
   push(); translate(x, y); rotate(ang); scale(k, k * (o.flip ? -1 : 1));
-  const fw = 13.5, parts = [];
-  const finger = (a, len, w = fw, curl = 0) => { const b = [22 + Math.cos(a * D2R) * len, Math.sin(a * D2R) * len]; const c = [22 + Math.cos(a * D2R) * len * .55 + Math.cos((a + 90) * D2R) * curl, Math.sin(a * D2R) * len * .55 + Math.sin((a + 90) * D2R) * curl]; parts.push(ribbon(quad([22, 0], c, b, 8), w, w * .96)); };
-  if (type === 'open' || type === 'wave') { finger(-34, 30); finger(-4, 33); finger(27, 29); finger(-88, 22, fw * 1.05); }
-  else if (type === 'point') { finger(-6, 44, fw * .95); finger(-95, 18, fw * 1.05); }
-  else if (type === 'grab') { finger(-26, 24, fw, 9); finger(2, 26, fw, 9); finger(28, 22, fw, 9); finger(-88, 19, fw * 1.05); }
-  else if (type === 'thumb') { finger(-90, 26, fw * 1.1); }
-  else if (type === 'fist') { finger(-90, 14, fw * 1.1); }
-  const palmR = type === 'fist' || type === 'point' || type === 'thumb' ? 19 : 17;
-  parts.push(ell(22, 0, palmR, palmR * .95, 26));
-  const cuff = spline([[-6, -12], [4, -20], [11, -15], [11, 15], [4, 20], [-6, 12], [-8, 0]], true, 5);
-  union([...parts, cuff], P.white);
-  // stitching on the back of the hand + cuff fold
-  const lw = S.lw * .6;
-  if (type !== 'fist' && type !== 'point' && type !== 'thumb') { for (const dy of [-6, 0, 6]) stroke([[14, dy * 1.1], [25, dy * 1.4]], lw, { boil: .5 }); }
-  else { stroke(arc(30, 0, 9, 13, -1.2, 1.2, 8), lw); stroke([[31, -6], [38, -7]], lw); stroke([[31, 6], [38, 7]], lw); }
-  stroke(quad([2, -16], [6, 0], [2, 16]), lw);
+  const fw = 12.3, parts = [];
+  const digit = (start, tip, w=fw, bend=0) => {
+    const cx=(start[0]+tip[0])*.5, cy=(start[1]+tip[1])*.5+bend;
+    parts.push(ribbon(quad(start,[cx,cy],tip,9),w,w*.95));
+  };
+  const finger=(a,len,w=fw,curl=0)=> {
+    const end=[23+Math.cos(a*D2R)*len,Math.sin(a*D2R)*len];
+    digit([22,0],end,w,curl);
+  };
+  if (type === 'open' || type === 'wave') {
+    // Four individually separated fingertips and a thumb.
+    finger(-38,28,fw*.92); finger(-13,35,fw*.93); finger(12,34,fw*.9);
+    finger(37,28,fw*.9); finger(-87,23,fw*1.08);
+  } else if (type === 'point') {
+    // The INDEX is the outermost digit on the thumb side (negative y).
+    // Three other fingers are visibly curled alongside the palm.
+    digit([27,-8],[72,-11],fw*.92,-2);
+    digit([33,2],[49,5],fw*.85,-2);
+    digit([30,11],[46,16],fw*.84,-1);
+    digit([25,18],[39,24],fw*.80,1);
+    digit([13,-7],[32,-26],fw*1.1,-2);  // separate, opposed thumb
+  } else if (type === 'grab') {
+    finger(-35,25,fw*.98,8); finger(-11,26,fw*.96,9);
+    finger(13,25,fw*.93,9); finger(37,23,fw*.90,8);
+    finger(-86,21,fw*1.09,3);
+  } else if (type === 'thumb') {
+    finger(-90,28,fw*1.1); finger(-22,15,fw*.85,7);
+    finger(0,16,fw*.85,7); finger(22,15,fw*.85,7);
+    finger(45,13,fw*.82,7);
+  } else if (type === 'fist') {
+    finger(-83,17,fw*1.08);
+    for (const a of [-34,-9,15,38]) finger(a,16,fw*.88,8);
+  }
+  const palmR= type === 'fist' || type === 'point' || type === 'thumb' ? 19 : 17;
+  parts.push(ell(22,0,palmR,palmR*.96,28));
+  const cuff=spline([[-6,-12],[4,-20],[11,-15],[11,15],[4,20],[-6,12],[-8,0]],true,5);
+  union([...parts,cuff],P.white);
+  const lw=S.lw*.59;
+  if (type === 'point') {
+    // Lines delineate curled middle, ring and little fingers.
+    stroke(quad([39,-1],[45,1],[47,5],6),lw,{boil:.2});
+    stroke(quad([36,8],[43,11],[45,15],6),lw,{boil:.2});
+    stroke(quad([29,15],[35,18],[38,21],6),lw,{boil:.2});
+    // The thumb's knuckle must be distinct from the extended index.
+    stroke(quad([17,-14],[21,-20],[28,-23],6),lw,{boil:.2});
+    stroke(quad([29,-8],[35,-10],[40,-10],6),lw,{boil:.2});
+  } else if(type === 'open' || type === 'wave' || type === 'grab') {
+    for(const dy of [-10,-3,5,13]) stroke([[14,dy*.8],[25,dy]],lw,{boil:.5});
+    stroke(quad([8,-7],[13,-12],[16,-16],6),lw,{boil:.3});
+  } else {
+    for(const dy of [-11,-3,5,13]) stroke(quad([28,dy],[34,dy+1],[37,dy+3],5),lw,{boil:.4});
+    stroke(quad([15,-10],[20,-13],[25,-14],6),lw);
+  }
+  stroke(quad([2,-16],[6,0],[2,16]),lw);
   pop();
 }
 // Big round-toed shoe (black): in local coordinates the heel is at the origin, toe points +x (dir = ±1)
