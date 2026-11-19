@@ -52,3 +52,7 @@ Ne cocher une scène qu'après dépôt de son rendu vérifié et du lien vers se
 ## Avancement des montages intermédiaires — 19 novembre 2026
 - **Scènes 02–04 :** un bloc vidéo de travail de 30 secondes a été créé dans ChatGPT : 48 dessins sources complets, 65 images de montage, 30 i/s, avec bruitages et sous-titres. **Les cases des scènes définitives restent décochées**, car les poses sont encore insuffisantes pour la cible finale et les dialogues ne sont pas doublés. Voir [les détails du montage](./SCENES_02_04_ETAT.md).
 - Les images et vidéos binaires ne sont pas encore présentes dans cette branche GitHub ; les fichiers ont été fournis dans la conversation.
+
+## Production du cinéma noir et blanc — 19 novembre 2026
+- **Scènes 05–08 :** bloc de travail de 40 secondes en MP4, 400 dessins complets recalculés en code (100 par scène), 30 i/s avec poses tenues. Une bande-son d'ambiance et des sous-titres sont présents, **pas les nouvelles voix du scénario**. Les images humaines restent graphiquement simples : **le bloc n'est pas encore approuvé comme version définitive**. Voir [l'état détaillé](./SCENES_05_08_ETAT.md).
+- Le MP4, le code et les 400 images sont fournis dans la conversation ChatGPT ; les fichiers binaires ne sont pas encore déposés sur GitHub. Ne pas cocher les quatre scènes finales sur ce seul fondement.
