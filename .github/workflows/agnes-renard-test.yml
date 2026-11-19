@@ -1,0 +1,40 @@
+name: Agnes AI - Test animation du Renard (6s)
+on:
+  push:
+    branches: [ne-suis-pas-les-moutons]
+    paths:
+      - '.github/workflows/agnes-renard-test.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  animate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check API secret
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+        run: |
+          if [ -z "$AGNES_API_KEY" ]; then
+            echo 'AGNES_API_KEY is missing. Configure it in Settings > Secrets and variables > Actions.'
+            exit 1
+          fi
+      - name: Install Python dependencies
+        run: python -m pip install requests==2.32.3
+      - name: Generate the 6-second fox animation
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+        run: python films/renard-mouton/agnes-test/generate.py
+      - name: Upload video and metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agnes-renard-test-6s
+          path: films/renard-mouton/agnes-test/output/
+          if-no-files-found: warn
+          retention-days: 7
