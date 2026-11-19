@@ -44,10 +44,8 @@ function histBackground(meta,t){
   if(setting==='factory'||setting==='mill'){for(let i=0;i<4;i++){ring(-560+i*260,940,62,'#616d73');ring(-560+i*260,940,18,'#d7d8c9');}}
   if(setting==='market'||setting==='courtyard')for(let i=0;i<4;i++){box(-650+i*420,850,300,45,'#9a6448');box(-650+i*420,905,35,230,'#75533d');}
   if(setting==='workshop'||setting==='lab')for(let i=0;i<5;i++)box(-440+i*205,940,150,170,['#b99a6e','#8b9a8c','#d2bc86'][i%3]);
-  // Three period figures; walkers always behind the close-up showcase.
-  figure(265,FLOOR-20,.61,t,{era,skin:'#d5a277',face:1,arms:-.6});
-  figure(-250+((t*25)%1700),FLOOR-300,.41,t,{era,skin:'#e4b78b',walk:1,face:1});
-  figure(1300,FLOOR-230,.37,t,{era,skin:'#b98462',face:-1});
+  // Historical insert: a single operator in the foreground; no looping passers-by.
+  // Motion must explain the narration, never decorate the background.
   // Documentary animation dominates the insert: no decorative display counter.
   renderWorkshop(CFG.type,kind,era,t);
 }
