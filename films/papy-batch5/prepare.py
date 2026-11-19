@@ -34,7 +34,20 @@ mix=mix.replace("'w2': lambda: crackle(d) * .6","'w2': lambda: bed(d, 450, .012)
 mix=mix.replace("'w7': lambda: murmur(d, .022) + hum(d)","'w7': lambda: bed(d, 400, .012)")
 mix=mix.replace("'home': lambda: hum(d) + ticks(d) + bed(d, 300, .015)","'home': lambda: bed(d, 300, .012)")
 mix=mix.replace("'home2': lambda: hum(d) + ticks(d) + bed(d, 300, .015)","'home2': lambda: bed(d, 300, .012)")
-mix=mix.replace("mus * .6 * duck[:, None] + sfxb * .8","mus * .38 * duck[:, None] + sfxb * .42")
+mix=mix.replace("mus * .6 * duck[:, None] + sfxb * .8","mus * .38 * duck[:, None] + sfxb * .26")
+# Every sound effect fades in and out to avoid sample-step noise at cue boundaries.
+old_fx="if ty in FXT: f, gdb = FXT[ty]; add(sfxb, f() * v, t, gdb, float(rng.uniform(-.2, .2)))"
+new_fx="if ty in FXT: f, gdb = FXT[ty]; add(sfxb, fade(f() * v, .010, .035), t, gdb * .75, float(rng.uniform(-.2, .2)))"
+assert old_fx in mix, "FX insertion changed"
+mix=mix.replace(old_fx,new_fx)
+# Avoid miscellaneous artificial background sounds that clash with the artisan demonstrations.
+mix=mix.replace("'w1': lambda: bed(d, 700, .035) + chirps(d, int(d * .6))","'w1': lambda: bed(d, 600, .014)")
+mix=mix.replace("'w3': lambda: bed(d, 900, .06)","'w3': lambda: bed(d, 600, .014)")
+mix=mix.replace("'w4': lambda: bed(d, 500, .02) + chirps(d, int(d * .4), 3400)","'w4': lambda: bed(d, 500, .014)")
+mix=mix.replace("'w5': lambda: rain(d) + bed(d, 400, .02)","'w5': lambda: bed(d, 450, .014)")
+mix=mix.replace("'w6': lambda: murmur(d, .02) + chirps(d, int(d * .3)","'w6': lambda: bed(d, 600, .014) + chirps(d, 0")
+# Gentle anti-alias top cut is sufficient for speech, and tames harsh synthesized foley.
+mix=mix.replace("lp(mix[:, c], 15000)","lp(mix[:, c], 9500)")
 mix=mix.replace("+ amb * .9","+ amb * .55")
 mixpath.write_text(mix,encoding='utf8')
 # Voice fade edges avoid audible splice clicks between independently synthesized lines.
