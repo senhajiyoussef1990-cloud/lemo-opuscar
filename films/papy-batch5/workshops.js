@@ -143,34 +143,159 @@ function umbrella(kind,era,t){
    if(kind==='rain'||kind==='hanway'||kind==='auto')for(let i=0;i<12;i++)L(825+i*34,870+(t*60+i*30)%200,813+i*34,890+(t*60+i*30)%200,'#8fc7d9',4);
  }
 }
+// LOCK AND KEY: line-driven demonstrations, no generic repeated loop.
+// The tool and each mechanical component change only as the relevant narrated
+// instruction is spoken, then hold an understandable final state for dialogue.
 function key(kind,era,t){
- const j=wave(t*3.5),s=phase(),x=1012;
- B(856,1017,325,179,kind==='wood'?'#9a7950':'#7d8990');
- B(905,1050,218,82,'#d8c499',7);
- if(kind==='card'){
-   B(1088,1050,63,80,'#395f63');B(1099,1058,39,25,j>0?'#60da94':'#d97761');
-   B(926,1010+j*9,138,78,'#73bfd3');artisan(era,t,994,1030+j*9);return;
+ const id=activeId||'', u=Math.max(0,Math.min(1,progress));
+ const E=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);};
+ const working=new Set(['a2','b2','c1','c2','d2','e2','f2','g2']);
+ const a=working.has(id)?E(u):0;
+ const ink='#4b4040', gold='#d4a657', iron='#68777e',wood='#b98c5c';
+ const tooth=(x,y,h=15,col=gold)=>B(x,y,17,h,col,3);
+ const bench=()=>{B(842,1193,389,41,'#775239');B(864,1233,28,50,'#66432e');B(1191,1233,28,50,'#66432e');};
+ function lockplate(label,col='#78828b'){
+   B(851,990,357,210,col,17);
+   B(875,1015,310,158,'#e2d0ad',9);
+   B(884,1023,290,141,'#f8e6bc',7);
  }
+ function bolt(x=0,y=1138){B(1040+x,y,152,24,'#7b7a73',4);B(1167+x,y-9,37,41,'#656f70',3);}
+ const keyShaft=(x,y,travel=0,col=gold)=>{
+   // Single continuous shaft with five genuinely different teeth.
+   C(x+travel,y,27,col);C(x+travel,y,11,'#f0dec2');
+   B(x+travel+22,y-13,180,25,col,5);
+   for(let k=0;k<5;k++)tooth(x+travel+100+k*21,y+10,12+(k%3)*11,col);
+ };
+ const fingerTool=(hx,hy)=>artisan(era,t,hx,hy,{left:745,feet:1390});
+
  if(kind==='wood'){
-   B(913,1070,200,40,'#8c6241');for(let i=0;i<4;i++)B(949+i*38,1046-(s===2?24:0),22,47,'#b7976e');
-   L(912,1137,x+j*20,1100,'#b89061',24);artisan(era,t,x+j*20,1103);return;
+   bench();
+   B(847,1001,359,187,'#95653e',13);
+   B(866,1021,325,143,'#d6ad74',8);
+   B(890,1037,278,100,'#f1d2a0',7);
+   // Deep slots and vertical wooden locking pins in a cutaway.
+   for(let k=0;k<4;k++){
+     const x=949+k*52, raised=a*24;
+     B(x-12,1030,31,82,'#875d38',4);
+     B(x-7,1040-raised,21,71,'#e6c28b',3);
+     L(x+3,1040-raised,x+3,1095-raised,'#9e7146',3);
+   }
+   B(902,1124,251,21,'#86603e',3);
+   const travel=a*72;
+   keyShaft(790,1096,travel,wood);
+   bolt(a*30,1156);
+   fingerTool(826+travel,1096);
+   // Only during the explanatory line: the pins visibly rise and release the bolt.
+   return;
  }
- // Key in real contact with a lock, plus visible moving internal components.
- L(897,1132,x+j*22,1100,'#dbb65f',22);C(885,1139,31,'#d6b16a');
- for(let i=0;i<4;i++)B(953+i*44,1055+(s===2?-14:0),24,34,'#c7a062');
- if(kind==='roman'||kind==='warded'){
-   B(975,989,70,42,'#55565a');L(986+j*15,946,1018,1015,'#705e4e',15);
-   if(j>0.75)for(let k=0;k<4;k++)L(1015,1016,1030+k*12,1010-k*13,'#efcf70',3);
-   artisan(era,t,985+j*15,950);
- }else if(kind==='barron'||kind==='chubb'){
-   for(let k=0;k<3;k++)L(967+k*48,1080,960+k*48,1025-(s===2?18:0),'#5e6f71',13);
-   if(kind==='chubb')B(1120,1028,38,28,s===1?'#c35950':'#69ba79');
-   artisan(era,t,1005+j*13,1094);
- }else if(kind==='yale'){
-   for(let k=0;k<6;k++){B(929+k*36,1046,20,75-(s===2?22:0),'#d3ad68');L(939+k*36,1024,939+k*36,1043,'#697980',3);}
-   artisan(era,t,1018+j*10,1085);
- }else artisan(era,t,1018+j*10,1085);
+ if(kind==='roman'){
+   bench();
+   B(865,1085,317,35,'#5d6871',9);
+   B(948,1118,151,47,'#70757b',5);
+   // Bloom of iron heated in a small ancient forge.
+   B(1083,1041,112,68,'#6e5142',7);
+   for(let k=0;k<4;k++){const h=34+(k%2)*18;shape(spline([[1100+k*21,1063],[1107+k*21,1063-h],[1119+k*21,1063]]),{fill:'#ed9f50',lw:3});}
+   const hammerY=954+E(Math.min(1,a*2))*99;
+   // Hammer held by the ONLY front working arm of the artisan.
+   L(941,hammerY,1012,hammerY+24,'#927f68',16);
+   B(992,hammerY+7,47,31,'#62676b',5);
+   B(978,1067,174,17,a>.45?'#e6a16b':'#90999b',4);
+   if(a>.40&&a<.64)for(let k=0;k<5;k++)L(1010+k*10,1054,1011+k*17,1036-k*7,'#f3c365',3);
+   fingerTool(942,hammerY);
+   return;
+ }
+ if(kind==='warded'){
+   bench();
+   B(859,1082,353,44,'#a38663',7);
+   B(907,1135,184,34,'#786552',4);
+   // Warded key forging: file the individual teeth, do not magically rotate them.
+   const travel=E(a)*88;
+   keyShaft(857,1045,0,'#c4a26e');
+   B(1003+travel,975,120,15,'#6d767a',3);
+   for(let k=0;k<8;k++)L(1006+travel+k*15,974,1017+travel+k*15,988,'#aeb6ba',2);
+   if(id==='c1'){
+     B(984,1021+travel*.36,39,25,'#64727a',4);
+     L(1001,1021,1001,1059,'#b4bec1',6);
+     fingerTool(997,1025+travel*.36);
+   }else fingerTool(1011+travel,986);
+   return;
+ }
+ if(kind==='barron'){
+   bench();lockplate('Levers');
+   // Robert Barron: 3 independent lever plates, lifted to an aligned gate.
+   const levels=[0,21,10], dy=[16,31,24];
+   for(let k=0;k<3;k++){
+     const x=958+k*64;
+     B(x-16,1029,39,79,'#b4a59a',6);
+     B(x-9,1045-E(a)*dy[k],23,71,'#b8a45f',4);
+     B(x-2,1064-E(a)*dy[k]+levels[k],9,22,'#847453',3);
+   }
+   L(893,1095,1163,1095,'#d0b47e',6);
+   keyShaft(812,1117,a*79,'#d9ba7a');
+   bolt(a*51,1136);
+   fingerTool(851+a*79,1118);
+   return;
+ }
+ if(kind==='chubb'){
+   bench();lockplate('Chubb','#667578');
+   // First use a mismatched key that trips the detector. Then the correct key
+   // resets the mechanism and releases the bolt, all within the spoken line.
+   const mismatch=id==='e2'&&a<.50;
+   const correct=id==='e2'&&a>=.50;
+   const stage=correct?E((a-.5)*2):mismatch?E(a*2):0;
+   for(let k=0;k<4;k++){
+     const x=924+k*54,lift=correct?17: mismatch?(k===2?4:20):0;
+     B(x,1038-lift,28,68,'#b3a181',4);
+     B(x+4,1049-lift,17,21,'#8a7452',3);
+   }
+   B(1107,1043,56,38,mismatch?'#b95148':correct?'#5ba887':'#807d65',6);
+   if(mismatch){L(1121,1043,1121,1091,'#aa483a',7);}
+   if(correct){L(1121,1043,1147,1061,'#67a882',7);}
+   keyShaft(819,1118,a*68,'#d2b36f');
+   bolt(correct?stage*47:0,1138);
+   fingerTool(855+a*68,1119);
+   return;
+ }
+ if(kind==='yale'){
+   bench();lockplate('Pins','#77828a');
+   // Yale's pin tumbler in cutaway: stacks meet at the shear line when
+   // the right key lifts the varied key pins to their proper heights.
+   B(889,1022,287,136,'#a9b3ba',10);
+   B(896,1084,273,67,'#dec9a4',7);
+   const heights=[16,38,23,47,29,40];
+   for(let k=0;k<6;k++){
+     const x=916+k*44, lift=heights[k]*a;
+     B(x+5,1029,23,18,'#dae1d9',3);
+     L(x+16,1048,x+16,1073-lift,'#74858b',5);
+     B(x+4,1059-lift,24,30,'#b9a36e',4);
+     B(x+4,1089-lift,24,29,'#d8b878',4);
+     tooth(x+7,1131-heights[k]*.43,13+heights[k]*.43,'#d9b468');
+   }
+   L(896,1084,1170,1084, a>.99?'#5baf8a':'#c4775c',4);
+   keyShaft(800,1134,a*57,'#d6ac64');
+   bolt(a>.92?(a-.92)*600:0,1156);
+   fingerTool(836+a*57,1135);
+   return;
+ }
+ if(kind==='card'){
+   bench();
+   B(886,970,279,214,'#535d64',17);
+   B(907,990,238,126,'#253d47',10);
+   B(933,1009,184,61,'#b0d7d7',8);
+   for(let i=0;i<3;i++)C(958+i*73,1096,9,'#6a8c92');
+   const near=a*136;
+   const unlocked=a>.65;
+   B(828+near,985,133,82,'#7dcae0',8);
+   B(851+near,999,52,28,'#edcd83',5);
+   L(851+near,1047,939+near,1047,'#e7f7e8',5);
+   if(a>.30)for(let k=1;k<=3;k++)L(1032-k*12,1038-k*7,1032-k*12,1005-k*6,'#d4f1dd',3);
+   B(1122,1023,22,22,unlocked?'#69d19a':'#e6ad70',9);
+   B(1115+Math.max(0,a-.68)*79,1140,70,23,'#a4adb0',4);
+   fingerTool(859+near,1009);
+   return;
+ }
 }
+
 function pencil(kind,era,t){
  const j=wave(t*3),s=phase();
  B(865,1028,320,170,'#b88e60');B(899,1060,249,108,'#f2e6cc');
