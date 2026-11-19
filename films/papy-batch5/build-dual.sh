@@ -67,6 +67,9 @@ echo "::group::Bande son, mix complet des voix + musique et bruitages"
 python "$D/tools/score.py"
 python "$D/tools/mix.py"
 test -s "$D/out/mix.wav"
+# Check the waveform before expensive rendering; fail early if audible impulse-like
+# glitches or clipping are measurable in the source mix.
+python films/papy-batch5/audio_qc.py "$D" "$SLUG" --mix-only
 echo "::endgroup::"
 
 echo "::group::Rendu portrait (Short 9:16) 1080x1920"
@@ -99,7 +102,7 @@ for f,(w,hgt) in [(v,(1080,1920)),(h,(1920,1080))]:
   vs=next(x for x in st if x['codec_type']=='video')
   assert (vs['width'],vs['height'])==(w,hgt),(f,vs)
   assert any(x['codec_type']=='audio' for x in st),(f,'missing voice track')
-names=[v.name,h.name,'story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md','audio-qc.json']
+names=[v.name,h.name,'story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md','audio-qc.json','audio-preflight.json']
 assert all((d/n).is_file() for n in names)
 dest=d/f'le-livre-de-papy-{slug}-double-format.zip'
 with zipfile.ZipFile(dest,'w',compression=zipfile.ZIP_STORED,allowZip64=True) as z:
