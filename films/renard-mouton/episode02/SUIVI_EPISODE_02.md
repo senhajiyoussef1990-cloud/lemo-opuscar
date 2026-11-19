@@ -56,3 +56,11 @@ Ne cocher une scène qu'après dépôt de son rendu vérifié et du lien vers se
 ## Production du cinéma noir et blanc — 19 novembre 2026
 - **Scènes 05–08 :** bloc de travail de 40 secondes en MP4, 400 dessins complets recalculés en code (100 par scène), 30 i/s avec poses tenues. Une bande-son d'ambiance et des sous-titres sont présents, **pas les nouvelles voix du scénario**. Les images humaines restent graphiquement simples : **le bloc n'est pas encore approuvé comme version définitive**. Voir [l'état détaillé](./SCENES_05_08_ETAT.md).
 - Le MP4, le code et les 400 images sont fournis dans la conversation ChatGPT ; les fichiers binaires ne sont pas encore déposés sur GitHub. Ne pas cocher les quatre scènes finales sur ce seul fondement.
+
+## Montage complet de 150 secondes — 19 novembre 2026
+- **Montage de travail des 15 scènes assemblé dans ChatGPT** : 150,00 secondes, vidéo portrait 720×1280, **4 500 images vidéo exactement à 30 i/s**, logo et carton final inclus.
+- **Scènes 05–12 refaites visuellement** en utilisant l'illustration de cinéma noir et blanc détaillée approuvée, et le film du chat tigré et du chien originaux. Les scènes 13–15 reprennent les dessins complets validés du salon en couleur.
+- **700 images complètes rendues pour les scènes 09–15** et **400 images complètes pour les scènes 05–08** ; scènes 01–04 reprises des tests existants. **Une image vidéo ≠ un dessin unique de personnage** : plusieurs poses sources et décors sont réutilisés ; ce nombre ne garantit pas une animation naturelle.
+- MP4, ZIP, sous-titres SRT, aperçu, scripts et références disponibles en **pièces jointes de la conversation ChatGPT**, pas encore téléversés en fichiers binaires dans GitHub.
+- **Limite bloquante avant publication : les nouvelles répliques n'ont pas été générées avec Chatterbox.** La bande-son de travail contient uniquement ambiance et bruitages, avec les dialogues exacts écrits en sous-titres. Ne pas confondre les MP3 de référence vocale avec les dialogues du scénario.
+- **Statut : montage complet de travail livré, non validé artistiquement, non doublé.** Les cases des scènes *définitives* ci-dessus restent à cocher après validation et enregistrement dans le dépôt. Aucune production autonome ne tourne en arrière-plan.
