@@ -1,80 +1,93 @@
 #!/usr/bin/env python3
-"""One-shot Agnes 2.5 Flash motion test. AGNES_API_KEY comes ONLY from GitHub Actions secrets."""
+"""Agnes Video 2.5 Flash - true two-character animation test.
+Key supplied exclusively by an Actions secret; never hardcode a token.
+"""
 import json
 import os
-import pathlib
-import sys
+from pathlib import Path
 import time
 import requests
 
+BASE = "https://apihub.agnes-ai.com"
 MODEL = "agnes-video-2.5-flash"
-ROOT = "https://apihub.agnes-ai.com"
-OUT = pathlib.Path("films/renard-mouton/agnes-test/output")
-OUT.mkdir(parents=True, exist_ok=True)
-IMAGE = "https://raw.githubusercontent.com/senhajiyoussef1990-cloud/lemo-opuscar/ne-suis-pas-les-moutons/films/renard-mouton/img/renard-2.png"
+BRANCH = "ne-suis-pas-les-moutons"
+RAW = f"https://raw.githubusercontent.com/senhajiyoussef1990-cloud/lemo-opuscar/{BRANCH}/films/renard-mouton/img"
+FOX = RAW + "/renard-2.png"
+SHEEP = RAW + "/mouton-content.png"
+OUT = Path("films/renard-mouton/agnes-test/output")
+OUT.mkdir(exist_ok=True, parents=True)
 PROMPT = (
-    "Use the provided reference image as an EXACT visual reference for the same original "
-    "anthropomorphic orange fox gentleman: identical face, snout, ears, cream cheeks, "
-    "brown three-piece suit, tie, pocket-watch chain and 1930s retro interior. "
-    "Create a REAL CHARACTER ANIMATION, NOT a still image with camera motion: "
-    "the fox turns his head toward a listener, lifts and gestures with one hand, "
-    "blinks naturally, shifts his shoulders and breathes subtly. He delivers a "
-    "short explanatory sentence with clearly articulated jaw and lip movements "
-    "(visible open, rounded, wide, and closed mouth shapes), and then relaxes. "
-    "Static background and steady medium camera. Preserve the same face and "
-    "clothing in every frame, correct anatomy and fingers, no extra limbs. "
-    "Refined vintage mid-century cartoon aesthetic, textured fabric and fur, "
-    "smooth natural performance. One continuous shot. No text or watermarks."
+    "Create ONE CONTINUOUS SHOT with real acting and animation, not a static picture "
+    "or camera zoom. In a very detailed warm 1950s retro living room, EXACTLY preserve "
+    "the 2 characters from the reference pictures: <Picture 1> is a calm orange fox "
+    "gentleman wearing a dark brown three-piece pinstripe suit and watch chain; "
+    "<Picture 2> is a cheerful cream wool sheep in tweed flat cap, burgundy bow tie, "
+    "and knitted caramel vest. The fox is on the LEFT; the sheep sits on the RIGHT "
+    "holding his smartphone. The sheep uses his thumb to scroll, then pauses and "
+    "looks up, blinking and raising his eyebrows. The fox turns his head toward "
+    "the sheep, lifts an arm and opens his hand while explaining, then lowers it. "
+    "Both characters exhibit REAL independent articulated animation: natural head "
+    "turns, arm and shoulder movements, blinking, expressive eye direction, "
+    "jaw motion and clearly different lip/mouth poses, subtle breathing. "
+    "Respect the same character faces and outfits throughout, correct fingers, "
+    "no duplicate limbs, no extra characters. Do NOT make the image float or "
+    "bounce. Camera stays steady. Mid-century cartoon, warm colors, detailed ink "
+    "texture, lively but restrained acting. No words on screen, no logos."
 )
 
-def request(method, path, **kwargs):
+def agnes(method, path, **kw):
     key = os.environ["AGNES_API_KEY"].strip()
-    h = {"Authorization": "Bearer " + key, "Content-Type": "application/json"}
     try:
-        r = requests.request(method, ROOT + path, headers=h, timeout=55, **kwargs)
-    except requests.RequestException as e:
-        raise RuntimeError("Network or request error: " + type(e).__name__) from None
-    if not r.ok:
-        snippet = (r.text or "")[:450].replace(key, "[REDACTED]")
-        raise RuntimeError("Agnes API HTTP %d: %s" % (r.status_code, snippet))
-    return r.json()
+        res = requests.request(method, BASE + path, timeout=50, headers={
+            "Authorization": "Bearer " + key,
+            "Content-Type": "application/json"
+        }, **kw)
+    except requests.RequestException as exc:
+        raise RuntimeError("Connection error: " + type(exc).__name__) from None
+    if not res.ok:
+        detail = res.text[:450].replace(key, "[REDACTED]")
+        raise RuntimeError("HTTP %s: %s" % (res.status_code, detail))
+    return res.json()
 
 def main():
-    if not os.getenv("AGNES_API_KEY", "").strip():
-        raise SystemExit("Missing GitHub Actions secret AGNES_API_KEY; see README_AGNES.md")
-    response = request("POST", "/v1/videos", json={
-        "model": MODEL, "mode": "keyframe", "first_frame": IMAGE,
-        "prompt": PROMPT, "seconds": "6", "size": "720P",
-        "aspect_ratio": "9:16", "n": 1
+    if not os.environ.get("AGNES_API_KEY", "").strip():
+        raise SystemExit("Missing repository Actions secret: AGNES_API_KEY")
+    task = agnes("POST", "/v1/videos", json={
+        "model": MODEL,
+        "mode": "reference",
+        "images": [FOX, SHEEP],
+        "prompt": PROMPT,
+        "seconds": "6",
+        "size": "720P",
+        "aspect_ratio": "9:16",
+        "n": 1
     })
-    video_id = response.get("video_id") or response.get("id")
-    if not video_id:
-        raise RuntimeError("Missing video_id in response: " + str(list(response.keys())))
-    print("Agnes task created. Model:", MODEL, "Video ID:", video_id)
-    (OUT / "task.json").write_text(json.dumps({"model": MODEL, "video_id": video_id, "input_image": IMAGE}, indent=2))
-    for attempt in range(60):
-        data = request("GET", "/agnesapi", params={"video_id": video_id, "model_name": MODEL})
+    vid = task.get("video_id") or task.get("id")
+    if not vid:
+        raise RuntimeError("Agnes returned no video_id, fields: " + str(list(task)))
+    (OUT / "task.json").write_text(json.dumps({
+        "video_id": vid, "model": MODEL, "references": [FOX, SHEEP]
+    }, indent=2), encoding="utf-8")
+    print("Video submitted. Tracking ID:", vid)
+    for i in range(60):
+        data = agnes("GET", "/agnesapi", params={"video_id": vid, "model_name": MODEL})
         status = str(data.get("status", "")).lower()
-        print("Poll", attempt + 1, "status:", status or "pending")
-        if status in ("failed", "error", "cancelled", "canceled"):
-            raise RuntimeError("Video generation failed. Response keys: " + str(list(data.keys())))
-        url = data.get("url") or (data.get("data") or {}).get("url") if isinstance(data.get("data"), dict) else data.get("url")
-        if status in ("completed", "succeeded", "success", "done") and url:
+        print("Poll", i + 1, status or "waiting")
+        if status in ("error", "failed", "canceled", "cancelled"):
+            raise RuntimeError("Video generation failed. Fields: " + str(list(data)))
+        nested = data.get("data") if isinstance(data.get("data"), dict) else {}
+        url = data.get("url") or nested.get("url")
+        if status in ("completed", "success", "succeeded", "done") and url:
             if not url.startswith("https://"):
-                raise RuntimeError("Invalid video download URL.")
-            video = requests.get(url, timeout=120)
-            video.raise_for_status()
-            if len(video.content) < 50000:
-                raise RuntimeError("Unexpectedly small video response.")
-            (OUT / "renard_mouvement_6s.mp4").write_bytes(video.content)
-            (OUT / "result.json").write_text(json.dumps({
-                "model": MODEL, "video_id": video_id, "status": status,
-                "size_bytes": len(video.content)
-            }, indent=2))
-            print("Success: 6-second generated video saved.")
+                raise RuntimeError("Video URL must use HTTPS")
+            download = requests.get(url, timeout=120)
+            download.raise_for_status()
+            if len(download.content) < 50000:
+                raise RuntimeError("Video download is unexpectedly small")
+            (OUT / "renard_mouton_animation_6s.mp4").write_bytes(download.content)
+            print("Video saved:", len(download.content), "bytes")
             return
         time.sleep(10)
-    raise TimeoutError("The Agnes task did not complete during this GitHub Actions run.")
-
+    raise TimeoutError("Video generation not completed during the workflow")
 if __name__ == "__main__":
     main()
