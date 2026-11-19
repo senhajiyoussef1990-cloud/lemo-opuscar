@@ -26,6 +26,26 @@ shutil.copy2(BATCH/'workshops.js',out/'workshops.js')
 for name in ['score.py','synth.py','mix.py','voice.py','foley.py','fonts.sh']:
     shutil.copy2(BASE/'tools'/name,out/'tools'/name)
 shutil.copy2(BASE/'fonts/fonts.css',out/'fonts/fonts.css')
+# Avoid intentionally generated crackles, electrical hum and loud transient FX.
+# The original soap ambience is inappropriate for quiet historical workshops.
+mixpath=out/'tools/mix.py'
+mix=mixpath.read_text(encoding='utf8')
+mix=mix.replace("'w2': lambda: crackle(d) * .6","'w2': lambda: bed(d, 450, .012)")
+mix=mix.replace("'w7': lambda: murmur(d, .022) + hum(d)","'w7': lambda: bed(d, 400, .012)")
+mix=mix.replace("'home': lambda: hum(d) + ticks(d) + bed(d, 300, .015)","'home': lambda: bed(d, 300, .012)")
+mix=mix.replace("'home2': lambda: hum(d) + ticks(d) + bed(d, 300, .015)","'home2': lambda: bed(d, 300, .012)")
+mix=mix.replace("mus * .6 * duck[:, None] + sfxb * .8","mus * .38 * duck[:, None] + sfxb * .42")
+mix=mix.replace("+ amb * .9","+ amb * .55")
+mixpath.write_text(mix,encoding='utf8')
+# Voice fade edges avoid audible splice clicks between independently synthesized lines.
+voicepath=out/'tools/voice.py'
+voice=voicepath.read_text(encoding='utf8')
+needle="    sf.write(os.path.join(HERE, 'voices', l['id'] + '.wav'), y.astype(np.float32), SR)"
+assert needle in voice
+voice=voice.replace(needle,"    edge = min(int(.012 * SR), len(y)//4)\\n    if edge > 1:\\n        ramp = np.linspace(0,1,edge)\\n        y[:edge] *= ramp\\n        y[-edge:] *= ramp[::-1]\\n"+needle)
+voice=voice.replace('\\n','\n')
+voicepath.write_text(voice,encoding='utf8')
+
 toon=(BASE/'toon.js').read_text(encoding='utf8')
 before='export const W = 1080, H = 1920;'
 after=('const WIDE = new URLSearchParams(location.search).get("wide") === "1";\n'
