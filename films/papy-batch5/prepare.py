@@ -18,8 +18,9 @@ e=ALL[slug]; out=ROOT/'films'/('papy-'+slug)
 out.mkdir(parents=True,exist_ok=True)
 (out/'tools').mkdir(exist_ok=True)
 (out/'fonts').mkdir(exist_ok=True)
-for name in ['chars.js','people.js','worlds.js','index.html']:
+for name in ['chars.js','worlds.js','index.html']:
     shutil.copy2(BASE/name,out/name)
+shutil.copy2(BATCH/'people.js',out/'people.js')
 shutil.copy2(BATCH/'objects.js',out/'objects.js')
 shutil.copy2(BATCH/'workshops.js',out/'workshops.js')
 for name in ['score.py','synth.py','mix.py','voice.py','foley.py','fonts.sh']:
