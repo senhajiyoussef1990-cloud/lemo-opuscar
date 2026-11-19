@@ -1,4 +1,4 @@
-name: Le Livre de Papy - ateliers v4 controles et rendus SEQUENTIELS
+name: Le Livre de Papy - Papier seul v4 controle image et audio
 on:
   push:
     branches: [le-livre-de-papy]
@@ -32,7 +32,7 @@ jobs:
         run: |
           set -euo pipefail
           python -m py_compile films/papy-batch5/audio_qc.py
-          for slug in papier montre parapluie cle crayon; do
+          for slug in papier; do
             python films/papy-batch5/prepare.py "$slug"
             d="films/papy-$slug"
             node --check "$d/main.js"
@@ -46,7 +46,7 @@ jobs:
             node core/render/still.mjs "$d" 15 55 95 --size 1920x1080 --q wide=1 --out "$d/preflight-16x9"
           done
   render:
-    name: Papier puis montre puis parapluie puis cle puis crayon
+    name: Papier seul - Shorts et YouTube
     needs: preflight
     runs-on: ubuntu-latest
     timeout-minutes: 360
@@ -66,78 +66,18 @@ jobs:
           npx playwright-core install --with-deps chromium
       - name: Bibliotheques des voix et de traitement audio
         run: python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
-      - name: 1/5 - Rendu et controle papier
+      - name: Rendu et controle papier
         env:
           LEMO_ANGLE: swiftshader
           PYTHONUNBUFFERED: '1'
           FPS: '12'
           RENDER_WORKERS: '4'
         run: bash films/papy-batch5/build-dual.sh papier
-      - name: 1/5 - Publier ZIP papier
+      - name: Publier ZIP papier
         uses: actions/upload-artifact@v4
         with:
           name: livre-de-papy-papier-ateliers-v4-audio-qc-short-plus-youtube
           path: films/papy-papier/le-livre-de-papy-papier-double-format.zip
-          if-no-files-found: error
-          compression-level: 0
-          retention-days: 14
-      - name: 2/5 - Rendu et controle montre
-        env:
-          LEMO_ANGLE: swiftshader
-          PYTHONUNBUFFERED: '1'
-          FPS: '12'
-          RENDER_WORKERS: '4'
-        run: bash films/papy-batch5/build-dual.sh montre
-      - name: 2/5 - Publier ZIP montre
-        uses: actions/upload-artifact@v4
-        with:
-          name: livre-de-papy-montre-ateliers-v4-audio-qc-short-plus-youtube
-          path: films/papy-montre/le-livre-de-papy-montre-double-format.zip
-          if-no-files-found: error
-          compression-level: 0
-          retention-days: 14
-      - name: 3/5 - Rendu et controle parapluie
-        env:
-          LEMO_ANGLE: swiftshader
-          PYTHONUNBUFFERED: '1'
-          FPS: '12'
-          RENDER_WORKERS: '4'
-        run: bash films/papy-batch5/build-dual.sh parapluie
-      - name: 3/5 - Publier ZIP parapluie
-        uses: actions/upload-artifact@v4
-        with:
-          name: livre-de-papy-parapluie-ateliers-v4-audio-qc-short-plus-youtube
-          path: films/papy-parapluie/le-livre-de-papy-parapluie-double-format.zip
-          if-no-files-found: error
-          compression-level: 0
-          retention-days: 14
-      - name: 4/5 - Rendu et controle cle
-        env:
-          LEMO_ANGLE: swiftshader
-          PYTHONUNBUFFERED: '1'
-          FPS: '12'
-          RENDER_WORKERS: '4'
-        run: bash films/papy-batch5/build-dual.sh cle
-      - name: 4/5 - Publier ZIP cle
-        uses: actions/upload-artifact@v4
-        with:
-          name: livre-de-papy-cle-ateliers-v4-audio-qc-short-plus-youtube
-          path: films/papy-cle/le-livre-de-papy-cle-double-format.zip
-          if-no-files-found: error
-          compression-level: 0
-          retention-days: 14
-      - name: 5/5 - Rendu et controle crayon
-        env:
-          LEMO_ANGLE: swiftshader
-          PYTHONUNBUFFERED: '1'
-          FPS: '12'
-          RENDER_WORKERS: '4'
-        run: bash films/papy-batch5/build-dual.sh crayon
-      - name: 5/5 - Publier ZIP crayon
-        uses: actions/upload-artifact@v4
-        with:
-          name: livre-de-papy-crayon-ateliers-v4-audio-qc-short-plus-youtube
-          path: films/papy-crayon/le-livre-de-papy-crayon-double-format.zip
           if-no-files-found: error
           compression-level: 0
           retention-days: 14
