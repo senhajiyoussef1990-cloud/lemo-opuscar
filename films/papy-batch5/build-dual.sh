@@ -81,6 +81,10 @@ ffmpeg -hide_banner -loglevel error -y -i "$D/out/landscape-base.mp4" -vf fps=24
 sh core/render/mux.sh "$D/out/landscape-24.mp4" "$D/out/mix.wav" "$D/le-livre-de-papy-$SLUG-youtube-16x9.mp4" 24 0
 echo "::endgroup::"
 
+echo "::group::Contrôle du signal audio des deux formats"
+python films/papy-batch5/audio_qc.py "$D" "$SLUG"
+echo "::endgroup::"
+
 echo "::group::Tests media + ZIP, aucun MP4 sans voix"
 python - "$D" "$SLUG" <<'PY'
 import json,os,subprocess,sys,zipfile
@@ -95,7 +99,7 @@ for f,(w,hgt) in [(v,(1080,1920)),(h,(1920,1080))]:
   vs=next(x for x in st if x['codec_type']=='video')
   assert (vs['width'],vs['height'])==(w,hgt),(f,vs)
   assert any(x['codec_type']=='audio' for x in st),(f,'missing voice track')
-names=[v.name,h.name,'story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md']
+names=[v.name,h.name,'story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md','audio-qc.json']
 assert all((d/n).is_file() for n in names)
 dest=d/f'le-livre-de-papy-{slug}-double-format.zip'
 with zipfile.ZipFile(dest,'w',compression=zipfile.ZIP_STORED,allowZip64=True) as z:
