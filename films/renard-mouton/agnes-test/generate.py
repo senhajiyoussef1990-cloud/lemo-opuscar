@@ -76,7 +76,8 @@ def main():
         if status in ("error", "failed", "canceled", "cancelled"):
             raise RuntimeError("Video generation failed. Fields: " + str(list(data)))
         nested = data.get("data") if isinstance(data.get("data"), dict) else {}
-        url = data.get("url") or nested.get("url")
+        metadata = data.get("metadata") if isinstance(data.get("metadata"), dict) else {}
+        url = data.get("url") or nested.get("url") or metadata.get("url")
         if status in ("completed", "success", "succeeded", "done") and url:
             if not url.startswith("https://"):
                 raise RuntimeError("Video URL must use HTTPS")
