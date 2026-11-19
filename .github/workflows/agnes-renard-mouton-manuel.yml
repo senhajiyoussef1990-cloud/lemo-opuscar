@@ -1,0 +1,40 @@
+name: Agnes AI - Test Renard et Mouton (6 secondes)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  animate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - name: Checkout projet Renard et Mouton
+        uses: actions/checkout@v4
+        with:
+          ref: ne-suis-pas-les-moutons
+      - name: Configuration Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Vérifier la clé privée Agnes
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+        run: |
+          if [ -z "$AGNES_API_KEY" ]; then
+            echo "::error::Il manque le secret de dépôt AGNES_API_KEY (Settings > Secrets and variables > Actions)"
+            exit 1
+          fi
+      - name: Installer le client HTTP
+        run: python -m pip install requests==2.32.3
+      - name: Générer la scène animée de 6 secondes
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+        run: python films/renard-mouton/agnes-test/generate.py
+      - name: Fournir la vidéo générée
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agnes-test-renard-mouton-6-secondes
+          path: films/renard-mouton/agnes-test/output/
+          retention-days: 7
+          if-no-files-found: warn
