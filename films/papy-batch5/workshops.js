@@ -12,10 +12,10 @@ const wave=Math.sin;
 const phase=()=>Math.min(2,Math.floor(progress*3));
 const tool=(x,y,c='#b7a079')=>{L(x-10,y-5,x+10,y+5,c,11);C(x+10,y+5,5,c)};
 function artisan(era,t,hx,hy,{left=740,feet=1390}={}){
-  figure(left,feet,.60,t,{era:era||'medieval',skin:'#dda77c',face:1,arms:.02,walk:0});
+  figure(left,feet,.60,t,{era:era||'medieval',skin:'#dda77c',face:1,arms:.02,walk:0,hideFrontArm:true});
   // Arm, elbow and articulated hand connect to the working tool.
-  L(left+46,feet-355,left+113,feet-305,'#b87c54',30);
-  L(left+113,feet-305,hx,hy,'#d8a17a',24);
+  L(left+52,feet-347,left+103,feet-303,'#b87c54',30);
+  L(left+103,feet-303,hx,hy,'#d8a17a',24);
   C(hx,hy,18,'#e5b38c');
   for(let k=-1;k<=2;k++) L(hx+2,hy+k*5,hx+21,hy+k*5+3,'#e5b38c',5);
 }
@@ -25,7 +25,55 @@ function vat(t){B(858,1060,320,160,'#805b42',15);B(875,1074,282,97,'#9ccfd3',8);
 function sieve(x,y,t){B(x,y,230,114,'#775a45',4);B(x+12,y+12,206,90,'#e7deba',3);
   for(let i=1;i<5;i++) L(x+12,y+12+i*16,x+217,y+12+i*16,'#bbac89',2);
 }
+// Narration-specific, non-looping instructional scenes. Each stage has one operator,
+// one visible tool and a material state that changes during the spoken line.
+function paperInstruction(kind,era,t){
+ const u=progress, j=Math.sin(t*3),id=activeId||'';
+ if(id==='a2'){
+   B(850,1090,345,54,'#b38a5a'); 
+   if(u<.34){for(let i=0;i<5;i++)B(902+i*40,1000,25,110,'#c9b66d');L(972+j*24,965,1044+j*24,1078,'#62686b',10);artisan(era,t,975+j*24,999);}
+   else if(u<.68){for(let i=0;i<7;i++){L(888+i*40,1030,888+i*40,1112,'#d4bd82',12);L(875,1020+i*13,1155,1020+i*13,'#dbc78e',7);}artisan(era,t,1000,1040);}
+   else {for(let i=0;i<8;i++)L(882,1010+i*12,1160,1010+i*12,'#decf9f',10);B(870,965+Math.abs(j)*13,312,45,'#765b43');artisan(era,t,1030,978+Math.abs(j)*13);}
+   return true;
+ }
+ if(['b2','c2','d1','e1','e2','g2'].includes(id)){
+   vat(t);
+   if(id==='e1'){B(930,1000,250,65,'#9b8067');B(1020,940+Math.abs(j)*25,82,62,'#5c625f');artisan(era,t,1040,953+Math.abs(j)*25);return true;}
+   if(id==='e2'&&u>.48){sieve(886,995,t);B(892,965+Math.abs(j)*18,240,32,'#73573f');artisan(era,t,1005,970+Math.abs(j)*18);return true;}
+   if(id==='g2'&&u<.32){for(let i=0;i<5;i++)B(900+i*37,963+(i%2)*12,85,46,'#e9e1c7');artisan(era,t,985,989);return true;}
+   if((id==='c2'||id==='d1'||id==='e2'||id==='g2')&&u>.52){
+     const lift=100*(u-.52)/.48;
+     sieve(900,1050-lift,t);for(let i=0;i<6;i++)L(930+i*35,1164-lift,930+i*35,1190-lift,'#82c1cf',3);
+     artisan(era,t,930,1082-lift);return true;
+   }
+   if(u<.34){B(917,1012,170,30,'#d4bd8c');L(946+j*25,980,981+j*25,1105,'#6b604c',16);artisan(era,t,950+j*25,1004);}
+   else{L(1000+j*31,955,1008+j*31,1150,'#81694d',17);for(let i=0;i<8;i++)C(925+i*31,1120+Math.sin(t+i)*7,5,'#e6dab0');artisan(era,t,1000+j*31,985);}
+   return true;
+ }
+ if(id==='d2'||id==='b5'){
+   B(860,1050,345,55,'#9c815c');for(let i=0;i<5;i++)B(881+i*61,1020,52,28,'#f1e6c6');
+   B(1120,930,12,160,'#6c5742');L(930,1000,1126,960,'#d1bd92',8);artisan(era,t,935,1000);return true;
+ }
+ if(id==='f2'){B(828,1070,385,160,'#69757a');for(let i=0;i<3;i++){C(875+i*140,1090,45,'#a9b8bb');L(875+i*140,1090,875+i*140+30*Math.cos(t*2),1090+30*Math.sin(t*2),'#626e72',6);}
+   B(840,1002,362,20,'#f0e5c8');artisan(era,t,851,1007);return true;}
+ return false;
+}
+function watchInstruction(kind,era,t){
+ const id=activeId||'',u=progress,j=Math.sin(t*2.5);
+ if(['c2','d1','d2','e1','e2','f1','f2'].includes(id)){
+   B(857,1035,340,150,'#967756');
+   if(id==='c2'){for(let i=0;i<3;i++){const x=928+i*90,y=1050+(i%2)*36;C(x,y,36,'#d8b77b');for(let k=0;k<10;k++){let a=k*Math.PI/5+t*.5*(i%2?-1:1);L(x+23*Math.cos(a),y+23*Math.sin(a),x+38*Math.cos(a),y+38*Math.sin(a),'#705c4b',7);}}B(1110,1125+Math.sin(t)*10,38,50,'#5b666c');artisan(era,t,940,1009);return true;}
+   if(id==='d1'||id==='d2'){C(1010,1080,72,'#e2c58c');for(let k=0;k<12;k++){const a=k*Math.PI/6;L(1010+60*Math.cos(a),1080+60*Math.sin(a),1010+79*Math.cos(a),1080+79*Math.sin(a),'#8b6c49',8);}
+     if(u<.5){L(915+j*18,985,1055,1070,'#9eacb4',12);artisan(era,t,915+j*18,990);}
+     else{for(let i=0;i<18;i++){let a=i*.7,r=i*2;C(1010+Math.cos(a)*r,1080+Math.sin(a)*r,3,'#66504b');}artisan(era,t,1005,1025);}return true;}
+   if(id==='e1'||id==='e2'){C(1015,1075,83,'#e4c589');for(let k=0;k<27;k++){const a=k*.45;C(1015+Math.cos(a)*k*2,1075+Math.sin(a)*k*2,3,'#81684d');}
+     B(1135,1005+Math.sin(t*2)*12,22,100,'#8c715a');artisan(era,t,1008+j*14,1018);return true;}
+   if(id==='f1'||id==='f2'){B(870,1020,300,145,'#49776c');B(892,1040,240,96,'#9eb9b2');C(970,1080,42,'#e1d9bb');C(1050,1080,22,'#c9bb83');for(let k=0;k<8;k++)L(900+k*32,1140,900+k*32,1120,'#cdbb8b',4);artisan(era,t,1000,1030);return true;}
+ }
+ return false;
+}
 function paper(kind,era,t){
+ if(paperInstruction(kind,era,t))return;
  const s=phase(),j=wave(t*3.6),up=32+40*wave(t*1.6),x=987+j*38;
  if(kind==='papyrus'){
    B(855,1090,340,55,'#b38a5a');for(let i=0;i<9;i++)L(875+i*32,1076,875+i*32,993,'#d5bd7e',9);
@@ -46,6 +94,7 @@ function paper(kind,era,t){
  }else{artisan(era,t,975,1070);}
 }
 function watch(kind,era,t){
+ if(watchInstruction(kind,era,t))return;
  const j=wave(t*2.8),s=phase();
  if(kind==='sun'){
    B(850,1132,350,68,'#d0b17a');B(998,966,25,163,'#b48a55');
