@@ -1,4 +1,4 @@
-name: Le Livre de Papy - Papier v4 lanceur branche serie
+name: Le Livre de Papy - Papier v4 correction sonore controle ameliore
 on:
   push:
     branches: [main]
@@ -49,7 +49,7 @@ jobs:
           bash "$d/tools/fonts.sh"
           node core/render/still.mjs "$d" 15 55 95 --size 1080x1920 --out "$d/preflight-vertical"
           node core/render/still.mjs "$d" 15 55 95 --size 1920x1080 --q wide=1 --out "$d/preflight-horizontal"
-      - name: Rendu uniquement papier avec controle de signal audio
+      - name: Rendu uniquement papier avec anti-parasites et nouveau controle audio
         env:
           LEMO_ANGLE: swiftshader
           PYTHONUNBUFFERED: '1'
