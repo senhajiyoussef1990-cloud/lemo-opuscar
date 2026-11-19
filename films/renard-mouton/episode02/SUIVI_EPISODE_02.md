@@ -48,3 +48,7 @@ L'animation doit être composée de **dessins complets successifs**, avec des po
 
 ## Comment mettre à jour ce suivi
 Ne cocher une scène qu'après dépôt de son rendu vérifié et du lien vers ses fichiers sur la branche. Ajouter ici les dates de livraison et liens MP4 lorsqu'ils existent.
+
+## Avancement des montages intermédiaires — 19 novembre 2026
+- **Scènes 02–04 :** un bloc vidéo de travail de 30 secondes a été créé dans ChatGPT : 48 dessins sources complets, 65 images de montage, 30 i/s, avec bruitages et sous-titres. **Les cases des scènes définitives restent décochées**, car les poses sont encore insuffisantes pour la cible finale et les dialogues ne sont pas doublés. Voir [les détails du montage](./SCENES_02_04_ETAT.md).
+- Les images et vidéos binaires ne sont pas encore présentes dans cette branche GitHub ; les fichiers ont été fournis dans la conversation.
