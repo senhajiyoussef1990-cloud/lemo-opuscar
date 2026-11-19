@@ -1,8 +1,6 @@
 name: Agnes AI - Test Renard et Mouton (6 secondes)
 on:
   workflow_dispatch:
-  issues:
-    types: [opened]
   push:
     branches: [main]
     paths:
@@ -11,7 +9,6 @@ permissions:
   contents: read
 jobs:
   animate:
-    if: github.event_name != 'issues' || github.event.issue.title == 'AGNES_TEST_REQUEST_6S'
     runs-on: ubuntu-latest
     timeout-minutes: 16
     steps:
