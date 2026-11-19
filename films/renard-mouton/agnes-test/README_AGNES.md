@@ -1,32 +1,28 @@
-# Agnes AI — Test de vraie animation du Renard
+# Essai Agnes AI : animation réelle du Renard et du Mouton
 
-Ce test utilise le modèle actuel **`agnes-video-2.5-flash`**, pas l'ancien `agnes-video-v2.0`. Il est destiné à une seule scène de **6 secondes en 720P vertical 9:16**.
+Un **test de 6 secondes** (vertical 9:16, 720P) sur une seule scène : **Renard à gauche**, **Mouton à droite avec un téléphone**. Le moteur demandé est `agnes-video-2.5-flash` en mode `reference`, avec deux photos des personnages déjà présentes dans ce dépôt.
 
-## Sécurité : la clé API
+Mouvements requis : le mouton fait défiler le téléphone et regarde le renard; le renard tourne la tête et fait un geste complet du bras; yeux, épaules, mains, mâchoires et bouches s'animent réellement. Le but est de comparer les mouvements à un vrai plan animé, et non de produire un diaporama.
 
-**Ne jamais copier la clé dans le dépôt, un script, une issue ou une commande affichée.**
-Comme une clé a été partagée dans une conversation, révoquer cette ancienne clé et en créer une nouvelle avant de lancer les tests de production.
+## Lancer sans exposer de clé
 
-1. Dans ce dépôt GitHub, ouvrir **Settings > Secrets and variables > Actions**.
-2. Cliquer sur **New repository secret**.
-3. Nom du secret : `AGNES_API_KEY`. Valeur : la nouvelle clé Agnes AI.
-4. Aller dans **Actions > Agnes AI - Test animation du Renard (6s)** et utiliser **Re-run all jobs** sur l'exécution initiale (ou déclencher un nouveau workflow, s'il est listé sur la branche par défaut).
+**Une clé a été copiée dans une conversation : il est prudent de la révoquer et d'en créer une nouvelle avant d'utiliser GitHub Actions.**
 
-Le workflow utilise `secrets.AGNES_API_KEY` uniquement en variable d'environnement; il ne l'affiche pas et ne la publie pas.
+1. Aller dans [les secrets du dépôt](https://github.com/senhajiyoussef1990-cloud/lemo-opuscar/settings/secrets/actions).
+2. Cliquer **New repository secret** et enregistrer la **nouvelle clé Agnes** sous le nom exact `AGNES_API_KEY`.
+3. Ouvrir [le workflow Agnes Renard et Mouton](https://github.com/senhajiyoussef1990-cloud/lemo-opuscar/actions/workflows/agnes-renard-mouton-manuel.yml) sur la branche principale, cliquer **Run workflow**.
+4. Une fois l'exécution achevée, sous **Artifacts**, télécharger `agnes-test-renard-mouton-6-secondes`. Il contient le MP4 en cas de succès.
 
-## Ce que le test doit faire
+Le script à exécuter vit dans `films/renard-mouton/agnes-test/generate.py` sur `ne-suis-pas-les-moutons`; seul le déclencheur manuel est sur `main`. Les autres séries et leurs workflows ne sont pas modifiés.
 
-Référence : `films/renard-mouton/img/renard-2.png` dans la branche `ne-suis-pas-les-moutons`.
+## Limitations
 
-Actions demandées : vraie articulation de la mâchoire et des lèvres, mouvement du bras et de la main, rotation de la tête, clignements, respiration. **Aucun zoom sur une photo ne doit remplacer ces mouvements.**
+- Le test vérifie **mouvements et cohérence des visages**, pas la synchronisation sur les nouvelles répliques de l'épisode 02.
+- Les voix de référence Mouton, Renard et JT ne sont pas publiées ici.
+- L'API peut refuser une clé qui ne provient pas d'Agnes, ou être indisponible (files d'attente, quotas).
+- Les offres et tarifs Agnes peuvent changer. Vérifier le coût avant de cliquer sur Run workflow.
+- La vidéo produite doit être contrôlée avant d'engager les 15 scènes de l'épisode.
 
-Le test vérifie d'abord la *qualité du mouvement et la cohérence du personnage*. Il ne contient **pas** les nouveaux dialogues de l'épisode 02 et ne garantit **pas** de synchronisation labiale sur les voix existantes : cela nécessite de fournir un extrait vocal approprié en référence. Ne pas envoyer les MP3 personnels sur le dépôt public.
+## Sécurité
 
-## Où retrouver le rendu
-
-GitHub > **Actions** > exécution de ce workflow > **Artifacts** > `agnes-renard-test-6s`. L'archive contient `renard_mouvement_6s.mp4` si l'API a abouti, ainsi qu'un JSON de statut. Rien n'est ajouté aux autres séries.
-
-## Contraintes
-
-La promotion gratuite de Flash peut changer. Vérifier la tarification sur la plateforme Agnes avant de lancer une génération.
-Le modèle peut modifier le visage et les vêtements; examiner la sortie avant de produire les 15 scènes.
+La clé n'apparaît dans aucun script, log voulu, document ou commit. Elle passe à GitHub Actions uniquement par la variable d'environnement `AGNES_API_KEY`, injectée depuis `secrets.AGNES_API_KEY`.
