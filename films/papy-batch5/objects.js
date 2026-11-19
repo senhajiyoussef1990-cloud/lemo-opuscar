@@ -100,9 +100,11 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
  }
  pop();
 }
-export const titleProp=(t)=>object(0,25,.5,{kind:CFG.eras[6][4],t,a:-.12});
+// The key story starts with a giant old key found under the sofa, not a badge.
+const showcaseKind=CFG.type==='key'?'wood':CFG.eras[6][4];
+export const titleProp=(t)=>object(0,25,.5,{kind:showcaseKind,t,a:-.12});
 export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,.32,{kind,t,a:-.15});};
-export const homeObject=(x,y,t)=>object(x,y,.35,{kind:CFG.eras[6][4],t});
+export const homeObject=(x,y,t)=>object(x,y,.35,{kind:showcaseKind,t});
 export function home(t,{glow=0,clockT=t}={}){
  bg('#f1e2c8');
  for(let x=-900;x<2100;x+=180)line(x,-1200,x,FLOOR-35,'#dfceaf',3);
