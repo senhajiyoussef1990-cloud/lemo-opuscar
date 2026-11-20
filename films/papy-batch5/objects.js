@@ -99,52 +99,88 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
    }
  }
  if(typ==='zipper'){
-   // The same object stays recognizable in Malik's hand, at the title and in historical demos.
-   // From laces to hooks to modern paired teeth; no commercial marks.
-   const fabric=kind==='modern'?'#42afbb':'#b98561';
-   if(kind==='laces'){
-     shape(spline([[-100,-132],[53,-132],[80,75],[129,92],[122,126],[-110,126],[-115,58]]),{fill:'#ab744d',lw:8});
-     box(-50,-105,70,199,'#d19d6d',10);
-     for(let i=0;i<7;i++){
-       const y=-90+i*27;
-       ring(-26,y,8,'#d7bf8c');ring(7,y,8,'#d7bf8c');
-       line(-27,y,6,y+20,'#f3ddad',5);line(6,y,-27,y+20,'#f3ddad',5);
+   // A complete, clearly recognizable object ALWAYS surrounds its fastening.
+   // All zipper geometry is integrated into a boot, coat or backpack.
+   const leather='#a46c46',sole='#473f38',silver='#cbd6d5',ink='#40383a';
+   const chain=(x,y,n,vertical=true,closed=1)=>{
+     for(let i=0;i<n;i++){
+       const q=i/n, xx=vertical?x:x+i*18, yy=vertical?y+i*18:y;
+       const spread=q>closed?10:0;
+       if(vertical){box(xx-12-spread,yy,13,12,silver,3);box(xx+spread,yy,13,12,'#a2adae',3);}
+       else{box(xx,yy-11-spread,12,13,silver,3);box(xx,yy+spread,12,13,'#a2adae',3);}
      }
-   }else if(kind==='boot'){
-     shape(spline([[-90,-146],[40,-146],[60,28],[116,57],[125,115],[50,139],[-120,130],[-129,95],[-96,68]]),{fill:'#424c4f',lw:8});
-     box(18,-130,27,216,'#bd9864',5);
-     for(let i=0;i<9;i++)box(25,-115+i*23,16,13,'#dbdbd1',4);
-     box(6,1,49,37,'#bac0bd',8);ring(30,40,14,'#e1d6ba');
-   }else{
-     // Two tapes with individual teeth and a movable interlocking slider.
-     box(-111,-133,102,266,fabric,11);
-     box(10,-133,102,266,kind==='modern'?'#61bcc1':'#bb987a',11);
-     line(-105,-117,-105,120,'rgba(255,255,255,.35)',4);
-     line(106,-117,106,120,'rgba(255,255,255,.3)',4);
-     const isHook=kind==='howe'||kind==='judson';
-     for(let i=0;i<12;i++){
-       const y=-112+i*20,joined=kind!=='howe' && i>=4;
-       const left=joined?-9:-23,right=joined?3:17;
-       box(left-20,y,isHook?28:29,isHook?9:12,isHook?'#afa397':'#d1d9d6',3);
-       box(right,y,isHook?26:29,isHook?9:12,isHook?'#a5a9a9':'#b7bcbd',3);
-       if(isHook && i%2===0)ring(0,y+4,5,'#e0d2b4');
-     }
-     if(kind!=='howe'){
-       box(-31,-47,61,63,'#727e86',12);box(-12,-35,23,36,'#c7c7c0',5);
-       ring(0,33,21,'#d5d6cb');ring(0,33,10,'#69737a');
+   };
+   const pull=(x,y,ang=0)=>{
+     push();translate(x,y);rotate(ang);
+     box(-16,-15,32,40,'#88969d',8);ring(0,35,17,'#d3dad7');ring(0,35,8,'#596b72');
+     pop();
+   };
+   const boot=(historical=false,laces=false)=>{
+     // Entire footwear: recognisable shaft, ankle, toe, heel and sole.
+     shape(spline([[-84,-161],[49,-161],[62,-82],[66,-18],[91,18],[144,37],[170,73],[163,117],[104,138],[-145,138],[-154,112],[-132,67],[-92,24],[-89,-60]]),{fill:historical?'#ab7656':'#474f53',lw:8});
+     shape(spline([[-148,106],[-87,117],[104,121],[166,94],[164,136],[-146,141]]),{fill:'#30383b',lw:6});
+     line(-99,-140,-92,73,historical?'#e2a780':'#75868a',5);
+     if(laces){
+       box(-34,-144,70,194,'#7d563f',13);
+       for(let i=0;i<7;i++){const yy=-127+i*26;
+         ring(-16,yy,6,'#e7cd9e');ring(17,yy,6,'#e7cd9e');
+         line(-16,yy,17,yy+16,'#f4ddb0',4);line(17,yy,-16,yy+16,'#f4ddb0',4);
+       }
      }else{
-       for(let i=0;i<6;i++)line(-12,-94+i*34,12,-75+i*34,'#8d7761',5);
+       box(-18,-148,50,204,historical?'#865e50':'#74838a',8);
+       chain(6,-136,9,true,.65);pull(6,-10);
      }
-   }
+     line(-72,45,85,82,'rgba(255,255,255,.14)',5);
+   };
+   const jacket=(proto=false)=>{
+     // A real full-length jacket with sleeves, collar, pockets, central front fastening.
+     shape(spline([[-88,-138],[-134,-117],[-177,0],[-146,28],[-111,-3],[-114,140],[114,140],[110,-3],[150,29],[180,1],[133,-117],[82,-138],[0,-94]]),{fill:proto?'#92775a':'#596d7a',lw:8});
+     shape(spline([[-79,-131],[-31,-74],[0,-107],[29,-74],[80,-130]]),{fill:proto?'#c6a67d':'#c8b6a3',lw:6});
+     line(0,-97,0,136,proto?'#d4b785':'#d7dcda',5);
+     box(-99,45,62,50,proto?'#a58a72':'#718997',8);
+     box(40,45,62,50,proto?'#a58a72':'#718997',8);
+     if(proto){for(let i=0;i<7;i++){const yy=-62+i*29;box(-16,yy,16,12,'#b4a693',3);box(3,yy,16,12,'#a2a0a0',3);}}
+     else{chain(0,-88,11,true,.76);pull(0,-31);}
+   };
+   const bag=(closed=false,stuck=false)=>{
+     // Malik's actual backpack: straps, handle, body, front pocket, zipper and pull.
+     // No standalone zipper is ever held as the day's object.
+     stroke(spline([[-119,-103],[-143,-118],[-162,-83],[-166,118]]),21,{line:'#324e68'});
+     stroke(spline([[117,-102],[145,-113],[165,-83],[167,116]]),21,{line:'#324e68'});
+     shape(spline([[-57,-114],[-49,-154],[-23,-164],[27,-164],[51,-147],[59,-113]]),{fill:'#2f536f',lw:8});
+     shape(spline([[-132,-90],[-101,-131],[100,-131],[132,-86],[145,132],[-145,132]]),{fill:'#347e9b',lw:8,
+       shade:()=>fillOnly(ell(-64,-28,52,95,24),'rgba(255,255,255,.12)',{boil:0})});
+     box(-124,21,249,102,'#2f6687',15);
+     line(-115,26,113,26,'#5ea2ba',4);
+     // The UPPER opening on the bag changes state; the pull is visibly stuck early.
+     box(-119,-93,240,20,'#1e536d',6);
+     const p=closed?1:stuck?.43:.82,x=-106+216*p;
+     for(let i=0;i<12;i++){const tx=-109+i*19;
+       const joined=tx<x;
+       box(tx,-89,13,joined?15:9,joined?'#dfdbcd':'#b8c3c4',3);
+     }
+     pull(x,-87,Math.PI/2);
+     if(stuck){line(x+11,-90,x+16,-118,'#e7cba0',3);line(x+18,-87,x+30,-103,'#e7cba0',3);}
+     shape(spline([[-108,28],[109,28],[87,94],[-83,94]]),{fill:'#4a8eab',lw:5});
+     box(-14,47,28,19,'#d8ba75',4);
+   };
+   if(kind==='laces')boot(true,true);
+   else if(kind==='judson')boot(true,false);
+   else if(kind==='boot')boot(false,false);
+   else if(kind==='howe'||kind==='teeth'||kind==='patent')jacket(kind==='howe');
+   else if(kind==='modern'||kind==='bag'||kind==='bag-stuck'||kind==='bag-closed'){
+     bag(kind==='bag-closed',kind==='bag-stuck');
+     if(kind==='modern'){push();translate(188,15);scale(.38);jacket(false);pop();}
+   } else bag(false,false);
  }
 
  pop();
 }
 // The key story starts with a giant old key found under the sofa, not a badge.
-const showcaseKind=CFG.type==='key'?'wood':CFG.eras[6][4];
+const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':CFG.eras[6][4];
 export const titleProp=(t)=>object(0,25,.5,{kind:showcaseKind,t,a:-.12});
-export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,.32,{kind,t,a:-.15});};
-export const homeObject=(x,y,t)=>object(x,y,.35,{kind:showcaseKind,t});
+export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,CFG.type==='zipper'?.40:.32,{kind,t,a:-.15});};
+export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):showcaseKind,t});
 export function home(t,{glow=0,clockT=t}={}){
  bg('#f1e2c8');
  for(let x=-900;x<2100;x+=180)line(x,-1200,x,FLOOR-35,'#dfceaf',3);
@@ -152,7 +188,7 @@ export function home(t,{glow=0,clockT=t}={}){
  box(950,490,380,640,'#875c42');
  for(let i=0;i<4;i++){box(970,620+i*132,345,17,'#684831');for(let j=0;j<5;j++)box(996+j*58,546+i*132,43,69,['#dbb05e','#8ab5a3','#b87985','#d4c3ac','#779cbd'][j]);}
  box(457,1120,298,38,'#956b4d');box(480,1154,27,186,'#795741');box(704,1154,27,186,'#795741');
- homeObject(580,1085,t);spark(650,1020,8);
+ if(CFG.type!=='zipper')homeObject(580,1085,t); else spark(650,1020,8);
  ring(825,415,66,'#eee1c6');const a=t*.38;line(825,415,825+47*Math.cos(a),415+47*Math.sin(a),'#66513e',6);
  ground('#a78162');for(let x=-900;x<2100;x+=210)line(x,FLOOR+20,x-80,2280,'#92694c',4);
  if(glow>0)fillOnly(rect(X0,-1200,X1-X0,3700),`rgba(94,242,255,${.14*glow})`,{boil:0});
