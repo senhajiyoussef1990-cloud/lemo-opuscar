@@ -98,7 +98,47 @@ main=main.replace("BR = [w, t]; Wd.VIEW.ins = shot === 'ins';",
 assert "BR = [w, t]; Wd.SUN.on = false;" in main
 main=main.replace("BR = [w, t]; Wd.SUN.on = false;",
                   "BR = [w, t]; Wd.setAction(null,0); Wd.SUN.on = false;")
-main=main.replace("vertical 1080 × 1920","dual 9:16 et 16:9")
+main=main.replace("vertical 1080 × 1920","vertical 1080 × 1920")
+# New vertical episodes: a slim, full-width historic-era ribbon at the VERY top.
+# Height 100 px instead of the previous thick 186 px plaque at 13.5% screen height.
+tag_start=main.index("function tag(t) {")
+tag_end=main.index("// subtitles:",tag_start)
+thin_tag="""function tag(t) {
+  const s = shotAt(t), w = s[3], T = TAGS[w];
+  if (!T) return;
+  const [a,b] = worldSpan(w), start=a+.9, end=b-.25;
+  if (t < start || t >= end) return;
+  const [era, desc] = T;
+  const alpha = Math.max(0, Math.min(1,(t-start)/.24,(end-t)/.20));
+  // Full-width screen-space ribbon, flush to the top edge, no floating panel.
+  g.save();
+  g.setTransform(1,0,0,1,0,0);
+  g.globalAlpha = alpha;
+  g.fillStyle = '#2f2637';
+  g.fillRect(0,0,W,100);
+  g.fillStyle = '#d8b46c';
+  g.fillRect(0,96,W,4);
+  g.textAlign = 'center';
+  g.textBaseline = 'middle';
+  const fit = (str, maxSize, maxWidth) => {
+    let sz=maxSize;
+    g.font = '800 '+sz+'px "Baloo 2"';
+    while (sz>16 && g.measureText(str).width>maxWidth) {
+      sz-=1;
+      g.font='800 '+sz+'px "Baloo 2"';
+    }
+  };
+  fit(era,34,W-64);
+  g.fillStyle='#fff5db';
+  g.fillText(era,W/2,35);
+  fit(desc,24,W-68);
+  g.fillStyle='#e6cb90';
+  g.fillText(desc,W/2,75);
+  g.restore();
+}
+"""
+main=main[:tag_start]+thin_tag+main[tag_end:]
+
 (out/'main.js').write_text(main,encoding='utf8')
 story=(BASE/'story.js').read_text(encoding='utf8')
 begin=story.index('export const TAGS = {')
@@ -152,6 +192,10 @@ NOUVEL ÉPISODE
 {str(subj).upper()}
 AUJOURD'HUI À 18 H
 """
+# New episodes use a SINGLE vertical master; no redundant 16:9 YouTube master.
+if slug == 'crayon':
+    publication=publication.replace(f"YouTube — format classique 16:9 — titre\\n{subj} | Le Livre de Papy — un voyage à travers 7 époques\\n\\n","")
+    publication=publication.replace("Deux formats : Shorts 9:16 et vidéo YouTube 16:9. Voix de Papy et Malik dans les deux.","Format vertical 9:16 pour TikTok, Reels, Facebook et Shorts. Voix de Papy et Malik.")
 (out/'publication.txt').write_text(publication,encoding='utf8')
 script='# '+subj+' — Le Livre de Papy\n\n'
 for id,line in zip(DATA['ids'],lines):
