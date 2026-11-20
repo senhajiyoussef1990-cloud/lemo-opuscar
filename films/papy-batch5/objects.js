@@ -227,13 +227,43 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
    }
  }
 
+ if(typ==='fork'){
+   // An actual entire metal table fork, in Malik's rigged hand.
+   // Plates and real spaghetti are separately placed ON THE salon table.
+   const antique=kind==='roman-serving',gold=['byzantine','venice'].includes(kind);
+   const num=antique||gold||kind==='italy'?2:kind==='france'?3:4;
+   const metal=gold?'#d8b56a':antique?'#b79260':'#cbd7d7';
+   const gap=num===2?36:num===3?24:18,x0=-gap*(num-1)/2;
+   push();translate(0,0);rotate(-.17);
+   shape(spline([[-29,-75],[-29,-39],[-14,-6],[-11,41],[-17,156],[17,156],[11,41],[14,-6],[29,-39],[29,-75]]),{fill:metal,lw:7});
+   for(let i=0;i<num;i++){
+     const xx=x0+i*gap;
+     box(xx-6,-175,12,122,metal,6);
+     line(xx-2,-163,xx-2,-64,'rgba(255,255,255,.5)',2);
+   }
+   if(['byzantine','venice','italy'].includes(kind)){
+     box(-19,69,38,100,'#956c4c',10);
+     for(let j=0;j<4;j++)ring(0,83+j*22,3,'#f1ce86');
+   }else{
+     line(-10,59,-10,150,'rgba(255,255,255,.45)',3);
+   }
+   ring(0,164,11,gold?'#c2a059':'#889da3');
+   if(kind==='home2'||kind==='modern'){
+     // A few strands demonstrably wound AROUND the prongs, not beside the fork.
+     for(let j=0;j<4;j++){
+       stroke(spline([[x0+j*10,-126],[-24+j*15,-111],[12-j*3,-96],[19+j*4,-78]]),4,{line:'#ecc76b'});
+     }
+   }
+   pop();
+ }
+
  pop();
 }
 // The key story starts with a giant old key found under the sofa, not a badge.
-const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':CFG.type==='scissors'?'home':CFG.eras[6][4];
+const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':CFG.type==='scissors'||CFG.type==='fork'?'home':CFG.eras[6][4];
 export const titleProp=(t)=>object(0,25,.5,{kind:showcaseKind,t,a:-.12});
-export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,(CFG.type==='zipper'||CFG.type==='scissors')?.40:.32,{kind,t,a:-.15});};
-export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):showcaseKind,t});
+export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,(CFG.type==='zipper'||CFG.type==='scissors'||CFG.type==='fork')?.40:.32,{kind,t,a:-.15});};
+export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:CFG.type==='fork'?.55:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):CFG.type==='fork'?(w==='home2'?'home2':'home'):showcaseKind,t});
 export function home(t,{glow=0,clockT=t}={}){
  bg('#f1e2c8');
  for(let x=-900;x<2100;x+=180)line(x,-1200,x,FLOOR-35,'#dfceaf',3);
@@ -241,7 +271,17 @@ export function home(t,{glow=0,clockT=t}={}){
  box(950,490,380,640,'#875c42');
  for(let i=0;i<4;i++){box(970,620+i*132,345,17,'#684831');for(let j=0;j<5;j++)box(996+j*58,546+i*132,43,69,['#dbb05e','#8ab5a3','#b87985','#d4c3ac','#779cbd'][j]);}
  box(457,1120,298,38,'#956b4d');box(480,1154,27,186,'#795741');box(704,1154,27,186,'#795741');
- if(CFG.type!=='zipper'&&CFG.type!=='scissors')homeObject(580,1085,t); else spark(650,1020,8);
+ if(CFG.type==='fork'){
+   // The WHOLE meal stays visible at the same physical place in every salon shot.
+   shape(ell(579,1084,131,57,38),{fill:'#f6ede0',lw:6});
+   shape(ell(579,1081,106,39,38),{fill:'#fff8e9',lw:5});
+   for(let k=0;k<13;k++){
+     const y=1060+(k%5)*9,dx=(k%3)*4;
+     stroke(spline([[530+dx,y],[557,y-11],[583,y+7],[624-dx,y-2]]),4,{line:k%3?'#e5c36c':'#efd894'});
+   }
+   for(let k=0;k<5;k++)ring(548+k*16,1083+(k%3)*7,5,k%2?'#b95d42':'#87a16a');
+ }else if(CFG.type!=='zipper'&&CFG.type!=='scissors')homeObject(580,1085,t);
+ else spark(650,1020,8);
  ring(825,415,66,'#eee1c6');const a=t*.38;line(825,415,825+47*Math.cos(a),415+47*Math.sin(a),'#66513e',6);
  ground('#a78162');for(let x=-900;x<2100;x+=210)line(x,FLOOR+20,x-80,2280,'#92694c',4);
  if(glow>0)fillOnly(rect(X0,-1200,X1-X0,3700),`rgba(94,242,255,${.14*glow})`,{boil:0});
