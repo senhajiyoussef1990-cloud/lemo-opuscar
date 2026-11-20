@@ -5,7 +5,7 @@ import { push, pop, translate, rotate, scale, shape, fillOnly, stroke, ell, arc,
 import { eye, mouth, hand } from './chars.js';
 
 // period wardrobes: body shape + colours + hat
-const LOOK = {
+export const LOOK = {
   antique:  { top: '#f1e3c2', topS: '#d6c3a0', long: true, belt: '#c22f3a', hat: 'wrap', hatC: '#e9d7a8', shoe: '#8a5a34', legs: '#a8714a' },
   chinese:  { top: '#2f8a6a', topS: '#226a52', long: true, belt: '#e9b949', hat: 'cone', hatC: '#d9b870', shoe: '#2a2430', legs: '#2a2430', sleeves: 1 },
   georgian: { top: '#7a2a2a', topS: '#5a1e1e', vest: '#e9d7a8', breeches: '#3a3340', hose: '#f4f1ea', hat: 'tricorn', hatC: '#2a2430', shoe: '#2a2430', wig: '#f4f1ea' },
@@ -42,7 +42,7 @@ export function figure(x, y, s, t, o = {}) {
   const armA = o.arms ?? 0, swing = walk * .5;
   const arm = (k, front) => { const sh = [k * 50, -330], a = (k > 0 ? swing : -swing) + armA * (front ? 1 : 0), hp = [sh[0] + Math.sin(a) * 40 + k * 8, sh[1] + Math.cos(a) * 130];
     shape(noodle(sh, hp, -k * 8, L.sleeves ? 34 : 26, L.sleeves ? 40 : 22), { fill: L.top, lw: 5 }); hand(hp[0], hp[1] + 8, Math.PI / 2, 13, skin, { lw: 4 }); };
-  arm(-1, false);
+  if (!o.hideBackArm) arm(-1, false);
   // body: dress, robe/tunic or coat
   if (L.dress) { shape(spline(L.skirt === 'flare' ? [[-34, -330], [34, -330], [46, -220], [110, -70], [0, -56], [-110, -70], [-46, -220]] : [[-34, -330], [34, -330], [48, -220], [80, -20], [0, -10], [-80, -20], [-48, -220]]), { fill: L.top, lw: 6, shade: () => fillOnly(rect(20, -340, 80, 340), L.topS, { boil: .3 }) }); if (L.shawl) shape(spline([[-46, -330], [46, -330], [52, -270], [0, -240], [-52, -270]]), { fill: L.shawl, lw: 5 }); }
   else if (L.long) { shape(spline([[-38, -340], [38, -340], [54, -220], [62, -80], [0, -70], [-62, -80], [-54, -220]]), { fill: L.top, lw: 6, shade: () => fillOnly(rect(24, -350, 70, 300), L.topS, { boil: .3 }) }); if (L.belt) shape(rr(-52, -230, 104, 16, 4), { fill: L.belt, lw: 4 }); }

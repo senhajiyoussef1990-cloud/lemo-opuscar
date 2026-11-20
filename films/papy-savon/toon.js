@@ -6,6 +6,7 @@ import { clamp, lerp, hash, vnoise, TAU } from '/core/lib.js';
 export const W = 1080, H = 1920;
 export const INK = '#1b1422';
 export let g = null;
+export function setCtx(c) { g = c; }   // draw into another context for a moment (an invisible probe pass)
 export function init(canvas) { g = canvas.getContext('2d'); return g; }
 
 // —— matrix stack ——

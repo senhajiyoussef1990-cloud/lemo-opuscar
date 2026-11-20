@@ -1,29 +1,67 @@
 // Le Livre de Papy — demonstrations, rendered entirely in 2D code.
 // Every historical insert contains an artisan and a tool that moves under the artisan's hand.
 // The montage chooses the current spoken line and progress within that line.
-import {push,pop,translate,rotate,scale,shape,stroke,ell,rr,spline,dot,text} from './toon.js';
-import {figure} from './people.js';
+import {push,pop,translate,rotate,scale,shape,stroke,ell,rr,spline,dot,text,fillOnly,rect,arc,quad,noodle,setCtx,g,S,W,H} from './toon.js';
+import {figure,LOOK,FIG_K} from './people.js';
+import {hand} from './chars.js';
 let activeId=null,progress=0;
 export function setWorkshopAction(id,u){activeId=id;progress=Math.max(0,Math.min(1,Number(u)||0));}
-const B=(x,y,w,h,c,r=8)=>shape(rr(x,y,w,h,r),{fill:c,lw:5});
+const B=(x,y,w,h,c,r=8)=>shape(rr(x,y,w,h,r),{fill:c,lw:5,shade:()=>{fillOnly(rect(x,y,w,Math.max(3,h*.16)),'rgba(255,255,255,.2)',{boil:.2});fillOnly(rect(x,y+h*.8,w,h*.2+2),'rgba(20,10,0,.16)',{boil:.2});fillOnly(rect(x+w*.82,y,w*.18,h),'rgba(20,10,0,.08)',{boil:.2});}});
 const L=(x,y,a,b,c='#514236',w=7)=>stroke([[x,y],[a,b]],w,{line:c});
-const C=(x,y,r,c)=>shape(ell(x,y,r,r,28),{fill:c,lw:5});
+const C=(x,y,r,c)=>shape(ell(x,y,r,r,28),{fill:c,lw:5,shade:()=>{fillOnly(ell(x-r*.35,y-r*.4,r*.35,r*.22,12),'rgba(255,255,255,.35)',{boil:.2});fillOnly(ell(x+r*.2,y+r*.45,r*.7,r*.3,12),'rgba(20,10,0,.14)',{boil:.2});}});
 const wave=Math.sin;
 const phase=()=>Math.min(2,Math.floor(progress*3));
 const tool=(x,y,c='#b7a079')=>{L(x-10,y-5,x+10,y+5,c,11);C(x+10,y+5,5,c)};
-function artisan(era,t,hx,hy,{left=740,feet=1390}={}){
-  figure(left,feet,.60,t,{era:era||'medieval',skin:'#dda77c',face:1,arms:.02,walk:0,hideFrontArm:true});
-  // Arm, elbow and articulated hand connect to the working tool.
-  L(left+52,feet-347,left+103,feet-303,'#b87c54',30);
-  L(left+103,feet-303,hx,hy,'#d8a17a',24);
-  C(hx,hy,18,'#e5b38c');
-  for(let k=-1;k<=2;k++) L(hx+2,hy+k*5,hx+21,hy+k*5+3,'#e5b38c',5);
+// Two passes per frame: an invisible probe finds where the hands must go, then the artisan's body is drawn BEHIND
+// the props, and the arms and hands are drawn on top of the tool they hold.
+let PASS='draw',TGT=null,TYPE='paper';
+const PROBE=typeof document!=='undefined'?document.createElement('canvas'):null; if(PROBE){PROBE.width=W;PROBE.height=H;}
+const BX=1135,BF=1400,BS=.8;
+const SK={antique:'#b07a52',chinese:'#f0c9a0',medieval:'#e7b48c',georgian:'#f2c9a0',victorian:'#f2c9a0',thirties:'#e7b48c',fifties:'#e7b48c',lab:'#e7b48c',modern:'#b9794f',monk:'#f2c9a0'};
+const APRON={antique:'#e9dcc0',chinese:'#6a5a4a',medieval:'#c9b28a',georgian:'#d8cbb0',victorian:'#5a4a3a',thirties:'#6a6a72',fifties:'#3a5a7a',lab:'#ffffff',modern:'#2a3a4a'};
+function artisan(era,t,hx,hy){ if(PASS==='probe'){TGT={era:era||'medieval',hx,hy};return;} arms(era||'medieval',t,hx,hy); }
+function body(era,t){
+  const k=BS*FIG_K, L=LOOK[era]||LOOK.medieval, skin=SK[era]||'#e7b48c';
+  figure(BX,BF,BS,t,{era,skin,face:-1,arms:0,walk:0,hideFrontArm:true,hideBackArm:true,lid:.45,sm:.15});
+  // a work apron tied at the waist, with a pocket
+  push();translate(BX,BF);scale(-k,k);
+  shape(spline([[-34,-300],[34,-300],[44,-170],[0,-160],[-44,-170]]),{fill:APRON[era]||'#c9b28a',lw:4,shade:()=>{fillOnly(rect(10,-310,40,160),'rgba(0,0,0,.1)',{boil:.2});}});
+  stroke([[-40,-300],[-52,-340]],3);stroke([[40,-300],[52,-340]],3);shape(rr(-18,-240,36,26,4),{fill:'rgba(0,0,0,.08)',lw:3});
+  pop();
 }
-function vat(t){B(858,1060,320,160,'#805b42',15);B(875,1074,282,97,'#9ccfd3',8);
-  for(let k=0;k<7;k++)L(880+k*39,1104+wave(t*2+k)*12,904+k*39,1112+wave(t*2+k)*12,'#e5d5a4',5);
+function ik(sx,sy,tx,ty,a1,a2,bendDir){ // elbow of a two-bone arm from shoulder to hand
+  let dx=tx-sx,dy=ty-sy,d=Math.hypot(dx,dy); const m=a1+a2-2; if(d>m){tx=sx+dx/d*m;ty=sy+dy/d*m;dx=tx-sx;dy=ty-sy;d=m;}
+  const ca=(a1*a1+d*d-a2*a2)/(2*a1*d), an=Math.atan2(dy,dx)+bendDir*Math.acos(Math.max(-1,Math.min(1,ca)));
+  return [[sx+Math.cos(an)*a1,sy+Math.sin(an)*a1],[tx,ty]];
 }
-function sieve(x,y,t){B(x,y,230,114,'#775a45',4);B(x+12,y+12,206,90,'#e7deba',3);
-  for(let i=1;i<5;i++) L(x+12,y+12+i*16,x+217,y+12+i*16,'#bbac89',2);
+function arms(era,t,hx,hy,only=null){
+  const k=BS*FIG_K, L=LOOK[era]||LOOK.medieval, sl=L.top, skin=SK[era]||'#e7b48c';
+  const sh=[[BX-50*k,BF-330*k],[BX+50*k,BF-330*k]];           // front shoulder (toward the work), back shoulder
+  const fine=TYPE==='watch'||TYPE==='key';                       // delicate mechanisms: one hand with watchmaker's tweezers, the other resting on the bench
+  let hands=[[hx,hy],[hx+44,hy+20]];
+  if(fine){const s0=sh[0],dx=s0[0]-hx,dy=s0[1]-hy,d=Math.hypot(dx,dy)||1;hands=[[hx+dx/d*95,hy+dy/d*95],[BX-40,1178]];TW=[hands[0],[hx,hy]];}else TW=null;
+  (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],150,150,i?1:1);
+    shape(noodle(s,el,0,44,38),{fill:sl,lw:6,shade:()=>fillOnly(ell(el[0],el[1],24,40,12),'rgba(0,0,0,.12)',{boil:.2})});
+    shape(noodle(el,hp,0,38,30),{fill:sl,lw:6});
+    shape(ell(hp[0]+(el[0]-hp[0])*.12,hp[1]+(el[1]-hp[1])*.12,17,14,12),{fill:L.topS||sl,lw:4});   // the cuff
+    hand(hp[0],hp[1],Math.atan2(hp[1]-el[1],hp[0]-el[0]),22,skin,{fist:true,lw:5});
+    if(i===0&&TW){const [a,b]=TW,an=Math.atan2(b[1]-a[1],b[0]-a[0]),nx=-Math.sin(an)*6,ny=Math.cos(an)*6;   // steel tweezers to the part
+      stroke([[a[0]+nx,a[1]+ny],[b[0]+nx*.2,b[1]+ny*.2]],5,{line:'#9aa3ad'});stroke([[a[0]-nx,a[1]-ny],[b[0]-nx*.2,b[1]-ny*.2]],5,{line:'#c9d0d8'});dot(b[0],b[1],5,'#e9b949');}});
+}
+let TW=null;
+function vat(t){
+  // a wooden vat: staves, two iron hoops, water that moves, fibres floating in the pulp
+  shape(spline([[852,1060],[1184,1060],[1170,1220],[866,1220]]),{fill:'#805b42',lw:6,shade:()=>{for(let k=0;k<9;k++)stroke([[870+k*36,1062],[874+k*34,1218]],3,{line:'#6a4834'});fillOnly(rect(1120,1060,70,165),'rgba(0,0,0,.14)',{boil:.2});}});
+  for(const y of [1100,1180])shape(rr(856,y,326,14,5),{fill:'#5a5e66',lw:4,shade:()=>fillOnly(rect(856,y,326,4),'rgba(255,255,255,.3)',{boil:.1})});
+  shape(ell(1018,1066,166,26,30),{fill:'#9ccfd3',lw:5,shade:()=>{fillOnly(ell(1018,1072,150,18,24),'#d9cfae',{boil:.4});for(let k=0;k<5;k++){const a=(t*.8+k*.2)%1;stroke(ell(930+k*45,1066,20+a*30,4+a*5,14),2,{line:`rgba(255,255,255,${.6*(1-a)})`});}
+    for(let k=0;k<14;k++)stroke([[880+k*20+Math.sin(t+k)*6,1060+(k%3)*5],[892+k*20+Math.sin(t+k)*6,1064+(k%3)*5]],2.5,{line:'#bfae84'});}});
+}
+function sieve(x,y,t){
+  // a papermaking mould: a wooden frame, fine wires, ribs, the deckle on top, the wet sheet forming, water dripping
+  shape(rr(x,y,230,114,6),{fill:'#775a45',lw:5,shade:()=>{fillOnly(rect(x,y,230,10),'rgba(255,255,255,.18)',{boil:.2});for(let k=0;k<6;k++)stroke([[x+6,y+18*k+8],[x+40,y+18*k+12]],2,{line:'#5a4232'});}});
+  shape(rr(x+12,y+12,206,90,3),{fill:'#e9e0bd',lw:3,shade:()=>{for(let i=0;i<22;i++)stroke([[x+16+i*9.6,y+12],[x+16+i*9.6,y+102]],1,{line:'rgba(90,80,60,.35)'});for(let i=1;i<6;i++)stroke([[x+12,y+12+i*15],[x+218,y+12+i*15]],2,{line:'rgba(90,80,60,.45)'});fillOnly(ell(x+80,y+40,40,12,12),'rgba(255,255,255,.4)',{boil:.2});}});
+  shape(rr(x-4,y-6,238,14,4),{fill:'#8a6a52',lw:4});
+  for(let k=0;k<6;k++){const u=(t*1.4+k/6)%1;dot(x+20+k*38,y+118+u*60,4*(1-u)+1,'rgba(130,190,210,.9)');}
 }
 // Narration-specific, non-looping instructional scenes. Each stage has one operator,
 // one visible tool and a material state that changes during the spoken line.
@@ -533,9 +571,9 @@ function pencil(kind,era,t){
 }
 
 export function renderWorkshop(type,kind,era,t){
- if(type==='paper')paper(kind,era,t);
- else if(type==='watch')watch(kind,era,t);
- else if(type==='umbrella')umbrella(kind,era,t);
- else if(type==='key')key(kind,era,t);
- else if(type==='pencil')pencil(kind,era,t);
+ TYPE=type;
+ const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);};
+ if(PROBE){const main=g,sid=S.sid;setCtx(PROBE.getContext('2d'));PASS='probe';TGT=null;try{run();}finally{setCtx(main);S.sid=sid;PASS='draw';}
+   if(TGT){shape(ell(BX,BF+4,90,16,18),{fill:'rgba(20,10,30,.18)',lw:0,stroke:false});body(TGT.era,t);if(TYPE==='watch'||TYPE==='key')arms(TGT.era,t,TGT.hx,TGT.hy,1);}}   // the resting arm stays behind the work
+ run();
 }
