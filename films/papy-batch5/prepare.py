@@ -21,6 +21,34 @@ out.mkdir(parents=True,exist_ok=True)
 for name in ['chars.js','worlds.js','index.html']:
     shutil.copy2(BASE/name,out/name)
 shutil.copy2(BATCH/'people.js',out/'people.js')
+
+# Pilot V2: improve five-finger silhouette only in this newly generated episode.
+# Keep existing published chapters and shared character appearance unchanged.
+if slug == 'fermeture-eclair':
+    charpath=out/'chars.js'
+    chars=charpath.read_text(encoding='utf8')
+    first=chars.index('export function hand(')
+    after=chars.index('export const sweat',first)
+    detailed_hand="""export function hand(x,y,ang,r=21,col=PAL.skinP,{fist=false,lw=6,flip=false}={}){
+  push();translate(x,y);rotate(ang);if(flip)scale(1,-1);
+  const edge=Math.max(2,lw*.6);
+  // A broad palm, four separate rounded fingers and an opposite thumb.
+  shape(ell(-r*.14,0,r*.94,r*.88,20),{fill:col,lw:edge});
+  for(let i=0;i<4;i++){
+    const yy=(-.71+i*.42)*r;
+    const length=(fist?(.59+(.07*(i===1||i===2))):(.80+.15*(i===1||i===2)))*r;
+    shape(rr(r*.42,yy,length,r*(fist?.31:.28),r*.14),{fill:col,lw:edge});
+    if(!fist)stroke([[r*.72,yy+r*.10],[r*.92,yy+r*.10]],Math.max(1.5,edge*.42),{line:'#c78e75'});
+    else stroke([[r*.5,yy+r*.19],[r*.73,yy+r*.19]],Math.max(1.4,edge*.35),{line:'#c78e75'});
+  }
+  shape(spline([[r*.13,r*.68],[r*.76,r*.98],[r*1.02,r*.79],[r*.72,r*.50],[r*.35,r*.36]]),{fill:col,lw:edge});
+  stroke([[r*.32,r*.51],[r*.76,r*.75]],Math.max(1.5,edge*.37),{line:'#c78e75'});
+  pop();
+}
+"""
+    chars=chars[:first]+detailed_hand+chars[after:]
+    charpath.write_text(chars,encoding='utf8')
+
 shutil.copy2(BATCH/'objects.js',out/'objects.js')
 shutil.copy2(BATCH/'workshops.js',out/'workshops.js')
 for name in ['score.py','synth.py','mix.py','voice.py','foley.py','fonts.sh']:
@@ -139,6 +167,35 @@ thin_tag="""function tag(t) {
 """
 main=main[:tag_start]+thin_tag+main[tag_end:]
 
+
+# Visual standard V2 for the NEW zipper story: restore a readable top ribbon,
+# and put the real episode object in Malik's hand (home, history, return).
+if slug == 'fermeture-eclair':
+    for before,after in [
+        ('g.fillRect(0,0,W,100)','g.fillRect(0,0,W,128)'),
+        ('g.fillRect(0,96,W,4)','g.fillRect(0,124,W,4)'),
+        ('fit(era,34,W-64)','fit(era,42,W-64)'),
+        ('g.fillText(era,W/2,35)','g.fillText(era,W/2,47)'),
+        ('fit(desc,24,W-68)','fit(desc,30,W-68)'),
+        ('g.fillText(desc,W/2,75)','g.fillText(desc,W/2,98)')
+    ]:
+        assert before in main, 'Tag template changed: '+before
+        main=main.replace(before,after)
+    old_malik="&& !m.holdF && w==='home')"
+    assert old_malik in main
+    main=main.replace(old_malik,"&& !m.holdF)")
+    # Let Malik inspect an appropriately historic object when he reacts.
+    # Make it share the original arm and hand rig, not an extra floating hand.
+    insert="  if (p) papy(p);"
+    assert insert in main
+    main=main.replace(insert,"""  if (m && w && /^w[1-7]$/.test(w) && !m.holdF && talk('MALIK',t).talking) {
+    m.holdF=Wd.heldObject(w,t);
+    m.armF={h:[42,30],bend:14,fist:true};
+  }
+"""+insert)
+    # In the salon the same hand visibly grips the object; the old prop is
+    # still on the table as a background illustration, not a replacement.
+
 (out/'main.js').write_text(main,encoding='utf8')
 story=(BASE/'story.js').read_text(encoding='utf8')
 begin=story.index('export const TAGS = {')
@@ -193,7 +250,7 @@ NOUVEL ÉPISODE
 AUJOURD'HUI À 18 H
 """
 # New episodes use a SINGLE vertical master; no redundant 16:9 YouTube master.
-if slug == 'crayon':
+if slug in ('crayon','fermeture-eclair'):
     publication=publication.replace(f"YouTube — format classique 16:9 — titre\n{subj} | Le Livre de Papy — un voyage à travers 7 époques\n\n","")
     publication=publication.replace("Deux formats : Shorts 9:16 et vidéo YouTube 16:9. Voix de Papy et Malik dans les deux.","Format vertical 9:16 pour TikTok, Reels, Facebook et Shorts. Voix de Papy et Malik.")
 (out/'publication.txt').write_text(publication,encoding='utf8')
@@ -201,4 +258,4 @@ script='# '+subj+' — Le Livre de Papy\n\n'
 for id,line in zip(DATA['ids'],lines):
     script+=f"**{'Papy' if line['who']=='PAPY' else 'Malik'} ({id}) :** « {line['text']} »\n\n"
 (out/'SCENARIO.md').write_text(script,encoding='utf8')
-print('Episode prêt:',slug,'39 voix, 7 époques, formats 1080x1920 et 1920x1080')
+print('Episode prêt:',slug,'39 voix, 7 époques, format vertical 1080x1920' if slug in ('crayon','fermeture-eclair') else 'double format')
