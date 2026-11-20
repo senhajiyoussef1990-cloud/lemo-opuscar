@@ -58,20 +58,6 @@ function paperInstruction(kind,era,t){
    B(840,1002,362,20,'#f0e5c8');artisan(era,t,851,1007);return true;}
  return false;
 }
-function watchInstruction(kind,era,t){
- const id=activeId||'',u=progress,j=Math.sin(t*2.5);
- if(['c2','d1','d2','e1','e2','f1','f2'].includes(id)){
-   B(857,1035,340,150,'#967756');
-   if(id==='c2'){for(let i=0;i<3;i++){const x=928+i*90,y=1050+(i%2)*36;C(x,y,36,'#d8b77b');for(let k=0;k<10;k++){let a=k*Math.PI/5+t*.5*(i%2?-1:1);L(x+23*Math.cos(a),y+23*Math.sin(a),x+38*Math.cos(a),y+38*Math.sin(a),'#705c4b',7);}}B(1110,1125+Math.sin(t)*10,38,50,'#5b666c');artisan(era,t,940,1009);return true;}
-   if(id==='d1'||id==='d2'){C(1010,1080,72,'#e2c58c');for(let k=0;k<12;k++){const a=k*Math.PI/6;L(1010+60*Math.cos(a),1080+60*Math.sin(a),1010+79*Math.cos(a),1080+79*Math.sin(a),'#8b6c49',8);}
-     if(u<.5){L(915+j*18,985,1055,1070,'#9eacb4',12);artisan(era,t,915+j*18,990);}
-     else{for(let i=0;i<18;i++){let a=i*.7,r=i*2;C(1010+Math.cos(a)*r,1080+Math.sin(a)*r,3,'#66504b');}artisan(era,t,1005,1025);}return true;}
-   if(id==='e1'||id==='e2'){C(1015,1075,83,'#e4c589');for(let k=0;k<27;k++){const a=k*.45;C(1015+Math.cos(a)*k*2,1075+Math.sin(a)*k*2,3,'#81684d');}
-     B(1135,1005+Math.sin(t*2)*12,22,100,'#8c715a');artisan(era,t,1008+j*14,1018);return true;}
-   if(id==='f1'||id==='f2'){B(870,1020,300,145,'#49776c');B(892,1040,240,96,'#9eb9b2');C(970,1080,42,'#e1d9bb');C(1050,1080,22,'#c9bb83');for(let k=0;k<8;k++)L(900+k*32,1140,900+k*32,1120,'#cdbb8b',4);artisan(era,t,1000,1030);return true;}
- }
- return false;
-}
 function paper(kind,era,t){
  if(paperInstruction(kind,era,t))return;
  const s=phase(),j=wave(t*3.6),up=32+40*wave(t*1.6),x=987+j*38;
@@ -93,56 +79,209 @@ function paper(kind,era,t){
    artisan(era,t,850,1007);
  }else{artisan(era,t,975,1070);}
 }
+// Seven clocks and watches, with motion driven by the line being narrated.
+// Continuous clock motion is reserved for the escapement/balance demonstration.
 function watch(kind,era,t){
- if(watchInstruction(kind,era,t))return;
- const j=wave(t*2.8),s=phase();
+ const id=activeId||'', u=Math.max(0,Math.min(1,progress));
+ const ease=v=>{v=Math.max(0,Math.min(1,v));return v*v*(3-2*v);};
+ const run=id.endsWith('2')||id==='d1'||id==='e1';
+ const q=run?ease(u):0;
+ const wood='#ad8056', gold='#d4ad65', iron='#717980', ivory='#f4dfb5';
+ const desk=()=>{B(844,1176,369,42,'#7a563f',5);B(863,1217,28,70,'#664b38',4);B(1163,1217,28,70,'#664b38',4);};
+ const gear=(x,y,r,angle=0)=>{
+  C(x,y,r,'#c8ab6b'); C(x,y,r-10,'#f4dba4'); C(x,y,11,'#756148');
+  for(let k=0;k<12;k++){let a=k*Math.PI/6+angle;L(x+(r-8)*Math.cos(a),y+(r-8)*Math.sin(a),x+(r+8)*Math.cos(a),y+(r+8)*Math.sin(a),'#b99459',7);}
+ };
  if(kind==='sun'){
-   B(850,1132,350,68,'#d0b17a');B(998,966,25,163,'#b48a55');
-   L(1012,969,1012+110*Math.cos(t*.3),969+110*Math.sin(t*.3),'#766b63',18);
-   artisan(era,t,s===0?1007:1105,1002);
-   for(let i=0;i<4;i++)L(900+i*70,1165,920+i*70,1165,'#7b614c',5);
- }else if(kind==='water'){
-   B(955,985,180,185,'#7fa8b1');B(977,1020,134,95,'#afd8e5');
-   for(let i=0;i<5;i++)L(967+i*35,1153,967+i*35,1159,'#506b78',4);
-   push();translate(915,949);rotate(-.4+wave(t*2)*.15);B(-64,-43,128,88,'#b7a080');pop();
-   for(let i=0;i<6;i++) C(970+i*4,1018+i*17+((t*30)%20),3,'#85d1e2');
-   artisan(era,t,917,937);
- }else if(kind==='tower'){
-   B(850,945,328,256,'#987b5e');for(let i=0;i<3;i++){C(910+i*113,1040,48,'#c5a970');for(let k=0;k<8;k++){const a=k*Math.PI/4+t*.6;L(910+i*113,1040,910+i*113+35*Math.cos(a),1040+35*Math.sin(a),'#7c6145',6);}}
-   L(1070,1070,1070,1193,'#4f4c48',10);B(1041,1160+wave(t)*15,60,35,'#6a615b');artisan(era,t,1100,998);
- }else if(kind==='pocket'||kind==='spring'){
-   B(878,994,280,163,'#9b7954');C(1020,1060,77,'#e5c989');C(1020,1060,54,'#f9e3b2');
-   for(let i=0;i<25;i++){let a=i*.43+t*.3,r=i*2;dot(1020+Math.cos(a)*r,1060+Math.sin(a)*r,3,'#80674b');}
-   L(931,962,1040,1030,'#777f82',9);artisan(era,t,931+j*20,957);
- }else if(kind==='quartz'){
-   B(864,1016,302,162,'#446b5f');C(1002,1080,50,'#e8e4d7');
-   for(let i=0;i<7;i++){L(877+i*40,1135,883+i*40,1056,'#c6b267',4);C(887+i*40,1090,8,'#d8b562');}
-   C(1020+j*8,1080,25,'#b3c5d5');artisan(era,t,995,1035);
- }else{
-   B(915,1008,205,135,'#404958');B(931,1024,173,102,'#1c353e');text('10:08',1019,1086,{font:'700 38px "Baloo 2"',fill:'#e0fff2'});
-   C(1010,1160,15,'#62dfa2');artisan(era,t,1010+j*9,1100);
+  B(850,1080,355,112,'#cdb584',7);
+  B(870,1100,317,74,'#e8cf9c',5);
+  for(let k=0;k<6;k++)L(900+k*50,1150,910+k*50,1162,'#897051',4);
+  // Gnomon stays planted; its shadow advances as sunlight changes.
+  B(1018,985,17,101,'#846b49',3);
+  C(1027,987,13,'#bc9458');
+  let xx=1028+(run?85*q:55), yy=1120+(run?45*q:0);
+  L(1027,1080,xx,yy,'#665747',14);
+  C(xx,yy,8,'#71644e');
+  artisan(era,t,1027,996);
+  return;
  }
+ if(kind==='water'){
+  desk();B(912,969,252,205,'#8ba4a7',16);B(934,988,208,160,'#d5ece7',8);
+  // Graduated clepsydra; the water level visibly falls as the line progresses.
+  const h=run?112-95*q:102;
+  B(948,1138-h,180,h,'#65bfd3',1);
+  for(let k=0;k<6;k++)L(1135,1015+k*23,1158,1015+k*23,'#506b77',4);
+  C(1035,1149,8,'#e4d1b4');
+  if(id==='b2')for(let k=0;k<3;k++)C(1036,1160+k*24,5,'#7dcfe2');
+  B(989,1184,121,16,'#77b1c3',4);
+  artisan(era,t,944,1003);
+  return;
+ }
+ if(kind==='tower'){
+  B(839,944,376,252,'#a58b66',9);
+  B(866,964,326,210,'#d0b892',8);
+  // Hanging weights are pulled up once before the gearing turns.
+  const lift=id==='c2'?80*q:0;
+  for(let k=0;k<2;k++){
+   L(909+k*274,1000,909+k*274,1141-lift*(k===0?1:.32),'#666665',6);
+   B(886+k*274,1134-lift*(k===0?1:.32),46,56,'#6b6b67',5);
+  }
+  gear(979,1027,42,id==='c2'?q*1.7:0);
+  gear(1061,1028,43,id==='c2'?-q*1.7:0);
+  C(1023,1108,48,'#f4ddad');
+  L(1023,1108,1045+30*q,1076-22*q,'#655a48',6);
+  L(1023,1108,1011+16*q,1063,'#8f6041',5);
+  artisan(era,t,910,1086-lift*.7);
+  return;
+ }
+ if(kind==='pocket'){
+  desk();
+  B(891,973,271,195,'#916949',12);
+  gear(977,1045,42,q*2.1);
+  gear(1078,1060,34,-q*1.3);
+  C(1059,1113,48,'#dfc48b');C(1059,1113,35,ivory);
+  L(1059,1113,1078+14*q,1083-8*q,'#79634c',5);
+  B(990,1174,160,17,'#a38966',6);
+  // A small winding spring is placed into its casing.
+  for(let k=0;k<21;k++){let a=k*.56, r=k*1.2;C(973+Math.cos(a)*r,1125+Math.sin(a)*r,2,'#82776b');}
+  artisan(era,t,944+65*q,998+30*q);
+  return;
+ }
+ if(kind==='spring'){
+  desk();
+  B(890,976,285,192,'#6c847c',13);B(905,995,250,159,'#e4d5b3',6);
+  C(1011,1067,83,'#ceaa6b');C(1011,1067,56,'#f0d3a6');
+  const rotor=id==='e2'?Math.sin(t*6)*.20:0;
+  for(let k=0;k<25;k++){const theta=k*.61+rotor, radius=2.1*k;C(1011+Math.cos(theta)*radius,1068+Math.sin(theta)*radius,3,'#8f7658');}
+  L(1011,1067,1084+rotor*43,1054,'#6a6f6d',7);
+  gear(1131,1103,24,id==='e2'?t*.7:0);
+  if(id==='e2')L(946+65*q,990,1008,1038,'#90999a',8);
+  artisan(era,t,952+55*q,1000);
+  return;
+ }
+ if(kind==='quartz'){
+  desk();
+  B(879,986,308,179,'#536f65',14);
+  B(902,1004,268,147,'#90b8ac',6);
+  // The quartz crystal and oscillator circuit; one trace lights up with power.
+  C(951,1051,23,'#e2e6d5');B(928,1087,66,26,ivory,4);
+  B(1023,1033,99,62,'#657279',5);
+  for(let k=0;k<8;k++)L(1043+k*10,1094,1043+k*10,1117,'#c7a967',3);
+  L(976,1050,1025,1050,q>.48?'#75d0a0':'#cbb889',5);
+  L(1026,1050,1132,1047,q>.75?'#75d0a0':'#cbb889',5);
+  C(1143,1047,10,q>.75?'#61d8a1':'#a0a49b');
+  artisan(era,t,1006,1085);
+  return;
+ }
+ // Modern smartwatch: Papy's explanation is an actual screen interaction.
+ desk();
+ B(957,957,111,267,'#323e4c',15);
+ B(937,1000,155,166,'#505f6a',23);
+ B(947,1012,134,142,'#1b3b49',13);
+ if(id==='g2'&&q>.73){
+  C(1006,1069,30,'#5fc69f');L(989,1070,1003,1081,'#e1f6ed',6);L(1003,1081,1024,1048,'#e1f6ed',6);
+ }else if(id==='g2'&&q>.42){
+  for(let k=0;k<5;k++)B(965+k*21,1091-k*12,14,30+k*10,'#6ac3ba',2);
+  text('PAS',1013,1047,{font:'700 22px "Baloo 2"',fill:'#d8f8ec'});
+ }else{
+  text('10:08',1015,1078,{font:'700 36px "Baloo 2"',fill:'#dbf9e5'});
+  L(982,1097,1049,1097,'#67d8bb',3);
+ }
+ artisan(era,t,1050-44*q,1086-35*q);
 }
+
+// Parasol to automatic umbrella: the demonstrated motion corresponds to
+// the narrated steps, and never loops through unrelated decorative gestures.
 function umbrella(kind,era,t){
- const j=wave(t*2.8),s=phase(),cx=1020;
- if(kind==='folding'){
-   B(858,1090,318,58,'#c36b57');L(900,1095,1120,1095,'#796e65',12);
-   let dx=40+80*(.5+.5*j);B(952,1020,28,160-dx*.3,'#aaa8a2');
-   artisan(era,t,980+dx*.5,1055);for(let i=0;i<5;i++)L(925+i*45,1080,920+i*45,1080-10*(s+1),'#ad5f52',5);
- }else{
-   const cy=976+(kind==='sunshade'?0:40);
-   const r=kind==='steel'?164:kind==='hanway'?170:170;
-   const open=kind==='auto' ? (.45+.55*(.5+.5*j)) : 1;
-   shape(spline([[-r,0],[-r*.66,-95*open],[-r*.33,-135*open],[0,-145*open],[r*.33,-135*open],[r*.66,-95*open],[r,0],[r*.5,-12],[0,-5],[-r*.5,-12]].map(([x,y])=>[cx+x,cy+y])),{fill:kind==='oilpaper'?'#eaba7e':kind==='steel'?'#8f86c2':kind==='sunshade'?'#f0d18e':'#6aaaba',lw:7});
-   for(let i=-2;i<=2;i++)L(cx,cy-145*open,cx+i*65,cy,'#785a4c',5);
-   L(cx,cy-140*open,cx,1204,'#5e5858',12);
-   if(kind==='oilpaper'){for(let i=0;i<7;i++)L(cx-130+i*41,cy-55,cx-128+i*41+j*7,cy-95,'#966b4c',7);artisan(era,t,920+j*17,cy-78);}
-   else if(kind==='steel'){L(915+j*15,994,1040,980,'#afbfc4',12);artisan(era,t,915+j*15,994);}
-   else if(kind==='auto'){B(cx-20,1130,44,38,'#343b3c');artisan(era,t,cx-8,1140);}
-   else{artisan(era,t,cx-14+j*7,1121);}
-   if(kind==='rain'||kind==='hanway'||kind==='auto')for(let i=0;i<12;i++)L(825+i*34,870+(t*60+i*30)%200,813+i*34,890+(t*60+i*30)%200,'#8fc7d9',4);
+ const id=activeId||'',u=Math.max(0,Math.min(1,progress));
+ const ease=v=>{v=Math.max(0,Math.min(1,v));return v*v*(3-2*v);};
+ const q=id.endsWith('2')?ease(u):0;
+ const cx=1053,cy=994;
+ const canopy=(cx,cy,r,opening,colour)=>{
+  const o=Math.max(.10,Math.min(1,opening));
+  const h=132*o;
+  shape(spline([[-r,0],[-r*.67,-h*.68],[-r*.34,-h*.96],[0,-h],[r*.34,-h*.96],[r*.67,-h*.68],[r,0],[r*.50,-5],[0,-8],[-r*.5,-5],[-r,0]].map(([x,y])=>[cx+x,cy+y])),{fill:colour,lw:6});
+  for(let k=-3;k<=3;k++)L(cx,cy-h,cx+k*r/3,cy,'#857166',3);
+  L(cx,cy-h,cx,1222,'#5d5d5d',9);
+  C(cx,cy-h,10,'#d0b67d');
+ };
+ const rain=(shield=true)=>{
+  for(let k=0;k<12;k++){
+   let x=856+k*29, yy=941+(k%5)*64+(id.endsWith('2')?100*q:0);
+   if(shield&&x>906&&x<1200&&yy>955&&yy<1140)continue;
+   L(x,yy,x-10,yy+24,'#70b3d0',3);
+  }
+ };
+ const desk=()=>{B(859,1160,345,38,'#89684b',5);B(885,1197,29,65,'#76543e',5);};
+ if(kind==='sunshade'){
+  // An attendant raises the parasol above a second, stationary person.
+  const rise=84*q;
+  canopy(1077,950-rise,170,1,'#eed29c');
+  C(1094,1171,28,'#dab18a');B(1081,1200,28,68,'#c7a785',5);
+  artisan(era,t,1054,1138-rise);
+  return;
  }
+ if(kind==='oilpaper'){
+  desk();
+  canopy(1031,947,174,.95,'#e5ba7d');
+  // Brush oil across taut panels, progressively tinting them to repel water.
+  const x=902+215*q;
+  for(let k=0;k<5;k++){
+   const y=910-k*15;L(916+k*39,y,953+k*39,y-39,k/5<q?'#bd8246':'#d9c490',8);
+  }
+  L(x-17,929,x+31,869,'#8b6c4c',7);
+  C(x+31,869,10,'#f2d4a5');
+  artisan(era,t,x,928);
+  return;
+ }
+ if(kind==='rain'){
+  desk();
+  const open=.28+.72*q;
+  canopy(cx,1016,170,open,'#b46b64');
+  if(id==='c2')rain(true);
+  artisan(era,t,1053,1138);
+  return;
+ }
+ if(kind==='hanway'){
+  // One gentleman advancing under rainfall; no distracting background crowd.
+  const shift=100*q;
+  canopy(1015+shift,988,175,1,'#667c87');
+  rain(true);
+  artisan(era,t,1015+shift,1142,{left:775+shift*.30,feet:1390});
+  return;
+ }
+ if(kind==='steel'){
+  desk();
+  const completed=q;
+  canopy(1032,994,170,.45+.55*completed,'#a998c9');
+  for(let k=-3;k<=3;k++){
+   const endx=1032+k*56,endy=994,rooty=861-72*completed;
+   L(1032,rooty,endx,endy,k/6+.5<completed?'#a5b5bd':'#867e6c',5);
+   C(endx,endy,5,'#b1c5c9');
+  }
+  artisan(era,t,938+94*q,992);
+  return;
+ }
+ if(kind==='folding'){
+  desk();
+  const fold=1-q;
+  B(937,1081,204-80*q,32,'#7c8687',6);
+  B(948,1111,16,94*(1-q)+31,'#757e82',5);
+  L(964,1080,1032+26*q,1057,'#c07e74',9);
+  for(let k=0;k<5;k++)L(953+k*22,1076,958+k*22,1076-65*fold,'#bb766c',5);
+  B(979,1119,120-50*q,28,'#cc877a',5);
+  artisan(era,t,1027+28*q,1065);
+  return;
+ }
+ // Automatic canopy only opens when Papy talks about the button.
+ const opened=.14+.86*q;
+ canopy(cx,1014,170,opened,'#56b6b8');
+ B(cx-15,1169,32,52,'#3e4848',7);
+ C(cx+1,1178,9,'#d5d4bd');
+ if(id==='g2')rain(true);
+ artisan(era,t,cx+1,1178);
 }
+
 // LOCK AND KEY: line-driven demonstrations, no generic repeated loop.
 // The tool and each mechanical component change only as the relevant narrated
 // instruction is spoken, then hold an understandable final state for dialogue.
