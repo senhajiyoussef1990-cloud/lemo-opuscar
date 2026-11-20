@@ -1,0 +1,120 @@
+name: Le Livre de Papy - montre puis parapluie V4 (sequentiel)
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/papy-montre-parapluie-v4-sequential.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: papy-montre-puis-parapluie-v4
+  cancel-in-progress: false
+jobs:
+  montre:
+    name: Montre V4 - histoire, animation, audio et deux videos
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Code de la serie depuis le-livre-de-papy
+        uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Installer navigateur
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Installer synthese vocale et outils son
+        run: python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verification image et code de Montre
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          python films/papy-batch5/prepare.py montre
+          d=films/papy-montre
+          python -m py_compile "$d/tools/voice.py" "$d/tools/mix.py"
+          node --check "$d/main.js"
+          node --check "$d/workshops.js"
+          node --check "$d/objects.js"
+          node --check "$d/people.js"
+          bash "$d/tools/fonts.sh"
+          node core/render/still.mjs "$d" 15 55 95 --size 1080x1920 --out "$d/preflight-vertical"
+          node core/render/still.mjs "$d" 15 55 95 --size 1920x1080 --q wide=1 --out "$d/preflight-horizontal"
+      - name: Rendu Montre 9x16 puis 16x9 et controle son
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: bash films/papy-batch5/build-dual.sh montre
+      - name: ZIP complet Montre V4 avec publications
+        uses: actions/upload-artifact@v4
+        with:
+          name: livre-de-papy-montre-v4-short-youtube-voix-story-publications
+          path: films/papy-montre/le-livre-de-papy-montre-double-format.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  parapluie:
+    name: Parapluie V4 - histoire, animation, audio et deux videos
+    needs: montre
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Code de la serie depuis le-livre-de-papy
+        uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Installer navigateur
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Installer synthese vocale et outils son
+        run: python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verification image et code de Parapluie
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          python films/papy-batch5/prepare.py parapluie
+          d=films/papy-parapluie
+          python -m py_compile "$d/tools/voice.py" "$d/tools/mix.py"
+          node --check "$d/main.js"
+          node --check "$d/workshops.js"
+          node --check "$d/objects.js"
+          node --check "$d/people.js"
+          bash "$d/tools/fonts.sh"
+          node core/render/still.mjs "$d" 15 55 95 --size 1080x1920 --out "$d/preflight-vertical"
+          node core/render/still.mjs "$d" 15 55 95 --size 1920x1080 --q wide=1 --out "$d/preflight-horizontal"
+      - name: Rendu Parapluie 9x16 puis 16x9 et controle son
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: bash films/papy-batch5/build-dual.sh parapluie
+      - name: ZIP complet Parapluie V4 avec publications
+        uses: actions/upload-artifact@v4
+        with:
+          name: livre-de-papy-parapluie-v4-short-youtube-voix-story-publications
+          path: films/papy-parapluie/le-livre-de-papy-parapluie-double-format.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
