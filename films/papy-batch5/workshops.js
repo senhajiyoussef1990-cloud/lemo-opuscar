@@ -43,7 +43,7 @@ function arms(era,t,hx,hy,only=null){
   const fine=TYPE==='watch'||TYPE==='key';                       // delicate mechanisms: one hand with watchmaker's tweezers, the other resting on the bench
   let hands=[[hx,hy],[hx+44,hy+20]];
   if(fine){const s0=sh[0],dx=s0[0]-hx,dy=s0[1]-hy,d=Math.hypot(dx,dy)||1;hands=[[hx+dx/d*95,hy+dy/d*95],[BX-40,1178]];TW=[hands[0],[hx,hy]];}else TW=null;
-  const sturdy=TYPE==='zipper';  // V2: full, proportional upper/lower sleeves on the new pilot episode
+  const sturdy=TYPE==='zipper'||TYPE==='scissors';  // V2: full, proportional upper/lower sleeves on the new pilot episode
   if(sturdy) hands[1]=[BX+4,1173];  // supporting hand resting on the workbench, not piled over the working hand
   (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],sturdy?153:140,sturdy?147:135);
     const upper=sturdy?66:44,lower=sturdy?55:38;
@@ -751,9 +751,142 @@ function zipper(kind,era,t){
  artisan(era,t,xpos+18,991);
 }
 
+
+/**
+ * SCISSORS — every period has a complete material/work item, an articulated
+ * cutting tool, and a VISIBLE change in the material. No disconnected metal.
+ * Frame-aware demonstrations; preserve the two-pass artisan arm rig.
+ */
+function scissors(kind,era,t){
+  const u=Math.max(0,Math.min(1,progress)),p=u*u*(3-2*u);
+  const phase=Math.floor(p*4), bladeOpen=.22+.32*Math.sin(Math.PI*4*p)**2;
+  const copper='#c8a273',steel='#bac9ce',ink='#37434b',wood='#a27350';
+  const workbench=()=>{
+    B(824,1191,420,45,'#805b41',7);
+    B(848,1234,37,135,'#694632',5);B(1187,1234,35,135,'#694632',5);
+    L(835,1198,1230,1198,'#b88b66',5);
+  };
+  const cloth=(x,y,col='#a9b5a4',cut=p)=>{
+    shape(spline([[x-168,y-22],[x+158,y-25],[x+165,y+73],[x+96,y+90],[x-167,y+78]]),{fill:col,lw:5});
+    L(x-141,y-10,x+128,y-12,'rgba(255,255,255,.3)',4);
+    // A fully legible gap expands from a cutting point, leaving two separated pieces.
+    if(cut>.1){const gap=12+Math.floor(cut*30);B(x-5,y-25,2+gap,y+109-(y-25),'#805b41',2);}
+  };
+  const pivotScissors=(x,y,angle=.27,size=1,loops=true)=>{
+    push();translate(x,y);scale(size);
+    // Steel blades, crossing at a central rivet; a pair, not one isolated line.
+    const cutting=42;
+    for(const q of [-1,1]){
+      push();rotate(q*angle);
+      shape(spline([[-15,-8],[38,-11],[170,q*3],[188,0],[37,9],[-15,8]]),{fill:steel,lw:5,
+        shade:()=>L(42,-5,165,-2,'rgba(255,255,255,.52)',3)});
+      L(-19,q*4,-116,q*70,ink,18);
+      if(loops){C(-119,q*70,27,'#435968');C(-119,q*70,16,'#f6e6c9');}
+      pop();
+    }
+    C(0,0,14,'#a8aaab');C(0,0,7,'#ead18d');
+    pop();
+  };
+  const springShears=(x,y,a=0)=>{
+    push();translate(x,y);rotate(a);
+    // Two iron/bronze arms are joined by ONE horseshoe-shaped spring at left.
+    stroke(spline([[-93,-57],[-139,-45],[-151,0],[-140,44],[-93,58]]),15,{line:copper});
+    L(-91,-57,116,-26,copper,15);L(-91,58,117,29,copper,15);
+    shape(spline([[55,-31],[147,-22],[55,-15]]),{fill:'#cbd2ce',lw:4});
+    shape(spline([[54,17],[147,22],[54,31]]),{fill:'#cbd2ce',lw:4});
+    pop();
+  };
+  const completeGarment=(x,y,col='#76949d')=>{
+    push();translate(x,y);
+    shape(spline([[-63,-110],[-108,-86],[-140,6],[-108,39],[-87,19],[-86,116],[87,116],[89,19],[112,39],[141,8],[109,-89],[66,-111],[0,-74]]),{fill:col,lw:5});
+    shape(spline([[-57,-101],[-23,-65],[0,-82],[23,-64],[62,-101]]),{fill:'#d9c6aa',lw:4});
+    L(0,-68,0,108,'rgba(255,255,255,.45)',3);
+    B(-71,26,43,43,'#93a7a6',6);B(29,26,44,43,'#93a7a6',6);
+    pop();
+  };
+  const fullSheep=(x,y)=>{
+    push();translate(x,y);
+    // Entire woolly sheep, not a tuft floating next to the tool.
+    for(const dx of [-81,-24,27,81])C(dx,-8,45,'#f3e6ca');
+    C(108,-17,35,'#efd9b6');
+    C(118,-15,8,'#3d3933');
+    shape(spline([[113,-44],[126,-59],[144,-45],[139,-23]]),{fill:'#d2bba0',lw:4});
+    L(-52,28,-55,104,'#5f514b',16);L(36,32,31,104,'#5f514b',16);
+    pop();
+  };
+  workbench();
+  const bidx=kind==='spring'||kind==='roman';
+  if(kind==='spring'){
+    // Egyptian linen piece is visibly cut with an actual bronze U-spring tool.
+    cloth(1006,1024,'#e4d6b9',p);
+    springShears(1095,995,-.10+p*.12);
+    artisan(era,t,1046,1001-15*p);
+    return;
+  }
+  if(kind==='roman'){
+    // Wool shearing: complete animal on the left, actual fleece at the cutting point.
+    fullSheep(777,1071);
+    shape(spline([[901,1059],[975,1046],[1006,1078],[967,1118],[901,1109]]),{fill:'#f1e6cf',lw:5});
+    for(let k=0;k<6;k++)C(911+k*15,1082+Math.sin(k)*7,12,'#e5dbcc');
+    springShears(1074,1063,-.14+p*.13);
+    if(p>.6){C(947+26*p,1142,25,'#f2e8d2');}
+    artisan(era,t,1035,1038);
+    return;
+  }
+  if(kind==='tailor'){
+    // A tailor's WHOLE garment pattern and an actual cut along the cloth.
+    completeGarment(781,1017,'#b98674');
+    cloth(1036,1030,'#9b7198',p);
+    pivotScissors(1081,1050,.16+.28*Math.sin(Math.PI*2*p),.46);
+    artisan(era,t,1090,1067);
+    return;
+  }
+  if(kind==='forge'){
+    // Forging, then grinding: hot metal and the FULL pair of blades on the anvil.
+    B(887,1076,251,81,'#65666c',12);B(935,1154,156,39,'#4d5259',5);
+    B(869,988,105,64,'#78504b',7);
+    shape(ell(921,992,54,35,30),{fill:'#d87c3d',lw:5});
+    for(let i=0;i<4;i++)L(888+i*22,992,897+i*24,955-18*Math.sin(t+i),'#efc468',4);
+    pivotScissors(1091,1060,.27,.62);
+    // Moving steel hammer on upper blade: physically strikes the workpiece.
+    L(1080,990-52*(1-p),1086,1045-52*(1-p),'#7f6348',13);
+    B(1062,969-52*(1-p),50,26,'#81898d',4);
+    artisan(era,t,1068,993-38*(1-p));
+    return;
+  }
+  if(kind==='pivot'){
+    // The key 18th-century hinge and the full fabric cut.
+    completeGarment(792,1023,'#7b9c8e');
+    cloth(1022,1045,'#b4a089',p);
+    pivotScissors(1090,1044,.11+.34*Math.sin(Math.PI*2*p),.62);
+    artisan(era,t,1072,1055);
+    return;
+  }
+  if(kind==='factory'){
+    // A production workshop with polished steel, real shear outlines and cloth.
+    B(859,1041,154,103,'#6d777a',8);
+    B(897,1009,75,39,'#8d989a',6);
+    for(let i=0;i<3;i++){C(908+i*33,1056,9,'#d8cfba');}
+    completeGarment(762,1014,'#a8ada6');
+    cloth(1067,1040,'#ccbbaa',p);
+    pivotScissors(1116,1056,.10+.29*Math.sin(Math.PI*2*p),.51);
+    artisan(era,t,1082,1067);
+    return;
+  }
+  // Modern: the whole paper dragon is cut, with clothing and other scissors visible behind.
+  completeGarment(771,1017,'#53a8bc');
+  shape(spline([[902,1017],[1005,1017],[1077,1043],[1125,1091],[1058,1080],[1058,1143],[1010,1106],[948,1127],[961,1078],[906,1069]]),{fill:'#f5e7bd',lw:6});
+  // A dragon head and visible wings, so the narrator's paper craft matches the frame.
+  shape(spline([[965,1046],[997,1009],[1019,1042],[1046,1011],[1054,1061],[1005,1085]]),{fill:'#e7b34c',lw:5});
+  C(1026,1057,5,'#373c41');
+  if(p>.30){B(1049+48*p,1128,44,8,'#efdcba',3);}
+  pivotScissors(1082,1058,.16+.30*Math.sin(Math.PI*2*p),.56);
+  artisan(era,t,1090,1056);
+}
+
 export function renderWorkshop(type,kind,era,t){
  TYPE=type;
- const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);};
+ const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);};
  if(PROBE){const main=g,sid=S.sid;setCtx(PROBE.getContext('2d'));PASS='probe';TGT=null;try{run();}finally{setCtx(main);S.sid=sid;PASS='draw';}
    if(TGT){shape(ell(BX,BF+4,90,16,18),{fill:'rgba(20,10,30,.18)',lw:0,stroke:false});body(TGT.era,t);if(TYPE==='watch'||TYPE==='key')arms(TGT.era,t,TGT.hx,TGT.hy,1);}}   // the resting arm stays behind the work
  run();
