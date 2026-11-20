@@ -5,7 +5,7 @@ Style : sitcom de science-fiction animée (Sci-Fi Sitcom Toon), vertical 1080 ×
 ## Personnages
 - **Papy** : chauve, couronne de cheveux blancs derrière la tête, grosse moustache blanche, sourcils blancs arrondis, joues roses, air doux ; blouse blanche (ombres gris-bleu) avec poches pleines de crayons, pull col roulé moutarde, pantalon prune, bottines. Épaules au bord de la blouse, bras le long du corps. Pupilles toujours visibles quand il plisse les yeux.
 - **Malik** : cheveux bouclés bruns, sweat bleu roi, jean, baskets blanches ; épaules au bord du sweat, bras le long du corps, mains symétriques (pouces vers le corps). **Pas de sac** sauf si l'épisode en parle.
-- Voix : Malik = Éloïse. Papy = Fabrice (version complète) ; livrer aussi la **version sans la voix de Papy**, plus **un seul fichier `papy-texte-timeline.txt`** : une réplique par ligne, précédée de son début → fin.
+- Voix : Malik = Éloïse. Papy = Fabrice. Livrer **une seule vidéo verticale 9:16 avec les deux voix**, plus le fichier `papy-texte-timeline.txt` (une réplique par ligne avec début → fin). **Pas de version sans Papy ni de vidéo 16:9** (dernière décision de l'auteur, 20 novembre 2026).
 
 ## Détails (toujours)
 - **L'objet de l'épisode est partout et bien visible** : Malik le tient à la maison, Papy tient la version de chaque époque à côté de lui (pas devant son visage), gros plan agrandi dans chaque époque.
@@ -15,7 +15,7 @@ Style : sitcom de science-fiction animée (Sci-Fi Sitcom Toon), vertical 1080 ×
 - **Animaux** : bien dessinés, anatomie lisible, mignons et expressifs.
 - **Pas de temps mort** : aucun plan sans réplique où un personnage regarde ailleurs (pas de « STARE ») ; les seuls silences sont l'ouverture du portail, les arrivées et le retour à la maison.
 - Panoramique sur le décor au début de chaque plan large ; sous-titres remontés (y ≈ 1560).
-- **Étiquette historique — modèle obligatoire `films/papy-lunettes/main.js`** : cartouche parchemin beige opaque, bord brun foncé, centré horizontalement vers 13–15 % de la hauteur (1080 × 1920). Première ligne : lieu ; deuxième ligne : **année ou période en gros et gras** ; troisième ligne : description. Apparition douce, maintien pendant l'époque, jusqu'à la transition de sortie. Ne plus placer le cartouche en haut à gauche ; préserver les sous-titres.
+- **Bande historique — nouvelle règle à partir du crayon** : ruban très fin (environ **100 px** sur 1080 × 1920), **collé au bord supérieur** de l'image et sur toute sa largeur, avec lieu + date lisibles et description courte sur la deuxième ligne ; aucune plaque épaisse flottante. Apparition douce ; préserver sous-titres et personnages. Les anciens épisodes conservent leurs cartouches historiques tant qu'aucune refonte n'est demandée.
 
 ## Jeu et finitions (depuis les lunettes)
 - **Gestes** : Papy explique avec sa main libre quand il parle ; Malik bouge les bras quand il parle.
