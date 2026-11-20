@@ -174,13 +174,66 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
    } else bag(false,false);
  }
 
+ if(typ==='scissors'){
+   const steel='#bccbd0',handle='#376179',dark='#45515c';
+   const cutPair=(open=.36,bronze=false)=>{
+     const mat=bronze?'#caa569':steel;
+     push();translate(-5,20);
+     // Full scissors: TWO ringed handles, central rivet, two intersecting blades.
+     for(const q of [-1,1]){
+       push();rotate(q*open);
+       shape(spline([[-6,-10],[28,-13],[143,q*4],[152,0],[25,11],[-6,10]]),{fill:mat,lw:5});
+       line(-8,q*4,-89,q*73,bronze?'#a27e54':handle,17);
+       ring(-94,q*72,27,bronze?'#ba9268':handle);
+       ring(-94,q*72,14,'#f4e7ce');
+       pop();
+     }
+     ring(0,0,11,'#a5b6b9');ring(0,0,5,'#eee0ba');
+     pop();
+   };
+   const spring=()=>{
+     // Bronze spring shears: one U-shaped spring, never modern circular handles.
+     stroke(spline([[-105,-63],[-149,-58],[-163,-10],[-159,36],[-109,63]]),15,{line:'#b98b53'});
+     line(-107,-60,119,-27,'#c79c60',15);line(-107,61,120,25,'#c79c60',15);
+     shape(spline([[67,-37],[155,-24],[67,-18]]),{fill:'#d9c39b',lw:4});
+     shape(spline([[67,16],[155,24],[67,36]]),{fill:'#d9c39b',lw:4});
+   };
+   const dragon=()=>{
+     // WHOLE paper dragon as a real paper craft, visibly being cut by Malik.
+     shape(spline([[-155,-103],[44,-104],[134,-34],[100,43],[154,88],[36,83],[0,132],[-68,93],[-157,103]]),{fill:'#f5e8c5',lw:6});
+     shape(spline([[-109,-27],[-76,-89],[-43,-28],[5,-86],[37,-18],[89,32],[28,70],[-32,27],[-110,50]]),{fill:'#e8b34a',lw:5});
+     shape(spline([[-37,-1],[2,-60],[39,11],[7,35]]),{fill:'#efca70',lw:4});
+     ring(70,19,6,'#313638');
+     shape(spline([[89,36],[134,53],[97,60]]),{fill:'#e3a04a',lw:3});
+     line(-146,106,115,106,'rgba(75,66,54,.24)',3);
+   };
+   if(kind==='home'||kind==='dragon'||kind==='dragon-ready'){
+     dragon();
+     push();translate(73,-12);rotate(-.42);
+     cutPair(kind==='dragon-ready'?.07:.34,false);
+     pop();
+   } else if(kind==='spring'||kind==='roman'){
+     // Fabric strip or wool is always visible, not a floating tool only.
+     shape(spline([[-145,46],[-32,41],[54,59],[55,117],[-145,115]]),{fill:kind==='spring'?'#eee0be':'#e5d4b8',lw:5});
+     spring();
+   } else if(kind==='tailor'){
+     shape(spline([[-142,60],[-110,8],[2,12],[93,53],[153,120],[-148,121]]),{fill:'#b28a9c',lw:6});
+     cutPair(.32,false);
+   } else if(kind==='forge'||kind==='pivot'||kind==='factory'){
+     shape(spline([[-137,79],[152,79],[157,119],[-135,117]]),{fill:kind==='factory'?'#b0b9b7':'#d2b58d',lw:5});
+     cutPair(.27,false);
+   } else {
+     dragon();push();translate(68,-12);rotate(-.42);cutPair(.24,false);pop();
+   }
+ }
+
  pop();
 }
 // The key story starts with a giant old key found under the sofa, not a badge.
-const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':CFG.eras[6][4];
+const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':CFG.type==='scissors'?'home':CFG.eras[6][4];
 export const titleProp=(t)=>object(0,25,.5,{kind:showcaseKind,t,a:-.12});
-export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,CFG.type==='zipper'?.40:.32,{kind,t,a:-.15});};
-export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):showcaseKind,t});
+export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,(CFG.type==='zipper'||CFG.type==='scissors')?.40:.32,{kind,t,a:-.15});};
+export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):showcaseKind,t});
 export function home(t,{glow=0,clockT=t}={}){
  bg('#f1e2c8');
  for(let x=-900;x<2100;x+=180)line(x,-1200,x,FLOOR-35,'#dfceaf',3);
@@ -188,7 +241,7 @@ export function home(t,{glow=0,clockT=t}={}){
  box(950,490,380,640,'#875c42');
  for(let i=0;i<4;i++){box(970,620+i*132,345,17,'#684831');for(let j=0;j<5;j++)box(996+j*58,546+i*132,43,69,['#dbb05e','#8ab5a3','#b87985','#d4c3ac','#779cbd'][j]);}
  box(457,1120,298,38,'#956b4d');box(480,1154,27,186,'#795741');box(704,1154,27,186,'#795741');
- if(CFG.type!=='zipper')homeObject(580,1085,t); else spark(650,1020,8);
+ if(CFG.type!=='zipper'&&CFG.type!=='scissors')homeObject(580,1085,t); else spark(650,1020,8);
  ring(825,415,66,'#eee1c6');const a=t*.38;line(825,415,825+47*Math.cos(a),415+47*Math.sin(a),'#66513e',6);
  ground('#a78162');for(let x=-900;x<2100;x+=210)line(x,FLOOR+20,x-80,2280,'#92694c',4);
  if(glow>0)fillOnly(rect(X0,-1200,X1-X0,3700),`rgba(94,242,255,${.14*glow})`,{boil:0});
