@@ -1,0 +1,63 @@
+name: Le Livre de Papy - verification des noms courts
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/papy-noms-courts-test.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Recuperer le code de la serie
+        uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - name: Verifier les scripts et les archives avec des fichiers factices
+        run: |
+          bash -n films/papy-batch5/build-vertical.sh
+          bash -n films/papy-batch5/build-dual.sh
+          python - <<'PY'
+          from pathlib import Path
+          from unittest.mock import patch
+          from types import SimpleNamespace
+          import tempfile, sys, json, zipfile, subprocess, re
+          for builder in ['build-vertical.sh','build-dual.sh']:
+              source=Path('films/papy-batch5')/builder
+              text=source.read_text()
+              chunks=re.findall(r"(?ms)^python - \"\$D\" \"\$SLUG\" <<'PY'\n(.*?)\nPY",text)
+              assert len(chunks)>=1,(builder,'packing block not found')
+              code=compile(chunks[-1],builder+' packing','exec')
+              for short_title,slug in [("L'histoire des ciseaux",'ciseaux'),("L’histoire de la fourchette",'fourchette')]:
+                  with tempfile.TemporaryDirectory() as tmp:
+                      d=Path(tmp)
+                      (d/'episode.json').write_text(json.dumps({'title':short_title}),encoding='utf-8')
+                      for name in ['story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md','audio-qc.json','audio-preflight.json','controles-visuels.jpg']:
+                          (d/name).write_bytes(b'example')
+                      (d/f'le-livre-de-papy-{slug}-short-9x16.mp4').write_bytes(b'0'*101024)
+                      if builder=='build-dual.sh':
+                          (d/f'le-livre-de-papy-{slug}-youtube-16x9.mp4').write_bytes(b'1'*101024)
+                      def ffprobe(command,**kwargs):
+                          is_horizontal=any('youtube' in str(v) for v in command)
+                          return SimpleNamespace(stdout=json.dumps({'streams':[{'codec_type':'video','width':1920 if is_horizontal else 1080,'height':1080 if is_horizontal else 1920},{'codec_type':'audio'}]}))
+                      with patch('subprocess.run',side_effect=ffprobe):
+                          old=sys.argv
+                          try:
+                              sys.argv=['packager',str(d),slug]
+                              exec(code,{'__name__':'__main__'})
+                          finally:
+                              sys.argv=old
+                      title=short_title.replace('’',"'")
+                      target=d/f'{title}.zip'
+                      assert target.is_file(),target
+                      with zipfile.ZipFile(target) as z:
+                          files=z.namelist()
+                          assert f'{title}.mp4' in files,(builder,files)
+                          assert 'story.jpg' in files
+                          assert len([f for f in files if f.endswith('.mp4')])==(2 if builder=='build-dual.sh' else 1)
+                      if builder=='build-vertical.sh': assert (d/f'{title}.mp4').is_file()
+                      print(builder,short_title,'OK')
+          PY
