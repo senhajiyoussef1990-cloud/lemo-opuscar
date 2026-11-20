@@ -43,7 +43,7 @@ function arms(era,t,hx,hy,only=null){
   const fine=TYPE==='watch'||TYPE==='key';                       // delicate mechanisms: one hand with watchmaker's tweezers, the other resting on the bench
   let hands=[[hx,hy],[hx+44,hy+20]];
   if(fine){const s0=sh[0],dx=s0[0]-hx,dy=s0[1]-hy,d=Math.hypot(dx,dy)||1;hands=[[hx+dx/d*95,hy+dy/d*95],[BX-40,1178]];TW=[hands[0],[hx,hy]];}else TW=null;
-  const sturdy=TYPE==='zipper'||TYPE==='scissors';  // V2: full, proportional upper/lower sleeves on the new pilot episode
+  const sturdy=TYPE==='zipper'||TYPE==='scissors'||TYPE==='fork';  // V2: full, proportional upper/lower sleeves on the new pilot episode
   if(sturdy) hands[1]=[BX+4,1173];  // supporting hand resting on the workbench, not piled over the working hand
   (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],sturdy?153:140,sturdy?147:135);
     const upper=sturdy?66:44,lower=sturdy?55:38;
@@ -884,9 +884,146 @@ function scissors(kind,era,t){
   artisan(era,t,1090,1056);
 }
 
+
+/**
+ * FOURCHETTE — documentable historic serving / table use, never a metal
+ * utensil hovering alone. The *complete* plate/food, handle/tines and visible
+ * food transfer are all inside each historical insertion.
+ */
+function fork(kind,era,t){
+  const id=activeId||'', u=Math.max(0,Math.min(1,progress)), p=u*u*(3-2*u);
+  const metal=kind==='roman-serving'?'#b89c65':kind==='byzantine'||kind==='venice'?'#ddc279':'#c8d5d5';
+  const n=kind==='roman-serving'||kind==='byzantine'||kind==='venice'||kind==='italy'?2:kind==='france'?3:4;
+  const bench=()=>{
+    B(818,1198,424,43,kind==='modern'?'#729f9c':'#896044',9);
+    B(850,1238,31,134,'#6f4c38',5);B(1193,1238,31,134,'#6f4c38',5);
+    L(825,1207,1235,1207,'#b58d69',5);
+  };
+  const plate=(x,y,rx=138,ry=62)=>{
+    shape(ell(x,y,rx,ry,46),{fill:'#f5eadd',lw:7});
+    shape(ell(x,y,rx*.80,ry*.72,46),{fill:'#d6e1dc',lw:4});
+    shape(ell(x,y,rx*.69,ry*.60,46),{fill:'#fff9eb',lw:3});
+  };
+  const pasta=(x,y,k=1)=>{
+    // Multiple strands in one shallow plate, not unattached yellow lines.
+    for(let j=0;j<11;j++){
+      const yy=y-20+j*5,shift=Math.sin(j*1.8+p*2)*6;
+      stroke(spline([[x-58,yy+shift],[x-28,yy-10-shift],[x+12,yy+8+shift],[x+50,yy-6]]),4,{line:j%3?'#e8c66e':'#f6dfa0'});
+    }
+    for(let i=0;i<5;i++)C(x-45+i*21,y+((i%3)-1)*12,5,i%2?'#bc5b40':'#8a9c55');
+  };
+  const roast=(x,y)=>{
+    shape(ell(x,y,104,41,40),{fill:'#985539',lw:5});
+    shape(ell(x-14,y-11,73,21,28),{fill:'#c57c4f',lw:3});
+    for(let j=0;j<4;j++)L(x-61+j*32,y-14,x-36+j*32,y+8,'#e5b17d',4);
+    C(x+77,y+1,8,'#e1c5a0');
+  };
+  const fruit=(x,y)=>{
+    for(let i=0;i<6;i++){
+      const xx=x-77+i*30,yy=y+(i%2)*15;
+      C(xx,yy,17,i%3===0?'#c6514b':i%3===1?'#a1b850':'#dfb656');
+      L(xx,yy-17,xx+6,yy-23,'#596d40',3);
+    }
+  };
+  const napkin=(x,y)=>{
+    shape(spline([[x-55,y-27],[x+56,y-30],[x+75,y+32],[x-63,y+34]]),{fill:'#f1ebda',lw:5});
+    for(let i=0;i<4;i++)L(x-52,y-22+i*12,x+52,y-22+i*12,'#d4cbb9',2);
+  };
+  const fullSetting=(plates=1)=>{
+    // Whole dining scene in the background: goblet, bread, tablecloth, plate.
+    shape(spline([[827,1140],[1228,1140],[1242,1199],[818,1199]]),{fill:kind==='modern'?'#c9e5dc':'#e5d2b7',lw:5});
+    B(845,1041,37,68,'#b7bcb7',8);
+    shape(ell(864,1037,28,17,28),{fill:'#b4d8d8',lw:4});
+    C(876,1120,24,'#cda86e');C(894,1125,13,'#e2c590');
+    napkin(1154,1153);
+  };
+  function utensil(x,y,ang=-.25,fac=1,qty=n){
+    push();translate(x,y);rotate(ang);scale(fac);
+    // Slender, visible, continuous fork. Tines point up, solid handle points down.
+    const tineGap=qty===2?37:qty===3?23:18;
+    const x0=-(qty-1)*tineGap/2;
+    shape(spline([[-32,-74],[-32,-32],[-15,-5],[-13,28],[-17,163],[17,163],[13,28],[15,-5],[32,-32],[32,-74]]),{fill:metal,lw:5});
+    for(let i=0;i<qty;i++){
+      const xx=x0+i*tineGap;
+      B(xx-6,-180,12,121,metal,5);
+      L(xx-3,-168,xx-3,-65,'rgba(255,255,255,.38)',2);
+    }
+    C(0,60,6,kind==='byzantine'||kind==='venice'?'#bda163':'#869ca5');
+    if(kind==='byzantine'||kind==='venice'||kind==='italy'){
+      B(-20,80,40,94,kind==='italy'?'#92643b':'#936843',13);
+      for(let j=0;j<4;j++)C(0,101+j*18,4,'#e4c477');
+      C(0,176,14,'#bb965a');
+    }
+    pop();
+  }
+  const lineGroup=id[0],isDetail=/^[a-g]2$/.test(id);
+  // A resting fork and whole platter are intentionally visible in all shots.
+  bench();fullSetting();
+  const isPasta=kind==='italy'||kind==='modern';
+  const px=1016,py=1090;
+  plate(px,py);
+  if(isPasta)pasta(px,py);
+  else if(kind==='roman-serving')roast(px,py);
+  else if(kind==='byzantine'||kind==='venice')fruit(px,py);
+  else {for(let i=0;i<5;i++)C(px-62+i*32,py+Math.sin(i*2)*11,18,i%2?'#92a776':'#c68b55');}
+
+  if(kind==='roman-serving'){
+    // Cooking and SERVICE fork, not individual eating etiquette.
+    B(797,1011,105,63,'#715d48',16);
+    roast(849,1019);
+    L(851,990,824,958,'#e3c6a3',7);
+    utensil(1073,1024-42*p,-.52-.12*p,1.05,2);
+    artisan(era,t,1087,1029-42*p);
+    return;
+  }
+  if(kind==='byzantine'||kind==='venice'){
+    // Small two-tined fork at a lavish table, beside WHOLE plate & fruit.
+    if(kind==='venice'){
+      // Distinguishable Venetian guest at her own place: person sits beyond table.
+      figure(746,1343,.60,t,{era:'t_lady',face:1,arms:0,walk:0,lid:.3});
+      B(842,1053,36,33,'#d8b46b',6);
+    }else B(840,1051,56,41,'#c5ac71',8);
+    utensil(1090,1011-55*p,-.37-.10*p,.81,2);
+    C(1017,1044-55*p,12,'#b9bd55'); // food lifted on its prongs
+    artisan(era,t,1084,1020-55*p);
+    return;
+  }
+  if(kind==='italy'){
+    // Distinct two-pronged fifteenth-century metalwork and plated food.
+    B(833,1031,85,84,'#846349',9);
+    B(851,1051,52,18,'#c8a66f',5);
+    utensil(1101,1000-42*p,-.29-.13*p,.95,2);
+    artisan(era,t,1099,1010-42*p);
+    return;
+  }
+  if(kind==='france'){
+    // Set tables; adoption remains socially restricted in this period.
+    plate(861,1103,50,25);
+    C(862,1105,15,'#c88d5d');
+    utensil(1102,1018-39*p,-.42,.85,3);
+    artisan(era,t,1090,1027-39*p);
+    return;
+  }
+  if(kind==='factory'){
+    // Polishing the actual handle, beside a fully set plate/cloth on the bench.
+    B(870,1002,95,96,'#6e797c',9);B(892,975,47,29,'#a8b5b9',5);
+    for(let k=0;k<3;k++)L(884,1042+k*13,946,1042+k*13,'#cbd6d3',5);
+    utensil(1100,1027-34*p,-.35,.87,4);
+    artisan(era,t,1098,1030-34*p);
+    return;
+  }
+  // Modern 4-tine fork lifting spaghetti from the WHOLE plate.
+  utensil(1080,1026-51*p,-.39-.11*p,.94,4);
+  for(let k=0;k<4;k++){
+    const x=1029+k*7,y=1009-51*p;
+    stroke(spline([[x,y],[x+7,y+10],[x+10,y+27]]),4,{line:'#f0c65e'});
+  }
+  artisan(era,t,1090,1030-51*p);
+}
+
 export function renderWorkshop(type,kind,era,t){
  TYPE=type;
- const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);};
+ const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);else if(type==='fork')fork(kind,era,t);};
  if(PROBE){const main=g,sid=S.sid;setCtx(PROBE.getContext('2d'));PASS='probe';TGT=null;try{run();}finally{setCtx(main);S.sid=sid;PASS='draw';}
    if(TGT){shape(ell(BX,BF+4,90,16,18),{fill:'rgba(20,10,30,.18)',lw:0,stroke:false});body(TGT.era,t);if(TYPE==='watch'||TYPE==='key')arms(TGT.era,t,TGT.hx,TGT.hy,1);}}   // the resting arm stays behind the work
  run();
