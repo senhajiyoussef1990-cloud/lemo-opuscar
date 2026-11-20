@@ -1,5 +1,12 @@
 # Le Livre de Papy — note de passation (ChatGPT, Codex ou une nouvelle session Claude)
 
+## Dernières décisions de l'auteur (20 novembre 2026, priorité sur les consignes historiques)
+- **Une seule vidéo MP4 verticale 1080 × 1920 (9:16)**, compatible TikTok, Reels, Shorts et Facebook ; **ne plus générer le format YouTube horizontal 16:9**.
+- **Frise des époques plus fine (100 pixels), tout en haut, plaquée au bord supérieur** sur toute la largeur, lieu + période et description lisibles.
+- **Vidéo toujours avec les deux voix, Papy et Malik** ; pas de version muette ni de version sans Papy dans le ZIP.
+- Conserver les ateliers corrigés par Claude : deux passes, vrais doigts, bras articulés avec coude naturel, établis et matériaux détaillés, mixage sans grésillements.
+- Un ZIP par épisode : seul MP4 vertical narré, Story avec yeux ouverts, textes de publication, scénario, sources, timeline et diagnostics audio.
+
 À lire **avant** de toucher à un épisode. Branche de travail : `le-livre-de-papy`. Règles de style : `films/LIVRE-DE-PAPY-DIRECTION-ARTISTIQUE.md`. Guide pas à pas : `films/LIVRE-DE-PAPY-NOUVEL-EPISODE.md`.
 
 ## Ce qui est en place (validé par l'auteur) — à garder, ne pas réécrire
