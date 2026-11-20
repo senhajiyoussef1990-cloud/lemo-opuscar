@@ -2,10 +2,12 @@
 
 ## Dernières décisions de l'auteur (20 novembre 2026, priorité sur les consignes historiques)
 - **Une seule vidéo MP4 verticale 1080 × 1920 (9:16)**, compatible TikTok, Reels, Shorts et Facebook ; **ne plus générer le format YouTube horizontal 16:9**.
-- **Frise des époques plus fine (100 pixels), tout en haut, plaquée au bord supérieur** sur toute la largeur, lieu + période et description lisibles.
+- **Frise des époques environ 128 pixels (120–135 px), tout en haut**, collée au bord supérieur, sur toute la largeur ; lieu + période et description très lisibles. La version 100 px était trop fine.
 - **Vidéo toujours avec les deux voix, Papy et Malik** ; pas de version muette ni de version sans Papy dans le ZIP.
 - Conserver les ateliers corrigés par Claude : deux passes, vrais doigts, bras articulés avec coude naturel, établis et matériaux détaillés, mixage sans grésillements.
 - Un ZIP par épisode : seul MP4 vertical narré, Story avec yeux ouverts, textes de publication, scénario, sources, timeline et diagnostics audio.
+
+**NOUVELLE RÉFÉRENCE VISUELLE :** `films/LIVRE-DE-PAPY-CAHIER-VISUEL-V2.md` (bras proportionnés, doigts Papy et Malik, Malik tient l'objet, bande 128 px, contrôles des 7 époques). Document de spécification : les changements doivent être implémentés et vérifiés avant d'être qualifiés de livrés.
 
 À lire **avant** de toucher à un épisode. Branche de travail : `le-livre-de-papy`. Règles de style : `films/LIVRE-DE-PAPY-DIRECTION-ARTISTIQUE.md`. Guide pas à pas : `films/LIVRE-DE-PAPY-NOUVEL-EPISODE.md`.
 
