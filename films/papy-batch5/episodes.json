@@ -704,6 +704,118 @@
         "https://www.meche.engineering.cmu.edu/news/2018/10/zipper-inventor-legacy.html",
         "https://institutionalrepository.fitnyc.edu/item/560"
       ]
+    },
+    {
+      "slug": "ciseaux",
+      "title": "L'histoire des ciseaux",
+      "type": "scissors",
+      "eras": [
+        [
+          "ÉGYPTE ANCIENNE",
+          "VERS 1500 AV. J.-C.",
+          "DES LAMES RELIÉES PAR UN RESSORT",
+          "antique",
+          "spring",
+          "temple"
+        ],
+        [
+          "EMPIRE ROMAIN",
+          "IIe SIÈCLE",
+          "DES FORCES POUR COUPER ET TONDRE",
+          "antique",
+          "roman",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES TAILLEURS COUPENT LE TISSU",
+          "medieval",
+          "tailor",
+          "medieval"
+        ],
+        [
+          "SHEFFIELD, ANGLETERRE",
+          "XVIIe SIÈCLE",
+          "LES COUTELIERS TRAVAILLENT L’ACIER",
+          "georgian",
+          "forge",
+          "workshop"
+        ],
+        [
+          "SHEFFIELD, ANGLETERRE",
+          "XVIIIe SIÈCLE",
+          "DES CISEAUX AU PIVOT SOIGNÉ",
+          "georgian",
+          "pivot",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "DES ATELIERS À LA FABRICATION EN SÉRIE",
+          "victorian",
+          "factory",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "PAPIER, COIFFURE ET COUTURE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, regarde ! Mes ciseaux n'arrivent pas à couper mon dragon en papier !",
+        "Montre-moi. Une paire de ciseaux coupe quand ses deux lames se croisent correctement.",
+        "Mais qui a eu l'idée de fabriquer des ciseaux ?",
+        "L'histoire remonte à très loin, et personne ne connaît un inventeur unique.",
+        "Ils existaient déjà quand tu étais petit ?",
+        "Bien avant moi ! Ouvrons Le Livre de Papy et découvrons leur histoire !",
+        "Wouah ! Mon dragon en papier vole dans le portail !",
+        "Dans l'Égypte ancienne, on utilise déjà des instruments coupants en métal.",
+        "Regarde ces deux lames de bronze reliées par une bande flexible : on les presse pour couper du tissu.",
+        "Il n'y a même pas de trous pour les doigts ?",
+        "Non ! C'est le ressort qui aide les deux lames à s'écarter.",
+        "À l'époque romaine, on utilise aussi des forces métalliques pour tailler des fibres et parfois tondre.",
+        "L'ouvrier presse les deux branches : les lames se croisent et coupent une poignée de laine.",
+        "Mais ça ressemble à une pince !",
+        "Exactement. Il existait différentes formes, et les outils continuaient d'évoluer.",
+        "On retrouve même d'anciennes forces soigneusement décorées.",
+        "Au Moyen Âge, les tailleurs et les artisans du textile ont besoin de découper des étoffes.",
+        "Dans cet atelier, un tailleur étend son tissu et suit un patron avant de découper sa pièce.",
+        "On pouvait déjà fabriquer un manteau sur mesure ?",
+        "Oui, mais chaque découpe demandait beaucoup de précision.",
+        "En Angleterre, Sheffield devient un grand centre du travail des métaux et des outils tranchants.",
+        "L'artisan chauffe l'acier, forme les lames, puis les travaille sur sa meule.",
+        "Ça doit faire beaucoup de bruit !",
+        "Et beaucoup de travail ! Des lames mal ajustées coupent très mal.",
+        "Au dix-huitième siècle, les fabricants améliorent les ciseaux articulés et leur pivot.",
+        "Le coutelier rapproche deux lames, ajuste leur vis et teste la coupe sur une bande de tissu.",
+        "Donc les deux lames doivent vraiment se toucher !",
+        "Au dix-neuvième siècle, les ateliers fabriquent davantage d'outils pour la couture et la maison.",
+        "Les ouvriers forgent, percent, polissent et assemblent des ciseaux destinés à de nombreux usages.",
+        "C'est comme une petite usine à découper !",
+        "Aujourd'hui, il existe des ciseaux de couture, de coiffure et de bricolage.",
+        "Regarde : des ciseaux adaptés au papier découpent un dragon sans déchirer la feuille.",
+        "Alors il me faut des ciseaux de dragon !",
+        "Pour ton dessin, surtout des lames adaptées, bien réglées et utilisées avec précaution.",
+        "Nous revoilà au salon. Tiens, ton dragon est prêt à être découpé.",
+        "Cette fois, je vais lui faire de très grandes ailes !",
+        "D'accord ! Mais demande à un adulte de t'aider avec les ciseaux.",
+        "C'était Le Livre de Papy. Chaque objet a une histoire étonnante !",
+        "Abonne-toi, et à demain pour notre prochain voyage !"
+      ],
+      "sources": [
+        "https://www.metmuseum.org/art/collection/search/547870",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co84058/surgical-shears-roman-199-bce-500-ce-surgical-shears",
+        "https://www.hawleytoolcollection.com/uploads/PDF/How%20it%20was%20made%20-%20Scissors.pdf",
+        "https://engines.egr.uh.edu/episode/3340",
+        "https://blog.ubiquity.acm.org/scissors-extraordinary-ordinary-things/",
+        "https://www.ibe.upf-csic.es/home/-/asset_publisher/T2caeLMECPvW/content/scissors-evolve-too-cultural-evolution-on-darwin-day/maximized"
+      ]
     }
   ]
 }
