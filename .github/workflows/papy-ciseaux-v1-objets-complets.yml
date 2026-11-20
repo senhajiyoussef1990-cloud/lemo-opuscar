@@ -53,6 +53,7 @@ jobs:
           node --check "$d/people.js"
           node --check "$d/toon.js"
           grep -Fq "g.fillRect(0,0,W,128)" "$d/main.js"
+          grep -Fq "L’HISTOIRE DES CISEAUX" "$d/main.js"
           grep -Fq "m.holdF=Wd.heldObject(w,t)" "$d/main.js"
           grep -Fq "four separate rounded fingers" "$d/chars.js"
           grep -Fq "function scissors(kind,era,t)" "$d/workshops.js"
