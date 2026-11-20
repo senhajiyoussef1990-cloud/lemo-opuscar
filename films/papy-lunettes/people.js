@@ -26,10 +26,11 @@ const LOOK = {
 export const FIG_K = 1.75;
 export const VIEW = { ins: false };   // in a close-up on the object, passers-by in the far background are not drawn
 export function figure(x, y, s, t, o = {}) {
-  if (VIEW.ins && o.walk) return;
+  if (VIEW.ins) return;   // close-ups on the object: nobody in front of it
   const L = { ...LOOK[o.era || 'modern'], ...o }, f = o.face ?? 1, skin = o.skin || '#e7b48c', skinS = o.skinS || 'rgba(0,0,0,.14)', hairC = o.hairC || '#3a2416';
   const walk = o.walk ? Math.sin(t * 8 + x) : 0, bob = o.walk ? Math.abs(Math.cos(t * 8 + x)) * 4 : 0;
   s *= FIG_K;   // background people at the scale of the leads (Papy ≈ 720, an adult figure ≈ 450 × s × FIG_K)
+  fillOnly(ell(x, y + 4, 70 * s, 14 * s, 18), 'rgba(20,10,30,.18)', { boil: .3 });   // shadow on the ground
   push(); translate(x, y - bob); scale(s * f, s);
   // legs and shoes
   const legC = L.hose || L.pants || L.legs || '#2c3550';
@@ -63,7 +64,9 @@ export function figure(x, y, s, t, o = {}) {
     if (hr === 'quiff') shape(spline([[-38, -8], [-30, -40], [10, -58], [44, -44], [36, -14]]), { fill: hairC, lw: 4 });
     if (hr === 'pony') { shape([...arc(0, -6, 40, 40, Math.PI * 1.05, Math.PI * 1.95, 14), [36, -14], [-36, -10]], { fill: hairC, lw: 4 }); shape(spline([[-34, -20], [-62, 0], [-56, 40], [-40, 10]]), { fill: hairC, lw: 4 }); }
     if (hr === 'bun') { shape([...arc(0, -6, 40, 40, Math.PI * 1.05, Math.PI * 1.95, 14), [36, -14], [-36, -10]], { fill: hairC, lw: 4 }); shape(ell(-10, -48, 18, 16, 12), { fill: hairC, lw: 4 }); } }
+  shape(ell(-30, 2, 8, 12, 10), { fill: skin, lw: 3 });   // ear
   eye(14, -4, 7, 8, { lid: o.lid ?? .15, skin, lw: 3, pupil: 2.6, look: [.5, 0] });
+  stroke([[4, -18], [24, -20]], 3, { line: hairC }); fillOnly(ell(20, 12, 8, 5, 8), 'rgba(230,110,100,.3)', { boil: .1 });   // brow, cheek
   if (L.glasses) { stroke(ell(14, -4, 11, 10, 12), 3); stroke([[3, -4], [-20, -8]], 3); }
   shape(spline([[28, -2], [42, 10], [30, 16]]), { fill: skin, lw: 4 });
   mouth(22, 22, 16, { o: 0, sm: o.sm ?? .3, lw: 3 });

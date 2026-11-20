@@ -68,6 +68,12 @@ function duo(t, p, m) {   // the brushes: Papy holds the one of the era he is in
   if (p && !p.holdF && w && w !== 'home' && w !== 'home2') { const h = Wd.heldSpecs(w, t); if (h) { p.holdF = h; p.armF = p.armF || { h: [70, 60], bend: -30 }; } }
   if (p) p.glasses = (w === 'home' || (w === 'home2' && !Wd.SUN.on)) ? 'front' : w === 'home2' ? 'sun' : 'eyes';
   if (m) m.sun = w === 'w6';
+  const HATS = { w2: 'coif', w3: 'tricorn', w5: 'tophat', w6: 'boater' };
+  if (p && w && HATS[w] && !p.hat) p.hat = HATS[w];
+  const tq = q(t), pt = talk('PAPY', t), mt = talk('MALIK', t);
+  if (p && pt.talking && !p.armB) { const g = Math.sin(tq * 3.1) * .5 + .5; p.armB = { h: [-60 - 40 * g, 120 - 70 * g], bend: 20 }; }   // he explains with his free hand
+  if (m && mt.talking && !m.armB && !m.holdF) { const g = Math.sin(tq * 3.7) * .5 + .5; m.armB = { h: [-40 - 20 * g, 60 - 60 * g], bend: 20 }; }
+  if (m && w && w !== 'home' && w !== 'home2' && mt.talking && !m.sun) { const h = Wd.faceSpecs(w, t); if (h) m.faceProp = h; }   // Malik tries the era's glasses on
   if (p) papy(p); if (m) malik(m);
 }
 
@@ -244,6 +250,10 @@ function render(t) {
   screenRect('#000');
   const s = shotAt(t);
   if (VO[s[4]] != null) shotLine(t, s); else shotBeat(t, s);
+  { const TINT = { w1: 'rgba(255,190,110,.10)', w2: 'rgba(255,140,60,.10)', w3: 'rgba(60,90,160,.10)', w4: 'rgba(255,210,140,.08)', w5: 'rgba(120,80,200,.10)', w6: 'rgba(255,230,150,.08)', w7: 'rgba(180,240,220,.06)', home: 'rgba(255,220,170,.06)', home2: 'rgba(255,220,170,.06)' };
+    reset(); g.setTransform(1, 0, 0, 1, 0, 0); if (TINT[s[3]] && s[2] !== 'end') { g.fillStyle = TINT[s[3]]; g.fillRect(0, 0, W, H); }
+    const fl = g.createLinearGradient(0, H * .7, 0, H); fl.addColorStop(0, 'rgba(10,5,20,0)'); fl.addColorStop(1, 'rgba(10,5,20,.28)'); g.fillStyle = fl; g.fillRect(0, H * .7, W, H * .3);
+    const vg = g.createRadialGradient(W / 2, H * .45, H * .35, W / 2, H * .45, H * .8); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(10,5,20,.3)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); }
   if (s[3] === 'home' || s[3] === 'home2') {   // the room in the dark once the bulb has blown (the portal lights it a little)
     const d = Wd.darkness(state(t).light, s[3] === 'home' && t > B('home', 'BURST')[0] + .3);
     if (d > 0) { reset(); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = `rgba(16,12,34,${d})`; g.fillRect(0, 0, W, H); }

@@ -45,6 +45,7 @@ export function specs(x, y, s = 1, { kind = 'temple', a = 0, frame = '#3a2a20', 
 export function titleProp(t) { specs(0, 30, .36, { kind: 'temple' }); }
 // the pair of each era, held in Papy's hand (x, y = his fist)
 const ERA = { w1: { kind: 'stone', s: .55, dy: -30 }, w2: { kind: 'rivet', s: .55, dy: -50 }, w3: { kind: 'temple', s: .5, dy: -40 }, w4: { kind: 'bifocal', s: .5, dy: -40 }, w5: { kind: 'monocle', s: .6, dy: -50 }, w6: { kind: 'sun', s: .48, dy: -40, frame: '#c22f3a' }, w7: { kind: 'lens', s: .55, dy: -20 } };
+export function faceSpecs(w, t) { const e = ERA[w]; if (!e || e.kind === 'stone' || e.kind === 'lens') return w === 'w1' ? (x, y) => specs(x + 40, y + 10, .55, { kind: 'stone' }) : null; return (x, y) => specs(x, y, e.kind === 'monocle' ? .55 : .6, { ...e, t }); }
 export function heldSpecs(w, t) { const e = ERA[w]; if (!e) return null; return (x, y) => specs(x, y + e.dy, e.s, { ...e, t }); }
 
 // little helpers for the décors
@@ -116,7 +117,7 @@ export function w3(t) {
   shape(rr(-240, 1060, 480, 280, 10), { fill: '#7a2a1e', lw: 7, shade: () => { for (let i = 0; i < 4; i++) fillOnly(rr(-220 + i * 120, 1100, 100, 200, 8), '#6a2218', { boil: .2 }); } });
   stroke([[400, 400], [400, 520]], 4); shape(rr(370, 520, 60, 80, 10), { fill: '#e9b949', lw: 5 });
   figure(-60, FLOOR - 60, .7, t, { era: 'georgian', skin: '#f2c9a0', face: 1, arms: -1, hold: (x, y) => specs(x, y - 30, .28, { kind: 'temple' }) });   // the optician
-  figure(560, FLOOR - 40, .7, t, { era: 'georgian', top: '#2f6a4a', topS: '#245a3a', skin: '#f2c9a0', face: -1 });
+  figure(1170, FLOOR - 40, .7, t, { era: 'georgian', top: '#2f6a4a', topS: '#245a3a', skin: '#f2c9a0', face: -1 });
   // the insert: spectacles with temples, on a brass stand
   shape(rr(800, 1170, 320, 30, 6), { fill: '#7a2a1e', lw: 6 }); for (const lx of [820, 1090]) shape(rect(lx, 1198, 16, 140), { fill: '#5a1e14', lw: 5 });
   shape(rect(950, 1080, 20, 90), { fill: '#e9b949', lw: 4 }); specs(960, 1070, .75, { kind: 'temple', frame: '#3a2a20' });
@@ -138,7 +139,7 @@ export function w4(t) {
   // the insert: bifocal spectacles on a letter, the line across each lens
   shape(rr(880, 1110, 200, 40, 3), { fill: '#f6efe0', lw: 4 }); for (let k = 0; k < 2; k++) stroke([[890, 1122 + k * 12], [1060, 1122 + k * 12]], 2);
   specs(960, 1090, .7, { kind: 'bifocal' });
-  figure(1260, FLOOR - 40, .72, t, { era: 'georgian', hat: null, top: '#5a3a24', topS: '#4a2e1c', vest: '#e9d7a8', skin: '#f2c9a0', hairC: '#c9c9c9', face: -1 });
+  figure(1180, FLOOR - 40, .72, t, { era: 'georgian', hat: null, top: '#5a3a24', topS: '#4a2e1c', vest: '#e9d7a8', skin: '#f2c9a0', hairC: '#c9c9c9', face: -1 });
 }
 // ———————————————————— w5: the 19th century — a boulevard by the opera (violet dusk, gaslight, posters) ————————————————————
 export function w5(t) {
@@ -150,7 +151,7 @@ export function w5(t) {
   ground('#4a4e58'); for (let i = 0; i < 40; i++) stroke(rr(-400 + (i % 10) * 180 + (Math.floor(i / 10) % 2) * 90, FLOOR + 10 + Math.floor(i / 10) * 60, 150, 44, 10), 3, { line: '#3a3e48' });
   // elegant people: a gentleman with a monocle, a lady with a lorgnette, a passer-by with a pince-nez
   figure(560, FLOOR - 40, .7, t, { era: 'victorian', skin: '#f2c9a0', hairC: '#3a2416', beardC: '#3a2416', face: 1 }); specs(560 + 20 * .7, FLOOR - 40 - 410 * .7, .14, { kind: 'monocle' });
-  figure(1220, FLOOR - 20, .7, t, { era: 'vlady', skin: '#f2c9a0', hairC: '#7a4a24', face: -1, arms: -1.6, hold: (x, y) => { stroke([[x, y], [x, y - 60]], 4, { line: '#e9b949' }); specs(x, y - 80, .2, { kind: 'pince', frame: '#e9b949' }); } });
+  figure(1170, FLOOR - 20, .7, t, { era: 'vlady', skin: '#f2c9a0', hairC: '#7a4a24', face: -1, arms: -1.6, hold: (x, y) => { stroke([[x, y], [x, y - 60]], 4, { line: '#e9b949' }); specs(x, y - 80, .2, { kind: 'pince', frame: '#e9b949' }); } });
   figure(((t * 35) % 1700) - 300, FLOOR - 300, .44, t, { era: 'victorian', top: '#5a4a3a', skin: '#e7b48c', walk: 1 });
   // the insert: a pince-nez and a monocle on a little velvet cushion, on a café table
   shape(ell(960, 1200, 170, 30, 24), { fill: '#e9ecef', lw: 6 }); shape(rect(950, 1210, 20, 130), { fill: '#3a3340', lw: 5 });
@@ -189,6 +190,6 @@ export function w7(t) {
   // the insert: a soft contact lens on a fingertip, and its little case
   push(); translate(960, 1130); shape(spline([[-40, 60], [-44, -10], [-20, -40], [20, -40], [44, -10], [40, 60]]), { fill: '#f2c9a0', lw: 5 }); specs(0, -36, .6, { kind: 'lens' }); pop();
   shape(rr(860, 1150, 70, 30, 12), { fill: '#2fbf9b', lw: 4 });
-  figure(1260, FLOOR - 40, .72, t, { era: 'lab', skin: '#f2c9a0', hairC: '#8a8a8a', face: -1 });
+  figure(1180, FLOOR - 40, .72, t, { era: 'lab', skin: '#f2c9a0', hairC: '#8a8a8a', face: -1 });
   figure(560, FLOOR - 60, .62, t, { era: 'fifties', top: '#5a6a7a', topS: '#4a5a6a', skin: '#f2c9a0', hairC: '#5a3a24', face: 1 });
 }

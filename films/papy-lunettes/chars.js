@@ -42,12 +42,26 @@ export function mouth(cx, cy, mw, { o = 0, w = 1, sm = 0, skew = 0, lw = 6, teet
     }
   });
 }
-export function hand(x, y, ang, r = 21, col = PAL.skinP, { fist = false, lw = 6, flip = false } = {}) {
+export function hand(x, y, ang, r = 21, col = PAL.skinP, { fist = false, lw = 6, flip = false, point = false } = {}) {
+  // a cartoon hand with a real shape: palm, four fingers with knuckle creases and nails, a thumb; or a fist with its knuckles
   push(); translate(x, y); rotate(ang); if (flip) scale(1, -1);
-  const pts = fist ? spline([[-r * .6, -r * .8], [r * .7, -r * .9], [r * 1.1, -r * .1], [r * .8, r * .8], [-r * .5, r * .9], [-r * .9, 0]])
-    : spline([[-r * .5, -r * .85], [r * .5, -r * 1.05], [r * 1.35, -r * .75], [r * 1.05, -r * .3], [r * 1.5, -r * .1], [r * 1.1, r * .3], [r * 1.35, r * .7], [r * .6, r * .95], [-r * .6, r * .8], [-r * .95, 0]]);
-  shape(pts, { fill: col, lw });
-  stroke([[r * .2, -r * .15], [r * .75, -r * .45]], lw * .6);
+  const shade = 'rgba(120,60,40,.22)', nail = 'rgba(255,235,225,.9)', fw = Math.max(9, r * .5), flw = Math.max(3, lw * .55), small = r < 19;
+  if (fist && !point) {
+    shape(spline([[-r * .7, -r * .75], [r * .5, -r * .9], [r * 1.15, -r * .55], [r * 1.25, r * .2], [r * .9, r * .85], [-r * .4, r * .9], [-r * .95, r * .1]]), { fill: col, lw, shade: () => fillOnly(ell(-r * .2, r * .45, r * .8, r * .4, 12), shade, { boil: .2 }) });
+    for (let k = 0; k < 4; k++) { const yy = -r * .55 + k * r * .42; stroke(arc(r * 1.05, yy + r * .2, r * .22, r * .2, -1.6, 1.6, 6), lw * .55); stroke([[r * .55, yy + r * .05], [r * .95, yy + r * .1]], lw * .45, { line: 'rgba(0,0,0,.35)' }); }
+    shape(noodle([-r * .2, -r * .7], [r * .65, -r * .2], -r * .2, fw * 1.05, fw * .9), { fill: col, lw: lw * .8 });   // the thumb across the fingers
+    pop(); return;
+  }
+  // fingers (a slight fan), the index straight out when pointing
+  const fing = point ? [[-.42, 1.6, 0], [-.12, .9, .4], [.18, .85, .55], [.46, .75, .7]] : [[-.42, 1.15, -.1], [-.14, 1.3, 0], [.14, 1.25, .06], [.42, 1.05, .14]];
+  fing.forEach(([fy, len, curl], k) => { const a0 = [r * .7, fy * r], tip = [r * (.7 + len * Math.cos(curl)), fy * r + r * len * Math.sin(curl) * .6];
+    shape(noodle(a0, tip, (k - 1.5) * r * .04, fw, fw * .85), { fill: col, lw: flw });
+    if (!small) stroke([[a0[0] + (tip[0] - a0[0]) * .5, a0[1] + (tip[1] - a0[1]) * .5 - fw * .3], [a0[0] + (tip[0] - a0[0]) * .5, a0[1] + (tip[1] - a0[1]) * .5 + fw * .3]], 1.6, { line: 'rgba(0,0,0,.35)' });
+    if (len > 1.1 && !small) fillOnly(ell(tip[0] - fw * .25, tip[1], fw * .28, fw * .22, 8), nail, { boil: .1 }); });
+  // palm
+  shape(spline([[-r * .75, -r * .6], [r * .45, -r * .72], [r * .75, -r * .35], [r * .78, r * .45], [r * .4, r * .78], [-r * .6, r * .7], [-r * .95, 0]]), { fill: col, lw, shade: () => fillOnly(ell(-r * .1, r * .4, r * .7, r * .35, 12), shade, { boil: .2 }) });
+  shape(noodle([-r * .1, -r * .62], [r * .7, -r * 1.12], -r * .12, fw * 1.1, fw * .9), { fill: col, lw: flw });   // thumb
+  stroke(quad([-r * .4, r * .1], [0, r * .25], [r * .4, r * .05], 6), 1.8, { line: 'rgba(0,0,0,.3)' });   // a palm crease
   pop();
 }
 export const sweat = (x, y, s = 1) => shape(spline([[x, y - 16 * s], [x + 9 * s, y + 4 * s], [x, y + 12 * s], [x - 9 * s, y + 4 * s]]), { fill: '#bfe9ff', lw: 5 });
@@ -109,6 +123,7 @@ export function backpack(x, y, s = 1, { a = 0, dinoOut = 1, cars = 1, open = 0 }
 // P: {x,y,s,face,lean,bob,sq, lid,look,brow,mouth:{o,w,sm},blink,closed, armF:{h,bend}, armB, holdF:'book'|'dino'|null, bookOpen, legs, headTilt, sweat}
 export function papy(P) {
   const f = P.face ?? 1;
+  fillOnly(ell(P.x, P.y + 6, 150 * (P.s ?? 1), 26 * (P.s ?? 1), 24), 'rgba(20,10,30,.2)', { boil: .3 });   // his shadow on the floor
   push(); translate(P.x, P.y + (P.bob || 0)); scale((P.s ?? 1) * f, (P.s ?? 1) * (P.sq ?? 1));
   const legs = P.legs || [[0, 0], [0, 0]];
   // plum trousers + dark ankle boots
@@ -153,6 +168,10 @@ function headPapy(P) {
   // bald top: a shine, and a soft white fringe of hair around the back of the head
   fillOnly(ell(26, -114, 28, 10, 14), '#f6d2b4', { boil: .3 }); fillOnly(ell(62, -104, 8, 5, 8), '#f6d2b4', { boil: .3 });
   shape(spline([[-62, -92], [-86, -100], [-108, -72], [-114, -36], [-102, -4], [-110, 26], [-92, 34], [-78, 10], [-82, -30], [-68, -62]]), { fill: PAL.beard, lw: 6, shade: () => fillOnly(ell(-102, 0, 14, 30, 12), PAL.beardS, { boil: .3 }) });
+  stroke(arc(-76, 6, 8, 14, -1.2, 1.4, 8), 3, { line: PAL.skinPs });   // inner ear
+  for (let k = 0; k < 2; k++) stroke(quad([-40, -78 - k * 14], [10, -86 - k * 14], [60, -80 - k * 14], 10), 2.5, { line: 'rgba(150,90,60,.45)' });   // forehead lines
+  for (let k = -1; k <= 1; k++) stroke([[92, -16 + k * 10], [104, -20 + k * 14]], 2.5, { line: 'rgba(150,90,60,.5)' });   // crow's feet
+  stroke(quad([70, 40], [86, 64], [80, 92], 8), 3, { line: 'rgba(150,90,60,.4)' });   // smile line
   // eyes (heavy lids = deadpan)
   const lid = P.blink ? 1 : clamp(P.lid ?? .48, 0, 1), look = P.look || [0, 0];
   eye(6, -16, 30, 33, { lid: P.closed ? 0 : lid, look, closed: P.closed, pupil: 4.5, lower: P.lower ?? .14 });
@@ -172,7 +191,14 @@ function headPapy(P) {
     stroke(quad([40, -18 + up], [32, -30 + up], [28, -18 + up], 6), 5, { line: fr }); stroke([[-28, -20 + up], [-78, -10 + up]], 5, { line: fr }); }
   const m = P.mouth || {};
   mouth(36, 90, 60, { o: m.o || 0, w: m.w ?? 1, sm: m.sm ?? -.2, lw: 6 });
-  shape(spline([[-6, 58], [30, 50], [60, 54], [90, 66], [72, 76], [36, 66], [4, 72]]), { fill: PAL.beard, lw: 6 });   // moustache over the mouth
+  { const mo = (m.o || 0) * 12; push(); translate(0, -mo);   // the moustache lifts when he speaks, so we see him talk
+  shape(spline([[-6, 58], [30, 50], [60, 54], [96, 70], [76, 80], [36, 68], [0, 76]]), { fill: PAL.beard, lw: 6, shade: () => { for (let k = 0; k < 4; k++) stroke([[10 + k * 18, 60], [6 + k * 18, 72]], 2, { line: PAL.beardS }); } }); pop(); }
+  // a hat of the era
+  const hat = P.hat;
+  if (hat === 'tricorn') { shape([[-110, -110], [10, -176], [120, -112], [70, -128], [10, -118], [-60, -128]], { fill: '#2a2430', lw: 6 }); stroke([[-100, -112], [110, -114]], 4, { line: '#e9b949' }); }
+  if (hat === 'tophat') { shape(rr(-60, -270, 140, 150, 8), { fill: '#1d1820', lw: 6, shade: () => fillOnly(rect(30, -280, 40, 170), 'rgba(255,255,255,.12)', { boil: .2 }) }); shape(rr(-60, -150, 140, 22, 4), { fill: '#7a2a2a', lw: 4 }); shape(rr(-96, -128, 212, 22, 10), { fill: '#1d1820', lw: 6 }); }
+  if (hat === 'boater') { shape(rr(-50, -176, 130, 56, 8), { fill: '#e9c46a', lw: 6, shade: () => { for (let k = 0; k < 4; k++) stroke([[-50, -168 + k * 12], [80, -168 + k * 12]], 2, { line: '#c9a44a' }); } }); shape(rr(-50, -140, 130, 18, 4), { fill: '#c22f3a', lw: 4 }); shape(ell(14, -120, 120, 20, 20), { fill: '#e9c46a', lw: 6 }); }
+  if (hat === 'coif') shape(spline([[-96, -80], [-80, -150], [10, -170], [96, -140], [98, -80], [10, -110]]), { fill: '#c22f3a', lw: 6 });
 }
 
 // ———————————————————— Malik ————————————————————
@@ -180,6 +206,7 @@ function headPapy(P) {
 export function malik(P) {
   const f = P.face ?? 1, ner = P.nerv ?? 0;
   const jit = ner ? (hash(Math.floor((P.t || 0) * 12) * 3.3) - .5) * 7 * ner : 0;
+  fillOnly(ell(P.x, P.y + 6, 110 * (P.s ?? 1), 22 * (P.s ?? 1), 24), 'rgba(20,10,30,.2)', { boil: .3 });
   push(); translate(P.x + jit, P.y + (P.bob || 0)); scale((P.s ?? 1) * f, (P.s ?? 1) * (P.sq ?? 1));
   const legs = P.legs || [[0, 0], [0, 0]];
   if (P.pack === 'back') { push(); rotate(P.lean ?? 0); backpack(-74, -126, .86, { ...(P.packP || {}) }); pop(); }
@@ -214,7 +241,7 @@ export function malik(P) {
   pop();
 }
 function headMalik(P, ner) {
-  for (const sx of [-1, 1]) shape(ell(sx * 92, 12, 16, 22, 16), { fill: PAL.skinM, lw: 6 });
+  for (const sx of [-1, 1]) shape(ell(sx * 92, 12, 16, 22, 16), { fill: PAL.skinM, lw: 6, shade: () => stroke(arc(sx * 92, 12, 6, 12, sx > 0 ? -1.4 : 1.7, sx > 0 ? 1.4 : 4.5, 6), 2.5, { line: PAL.skinMs }) });
   shape(ell(0, 6, 96, 94, 60), { fill: PAL.skinM, lw: 7, shade: () => fillOnly(ell(52, 40, 60, 70, 30), PAL.skinMs, { boil: .3 }) });
   // curly hair: a cloud of round bumps on top
   const bumps = [];
@@ -228,7 +255,10 @@ function headMalik(P, ner) {
   // big round eyes, trembling pupils
   const look = P.look || [0, 0], shake = ner ? (hash(Math.floor((P.t || 0) * 24) * 1.7) - .5) * 3 * ner : 0, es = P.eyeS ?? 1;
   for (const ex of [-36, 38]) eye(ex, 10, 32 * es, 34 * es, { lid: P.blink ? 1 : (P.lid ?? 0), look, pupil: P.pupil ?? 4, skin: PAL.skinM, jitter: shake, lw: 6 });
-  shape(ell(4, 50, 12, 9, 12), { fill: PAL.skinMs, lw: 5 });
+  for (const ex of [-36, 38]) for (let k = 0; k < 3; k++) stroke([[ex - 14 + k * 14, -22 * es], [ex - 18 + k * 16, -32 * es]], 2.5);   // eyelashes
+  for (const cx of [-62, 66]) fillOnly(ell(cx, 46, 16, 10, 12), 'rgba(230,110,100,.35)', { boil: .2 });   // cheeks
+  shape(ell(4, 50, 12, 9, 12), { fill: PAL.skinMs, lw: 5 }); fillOnly(ell(0, 47, 4, 3, 6), 'rgba(255,255,255,.4)', { boil: .1 });
+  if (P.faceProp) P.faceProp(2, 10);   // the era's glasses, tried on
   if (P.sun) { for (const ex of [-36, 38]) shape(rr(ex - 40, -18, 80, 56, 18), { fill: 'rgba(30,24,40,.9)', lw: 6, shade: () => fillOnly(rr(ex - 30, -10, 26, 10, 5), 'rgba(255,255,255,.6)', { boil: .2 }) }); stroke([[-0, 0], [0, 0]], 5); stroke([[-76, 4], [-96, 0]], 5); stroke([[78, 4], [96, 0]], 5); stroke([[-0, 4], [0, 4]], 5); }
   const m = P.mouth || {};
   mouth(2, 76, 46 * (P.mouthS ?? 1), { o: m.o || 0, w: m.w ?? 1, sm: m.sm ?? -.3, lw: 5 });
