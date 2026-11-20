@@ -816,6 +816,119 @@
         "https://blog.ubiquity.acm.org/scissors-extraordinary-ordinary-things/",
         "https://www.ibe.upf-csic.es/home/-/asset_publisher/T2caeLMECPvW/content/scissors-evolve-too-cultural-evolution-on-darwin-day/maximized"
       ]
+    },
+    {
+      "slug": "fourchette",
+      "title": "L'histoire de la fourchette",
+      "type": "fork",
+      "eras": [
+        [
+          "ROME ANTIQUE",
+          "IIe–IIIe SIÈCLES",
+          "UNE FOURCHETTE POUR SERVIR",
+          "antique",
+          "roman-serving",
+          "forum"
+        ],
+        [
+          "CONSTANTINOPLE",
+          "Xe–XIe SIÈCLES",
+          "DEUX DENTS SUR LES TABLES AISÉES",
+          "medieval",
+          "byzantine",
+          "palace"
+        ],
+        [
+          "VENISE",
+          "XIe SIÈCLE",
+          "UNE HABITUDE QUI SURPREND",
+          "medieval",
+          "venice",
+          "palace"
+        ],
+        [
+          "ITALIE",
+          "XVe SIÈCLE",
+          "DEUX POINTES, UN MANCHE DÉCORÉ",
+          "georgian",
+          "italy",
+          "workshop"
+        ],
+        [
+          "FRANCE",
+          "XVIIe SIÈCLE",
+          "UNE PLACE SUR LES TABLES RICHES",
+          "georgian",
+          "france",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XVIIIe–XIXe SIÈCLES",
+          "TROIS OU QUATRE DENTS",
+          "victorian",
+          "factory",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES FOURCHETTES DE TOUS LES JOURS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, mes spaghettis glissent toujours de ma fourchette !",
+        "Essaie de la tourner doucement, Malik. Regarde comme les pâtes s'enroulent.",
+        "Mais qui a eu l'idée d'inventer la fourchette ?",
+        "Il n'y a pas un seul inventeur. Son histoire s'étend sur plusieurs siècles.",
+        "On mangeait comment avant d'avoir ces quatre dents ?",
+        "Ouvrons Le Livre de Papy ! Direction les premières fourchettes !",
+        "Oh ! Ma fourchette s'envole dans le portail !",
+        "Dans la Rome antique, les fourchettes servent surtout à préparer et à servir les plats.",
+        "Regarde ce cuisinier : il pique une viande rôtie et la dépose dans une assiette.",
+        "Alors tous les Romains mangeaient avec une fourchette ?",
+        "Non ! Pour manger, beaucoup utilisaient encore les doigts, un couteau ou une cuillère.",
+        "Dans l'Empire byzantin, certaines personnes aisées utilisent de petites fourchettes à deux dents.",
+        "À cette table, une convive soulève un morceau de fruit sans le toucher des doigts.",
+        "Deux dents seulement ? Ma fourchette en a quatre !",
+        "Oui ! Ces objets restent rares et ne sont pas dans toutes les maisons.",
+        "Certains manches sont même richement décorés.",
+        "Au onzième siècle, une habitude venue de Byzance surprend des convives à Venise.",
+        "Une femme de haut rang porte sa nourriture à la bouche avec une petite fourchette.",
+        "Pourquoi tout le monde la regarde ?",
+        "Parce que beaucoup de gens trouvent cet ustensile étrange et mangent autrement.",
+        "Au quinzième siècle, les fourchettes se rencontrent davantage dans les milieux aisés d'Italie.",
+        "Dans l'atelier, un artisan façonne deux pointes et fixe un manche décoré.",
+        "Est-ce que ça aide déjà pour manger des pâtes ?",
+        "Oui, pour saisir certains aliments sans les toucher avec les doigts.",
+        "En France, au dix-septième siècle, les fourchettes gagnent lentement les tables les plus riches.",
+        "Regarde cette table dressée : des assiettes, des couteaux, des cuillères et des fourchettes.",
+        "Mais tout le monde n'en avait pas encore ?",
+        "Aux dix-huitième et dix-neuvième siècles, les modèles se multiplient et deviennent plus accessibles.",
+        "Les ouvriers forgent, polissent et préparent des fourchettes à trois ou quatre dents.",
+        "Quatre dents ! Voilà qui aide à attraper les petits morceaux !",
+        "Aujourd'hui, l'acier inoxydable permet de fabriquer des fourchettes solides pour la cuisine.",
+        "Regarde l'assiette : on pique un légume et on enroule les spaghettis.",
+        "Ah, je crois que j'ai trouvé l'astuce !",
+        "Et il existe des modèles pour servir, cuisiner ou manger à table.",
+        "Nous voilà rentrés. Tiens, ton assiette de pâtes t'attend !",
+        "Cette fois, je vais les enrouler sans en mettre partout !",
+        "Bravo ! Tourne doucement, sinon la sauce risque de faire un grand voyage !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour notre prochain voyage !"
+      ],
+      "sources": [
+        "https://www.metmuseum.org/art/collection/search/252417",
+        "https://www.metmuseum.org/art/collection/search/469726",
+        "https://www.metmuseum.org/art/collection/search/202083",
+        "https://www.metmuseum.org/art/collection/search/844412",
+        "https://www.smithsonianmag.com/arts-culture/a-history-of-western-eating-utensils-from-the-scandalous-fork-to-the-incredible-spork-64593179/",
+        "https://www.nationalgeographic.com/culture/article/table-manners",
+        "https://ejournals.epublishing.ekt.gr/index.php/deltion/article/download/4407/4182.pdf"
+      ]
     }
   ]
 }
