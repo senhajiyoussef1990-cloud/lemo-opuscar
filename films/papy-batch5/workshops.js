@@ -43,11 +43,14 @@ function arms(era,t,hx,hy,only=null){
   const fine=TYPE==='watch'||TYPE==='key';                       // delicate mechanisms: one hand with watchmaker's tweezers, the other resting on the bench
   let hands=[[hx,hy],[hx+44,hy+20]];
   if(fine){const s0=sh[0],dx=s0[0]-hx,dy=s0[1]-hy,d=Math.hypot(dx,dy)||1;hands=[[hx+dx/d*95,hy+dy/d*95],[BX-40,1178]];TW=[hands[0],[hx,hy]];}else TW=null;
-  (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],140,135);
-    shape(noodle(s,el,0,44,38),{fill:sl,lw:6,shade:()=>fillOnly(ell(el[0],el[1],24,40,12),'rgba(0,0,0,.12)',{boil:.2})});
-    shape(noodle(el,hp,0,38,30),{fill:sl,lw:6});
-    shape(ell(hp[0]+(el[0]-hp[0])*.12,hp[1]+(el[1]-hp[1])*.12,17,14,12),{fill:L.topS||sl,lw:4});   // the cuff
-    hand(hp[0],hp[1],Math.atan2(hp[1]-el[1],hp[0]-el[0]),22,skin,{fist:true,lw:5});
+  const sturdy=TYPE==='zipper';  // V2: full, proportional upper/lower sleeves on the new pilot episode
+  if(sturdy) hands[1]=[BX+4,1173];  // supporting hand resting on the workbench, not piled over the working hand
+  (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],sturdy?153:140,sturdy?147:135);
+    const upper=sturdy?66:44,lower=sturdy?55:38;
+    shape(noodle(s,el,0,upper,sturdy?54:38),{fill:sl,lw:6,shade:()=>fillOnly(ell(el[0],el[1],sturdy?30:24,40,12),'rgba(0,0,0,.12)',{boil:.2})});
+    shape(noodle(el,hp,0,lower,sturdy?41:30),{fill:sl,lw:6});
+    shape(ell(hp[0]+(el[0]-hp[0])*.12,hp[1]+(el[1]-hp[1])*.12,sturdy?23:17,sturdy?19:14,12),{fill:L.topS||sl,lw:4});
+    hand(hp[0],hp[1],Math.atan2(hp[1]-el[1],hp[0]-el[0]),sturdy?25:22,skin,{fist:true,lw:5});
     if(i===0&&TW){const [a,b]=TW,an=Math.atan2(b[1]-a[1],b[0]-a[0]),nx=-Math.sin(an)*6,ny=Math.cos(an)*6;   // steel tweezers to the part
       stroke([[a[0]+nx,a[1]+ny],[b[0]+nx*.2,b[1]+ny*.2]],5,{line:'#9aa3ad'});stroke([[a[0]-nx,a[1]-ny],[b[0]-nx*.2,b[1]-ny*.2]],5,{line:'#c9d0d8'});dot(b[0],b[1],5,'#e9b949');}});
 }
@@ -573,9 +576,128 @@ function pencil(kind,era,t){
  artisan(era,t,x-65,y+25);
 }
 
+
+/**
+ * The Zipper / La fermeture éclair — seven historically staged, directional actions.
+ * Interlocking teeth are explicit: behind the slider they close, ahead they remain apart.
+ * One operator with thick articulated sleeves and a stabilising hand. Avoid looped waving.
+ */
+function zipper(kind,era,t){
+ const id=activeId||'', u=Math.max(0,Math.min(1,progress)), e=u*u*(3-2*u);
+ const teach=/^[a-g][12]$/.test(id)||id==='b5';
+ const p=teach?e:.25;
+ const cloth='#e6bf85',metal='#dbd1bc',dark='#666b70';
+ const bench=()=>{
+   B(837,1182,388,46,'#886045',8);
+   B(866,1221,35,130,'#6a4635',5);
+   B(1161,1221,32,130,'#6a4635',5);
+   L(850,1190,1210,1190,'#bd9870',4);
+ };
+ const eye=(x,y)=>{C(x,y,11,'#d9b76e');C(x,y,5,'#585256');};
+ const tapes=(y0=962)=>{
+   B(903,y0,83,200,'#c79870',7);
+   B(1042,y0,83,200,'#c79870',7);
+   L(944,y0+11,944,y0+188,'#f4e0bd',3);
+   L(1083,y0+11,1083,y0+188,'#f4e0bd',3);
+ };
+ const slider=(x,y)=>{B(x-24,y-14,48,35,'#7f8891',7);C(x,y+18,12,'#b6c0c7');B(x-8,y+15,16,24,'#c4bdbc',4);};
+ const rows=(y0=975,step=19,joinedBoundary=9999)=>{
+   for(let k=0;k<9;k++){
+     const y=y0+k*step,joined=y>joinedBoundary;
+     B(joined?991:978,y,28,10,metal,3);
+     B(joined?1010:1022,y,28,10,'#abb0b1',3);
+     if(joined) C(1014,y+6,3,'#514e4b');
+   }
+ };
+ if(kind==='laces'){
+   bench();
+   B(907,930,215,239,'#80583e',24);
+   B(924,949,182,207,'#b87e55',18);
+   B(947,950,44,201,'#704930',8); B(1037,950,44,201,'#704930',8);
+   for(let i=0;i<7;i++){
+     const y=970+i*27;eye(982,y);eye(1042,y);
+     if(i<Math.max(1,Math.ceil(p*7))){
+       L(985,y,1038,y+14,'#e9d4a7',5);L(1038,y,985,y+14,'#e9d4a7',5);
+     }
+   }
+   const yy=966+Math.round(p*6)*27;
+   L(1040,yy,1113,yy-50,'#e9d4a7',5);
+   artisan(era,t,1069,yy-19);
+   return;
+ }
+ if(kind==='howe'){
+   bench();tapes(956);
+   // A conceptual line of separate clasps, not the modern interlocking slider.
+   for(let k=0;k<7;k++){
+     const y=977+k*24;
+     B(986,y,25,13,'#aba4a1',5);
+     if(k<Math.ceil(p*7)){B(1011,y,37,13,'#d9c59f',5);L(1000,y+7,1032,y+7,'#6e6760',3);}
+   }
+   B(1090,998+65*p,26,85,'#83654b',6);
+   artisan(era,t,1061,1030+48*p);
+   return;
+ }
+ if(kind==='judson'){
+   bench();tapes();
+   const ySlider=1121-135*p;
+   for(let k=0;k<8;k++){
+     const y=983+k*21,lock=y>ySlider;
+     B(lock?992:968,y,31,12,'#9da4aa',5);
+     B(lock?1011:1036,y,27,12,'#d7c5a8',5);
+     if(lock)L(1002,y+7,1030,y+7,'#525b62',5);
+   }
+   slider(1015,ySlider);
+   artisan(era,t,1038,ySlider-11);
+   return;
+ }
+ if(kind==='teeth'||kind==='patent'){
+   bench();tapes();
+   const ySlider=1138-151*p;
+   rows(984,19,ySlider);
+   if(kind==='patent'){
+     B(879,926,58,187,'#6a7378',8);
+     B(890,958+49*p,106,21,'#939b9c',6);
+     L(939,946,978,1002,'#5b6368',13);
+     for(let i=0;i<6;i++)C(1141,988+i*26,5,'#beb4a5');
+     artisan(era,t,985,1001+49*p);
+   }else{
+     slider(1011,ySlider);
+     artisan(era,t,1047,ySlider-5);
+   }
+   return;
+ }
+ if(kind==='boot'){
+   bench();
+   B(908,936,172,201,'#45494c',35);
+   B(869,1105,254,71,'#34383e',29);
+   B(889,1127,219,20,'#697078',7);
+   B(1003,967,36,168,'#a98f68',6);
+   const y=1118-135*p;
+   for(let k=0;k<8;k++){
+     const yy=978+k*19; B(1011,yy,20,10,'#c2beb0',4);
+   }
+   slider(1022,y);
+   artisan(era,t,1052,y-14);
+   return;
+ }
+ // Today's zipper: a full bag; the teeth become joined as the pull goes right.
+ bench();
+ B(861,998,298,168,'#459a9d',23);
+ B(892,941,234,75,'#368e93',25);
+ B(908,1012,206,119,'#6fc2ba',12);
+ L(910,1027,1116,1027,'#d7e5c6',6);
+ const xpos=927+179*p;
+ for(let i=0;i<12;i++){
+   const xx=918+i*17,closed=xx<xpos;
+   B(xx,1009,12,closed?19:12,closed?'#dcdfe0':'#b4c0c0',3);
+ }
+ slider(xpos,1008);
+ artisan(era,t,xpos+18,991);
+}
+
 export function renderWorkshop(type,kind,era,t){
  TYPE=type;
- const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);};
+ const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);};
  if(PROBE){const main=g,sid=S.sid;setCtx(PROBE.getContext('2d'));PASS='probe';TGT=null;try{run();}finally{setCtx(main);S.sid=sid;PASS='draw';}
    if(TGT){shape(ell(BX,BF+4,90,16,18),{fill:'rgba(20,10,30,.18)',lw:0,stroke:false});body(TGT.era,t);if(TYPE==='watch'||TYPE==='key')arms(TGT.era,t,TGT.hx,TGT.hy,1);}}   // the resting arm stays behind the work
  run();
