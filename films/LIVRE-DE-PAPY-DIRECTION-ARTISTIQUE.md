@@ -7,6 +7,19 @@ Style : sitcom de science-fiction animée (Sci-Fi Sitcom Toon), vertical 1080 ×
 - **Malik** : cheveux bouclés bruns, sweat bleu roi, jean, baskets blanches ; épaules au bord du sweat, bras le long du corps, mains symétriques (pouces vers le corps). **Pas de sac** sauf si l'épisode en parle.
 - Voix : Malik = Éloïse. Papy = Fabrice. Livrer **une seule vidéo verticale 9:16 avec les deux voix**, plus le fichier `papy-texte-timeline.txt` (une réplique par ligne avec début → fin). **Pas de version sans Papy ni de vidéo 16:9** (dernière décision de l'auteur, 20 novembre 2026).
 
+## Noms des fichiers livrés — règle de classement
+
+À partir des prochains épisodes, les fichiers **visibles au téléchargement** doivent porter uniquement le titre court, sans nom de série, numéro de version, format, support ou mention de Story.
+
+Exemples : `L'histoire de la brosse.mp4`, `L'histoire des lunettes.zip`, `L'histoire des ciseaux.mp4`, `L'histoire de la fourchette.zip`.
+
+- **MP4** : `L'histoire de <objet>.mp4` (ou `du / de la / des`, selon le français).
+- **ZIP** : même titre, extension `.zip`.
+- **GitHub Actions — nom de l'artefact** : le même titre simple, pas de `v1`, `short-9x16`, `story-voix`, etc.
+- Conserver à l'intérieur de l'archive les fichiers nécessaires à la publication ; leurs noms secondaires peuvent rester descriptifs.
+- Les noms techniques internes nécessaires au moteur restent autorisés tant qu'ils **ne sont pas exposés à l'utilisateur**.
+- Ne pas relancer une vidéo validée uniquement pour renommer son fichier. Les anciennes copies téléchargées sur le téléphone ne changent pas automatiquement de nom.
+
 ## Détails (toujours)
 - **L'objet de l'épisode est partout et bien visible** : Malik le tient à la maison, Papy tient la version de chaque époque à côté de lui (pas devant son visage), gros plan agrandi dans chaque époque.
 - **Objets très détaillés** : formes réelles, matières, reflets, ombres, petites pièces (vis, coutures, boutons, poils, textures).
