@@ -7,9 +7,9 @@ from scipy.signal import fftconvolve
 E = json.load(open(os.path.join(ROOT, 'events.json'))); DUR = E['dur']; N = int((DUR + .5) * SR)
 LINES = {l['id']: l for l in json.load(open(os.path.join(ROOT, 'lines.json'), encoding='utf-8'))}
 sfxb, vob, amb = np.zeros((N, 2)), np.zeros((N, 2)), np.zeros((N, 2)); vobP = np.zeros((N, 2))
-def zip_(): d = .5; tt = t_(d); return norm(bp(nz(d), 2000, 7000) * (.5 + .5 * (np.sin(2 * np.pi * 60 * tt) > 0)) * np.sin(np.pi * tt / d))
+def zip_(): d = .5; tt = t_(d); return norm(bp(nz(d), 1500, 5000) * (.6 + .4 * np.sin(2 * np.pi * 40 * tt)) * np.sin(np.pi * tt / d))
 def toy(): d = .25; tt = t_(d); return norm(np.sin(2 * np.pi * (1300 + 500 * np.sin(np.pi * tt / d)) * tt) * np.sin(np.pi * tt / d))
-def pagef(): d = .35; tt = t_(d); return norm(hp(nz(d), 2000) * (.4 + .6 * (rng.random(len(tt)) > .5)) * np.sin(np.pi * tt / d))
+def pagef(): d = .35; tt = t_(d); am = lp(np.abs(nz(d)), 25); return norm(bp(nz(d), 1200, 5500) * (am / (am.max() + 1e-9)) * np.sin(np.pi * tt / d) ** 2)   # a soft rustle, no random gating
 FXT = {'portalOpen': (portal_open, .6), 'portalClose': (portal_close, .45), 'suck': (suck, .4), 'pop': (lambda: pop(1), .35), 'boing': (boing, .35),
        'thud': (thud, .5), 'slam': (slam, .6), 'whoosh': (portal_whoosh, .45), 'page': (pagef, .3), 'cloth': (cloth, .2), 'zip': (zip_, .3), 'toy': (toy, .2)}
 for e in E['ev']:
@@ -33,7 +33,7 @@ def ticks(d):
     return x
 def hum(d): tt = t_(d); return (np.sin(2 * np.pi * 100 * tt) + .4 * np.sin(2 * np.pi * 200 * tt)) * .006
 def rain(d): return hp(bp(nz(d), 2500, 9000), 2000) * .05
-def crackle(d): x = np.zeros(len(t_(d))); idx = rng.integers(0, len(x) - 200, int(d * 25)); [x.__setitem__(slice(i, i + 120), x[i:i + 120] + hp(nz(.0025), 3000) * .3) for i in idx]; return x + lp(brown_(d), 300) * .03
+def crackle(d): return lp(brown_(d), 300) * .03   # a calm bed: no random crackles
 def murmur(d, g=.025):
     tt = t_(d); x = np.zeros_like(tt)
     for k in range(5): am = uniform_filter1d((rng.random(len(tt)) > .9995).astype(float), int(.25 * SR)) * 60; x += bp(nz(d), 300 + k * 110, 900 + k * 160) * np.clip(am, 0, 1)

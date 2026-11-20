@@ -13,9 +13,11 @@ def sweep(f0, f1, d, curve=1.0):
 def fade(x, a=.005, r=.02):
     n = len(x); x = x.copy(); A, R = min(n, int(a * SR)), min(n, int(r * SR)); x[:A] *= np.linspace(0, 1, A); x[n - R:] *= np.linspace(1, 0, R); return x
 def bpsweep(x, f0, f1, q=.35):
-    out = np.zeros_like(x); n = len(x)
-    for i in range(0, n, 480):
-        f = f0 * (f1 / f0) ** (i / n); s = bp(x[max(0, i - 2400):i + 480], f * (1 - q), min(f * (1 + q), 20000)); out[i:i + 480] = s[-len(out[i:i + 480]):]
+    # a smooth band-pass sweep: fixed bands crossfaded along the sweep (no block-by-block filter jumps, which crackle)
+    n = len(x); u = np.linspace(0, 1, n); fc = f0 * (f1 / f0) ** u; out = np.zeros(n)
+    lo, hi = min(f0, f1), max(f0, f1); K = 10; bands = lo * (hi / lo) ** (np.arange(K) / (K - 1)) if hi > lo else np.array([lo])
+    W = np.array([np.exp(-.5 * (np.log(fc / b) / .22) ** 2) for b in bands]); W /= W.sum(0) + 1e-9
+    for k, b in enumerate(bands): out += bp(x, b * (1 - q), min(b * (1 + q), 20000)) * W[k]
     return out
 
 # —— cartoon foley (all synthesized)——
@@ -31,7 +33,7 @@ def portal_open():
     boom = np.sin(2 * np.pi * np.cumsum(38 + 60 * np.exp(-tt / .12)) / SR) * env_exp(d, .45)
     down = bpsweep(nz(d), 6000, 300, .4) * env_exp(d, .5)
     swirl = np.sin(2 * np.pi * np.cumsum(260 + 500 * (tt / d) + 120 * np.sin(2 * np.pi * 7 * tt)) / SR) * np.sin(np.pi * np.minimum(tt / d, 1)) * .35
-    sp = hp(nz(d), 5000) * (rng.random(len(tt)) > .997) * 4
+    sp = np.zeros(len(tt))   # no random sparks: they read as crackle
     return norm(boom * 1.0 + down * .7 + swirl + lp(sp, 12000) * .3)
 def portal_hum(d):
     tt = t_(d); lfo = np.sin(2 * np.pi * .9 * tt)
@@ -57,7 +59,7 @@ def slide(): d = .45; tt = t_(d); return norm(bp(nz(d), 500, 2500) * (.6 + .4 * 
 def squish(): d = .18; return norm(bpsweep(nz(d), 600, 2500, .5) * env_exp(d, .05))
 def wetblink(): d = .09; x = bp(nz(d), 700, 3000) * env_exp(d, .015); x[:int(.03 * SR)] += bubble(500, 1500, .03) * .6; return norm(x)
 def slurp(d): tt = t_(d); am = (rng.random(len(tt)) > .9992).astype(float); am = uniform_filter1d(maximum_filter1d(am, int(.015 * SR)), int(.01 * SR)); return fade(norm(bp(nz(d), 900, 3200) * (.25 + am * 2) * np.sin(np.pi * tt / d) ** .5), .02, .05)
-def page(): d = .22; tt = t_(d); return norm(hp(nz(d), 2500) * (rng.random(len(tt)) > .6) * np.sin(np.pi * tt / d))
+def page(): d = .3; tt = t_(d); am = lp(np.abs(nz(d)), 30); return norm(bp(nz(d), 1500, 6000) * (am / (am.max() + 1e-9)) * np.sin(np.pi * tt / d) ** 2)
 def lick(): d = .3; return norm(bpsweep(nz(d), 1200, 400, .5) * np.sin(np.pi * t_(d) / d))
 def chomp(): x = np.zeros(int(.3 * SR)); a = clack(1.4); b = clack(1.2); x[:len(a)] += a; x[int(.07 * SR):int(.07 * SR) + len(b)] += b; x[:int(.15 * SR)] += lp(nz(.15), 3000) * env_exp(.15, .03) * .5; return norm(x)
 def coo():

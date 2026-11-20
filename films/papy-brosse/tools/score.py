@@ -138,9 +138,13 @@ def ir(d=2.0, decay=.45, lpf=5000, pre=.015):
     x = np.stack([lp(rng.standard_normal(n), lpf) * np.exp(-tn / decay), lp(rng.standard_normal(n), lpf) * np.exp(-tn / decay)], 1); x[:int(pre * SR)] = 0; return x / np.sqrt((x ** 2).sum(0))
 def conv(x, h): return np.stack([fftconvolve(x[:, c], h[:, c])[:N] for c in range(2)], 1)
 send = {'drums': .08, 'bass': 0, 'lead': .3, 'harm': .22, 'fx': .2}
+# no fizz: the noise percussion (hats, shakers, snare rolls, brushes) is softened and its top end rolled off,
+# and the whole score gets a gentle low-pass, so no hiss runs under the voices through the eras
+D_ = BUS['drums'].b; BUS['drums'].b = np.stack([lp(lp(D_[:, c], 4200), 4200) for c in range(2)], 1) * .55
+for k in ('harm', 'lead', 'fx'): BUS[k].b = np.stack([lp(BUS[k].b[:, c], 7000) for c in range(2)], 1)
 out = sum(b.b for b in BUS.values()) + conv(sum(BUS[k].b * send[k] for k in BUS), ir()) * .9
 for c0, c1 in [(b5 - .1, VO['b3'] + 1.6), (a, s1 + .2)]:   # silences stay silent, tails included
     i0, i1 = int(c0 * SR), int(c1 * SR); out[i0:i1] = 0; f = int(.01 * SR); out[i0 - f:i0] *= np.linspace(1, 0, f)[:, None]
-out = np.stack([hp(out[:, c], 30) for c in range(2)], 1); pk = np.abs(out).max(); out = out / pk * .89
+out = np.stack([hp(out[:, c], 30) for c in range(2)], 1); pk = np.abs(out).max(); out = out / pk * .89 * .67   # same level as before the fizz removal
 os.makedirs(os.path.join(ROOT, 'out'), exist_ok=True); sf.write(os.path.join(ROOT, 'out', 'score.wav'), out.astype(np.float32), SR)
 print('score.wav', round(DUR, 1), 's')

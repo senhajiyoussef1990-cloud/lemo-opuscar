@@ -29,10 +29,13 @@ function body(era,t){
   stroke([[-40,-300],[-52,-340]],3);stroke([[40,-300],[52,-340]],3);shape(rr(-18,-240,36,26,4),{fill:'rgba(0,0,0,.08)',lw:3});
   pop();
 }
-function ik(sx,sy,tx,ty,a1,a2,bendDir){ // elbow of a two-bone arm from shoulder to hand
+function ik(sx,sy,tx,ty,a1,a2){ // elbow of a two-bone arm from shoulder to hand: always the natural one, hanging below
   let dx=tx-sx,dy=ty-sy,d=Math.hypot(dx,dy); const m=a1+a2-2; if(d>m){tx=sx+dx/d*m;ty=sy+dy/d*m;dx=tx-sx;dy=ty-sy;d=m;}
-  const ca=(a1*a1+d*d-a2*a2)/(2*a1*d), an=Math.atan2(dy,dx)+bendDir*Math.acos(Math.max(-1,Math.min(1,ca)));
-  return [[sx+Math.cos(an)*a1,sy+Math.sin(an)*a1],[tx,ty]];
+  const ca=(a1*a1+d*d-a2*a2)/(2*a1*d), base=Math.atan2(dy,dx), off=Math.acos(Math.max(-1,Math.min(1,ca)));
+  const e1=[sx+Math.cos(base+off)*a1,sy+Math.sin(base+off)*a1], e2=[sx+Math.cos(base-off)*a1,sy+Math.sin(base-off)*a1];
+  let el=e1[1]>e2[1]?e1:e2;                                      // the lower elbow
+  if(Math.abs(e1[1]-e2[1])<20) el=(e1[0]>e2[0])?e1:e2;           // nearly level: the elbow stays out to the side, away from the work
+  return [el,[tx,ty]];
 }
 function arms(era,t,hx,hy,only=null){
   const k=BS*FIG_K, L=LOOK[era]||LOOK.medieval, sl=L.top, skin=SK[era]||'#e7b48c';
@@ -40,7 +43,7 @@ function arms(era,t,hx,hy,only=null){
   const fine=TYPE==='watch'||TYPE==='key';                       // delicate mechanisms: one hand with watchmaker's tweezers, the other resting on the bench
   let hands=[[hx,hy],[hx+44,hy+20]];
   if(fine){const s0=sh[0],dx=s0[0]-hx,dy=s0[1]-hy,d=Math.hypot(dx,dy)||1;hands=[[hx+dx/d*95,hy+dy/d*95],[BX-40,1178]];TW=[hands[0],[hx,hy]];}else TW=null;
-  (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],150,150,i?1:1);
+  (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],140,135);
     shape(noodle(s,el,0,44,38),{fill:sl,lw:6,shade:()=>fillOnly(ell(el[0],el[1],24,40,12),'rgba(0,0,0,.12)',{boil:.2})});
     shape(noodle(el,hp,0,38,30),{fill:sl,lw:6});
     shape(ell(hp[0]+(el[0]-hp[0])*.12,hp[1]+(el[1]-hp[1])*.12,17,14,12),{fill:L.topS||sl,lw:4});   // the cuff
