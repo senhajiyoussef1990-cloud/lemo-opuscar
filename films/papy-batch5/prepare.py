@@ -193,6 +193,36 @@ if slug == 'fermeture-eclair':
     m.armF={h:[42,30],bend:14,fist:true};
   }
 """+insert)
+    # The bag is visibly attached to Malik's hand, with a stuck zip at the
+    # beginning and a CLOSED zip after returning to the salon.
+    old_bag="Wd.homeObject(x+18,y-28,t)"
+    assert old_bag in main
+    main=main.replace(old_bag,"Wd.homeObject(x+18,y-28,t,w)")
+    # Specific transition: the SAME blue bag is caught by the portal; never
+    # show the obsolete generic dinosaur backpack or a disconnected zip.
+    old_beat="  if (name === 'pack') {   // Malik swings his bag onto his back"
+    assert old_beat in main
+    new_beat="""  if (name === 'pack' && w === 'home') {
+    cam(470,1060,1.3); world(w,t,{glow:1}); Wd.portal(PORT[0],PORT[1]-120,200,t);
+    const k=ss(seg(tq,t0,t0+.58));
+    p.holdF='book';p.bookOpen=1;p.armF={h:[-20,150],bend:20};
+    if(k<.45) {
+      m.holdF=(x,y)=>Wd.homeObject(x+18,y-28,t,'home');
+      m.armF={h:[36,34],bend:12,fist:true};
+    } else {
+      m.armF={h:[64,-72],bend:24,fist:false};
+      const z=(k-.45)/.55;
+      Wd.homeObject(lerp(MX+124,PORT[0],z),lerp(FLOOR-230,PORT[1]-110,z)-88*Math.sin(z*Math.PI),t,'home');
+    }
+    malik(m);papy(p);return;
+  }
+"""
+    main=main.replace(old_beat,new_beat+old_beat)
+    # And the bag remains visible at the moment the two enter the vortex.
+    old_rush="malik(sucked({ ...m, nerv: 1 }, t, t0 + .05, t0 + .3));"
+    assert old_rush in main
+    main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
+
     # In the salon the same hand visibly grips the object; the old prop is
     # still on the table as a background illustration, not a replacement.
 
