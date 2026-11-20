@@ -194,7 +194,7 @@ AUJOURD'HUI À 18 H
 """
 # New episodes use a SINGLE vertical master; no redundant 16:9 YouTube master.
 if slug == 'crayon':
-    publication=publication.replace(f"YouTube — format classique 16:9 — titre\\n{subj} | Le Livre de Papy — un voyage à travers 7 époques\\n\\n","")
+    publication=publication.replace(f"YouTube — format classique 16:9 — titre\n{subj} | Le Livre de Papy — un voyage à travers 7 époques\n\n","")
     publication=publication.replace("Deux formats : Shorts 9:16 et vidéo YouTube 16:9. Voix de Papy et Malik dans les deux.","Format vertical 9:16 pour TikTok, Reels, Facebook et Shorts. Voix de Papy et Malik.")
 (out/'publication.txt').write_text(publication,encoding='utf8')
 script='# '+subj+' — Le Livre de Papy\n\n'
