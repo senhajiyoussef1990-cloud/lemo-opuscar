@@ -103,12 +103,25 @@ for f,(w,hgt) in [(v,(1080,1920))]:
 names=[v.name,'story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md','audio-qc.json','audio-preflight.json']
 if slug in ('fermeture-eclair','ciseaux'): names.append('controles-visuels.jpg')
 assert all((d/n).is_file() for n in names)
-dest=d/f'le-livre-de-papy-{slug}-tiktok-vertical.zip'
+# Nom court pour les utilisateurs : L'histoire des ciseaux.zip / .mp4.
+# Les noms internes techniques restent inchangés pour les tests audio et vidéo.
+import re
+title=json.loads((d/'episode.json').read_text(encoding='utf-8'))['title'].replace('’',"'")
+title=re.sub(r'[\\/:*?"<>|]', '', title).strip().rstrip('.')
+assert title and len(title)<=100, title
+public_mp4=d/f'{title}.mp4'
+if not public_mp4.exists(): os.link(v,public_mp4)
+dest=d/f'{title}.zip'
 with zipfile.ZipFile(dest,'w',compression=zipfile.ZIP_STORED,allowZip64=True) as z:
-    for n in names:z.write(d/n,n)
+    for n in names:
+        z.write(d/n, f'{title}.mp4' if n==v.name else n)
 with zipfile.ZipFile(dest) as z:
     assert z.testzip() is None
+    assert z.namelist().count(f'{title}.mp4')==1
     assert len([x for x in z.namelist() if x.endswith('.mp4')])==1
+# Rétrocompatibilité des anciens workflows : alias local, jamais affiché au public.
+legacy=d/f'le-livre-de-papy-{slug}-tiktok-vertical.zip'
+if not legacy.exists(): os.link(dest,legacy)
 print('LIVRABLE VALIDE:',dest,round(dest.stat().st_size/1024/1024,1),'Mo')
 PY
 echo "::endgroup::"
