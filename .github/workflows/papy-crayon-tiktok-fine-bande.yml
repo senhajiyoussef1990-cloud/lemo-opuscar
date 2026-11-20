@@ -1,4 +1,4 @@
-name: Le Livre de Papy - Crayon TikTok 9x16 bande fine haute
+name: Le Livre de Papy - Crayon V5 TikTok et artisans Claude corriges
 on:
   push:
     branches: [main]
@@ -51,9 +51,9 @@ jobs:
           node --check "$d/objects.js"
           node --check "$d/people.js"
           grep -Fq "g.fillRect(0,0,W,100)" "$d/main.js"
-          grep -Fq "LE CRAYON" "$d/main.js"
+          grep -Fq "L’HISTOIRE DU CRAYON" "$d/main.js"
           bash "$d/tools/fonts.sh"
-          node core/render/still.mjs "$d" 15 55 95 --size 1080x1920 --out "$d/preflight-vertical"
+          node core/render/still.mjs "$d" 15 35 55 75 95 115 135 --size 1080x1920 --out "$d/preflight-vertical"
       - name: Produire uniquement le MP4 TikTok 1080x1920 avec voix et controles son
         env:
           LEMO_ANGLE: swiftshader
@@ -64,7 +64,7 @@ jobs:
       - name: Livrer uniquement le ZIP vertical du crayon
         uses: actions/upload-artifact@v4
         with:
-          name: livre-de-papy-crayon-tiktok-vertical-bande-fine-story-voix-publications
+          name: livre-de-papy-crayon-v5-tiktok-artisans-claude-frise-fine-story-voix
           path: films/papy-crayon/le-livre-de-papy-crayon-tiktok-vertical.zip
           if-no-files-found: error
           compression-level: 0
