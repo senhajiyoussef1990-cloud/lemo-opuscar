@@ -24,7 +24,7 @@ shutil.copy2(BATCH/'people.js',out/'people.js')
 
 # Pilot V2: improve five-finger silhouette only in this newly generated episode.
 # Keep existing published chapters and shared character appearance unchanged.
-if slug == 'fermeture-eclair':
+if slug in ('fermeture-eclair','ciseaux'):
     charpath=out/'chars.js'
     chars=charpath.read_text(encoding='utf8')
     first=chars.index('export function hand(')
@@ -170,7 +170,7 @@ main=main[:tag_start]+thin_tag+main[tag_end:]
 
 # Visual standard V2 for the NEW zipper story: restore a readable top ribbon,
 # and put the real episode object in Malik's hand (home, history, return).
-if slug == 'fermeture-eclair':
+if slug in ('fermeture-eclair','ciseaux'):
     for before,after in [
         ('g.fillRect(0,0,W,100)','g.fillRect(0,0,W,128)'),
         ('g.fillRect(0,96,W,4)','g.fillRect(0,124,W,4)'),
@@ -201,35 +201,46 @@ if slug == 'fermeture-eclair':
     m.armF={h:[42,30],bend:14,fist:true};
   }
 """+insert)
-    # The bag is visibly attached to Malik's hand, with a stuck zip at the
-    # beginning and a CLOSED zip after returning to the salon.
-    old_bag="Wd.homeObject(x+18,y-28,t)"
-    assert old_bag in main
-    main=main.replace(old_bag,"Wd.homeObject(x+18,y-28,t,w)")
-    # Specific transition: the SAME blue bag is caught by the portal; never
-    # show the obsolete generic dinosaur backpack or a disconnected zip.
-    old_beat="  if (name === 'pack') {   // Malik swings his bag onto his back"
-    assert old_beat in main
-    new_beat="""  if (name === 'pack' && w === 'home') {
-    cam(470,1060,1.3); world(w,t,{glow:1}); Wd.portal(PORT[0],PORT[1]-120,200,t);
-    const k=ss(seg(tq,t0,t0+.58));
-    p.holdF='book';p.bookOpen=1;p.armF={h:[-20,150],bend:20};
-    if(k<.45) {
-      m.holdF=(x,y)=>Wd.homeObject(x+18,y-28,t,'home');
-      m.armF={h:[36,34],bend:12,fist:true};
-    } else {
-      m.armF={h:[64,-72],bend:24,fist:false};
-      const z=(k-.45)/.55;
-      Wd.homeObject(lerp(MX+124,PORT[0],z),lerp(FLOOR-230,PORT[1]-110,z)-88*Math.sin(z*Math.PI),t,'home');
-    }
-    malik(m);papy(p);return;
-  }
-"""
-    main=main.replace(old_beat,new_beat+old_beat)
-    # And the bag remains visible at the moment the two enter the vortex.
-    old_rush="malik(sucked({ ...m, nerv: 1 }, t, t0 + .05, t0 + .3));"
-    assert old_rush in main
-    main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
+    if slug == 'fermeture-eclair':
+        # The bag is visibly attached to Malik's hand, with a stuck zip at the
+        # beginning and a CLOSED zip after returning to the salon.
+        old_bag="Wd.homeObject(x+18,y-28,t)"
+        assert old_bag in main
+        main=main.replace(old_bag,"Wd.homeObject(x+18,y-28,t,w)")
+        # Specific transition: the SAME blue bag is caught by the portal; never
+        # show the obsolete generic dinosaur backpack or a disconnected zip.
+        old_beat="  if (name === 'pack') {   // Malik swings his bag onto his back"
+        assert old_beat in main
+        new_beat="""  if (name === 'pack' && w === 'home') {
+        cam(470,1060,1.3); world(w,t,{glow:1}); Wd.portal(PORT[0],PORT[1]-120,200,t);
+        const k=ss(seg(tq,t0,t0+.58));
+        p.holdF='book';p.bookOpen=1;p.armF={h:[-20,150],bend:20};
+        if(k<.45) {
+          m.holdF=(x,y)=>Wd.homeObject(x+18,y-28,t,'home');
+          m.armF={h:[36,34],bend:12,fist:true};
+        } else {
+          m.armF={h:[64,-72],bend:24,fist:false};
+          const z=(k-.45)/.55;
+          Wd.homeObject(lerp(MX+124,PORT[0],z),lerp(FLOOR-230,PORT[1]-110,z)-88*Math.sin(z*Math.PI),t,'home');
+        }
+        malik(m);papy(p);return;
+      }
+    """
+        main=main.replace(old_beat,new_beat+old_beat)
+        # And the bag remains visible at the moment the two enter the vortex.
+        old_rush="malik(sucked({ ...m, nerv: 1 }, t, t0 + .05, t0 + .3));"
+        assert old_rush in main
+        main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
+    
+    if slug == 'ciseaux':
+        # Visible complete dragon in the hand for both salon scenes.
+        old_prop="Wd.homeObject(x+18,y-28,t)"
+        assert old_prop in main
+        main=main.replace(old_prop,"Wd.homeObject(x+18,y-28,t,w)")
+        # Malik's paper dragon travels with the characters, never a generic prop.
+        old_rush="malik(sucked({ ...m, nerv: 1 }, t, t0 + .05, t0 + .3));"
+        assert old_rush in main
+        main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
 
     # In the salon the same hand visibly grips the object; the old prop is
     # still on the table as a background illustration, not a replacement.
@@ -288,7 +299,7 @@ NOUVEL ÉPISODE
 AUJOURD'HUI À 18 H
 """
 # New episodes use a SINGLE vertical master; no redundant 16:9 YouTube master.
-if slug in ('crayon','fermeture-eclair'):
+if slug in ('crayon','fermeture-eclair','ciseaux'):
     publication=publication.replace(f"YouTube — format classique 16:9 — titre\n{subj} | Le Livre de Papy — un voyage à travers 7 époques\n\n","")
     publication=publication.replace("Deux formats : Shorts 9:16 et vidéo YouTube 16:9. Voix de Papy et Malik dans les deux.","Format vertical 9:16 pour TikTok, Reels, Facebook et Shorts. Voix de Papy et Malik.")
 (out/'publication.txt').write_text(publication,encoding='utf8')
@@ -296,4 +307,4 @@ script='# '+subj+' — Le Livre de Papy\n\n'
 for id,line in zip(DATA['ids'],lines):
     script+=f"**{'Papy' if line['who']=='PAPY' else 'Malik'} ({id}) :** « {line['text']} »\n\n"
 (out/'SCENARIO.md').write_text(script,encoding='utf8')
-print('Episode prêt:',slug,'39 voix, 7 époques, format vertical 1080x1920' if slug in ('crayon','fermeture-eclair') else 'double format')
+print('Episode prêt:',slug,'39 voix, 7 époques, format vertical 1080x1920' if slug in ('crayon','fermeture-eclair','ciseaux') else 'double format')
