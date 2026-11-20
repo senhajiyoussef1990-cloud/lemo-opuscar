@@ -15,7 +15,10 @@ Style : sitcom de science-fiction animée (Sci-Fi Sitcom Toon), vertical 1080 ×
 - **Animaux** : bien dessinés, anatomie lisible, mignons et expressifs.
 - **Pas de temps mort** : aucun plan sans réplique où un personnage regarde ailleurs (pas de « STARE ») ; les seuls silences sont l'ouverture du portail, les arrivées et le retour à la maison.
 - Panoramique sur le décor au début de chaque plan large ; sous-titres remontés (y ≈ 1560).
-- **Bande historique — nouvelle règle à partir du crayon** : ruban très fin (environ **100 px** sur 1080 × 1920), **collé au bord supérieur** de l'image et sur toute sa largeur, avec lieu + date lisibles et description courte sur la deuxième ligne ; aucune plaque épaisse flottante. Apparition douce ; préserver sous-titres et personnages. Les anciens épisodes conservent leurs cartouches historiques tant qu'aucune refonte n'est demandée.
+- **Bande historique — nouvelle référence pour les futurs épisodes** : ruban de **128 px** (plage 120–135 px) sur 1080 × 1920, **collé au bord supérieur** sur toute la largeur, deux lignes (lieu + date en gras ; courte description) et contraste fort. Pas de plaque épaisse flottante. Les anciens épisodes restent inchangés sans demande. Référence détaillée : `films/LIVRE-DE-PAPY-CAHIER-VISUEL-V2.md`.
+
+## Cahier de qualité visuelle V2 (à respecter)
+Le document `films/LIVRE-DE-PAPY-CAHIER-VISUEL-V2.md` précise les proportions des bras et mains, la prise de l'objet par Malik, les gestes naturels, les interdictions et le contrôle qualité image par image. Une règle générale de cette direction artistique ne doit pas contredire les exigences plus récentes de ce cahier.
 
 ## Jeu et finitions (depuis les lunettes)
 - **Gestes** : Papy explique avec sa main libre quand il parle ; Malik bouge les bras quand il parle.
