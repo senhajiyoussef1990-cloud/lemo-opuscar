@@ -593,6 +593,117 @@
         "https://museumofeverydaylife.org/current-exhibitions/visual-history-of-the-pencil",
         "https://www.originalgeneral.com/pencil/"
       ]
+    },
+    {
+      "slug": "fermeture-eclair",
+      "title": "L'histoire de la fermeture éclair",
+      "type": "zipper",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT 1851",
+          "LACETS, BOUTONS ET CROCHETS",
+          "victorian",
+          "laces",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1851",
+          "L’IDÉE D’ELIAS HOWE",
+          "victorian",
+          "howe",
+          "workshop"
+        ],
+        [
+          "CHICAGO",
+          "1893",
+          "LE FERMOIR DE WHITCOMB JUDSON",
+          "victorian",
+          "judson",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1913",
+          "LES DENTS DE GIDEON SUNDBACK",
+          "thirties",
+          "teeth",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1917",
+          "LE BREVET DE LA GLISSIÈRE",
+          "thirties",
+          "patent",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1923",
+          "LE ZIP SUR LES BOTTES",
+          "thirties",
+          "boot",
+          "workshop"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES ZIPS SUR TOUS LES OBJETS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, ma fermeture éclair est coincée !",
+        "Ne tire pas si fort, Malik. Regarde les petites dents.",
+        "Qui a inventé la fermeture éclair ?",
+        "Plusieurs inventeurs ont travaillé dessus pendant des dizaines d'années.",
+        "Et avant, ils fermaient leurs manteaux comment ?",
+        "Ouvrons Le Livre de Papy. Direction l'histoire de la fermeture éclair !",
+        "Oh ! Mon sac se fait aspirer dans le portail !",
+        "Pendant longtemps, on ferme les habits avec des lacets, des boutons ou des crochets.",
+        "Regarde cette couturière : elle passe patiemment un lacet dans les œillets d'une botte.",
+        "Mais c'est super long !",
+        "Exact. Les inventeurs cherchent une fermeture qui se manipule d'un seul geste.",
+        "En mille huit cent cinquante et un, Elias Howe fait breveter une idée de fermeture continue.",
+        "Il imagine des petits attaches alignées, mais ce n'est pas encore un zip moderne.",
+        "Il y a déjà une tirette ?",
+        "Non, pas comme la nôtre.",
+        "Son idée ne devient pas un produit courant. L'histoire continue.",
+        "En mille huit cent quatre-vingt-treize, Whitcomb Judson présente un fermoir à crochets coulissants.",
+        "Sur une chaussure, le curseur rapproche de petits crochets métalliques les uns des autres.",
+        "Et si un crochet se bloque ?",
+        "Justement ! Le mécanisme est encore complexe et peu fiable.",
+        "En mille neuf cent treize, Gideon Sundback perfectionne un système de dents qui s'emboîtent.",
+        "Observe le curseur : il rassemble les deux rangées de dents et les verrouille.",
+        "On dirait deux peignes qui se serrent la main !",
+        "Bien trouvé ! En descendant, le curseur les sépare à nouveau.",
+        "En mille neuf cent dix-sept, un brevet décrit sa fermeture séparable perfectionnée.",
+        "Dans l'atelier, on fixe des dizaines de petites pièces sur deux rubans, puis on ajoute le curseur.",
+        "Toutes ces pièces pour fermer une veste ?",
+        "En mille neuf cent vingt-trois, le fabricant Goodrich équipe des bottes en caoutchouc de cette fermeture.",
+        "L'ouvrier remonte la tirette sur le côté de la botte. Zip ! Elle est fermée.",
+        "Aaaah, c'est de là que vient le mot zipper !",
+        "Aujourd'hui, on utilise des zips en métal ou en plastique sur les vêtements et les sacs.",
+        "Le curseur rapproche toujours les dents. Certaines fermetures protègent même de la pluie.",
+        "Et si le zip coince encore ?",
+        "Vérifie doucement qu'aucun tissu n'est pris dedans, sans forcer.",
+        "Nous voilà rentrés. Tiens, ton sac se ferme à nouveau.",
+        "Regarde Papy ! Je vais ouvrir et fermer mon sac sans arrêt !",
+        "Doucement, Malik ! Ce petit mécanisme mérite un peu de respect.",
+        "C'était Le Livre de Papy. Chaque jour, un objet et son histoire étonnante.",
+        "Abonne-toi, et à demain pour notre prochain voyage !"
+      ],
+      "sources": [
+        "https://blog.library.si.edu/blog/2010/05/03/the-up-an-down-history-of-the-zipper/",
+        "https://lemelson.mit.edu/resources/whitcomb-judson",
+        "https://www.hagley.org/research/news/hagley-vault/here-hagley-we-love-inventions-big-and-small",
+        "https://www.meche.engineering.cmu.edu/news/2018/10/zipper-inventor-legacy.html",
+        "https://institutionalrepository.fitnyc.edu/item/560"
+      ]
     }
   ]
 }
