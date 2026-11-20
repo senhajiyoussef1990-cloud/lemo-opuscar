@@ -184,6 +184,14 @@ if slug == 'fermeture-eclair':
     old_malik="&& !m.holdF && w==='home')"
     assert old_malik in main
     main=main.replace(old_malik,"&& !m.holdF)")
+    # Wider insert shots: show BOTH the complete boot/jacket and the
+    # manipulations on its closure (old 2.1x zoom cropped the whole object).
+    for i in range(1,8):
+        old=f"w{i}:[960,{1080 if i in (2,7) else 1090 if i in (4,5,6) else 1100},2.1]"
+        if old not in main:
+            raise RuntimeError("Historical insert framing changed: "+old)
+        main=main.replace(old,f"w{i}:[960,1090,1.72]")
+
     # Let Malik inspect an appropriately historic object when he reacts.
     # Make it share the original arm and hand rig, not an extra floating hand.
     insert="  if (p) papy(p);"
