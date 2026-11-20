@@ -98,6 +98,46 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
      if(kind==='holder')for(let i=0;i<5;i++)line(-110+i*42,-15,-110+i*42,15,'#886c4a',3);
    }
  }
+ if(typ==='zipper'){
+   // The same object stays recognizable in Malik's hand, at the title and in historical demos.
+   // From laces to hooks to modern paired teeth; no commercial marks.
+   const fabric=kind==='modern'?'#42afbb':'#b98561';
+   if(kind==='laces'){
+     shape(spline([[-100,-132],[53,-132],[80,75],[129,92],[122,126],[-110,126],[-115,58]]),{fill:'#ab744d',lw:8});
+     box(-50,-105,70,199,'#d19d6d',10);
+     for(let i=0;i<7;i++){
+       const y=-90+i*27;
+       ring(-26,y,8,'#d7bf8c');ring(7,y,8,'#d7bf8c');
+       line(-27,y,6,y+20,'#f3ddad',5);line(6,y,-27,y+20,'#f3ddad',5);
+     }
+   }else if(kind==='boot'){
+     shape(spline([[-90,-146],[40,-146],[60,28],[116,57],[125,115],[50,139],[-120,130],[-129,95],[-96,68]]),{fill:'#424c4f',lw:8});
+     box(18,-130,27,216,'#bd9864',5);
+     for(let i=0;i<9;i++)box(25,-115+i*23,16,13,'#dbdbd1',4);
+     box(6,1,49,37,'#bac0bd',8);ring(30,40,14,'#e1d6ba');
+   }else{
+     // Two tapes with individual teeth and a movable interlocking slider.
+     box(-111,-133,102,266,fabric,11);
+     box(10,-133,102,266,kind==='modern'?'#61bcc1':'#bb987a',11);
+     line(-105,-117,-105,120,'rgba(255,255,255,.35)',4);
+     line(106,-117,106,120,'rgba(255,255,255,.3)',4);
+     const isHook=kind==='howe'||kind==='judson';
+     for(let i=0;i<12;i++){
+       const y=-112+i*20,joined=kind!=='howe' && i>=4;
+       const left=joined?-9:-23,right=joined?3:17;
+       box(left-20,y,isHook?28:29,isHook?9:12,isHook?'#afa397':'#d1d9d6',3);
+       box(right,y,isHook?26:29,isHook?9:12,isHook?'#a5a9a9':'#b7bcbd',3);
+       if(isHook && i%2===0)ring(0,y+4,5,'#e0d2b4');
+     }
+     if(kind!=='howe'){
+       box(-31,-47,61,63,'#727e86',12);box(-12,-35,23,36,'#c7c7c0',5);
+       ring(0,33,21,'#d5d6cb');ring(0,33,10,'#69737a');
+     }else{
+       for(let i=0;i<6;i++)line(-12,-94+i*34,12,-75+i*34,'#8d7761',5);
+     }
+   }
+ }
+
  pop();
 }
 // The key story starts with a giant old key found under the sofa, not a badge.
