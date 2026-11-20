@@ -582,12 +582,68 @@ function pencil(kind,era,t){
  * Interlocking teeth are explicit: behind the slider they close, ahead they remain apart.
  * One operator with thick articulated sleeves and a stabilising hand. Avoid looped waving.
  */
+// V3: the complete historical item is shown beside the detailed work.
+// Stand and shadows anchor the boot/coat in the atelier; no floating zipper.
+function zipperContext(kind,t){
+  push();translate(806,1055);scale(.57);
+  shape(ell(0,154,185,22,24),{fill:'rgba(38,33,31,.18)',lw:0,stroke:false});
+  B(-166,132,330,21,'#936f4d',8);
+  B(-138,150,21,65,'#795738',5);B(118,150,21,65,'#795738',5);
+  const boot=['laces','judson','boot'].includes(kind);
+  if(boot){
+    const rubber=kind==='boot',lc=rubber?'#485157':'#a57553';
+    // Upper shaft, ankle, shaped toe, heel, actual outsole.
+    shape(spline([[-60,-146],[41,-146],[52,-89],[57,-14],[85,12],[146,39],[173,77],[165,117],[98,137],[-151,137],[-161,110],[-135,68],[-90,19],[-79,-62]]),{fill:lc,lw:9});
+    shape(spline([[-153,110],[-110,122],[104,123],[170,96],[164,137],[-152,142]]),{fill:'#394047',lw:7});
+    shape(spline([[-64,-134],[-39,-125],[-37,56],[-71,63]]),{fill:rubber?'#66737a':'#c19471',lw:3});
+    if(kind==='laces'){
+      B(-24,-131,58,201,'#68472f',10);
+      for(let i=0;i<7;i++){const y=-113+i*26;
+        C(-15,y,5,'#f1d4a1');C(23,y,5,'#f1d4a1');
+        L(-15,y,23,y+17,'#f2dda9',4);L(23,y,-15,y+17,'#f2dda9',4);
+      }
+    }else{
+      B(-18,-135,38,181,kind==='boot'?'#8b9a9b':'#986b52',6);
+      for(let i=0;i<8;i++){
+        const y=-119+i*21;
+        B(-15,y,13,10,kind==='judson'?'#afa297':'#c7cdd0',4);
+        B(0,y,13,10,kind==='judson'?'#d9be9d':'#abb6b9',4);
+      }
+      B(-21,kind==='judson'?3:-8,44,33,'#97a2a6',8);
+      C(0,39,11,'#c6cfd1');
+    }
+  }else{
+    const prototype=kind==='howe',coat=prototype?'#aa876d':kind==='modern'?'#4e7a88':'#667785';
+    // An entire tailored jacket with sleeves, collar, front and two pockets.
+    shape(spline([[-87,-145],[-135,-123],[-178,-9],[-139,30],[-112,-4],[-116,135],[114,135],[110,-4],[140,28],[181,-7],[133,-123],[88,-145],[0,-86]]),{fill:coat,lw:8});
+    shape(spline([[-86,-133],[-37,-78],[0,-110],[36,-79],[87,-133]]),{fill:prototype?'#dac4a4':'#c1d0cf',lw:6});
+    B(-96,51,58,50,prototype?'#c29d78':'#819aaa',6);
+    B(41,51,58,50,prototype?'#c29d78':'#819aaa',6);
+    if(prototype){ // HOWE: experimental clasp line, explicitly not today's zipper.
+      for(let i=0;i<7;i++){let yy=-64+i*29;
+        B(-16,yy,16,12,'#b9aba0',3);B(4,yy,16,12,'#aba7a4',3);
+        if(i%2===0)L(-3,yy+6,8,yy+6,'#81756e',3);
+      }
+    }else{
+      L(0,-77,0,123,'#c5d0d0',5);
+      for(let i=0;i<10;i++){
+        const yy=-69+i*19;
+        B(-13,yy,13,12,'#bfc8c7',3);
+        B(1,yy,13,12,'#9daaaf',3);
+      }
+      B(-20,0,39,28,'#8a989e',6);C(0,37,12,'#d0d2c8');
+    }
+  }
+  pop();
+}
+
 function zipper(kind,era,t){
  const id=activeId||'', u=Math.max(0,Math.min(1,progress)), e=u*u*(3-2*u);
  const teach=/^[a-g][12]$/.test(id)||id==='b5';
  const p=teach?e:.25;
  const cloth='#e6bf85',metal='#dbd1bc',dark='#666b70';
  const bench=()=>{
+   zipperContext(kind,t); // visibly show the entire boot, garment or jacket around the mechanism
    B(837,1182,388,46,'#886045',8);
    B(866,1221,35,130,'#6a4635',5);
    B(1161,1221,32,130,'#6a4635',5);
