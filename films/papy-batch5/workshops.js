@@ -435,27 +435,103 @@ function key(kind,era,t){
  }
 }
 
+// The pencil story demonstrates seven distinct manufacturing techniques.
+// The artisan has only one controlled working arm, and a tool moves only
+// as Papy narrates the corresponding process (no endlessly waving hands).
 function pencil(kind,era,t){
- const j=wave(t*3),s=phase();
- B(865,1028,320,170,'#b88e60');B(899,1060,249,108,'#f2e6cc');
- for(let k=0;k<5;k++)L(917,1080+k*16,1058,1080+k*16,'#d8c6a6',2);
- if(kind==='graphite'){
-   B(878,980,236,35,'#45484a');for(let k=0;k<7;k++)L(880+k*32,960,900+k*32,940,'#5b5a59',8);
-   L(900+j*30,906,946+j*30,1010,'#986c48',16);L(903+j*30,911,944+j*30,911,'#74787a',15);
-   artisan(era,t,948+j*35,983);
- }else if(kind==='holder'||kind==='wood'){
-   B(930,973,225,43,'#c9a465');B(970,980,165,25,'#45494b');
-   B(990+j*13,962,78,13,'#e1c48a');artisan(era,t,990+j*13,969);
- }else if(kind==='conte'){
-   B(921,983,210,40,'#515256');B(960,972,118,55,'#c7a78b');for(let i=0;i<5;i++)L(950+i*34,1020,965+i*34,1050,'#c2b0a1',7);
-   artisan(era,t,1000+j*23,980);
- }else{
-   L(930,1112,1080+j*30,1056+j*13,'#d7ae58',23);L(1080+j*30,1056+j*13,1097+j*30,1047+j*13,'#44454a',7);
-   L(940,1129,1066,1129+j*6,kind==='colour'?'#508ac7':'#6a615f',5);
-   if(kind==='eraser'){B(906,1090,38,40,'#d9879b');B(922,1105,40,27,'#d5b1b9');}
-   artisan(era,t,1033+j*31,1069+j*13);
+ const id=activeId||'', raw=Math.max(0,Math.min(1,progress));
+ const ease=v=>{v=Math.max(0,Math.min(1,v));return v*v*(3-2*v);};
+ const instructional=/^[a-g]2$/.test(id)||id==='c1'||id==='d1'||id==='e1'||id==='f1';
+ const q=instructional?ease(raw):0;
+ const wood='#c89d68', iron='#72787c', graphite='#41464c', paper='#f1e3c3';
+ const desk=()=>{B(855,1159,348,40,'#805c45',6);B(875,1198,28,62,'#684b3a',5);B(1166,1198,28,62,'#684b3a',5);};
+ const sheet=()=>{B(894,1012,265,133,paper,7);for(let i=0;i<5;i++)L(914,1036+i*23,1133,1036+i*23,'#d9c6a5',2);};
+ const rod=(x,y,len=174,color=graphite)=>{B(x,y,len,15,color,5);L(x+6,y+4,x+len-7,y+4,'#74716e',2);};
+ const tip=(x,y,col=graphite)=>{L(x,y,x+23,y-6,col,10);};
+ if(kind==='silver'){
+   desk();sheet();
+   // Metal-point line increases with the movement of the drawing hand.
+   L(928,1094,928+q*155,1094-q*58,'#96978d',4);
+   const x=924+q*154,y=1066-q*58;
+   L(x-42,y-85,x+2,y+19,'#8e8e83',10);tip(x+2,y+19,'#7b7d7b');
+   artisan(era,t,x-36,y-85);
+   return;
  }
+ if(kind==='graphite'){
+   // Graphite is mined and lifted as a single solid black fragment.
+   B(875,1124,327,77,'#67666a',9);
+   B(888,1040,308,89,'#8c8b87',11);
+   for(let i=0;i<5;i++)B(901+i*50,1056+(i%2)*12,66,30,graphite,5);
+   const xx=1011+41*q,yy=1061-101*q;
+   B(xx,yy,120,26,graphite,7);
+   L(988,971,xx+34,yy+13,iron,12);
+   artisan(era,t,990,975);
+   return;
+ }
+ if(kind==='holder'){
+   desk();sheet();
+   B(914,971,242,42,wood,7);
+   B(934,985,202,15,'#9f724d',4);
+   // The black lead slides into a wooden holder, then a clamp secures it.
+   const x=866+96*q;
+   rod(x,988,180,graphite);
+   B(1077,973+16*q,45,27,'#9e754a',4);
+   if(q>.75) L(954,1007,1088,1007,'#63452f',4);
+   artisan(era,t,998+58*q,980+11*q);
+   return;
+ }
+ if(kind==='wood'){
+   desk();sheet();
+   // The graphite sits in a milled groove; a second wooden half closes.
+   B(906,963,238,40,'#c7a06e',7);
+   B(923,974,205,19,'#976e45',3);
+   rod(922,975,205,graphite);
+   B(906,1011-48*q,239,27,wood,5);
+   for(let i=0;i<8;i++)L(918+i*28,972,923+i*28,967,'#976a45',2);
+   artisan(era,t,1069,1015-48*q);
+   return;
+ }
+ if(kind==='conte'){
+   desk();
+   B(913,994,252,172,'#927969',10);
+   B(931,1012,217,135,'#e5d7b4',7);
+   // Distinct graphite and clay piles combine, then firm graphite rods form.
+   B(949,1042,75,46,graphite,10);
+   B(1045,1047,70,43,'#bfaa94',10);
+   if(id==='e2'&&q>.50){
+     for(let i=0;i<5;i++)rod(937+i*35,1087-(i%2)*9,66,'#5a5550');
+     B(1117,1070,19,77,'#b99365',4);
+   }else{
+     const x=983+q*93;
+     L(x,974,x+12,1059,'#8f7254',14);
+     C(1016,1091,31,q>.35?'#6f6459':'#aaa092');
+   }
+   artisan(era,t,994+48*q,975);
+   return;
+ }
+ if(kind==='eraser'){
+   desk();sheet();
+   // A prepared graphite pencil gets a ferrule and a pink eraser inserted.
+   L(896,1073,1105,1073,'#d3ad67',24);
+   tip(1105,1073,graphite);
+   B(890,1058,34,31,'#9d9fa2',4);
+   const y=992+66*q;
+   B(871,y,54,39,'#e28ba0',7);
+   B(891,1055,20,38,'#a7adb0',3);
+   artisan(era,t,898,y+8);
+   if(id==='f2'&&q>.68)L(976,1108,1062,1108,'#777572',5);
+   return;
+ }
+ // Present-day colour pencil deposits pigment along a continuous sketch.
+ desk();sheet();
+ const x=975+130*q,y=1066-45*q;
+ L(x-112,y+36,x,y,'#44a0ba',19);
+ tip(x,y,'#2a758a');
+ L(931,1110,931+180*q,1110-66*q,'#5b91bf',6);
+ if(q>.50)L(962,1086,1028,1044,'#d3917b',5);
+ artisan(era,t,x-65,y+25);
 }
+
 export function renderWorkshop(type,kind,era,t){
  if(type==='paper')paper(kind,era,t);
  else if(type==='watch')watch(kind,era,t);
