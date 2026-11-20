@@ -1,0 +1,106 @@
+name: Le Livre de Papy - Fourchette 9x16
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/papy-fourchette-vertical.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: papy-fourchette-9x16
+  cancel-in-progress: false
+jobs:
+  fourchette:
+    name: Fourchette - objets entiers, 7 epoques, deux voix et 25 controles
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Charger la branche Le Livre de Papy
+        uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Installer Chromium
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Installer les voix et le son
+        run: python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preflight - objet complet fourchette sur une assiette et 7 epoques
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          python -m py_compile films/papy-batch5/prepare.py films/papy-batch5/audio_qc.py films/papy-batch5/visual_qc.py
+          python films/papy-batch5/prepare.py fourchette
+          d=films/papy-fourchette
+          python -m py_compile "$d/tools/voice.py" "$d/tools/mix.py" "$d/tools/foley.py"
+          node --check "$d/main.js"
+          node --check "$d/story.js"
+          node --check "$d/objects.js"
+          node --check "$d/workshops.js"
+          node --check "$d/chars.js"
+          node --check "$d/people.js"
+          node --check "$d/toon.js"
+          grep -Fq "L’HISTOIRE DE LA FOURCHETTE" "$d/main.js"
+          grep -Fq "g.fillRect(0,0,W,128)" "$d/main.js"
+          grep -Fq "four separate rounded fingers" "$d/chars.js"
+          grep -Fq "m.holdF=Wd.heldObject(w,t)" "$d/main.js"
+          grep -Fq "function fork(kind,era,t)" "$d/workshops.js"
+          grep -Fq "if(typ==='fork')" "$d/objects.js"
+          grep -Fq "The WHOLE meal stays visible" "$d/objects.js"
+          grep -Fq "w1:[960,1090,1.72]" "$d/main.js"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('films/papy-fourchette/episode.json').read_text(encoding='utf8'))
+          assert d['type']=='fork'
+          assert len(d['eras'])==7 and len(d['lines'])==39 and len(d['sources'])>=5
+          assert {e[4] for e in d['eras']}=={'roman-serving','byzantine','venice','italy','france','factory','modern'}
+          assert 'spaghettis' in ' '.join(d['lines'])
+          print('FOURCHETTE PREPAREE : 39 repliques, 7 epoques, frise 128px et cinq doigts')
+          PY
+          bash "$d/tools/fonts.sh"
+          node core/render/still.mjs "$d" 15 31 46 59 72 86 100 114 128 --size 1080x1920 --out "$d/preflight-vertical"
+      - name: Produire l'episode complet voix Papy et Malik, story et controle
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: bash films/papy-batch5/build-vertical.sh fourchette
+      - name: Verifier les noms courts et la presence de la video
+        run: |
+          set -euo pipefail
+          d=films/papy-fourchette
+          test -s "$d/L'histoire de la fourchette.mp4"
+          test -s "$d/L'histoire de la fourchette.zip"
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          p=Path("films/papy-fourchette/L'histoire de la fourchette.zip")
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              assert "L'histoire de la fourchette.mp4" in z.namelist()
+              assert 'story.jpg' in z.namelist()
+              assert 'controles-visuels.jpg' in z.namelist()
+          print("NOMS COURTS ET ZIP VALIDES")
+          PY
+      - name: Livrer l'histoire de la fourchette
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la fourchette"
+          path: "films/papy-fourchette/L'histoire de la fourchette.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
