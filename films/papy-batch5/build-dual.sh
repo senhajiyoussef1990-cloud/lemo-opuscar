@@ -104,12 +104,21 @@ for f,(w,hgt) in [(v,(1080,1920)),(h,(1920,1080))]:
   assert any(x['codec_type']=='audio' for x in st),(f,'missing voice track')
 names=[v.name,h.name,'story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md','audio-qc.json','audio-preflight.json']
 assert all((d/n).is_file() for n in names)
-dest=d/f'le-livre-de-papy-{slug}-double-format.zip'
+# Ancien générateur double format : noms simples également.
+import re
+title=json.loads((d/'episode.json').read_text(encoding='utf-8'))['title'].replace('’',"'")
+title=re.sub(r'[\\/:*?"<>|]', '', title).strip().rstrip('.')
+assert title and len(title)<=100, title
+dest=d/f'{title}.zip'
 with zipfile.ZipFile(dest,'w',compression=zipfile.ZIP_STORED,allowZip64=True) as z:
-    for n in names:z.write(d/n,n)
+    for n in names:
+        arcname=(f'{title}.mp4' if n==v.name else f'{title} - horizontal.mp4' if n==h.name else n)
+        z.write(d/n,arcname)
 with zipfile.ZipFile(dest) as z:
     assert z.testzip() is None
     assert len([x for x in z.namelist() if x.endswith('.mp4')])==2
+legacy=d/f'le-livre-de-papy-{slug}-double-format.zip'
+if not legacy.exists(): os.link(dest,legacy)
 print('LIVRABLE VALIDE:',dest,round(dest.stat().st_size/1024/1024,1),'Mo')
 PY
 echo "::endgroup::"
