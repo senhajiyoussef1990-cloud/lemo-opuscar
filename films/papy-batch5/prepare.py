@@ -233,6 +233,9 @@ if slug in ('fermeture-eclair','ciseaux'):
         main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
     
     if slug == 'ciseaux':
+        # JavaScript source has a single-quoted title literal; use typographic apostrophe.
+        # Prevent SyntaxError: text('L'HISTOIRE DES CISEAUX', ...)
+        main=main.replace("L'HISTOIRE DES CISEAUX","L’HISTOIRE DES CISEAUX")
         # Visible complete dragon in the hand for both salon scenes.
         old_prop="Wd.homeObject(x+18,y-28,t)"
         assert old_prop in main
