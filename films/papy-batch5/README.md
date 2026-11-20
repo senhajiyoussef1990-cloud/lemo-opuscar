@@ -1,5 +1,7 @@
 # Le Livre de Papy — cinq épisodes en double format
 
+> **À lire d'abord : `films/LIVRE-DE-PAPY-POUR-CHATGPT.md`** (artisans à deux bras dans `workshops.js`, son sans grésillements, ce qu'il ne faut pas réécrire).
+
 Cette série de 5 épisodes est construite **séquentiellement** par le workflow GitHub Actions `.github/workflows/papy-five-dual.yml`. Chaque vidéo est entièrement racontée avec la voix de Papy (**fr-CH-FabriceNeural**) et de Malik (**fr-FR-EloiseNeural**).
 
 ## Épisodes

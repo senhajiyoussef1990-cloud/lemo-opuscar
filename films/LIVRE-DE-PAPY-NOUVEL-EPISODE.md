@@ -1,5 +1,6 @@
 # Le Livre de Papy — faire un nouvel épisode (guide pas à pas)
 
+Passation (ChatGPT / autre session) : `LIVRE-DE-PAPY-POUR-CHATGPT.md`.
 Règles de style : `LIVRE-DE-PAPY-DIRECTION-ARTISTIQUE.md` (à respecter sans qu'on le redemande).
 Modèle à copier : **`films/papy-lunettes/`** (le plus récent : figurants à l'échelle, pas de temps mort, version sans la voix de Papy).
 
