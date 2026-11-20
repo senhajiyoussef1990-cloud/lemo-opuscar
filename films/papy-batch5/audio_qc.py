@@ -75,13 +75,12 @@ def inspect(path):
         "silent_1s_windows": quiet
     }
 
-def main(d, slug, mix_only=False):
+def main(d, slug, mix_only=False, vertical_only=False):
     paths = [d/"out/mix.wav"]
     if not mix_only:
-        paths += [
-            d/f"le-livre-de-papy-{slug}-short-9x16.mp4",
-            d/f"le-livre-de-papy-{slug}-youtube-16x9.mp4",
-        ]
+        paths.append(d/f"le-livre-de-papy-{slug}-short-9x16.mp4")
+        if not vertical_only:
+            paths.append(d/f"le-livre-de-papy-{slug}-youtube-16x9.mp4")
     report = [inspect(p) for p in paths]
     (d/("audio-preflight.json" if mix_only else "audio-qc.json")).write_text(
         json.dumps(report, indent=2) + "\n"
@@ -94,6 +93,9 @@ def main(d, slug, mix_only=False):
             raise RuntimeError("Audio nearly silent: " + r["file"])
         if r["isolated_spikes"] > 25:
             raise RuntimeError("Too many isolated acoustic impulses: " + r["file"])
+    if len(report) == 2:
+        if abs(report[0]["duration_s"]-report[1]["duration_s"]) > 2.0:
+            raise RuntimeError("Audio duration differs from final vertical video")
     if len(report) == 3:
         if max(
             abs(report[1]["duration_s"]-report[2]["duration_s"]),
@@ -103,4 +105,4 @@ def main(d, slug, mix_only=False):
     print("Technical audio checks passed; direct listening is still required.")
 
 if __name__ == "__main__":
-    main(Path(sys.argv[1]), sys.argv[2], "--mix-only" in sys.argv[3:])
+    main(Path(sys.argv[1]), sys.argv[2], "--mix-only" in sys.argv[3:], "--vertical-only" in sys.argv[3:])
