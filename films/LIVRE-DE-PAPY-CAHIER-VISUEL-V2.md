@@ -50,6 +50,22 @@ Ce document complète `films/LIVRE-DE-PAPY-DIRECTION-ARTISTIQUE.md`. Il précise
 - Papy tient, montre ou désigne **la version de l'époque** lorsque c'est pertinent, sans cacher le mécanisme ; éviter les apparitions simultanées incohérentes d'un même objet.
 - Sur les plans d'entrée/sortie du vortex, choisir une transition volontaire et cohérente de l'accessoire plutôt que le faire apparaître/disparaître accidentellement.
 
+## Nouvelle règle obligatoire : objet complet + mécanisme + résultat (21 novembre 2026)
+
+**Défaut révélé par la fermeture éclair V2 :** montrer uniquement la fermeture, les dents ou le curseur alors que la narration parle d'un sac, d'une botte ou d'un vêtement. Une mécanique correcte hors contexte est **une erreur de mise en scène**.
+
+Pour chaque époque, faire correspondre l'image aux noms concrets prononcés dans les répliques. La séquence visuelle doit comprendre :
+
+1. **Objet entier** : sac, botte, chaussure, veste ou autre support du mécanisme, immédiatement reconnaissable.
+2. **Action technique** : la main et l'outil agissent sur **cet objet**, au niveau du mécanisme intégré, avec un point de contact réel.
+3. **Résultat final** : l'objet complet est fermé, cousu, réparé ou transformé ; le spectateur voit ce qui a changé.
+
+**Cas particulier du salon :** si Malik dit « mon sac est coincé » ou « mon sac se fait aspirer », représenter **son vrai sac complet**, sa tirette et le blocage ; dans les plans finaux, Malik tient encore son sac et le referme. Une glissière toute seule dans sa main ne convient pas.
+
+**Exemple fermeture éclair :** avant 1851 = botte à lacets ; 1851 = panneau de vêtement avec attaches expérimentales ; 1893 = chaussure ou bottine avec crochets ; 1913 = veste avec rangées de dents ; 1917 = fermeture montée sur un vêtement en atelier ; 1923 = botte en caoutchouc avec zip latéral ; époque actuelle = sac et veste avec fermeture intégrée.
+
+**Règle de recette :** images de contrôle obligatoires en plan large, plan du geste, plan du résultat ; refuser une scène si l'objet entier n'est identifiable à aucun moment. Éviter les objets isolés flottants. Ne pas modifier les anciens épisodes sans demande.
+
 ## 3. Contact physique et mise en scène
 
 - **Point de contact exact** : main ↔ poignée, outil ↔ matière, pointe du crayon ↔ feuille, lime ↔ métal, clé ↔ serrure, tamis ↔ cuve ; le résultat de l'action doit être visible.
