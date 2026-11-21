@@ -43,7 +43,7 @@ function arms(era,t,hx,hy,only=null){
   const fine=TYPE==='watch'||TYPE==='key';                       // delicate mechanisms: one hand with watchmaker's tweezers, the other resting on the bench
   let hands=[[hx,hy],[hx+44,hy+20]];
   if(fine){const s0=sh[0],dx=s0[0]-hx,dy=s0[1]-hy,d=Math.hypot(dx,dy)||1;hands=[[hx+dx/d*95,hy+dy/d*95],[BX-40,1178]];TW=[hands[0],[hx,hy]];}else TW=null;
-  const sturdy=TYPE==='zipper'||TYPE==='scissors'||TYPE==='fork';  // V2: full, proportional upper/lower sleeves on the new pilot episode
+  const sturdy=TYPE==='zipper'||TYPE==='scissors'||TYPE==='fork'||TYPE==='spoon';  // V2: full, proportional upper/lower sleeves on the new pilot episode
   if(sturdy) hands[1]=[BX+4,1173];  // supporting hand resting on the workbench, not piled over the working hand
   (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],sturdy?153:140,sturdy?147:135);
     const upper=sturdy?66:44,lower=sturdy?55:38;
@@ -1021,9 +1021,139 @@ function fork(kind,era,t){
   artisan(era,t,1090,1030-51*p);
 }
 
+
+/**
+ * CUILLERE — the spoon is ONE connected physical utensil, with a properly
+ * concave bowl, shaft and real contact with the food or carving workpiece.
+ * Each period has a complete setting and observable, animated transformation.
+ */
+function spoon(kind,era,t) {
+  const u=Math.max(0,Math.min(1,progress));
+  const p=u*u*(3-2*u);
+  const wood=kind==='egypt-wood'||kind==='medieval-wood';
+  const ornate=kind==='apostle';
+  const bronze=kind==='roman';
+  const silver=kind==='silver'||ornate;
+  const metal=wood?'#bf8b56':bronze?'#b68d54':silver?'#dce0d5':'#b8cdd0';
+  const rim=wood?'#805b3a':bronze?'#786647':'#667780';
+  const bench=()=>{
+    B(813,1198,422,44,kind==='modern'?'#8aa4a0':'#815f43',9);
+    B(848,1238,31,131,'#694833',5);B(1191,1238,31,131,'#694833',5);
+    L(827,1208,1227,1208,'#b48b67',4);
+  };
+  const pot=(x,y,big=false)=>{
+    const w=big?178:143,h=big?112:86;
+    shape(spline([[x-w,y-20],[x+w,y-20],[x+w*.81,y+h],[x-w*.81,y+h]]),{fill:'#9a6b51',lw:6});
+    shape(ell(x,y-23,w,43,30),{fill:'#5e4538',lw:5});
+    shape(ell(x,y-17,w*.85,31,30),{fill:'#d5a65a',lw:4});
+    for(let i=0;i<7;i++){
+      C(x-105+i*33,y-16+Math.sin(t+i)*6,9,i%3===0?'#839c60':'#eed18a');
+    }
+    B(x-w-20,y+15,30,18,'#8c6951',6);
+    B(x+w-8,y+15,28,18,'#8c6951',6);
+  };
+  const dishes=()=>{
+    // Whole place setting: plate, shallow bowl, napkin and actual visible soup.
+    shape(spline([[822,1139],[1225,1139],[1239,1199],[811,1199]]),{fill:kind==='modern'?'#d8ede4':'#e3d2b8',lw:5});
+    shape(ell(982,1111,137,62,32),{fill:'#f5e9d9',lw:7});
+    shape(ell(982,1105,113,45,32),{fill:'#d7e0d9',lw:4});
+    shape(ell(982,1101,99,36,32),{fill:'#e3ae64',lw:4});
+    for(let j=0;j<7;j++) C(930+j*18,1101+Math.sin(j*2)*11,5,j%2?'#90a86e':'#eed198');
+    B(836,1067,48,67,'#b7c6c6',8);
+    shape(ell(860,1065,30,14,24),{fill:'#d6ecea',lw:4});
+    shape(spline([[1149,1138],[1203,1137],[1215,1168],[1135,1174]]),{fill:'#f9e7d4',lw:4});
+  };
+  const utensil=(x,y,angle=0,fac=1,contents=false)=>{
+    push();translate(x,y);rotate(angle);scale(fac);
+    // Shaft is a shaped body, NOT a disconnected thin line.
+    shape(spline([[-18,-65],[-16,47],[-14,94],[-18,135],[18,135],[14,94],[16,47],[18,-65]]),{fill:metal,lw:5});
+    if(!wood)L(-9,-3,-9,117,'rgba(255,255,255,.38)',3);
+    shape(ell(0,-89,52,67,48),{fill:rim,lw:5});
+    // Concentric shading makes the bowl concavity visible at phone size.
+    shape(ell(0,-92,45,58,48),{fill:metal,lw:4});
+    shape(ell(0,-104,34,30,32),{fill:wood?'#cf9c65':bronze?'#d4bb7b':'#e4e8df',lw:2});
+    if(wood) for(let i=0;i<4;i++) L(-13+i*7,-121,-15+i*8,-74,'rgba(108,65,31,.34)',2);
+    if(ornate){
+      C(0,138,15,'#b89a5e');
+      C(0,151,9,'#c5a44f');
+      C(-4,147,2,'#fce6a3');
+    }
+    if(contents){
+      shape(ell(0,-93,35,34,32),{fill:'#d7a46c',lw:2});
+      for(let i=0;i<3;i++)C(-20+i*17,-97,5,i%2?'#92ad6e':'#eed592');
+    }
+    pop();
+  };
+  const woodShavings=(x,y)=>{
+    for(let i=0;i<9;i++){
+      const xx=x-74+i*20, yy=y+37+(i%3)*10;
+      L(xx,yy,xx+16,yy-5,wood?'#c49b69':'#bdc6c2',3);
+    }
+  };
+  bench();
+  if(kind==='egypt-wood'){
+    B(836,1049,176,111,'#97744b',8);
+    B(882,1072,92,23,'#e1bd87',5);
+    woodShavings(924,1121);
+    utensil(1083,1037-22*p,-.24,.96,false);
+    // A real carving tool connected to the working hand.
+    L(1097,1020-22*p,1109,995-31*p,'#6b5041',10);
+    shape(spline([[1107,995-31*p],[1120,981-31*p],[1115,1006-31*p]]),{fill:'#c0c7c5',lw:3});
+    artisan(era,t,1092,1020-22*p);
+    return;
+  }
+  if(kind==='roman'){
+    dishes();
+    // Roman cochlear-type utensil, next to a small bowl of cooked food.
+    utensil(1090,1003-48*p,-.33,.88,true);
+    B(844,1080,46,50,'#aa886c',5);
+    artisan(era,t,1092,1016-48*p);
+    return;
+  }
+  if(kind==='medieval-wood'){
+    pot(959,1061,true);
+    woodShavings(1058,1150);
+    utensil(1113,1016-42*p,-.38,.88,p>.35);
+    artisan(era,t,1110,1017-42*p);
+    return;
+  }
+  if(kind==='apostle'){
+    // Silver gift spoon — a complete spoon on a jeweller's work surface.
+    B(852,1062,230,84,'#956c50',12);
+    B(872,1077,185,18,'#e0be79',4);
+    woodShavings(980,1137);
+    utensil(1103,1013-30*p,-.29,1.02,false);
+    // The engraver's tool visibly reaches the apostle finial.
+    L(1121,1118-30*p,1138,1134-25*p,'#6a533d',7);
+    artisan(era,t,1117,1109-29*p);
+    return;
+  }
+  if(kind==='silver'){
+    dishes();
+    // One complete spoon beside a luxury setting, bowl scoops soup.
+    utensil(1092,1001-46*p,-.33,.95,p>.22);
+    artisan(era,t,1093,1008-46*p);
+    return;
+  }
+  if(kind==='factory'){
+    B(849,1002,132,119,'#68757c',10);
+    B(872,985,86,32,'#adb7b7',6);
+    for(let j=0;j<4;j++)L(864,1068+j*13,957,1068+j*13,'#b5c6c7',5);
+    // Flattened metal blank on the press and finished entire spoon.
+    B(1005,1077,70,30,'#d1d9d7',9);
+    utensil(1112,1023-41*p,-.35,.88,false);
+    artisan(era,t,1115,1028-41*p);
+    return;
+  }
+  // Modern kitchen: full bowl with warm soup, utensil lifts a real mouthful.
+  dishes();
+  utensil(1098,1008-54*p,-.31,.98,true);
+  artisan(era,t,1103,1012-54*p);
+}
+
 export function renderWorkshop(type,kind,era,t){
  TYPE=type;
- const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);else if(type==='fork')fork(kind,era,t);};
+ const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);else if(type==='fork')fork(kind,era,t);else if(type==='spoon')spoon(kind,era,t);};
  if(PROBE){const main=g,sid=S.sid;setCtx(PROBE.getContext('2d'));PASS='probe';TGT=null;try{run();}finally{setCtx(main);S.sid=sid;PASS='draw';}
    if(TGT){shape(ell(BX,BF+4,90,16,18),{fill:'rgba(20,10,30,.18)',lw:0,stroke:false});body(TGT.era,t);if(TYPE==='watch'||TYPE==='key')arms(TGT.era,t,TGT.hx,TGT.hy,1);}}   // the resting arm stays behind the work
  run();
