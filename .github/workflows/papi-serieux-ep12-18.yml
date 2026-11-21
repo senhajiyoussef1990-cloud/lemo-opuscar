@@ -57,7 +57,7 @@ jobs:
         run: |
           set -eux
           E="films/papi-serieux-ep$EP"
-          wss_proxy="${wss_proxy:-$HTTPS_PROXY}" .venv/bin/python core/tts/tts_zh.py "$E/lines.json" "$E/voice"
+          wss_proxy="${wss_proxy:-${HTTPS_PROXY:-}}" .venv/bin/python core/tts/tts_zh.py "$E/lines.json" "$E/voice"
           .venv/bin/python "$E/tools/lip.py"
           node core/render/events.mjs "$E" --size 1080x1920
           .venv/bin/python "$E/music/score.py"
