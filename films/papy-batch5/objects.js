@@ -285,13 +285,61 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
    pop();
  }
 
+ if(typ==='tableknife'){
+   // Full FOOD utensil: broad blade and attached handle, rounded table tip.
+   const stone=kind==='stone',old=['roman','personal','banquet'].includes(kind);
+   if(stone){
+     shape(spline([[-44,116],[-62,20],[-51,-75],[-7,-151],[48,-92],[58,7],[14,97]]),{fill:'#8f9994',lw:7});
+     for(let i=0;i<5;i++)line(-45+i*19,-73+(i%2)*34,7+i*8,55,'#c2c3af',3);
+   }else{
+     const blade=kind==='roman'?'#aab2a7':'#c2d0d1';
+     shape(spline([[-26,-176],[old?5:26,-177],[old?35:42,-142],[36,-58],[25,2],[-27,2]]),{fill:blade,lw:7});
+     line(-18,-152,-18,-14,'#eef5ef',3);
+     box(-25,-1,50,153,old?'#97704e':'#a4b2b4',17);
+     for(let i=0;i<2;i++)ring(0,37+i*72,5,'#d4c5a2');
+   }
+ }
+ if(typ==='dish'){
+   // A complete plate in perspective, including supporting ring and inner well.
+   const old=['greek','fish'].includes(kind),blue=['china','import'].includes(kind),ornate=kind==='meissen';
+   const base=old?'#bd7654':'#f5ead7',rim=old?'#563c32':blue?'#527da7':ornate?'#b8a16d':'#77979a';
+   shape(ell(0,16,145,91,48),{fill:rim,lw:7});
+   shape(ell(0,2,147,89,48),{fill:base,lw:7});
+   shape(ell(0,2,116,64,48),{fill:rim,lw:4});
+   shape(ell(0,2,101,51,48),{fill:old?'#c98f62':'#fff7e7',lw:3});
+   if(old||blue||ornate){for(let j=0;j<12;j++){
+     let a=j*Math.PI/6;ring(Math.cos(a)*129,Math.sin(a)*74,5,rim);
+   }}
+   if(kind==='fish'||blue){
+     shape(spline([[-65,-6],[-31,-28],[23,-20],[51,0],[25,22],[-31,25]]),{fill:rim,lw:3});
+     shape(spline([[44,0],[81,-21],[77,20]]),{fill:rim,lw:3});ring(-45,-3,5,'#f4e4b7');
+   }
+   if(kind==='home2'||kind==='modern')for(let i=0;i<6;i++)stroke(spline([[-65,6+i*5],[-20,-15+i*5],[33,15+i*5],[56,-3+i*5]]),4,{line:'#ddbc65'});
+ }
+ if(typ==='drinkingglass'){
+   // Entire vessel, with clearly visible rim, wall, bottom and contained liquid.
+   const stem=['venice','decorated'].includes(kind),old=['cast','medieval','roman-blown'].includes(kind);
+   const col=kind==='cast'?'#78ab9e':kind==='medieval'?'#9fbf83':'#acd4db';
+   const bottom=stem?25:135;
+   shape(spline([[-79,-118],[79,-118],[58,bottom-10],[-58,bottom-10]]),{fill:old?col:'rgba(175,218,225,.70)',lw:6});
+   shape(ell(0,-118,81,26,40),{fill:'#e4f2ec',lw:6});
+   shape(ell(0,-116,65,15,32),{fill:col,lw:3});
+   if(!stem){
+     shape(spline([[-62,-20],[62,-20],[51,111],[-51,111]]),{fill:'#75b8d8',lw:2});
+     shape(ell(0,-20,62,17,32),{fill:'#b6e0ec',lw:3});
+     shape(ell(0,125,58,18,36),{fill:'#bdd8d4',lw:5});
+   }else{box(-10,20,20,108,col,7);shape(ell(0,133,62,15,32),{fill:col,lw:5});}
+   line(-54,-93,-41,bottom-18,'rgba(255,255,255,.81)',8);
+   if(['pressed','decorated','venice'].includes(kind))for(let i=0;i<5;i++)line(-42+i*21,-77,-30+i*15,bottom-13,'#e4eddf',3);
+ }
+
  pop();
 }
 // The key story starts with a giant old key found under the sofa, not a badge.
-const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':['scissors','fork','spoon'].includes(CFG.type)?'home':CFG.eras[6][4];
+const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':['scissors','fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)?'home':CFG.eras[6][4];
 export const titleProp=(t)=>object(0,25,.5,{kind:showcaseKind,t,a:-.12});
-export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,['zipper','scissors','fork','spoon'].includes(CFG.type)?.40:.32,{kind,t,a:-.15});};
-export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:CFG.type==='fork'?.55:CFG.type==='spoon'?.53:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):['fork','spoon'].includes(CFG.type)?(w==='home2'?'home2':'home'):showcaseKind,t});
+export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,['zipper','scissors','fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)?.40:.32,{kind,t,a:-.15});};
+export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:CFG.type==='fork'?.55:['spoon','tableknife','dish','drinkingglass'].includes(CFG.type)?.53:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):['fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)?(w==='home2'?'home2':'home'):showcaseKind,t});
 export function home(t,{glow=0,clockT=t}={}){
  bg('#f1e2c8');
  for(let x=-900;x<2100;x+=180)line(x,-1200,x,FLOOR-35,'#dfceaf',3);
@@ -299,7 +347,18 @@ export function home(t,{glow=0,clockT=t}={}){
  box(950,490,380,640,'#875c42');
  for(let i=0;i<4;i++){box(970,620+i*132,345,17,'#684831');for(let j=0;j<5;j++)box(996+j*58,546+i*132,43,69,['#dbb05e','#8ab5a3','#b87985','#d4c3ac','#779cbd'][j]);}
  box(457,1120,298,38,'#956b4d');box(480,1154,27,186,'#795741');box(704,1154,27,186,'#795741');
- if(CFG.type==='spoon'){
+ if(['tableknife','dish','drinkingglass'].includes(CFG.type)){
+   // Complete table setting, food and drinking water at home.
+   shape(ell(580,1086,132,54,44),{fill:'#f5eddb',lw:6});
+   shape(ell(580,1084,106,38,44),{fill:'#fff8e8',lw:4});
+   if(CFG.type==='tableknife'){
+     shape(spline([[534,1069],[600,1046],[635,1080],[617,1101],[535,1100]]),{fill:'#e8c571',lw:5});
+     for(let i=0;i<4;i++)ring(553+i*19,1082+(i%2)*9,5,'#c49d50');
+   }else{
+     for(let i=0;i<9;i++)stroke(spline([[519,1065+i*4],[558,1056+i*4],[599,1086+i*4],[638,1070+i*4]]),4,{line:'#e8c46c'});
+   }
+   if(CFG.type!=='drinkingglass')object(722,1049,.30,{kind:'modern',t,a:0});
+ }else if(CFG.type==='spoon'){
    // The soup belongs INSIDE the whole bowl on the living-room table.
    shape(ell(580,1085,135,61,44),{fill:'#f7eee3',lw:7});
    shape(ell(580,1080,109,44,44),{fill:'#dde9e3',lw:4});
