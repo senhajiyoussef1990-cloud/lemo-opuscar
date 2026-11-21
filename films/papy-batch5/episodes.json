@@ -929,6 +929,120 @@
         "https://www.nationalgeographic.com/culture/article/table-manners",
         "https://ejournals.epublishing.ekt.gr/index.php/deltion/article/download/4407/4182.pdf"
       ]
+    },
+    {
+      "slug": "cuillere",
+      "title": "L'histoire de la cuillère",
+      "type": "spoon",
+      "eras": [
+        [
+          "ÉGYPTE ANCIENNE",
+          "VERS 1500 AV. J.-C.",
+          "DES CUILLÈRES EN BOIS TRAVAILLÉ",
+          "antique",
+          "egypt-wood",
+          "temple"
+        ],
+        [
+          "EMPIRE ROMAIN",
+          "Ier–IIIe SIÈCLES",
+          "MÉTAL ET PETITES CUILLÈRES",
+          "antique",
+          "roman",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "XIIe–XIVe SIÈCLES",
+          "LE BOIS DANS LES CUISINES",
+          "medieval",
+          "medieval-wood",
+          "medieval"
+        ],
+        [
+          "ANGLETERRE",
+          "XVe–XVIe SIÈCLES",
+          "DES CUILLÈRES EN ARGENT DÉCORÉES",
+          "georgian",
+          "apostle",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XVIIe–XVIIIe SIÈCLES",
+          "LA CUILLÈRE AU REPAS",
+          "georgian",
+          "silver",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "DES ATELIERS AUX SÉRIES",
+          "victorian",
+          "factory",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "ACIER INOXYDABLE ET SOUPE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Ah ! Papy, j'ai encore renversé ma soupe !",
+        "Tiens ta cuillère bien droite, et ne la remplis pas trop.",
+        "Pourquoi elle a cette forme creuse ? Qui a inventé la cuillère ?",
+        "Une cuillère sert à recueillir ce qu'on ne peut pas prendre avec les doigts.",
+        "Alors quelqu'un l'a inventée pour manger de la soupe ?",
+        "On ne connaît pas son premier inventeur. Ouvrons Le Livre de Papy !",
+        "Wouah ! Ma cuillère brille devant le portail !",
+        "Dans l'Égypte ancienne, on fabrique déjà de belles cuillères en bois.",
+        "Regarde cet artisan : il taille un manche et creuse doucement le cuilleron.",
+        "Le cuilleron ? C'est le petit bol au bout ?",
+        "Exactement ! Certaines cuillères égyptiennes étaient même finement décorées.",
+        "Les Romains utilisent aussi des cuillères, parfois faites en bronze ou en argent.",
+        "À table, une petite cuillère permet de prendre des aliments dans un récipient.",
+        "Pourquoi celle-là a un manche aussi pointu ?",
+        "Certains modèles pouvaient aussi aider à retirer un aliment de sa coquille.",
+        "Il existait plusieurs tailles selon ce qu'on voulait manger.",
+        "Au Moyen Âge, les cuillères en bois sont très pratiques dans les cuisines.",
+        "Un artisan creuse le bois, puis lisse le manche et le bol de sa cuillère.",
+        "Et moi, je pourrais manger ma soupe avec ?",
+        "Bien sûr ! Mais il faut que le bois soit propre et correctement travaillé.",
+        "À la fin du Moyen Âge et à la Renaissance, des cuillères en argent deviennent des objets précieux.",
+        "Un orfèvre polit la cuillère et décore son manche avec une petite figurine.",
+        "Une cuillère qui ressemble à un bijou !",
+        "Oui ! Certaines étaient offertes en cadeau, mais elles coûtaient cher.",
+        "Plus tard, les cuillères en métal apparaissent sur de nombreuses tables européennes.",
+        "Dans les maisons aisées, on pose une cuillère près de l'assiette pour manger.",
+        "Elle commence à ressembler à la mienne !",
+        "Au dix-neuvième siècle, la fabrication des couverts se développe dans les ateliers.",
+        "Un ouvrier façonne le métal, puis polit la cuillère pour la rendre lisse.",
+        "Alors on peut en fabriquer beaucoup plus !",
+        "Aujourd'hui, beaucoup de cuillères sont faites en acier inoxydable.",
+        "Sur cette table, une grande cuillère sert la soupe et une petite remue le dessert.",
+        "Je préfère celle qui transporte beaucoup de chocolat !",
+        "Les cuillères ont des formes différentes selon leur utilisation.",
+        "Nous revoilà au salon. Ton bol de soupe est encore là !",
+        "Cette fois, j'en prends un peu moins, et je ne renverse rien !",
+        "Bravo, Malik ! La cuillère a traversé l'histoire pour t'aider à manger.",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour notre prochain voyage !"
+      ],
+      "sources": [
+        "https://www.metmuseum.org/art/collection/search/554523",
+        "https://www.metmuseum.org/art/collection/search/552553",
+        "https://www.londonmuseum.org.uk/collections/v/object-8492/ligula/",
+        "https://www.metmuseum.org/art/collection/search/471576",
+        "https://www.smithsonianmag.com/arts-culture/a-history-of-western-eating-utensils-from-the-scandalous-fork-to-the-incredible-spork-64593179/",
+        "https://apps.jefpat.maryland.gov/diagnostic/SmallFinds/Spoons.aspx",
+        "https://www.philamuseum.org/exhibitions/have-a-bite-20th-century-flatware-from-the-collection",
+        "https://www.vam.ac.uk/articles/metalworking-techniques"
+      ]
     }
   ]
 }
