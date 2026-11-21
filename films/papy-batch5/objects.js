@@ -257,13 +257,41 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
    pop();
  }
 
+ if(typ==='spoon'){
+   // ONE complete real spoon with a hollow bowl, uninterrupted handle,
+   // material and optional scoop of real soup in Malik's hand.
+   const wood=['egypt-wood','medieval-wood'].includes(kind);
+   const bronze=kind==='roman';
+   const gift=kind==='apostle';
+   const silver=gift||kind==='silver';
+   const mat=wood?'#bd8956':bronze?'#b68c57':silver?'#d4d8d3':'#becdd1';
+   const shade=wood?'#875c3a':bronze?'#786449':'#6f858f';
+   push();rotate(-.21);
+   // Complete handle connected to a broad bowl; outline remains readable.
+   shape(spline([[-18,-56],[-13,12],[-12,81],[-19,165],[19,165],[12,81],[13,12],[18,-56]]),{fill:mat,lw:7});
+   if(!wood)line(-7,9,-8,149,'rgba(255,255,255,.48)',3);
+   shape(ell(0,-97,58,73,48),{fill:shade,lw:7});
+   shape(ell(0,-101,50,65,48),{fill:mat,lw:4});
+   shape(ell(-9,-121,28,29,30),{fill:wood?'#dfad78':bronze?'#d8b77a':'#eef2e8',lw:1});
+   if(wood){
+     for(let k=0;k<5;k++)line(-27+k*12,-133,-24+k*12,-70,'rgba(115,73,37,.22)',2);
+   }
+   if(gift){ring(0,168,19,'#c2a16f');ring(0,185,9,'#d1b574');}
+   if(kind==='home2'||kind==='modern'){
+     // A spoonful of soup is visibly inside the actual spoon bowl.
+     shape(ell(0,-100,39,35,32),{fill:'#e1ad68',lw:3});
+     for(let i=0;i<5;i++)ring(-27+i*13,-105+(i%2)*8,5,i%2?'#96ab69':'#efcc81');
+   }
+   pop();
+ }
+
  pop();
 }
 // The key story starts with a giant old key found under the sofa, not a badge.
-const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':CFG.type==='scissors'||CFG.type==='fork'?'home':CFG.eras[6][4];
+const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':['scissors','fork','spoon'].includes(CFG.type)?'home':CFG.eras[6][4];
 export const titleProp=(t)=>object(0,25,.5,{kind:showcaseKind,t,a:-.12});
-export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,(CFG.type==='zipper'||CFG.type==='scissors'||CFG.type==='fork')?.40:.32,{kind,t,a:-.15});};
-export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:CFG.type==='fork'?.55:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):CFG.type==='fork'?(w==='home2'?'home2':'home'):showcaseKind,t});
+export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,['zipper','scissors','fork','spoon'].includes(CFG.type)?.40:.32,{kind,t,a:-.15});};
+export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:CFG.type==='fork'?.55:CFG.type==='spoon'?.53:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):['fork','spoon'].includes(CFG.type)?(w==='home2'?'home2':'home'):showcaseKind,t});
 export function home(t,{glow=0,clockT=t}={}){
  bg('#f1e2c8');
  for(let x=-900;x<2100;x+=180)line(x,-1200,x,FLOOR-35,'#dfceaf',3);
@@ -271,7 +299,13 @@ export function home(t,{glow=0,clockT=t}={}){
  box(950,490,380,640,'#875c42');
  for(let i=0;i<4;i++){box(970,620+i*132,345,17,'#684831');for(let j=0;j<5;j++)box(996+j*58,546+i*132,43,69,['#dbb05e','#8ab5a3','#b87985','#d4c3ac','#779cbd'][j]);}
  box(457,1120,298,38,'#956b4d');box(480,1154,27,186,'#795741');box(704,1154,27,186,'#795741');
- if(CFG.type==='fork'){
+ if(CFG.type==='spoon'){
+   // The soup belongs INSIDE the whole bowl on the living-room table.
+   shape(ell(580,1085,135,61,44),{fill:'#f7eee3',lw:7});
+   shape(ell(580,1080,109,44,44),{fill:'#dde9e3',lw:4});
+   shape(ell(580,1076,97,33,44),{fill:'#d8aa69',lw:3});
+   for(let i=0;i<8;i++)ring(515+i*18,1079+Math.sin(i*2)*13,5,i%2?'#e9ca80':'#92a96c');
+ }else if(CFG.type==='fork'){
    // The WHOLE meal stays visible at the same physical place in every salon shot.
    shape(ell(579,1084,131,57,38),{fill:'#f6ede0',lw:6});
    shape(ell(579,1081,106,39,38),{fill:'#fff8e9',lw:5});
