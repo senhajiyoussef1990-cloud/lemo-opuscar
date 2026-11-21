@@ -24,7 +24,7 @@ shutil.copy2(BATCH/'people.js',out/'people.js')
 
 # Pilot V2: improve five-finger silhouette only in this newly generated episode.
 # Keep existing published chapters and shared character appearance unchanged.
-if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere'):
+if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre'):
     charpath=out/'chars.js'
     chars=charpath.read_text(encoding='utf8')
     first=chars.index('export function hand(')
@@ -170,7 +170,7 @@ main=main[:tag_start]+thin_tag+main[tag_end:]
 
 # Visual standard V2 for the NEW zipper story: restore a readable top ribbon,
 # and put the real episode object in Malik's hand (home, history, return).
-if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere'):
+if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre'):
     for before,after in [
         ('g.fillRect(0,0,W,100)','g.fillRect(0,0,W,128)'),
         ('g.fillRect(0,96,W,4)','g.fillRect(0,124,W,4)'),
@@ -232,6 +232,18 @@ if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere'):
         assert old_rush in main
         main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
     
+    if slug in ('couteau','assiette','verre'):
+        # Avoid literal apostrophes inside the generated JavaScript title.
+        title=e['title'].upper()
+        main=main.replace(title.replace("L'HISTOIRE DE ","L’HISTOIRE DE "),title.replace("'","’"))
+        main=main.replace(title,title.replace("'","’"))
+        old_prop="Wd.homeObject(x+18,y-28,t)"
+        assert old_prop in main
+        main=main.replace(old_prop,"Wd.homeObject(x+18,y-28,t,w)")
+        old_rush="malik(sucked({ ...m, nerv: 1 }, t, t0 + .05, t0 + .3));"
+        assert old_rush in main
+        main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
+
     if slug == 'cuillere':
         # Never insert a straight apostrophe in a single-quoted JS title string.
         main=main.replace("L'HISTOIRE DE LA CUILLÈRE","L’HISTOIRE DE LA CUILLÈRE")
@@ -323,7 +335,7 @@ NOUVEL ÉPISODE
 AUJOURD'HUI À 18 H
 """
 # New episodes use a SINGLE vertical master; no redundant 16:9 YouTube master.
-if slug in ('crayon','fermeture-eclair','ciseaux','fourchette'):
+if slug in ('crayon','fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre'):
     publication=publication.replace(f"YouTube — format classique 16:9 — titre\n{subj} | Le Livre de Papy — un voyage à travers 7 époques\n\n","")
     publication=publication.replace("Deux formats : Shorts 9:16 et vidéo YouTube 16:9. Voix de Papy et Malik dans les deux.","Format vertical 9:16 pour TikTok, Reels, Facebook et Shorts. Voix de Papy et Malik.")
 (out/'publication.txt').write_text(publication,encoding='utf8')
@@ -331,4 +343,4 @@ script='# '+subj+' — Le Livre de Papy\n\n'
 for id,line in zip(DATA['ids'],lines):
     script+=f"**{'Papy' if line['who']=='PAPY' else 'Malik'} ({id}) :** « {line['text']} »\n\n"
 (out/'SCENARIO.md').write_text(script,encoding='utf8')
-print('Episode prêt:',slug,'39 voix, 7 époques, format vertical 1080x1920' if slug in ('crayon','fermeture-eclair','ciseaux','fourchette') else 'double format')
+print('Episode prêt:',slug,'39 voix, 7 époques, format vertical 1080x1920' if slug in ('crayon','fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre') else 'double format')
