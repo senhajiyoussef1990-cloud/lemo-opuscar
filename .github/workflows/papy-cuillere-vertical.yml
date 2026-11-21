@@ -1,0 +1,107 @@
+name: Le Livre de Papy - Cuillere 9x16
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/papy-cuillere-vertical.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: papy-cuillere-9x16
+  cancel-in-progress: false
+jobs:
+  cuillere:
+    name: Cuillere - sept epoques deux voix 25 controles
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Charger la branche Le Livre de Papy
+        uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: Installer Chromium
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+      - name: Installer la synthese vocale et les outils de son
+        run: python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preflight - cuillere complete bol de soupe 7 epoques
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          python -m py_compile films/papy-batch5/prepare.py films/papy-batch5/audio_qc.py films/papy-batch5/visual_qc.py
+          python films/papy-batch5/prepare.py cuillere
+          d=films/papy-cuillere
+          python -m py_compile "$d/tools/voice.py" "$d/tools/mix.py" "$d/tools/foley.py"
+          node --check "$d/main.js"
+          node --check "$d/story.js"
+          node --check "$d/objects.js"
+          node --check "$d/workshops.js"
+          node --check "$d/chars.js"
+          node --check "$d/people.js"
+          node --check "$d/toon.js"
+          grep -Fq "L’HISTOIRE DE LA CUILLÈRE" "$d/main.js"
+          grep -Fq "g.fillRect(0,0,W,128)" "$d/main.js"
+          grep -Fq "four separate rounded fingers" "$d/chars.js"
+          grep -Fq "m.holdF=Wd.heldObject(w,t)" "$d/main.js"
+          grep -Fq "function spoon(kind,era,t)" "$d/workshops.js"
+          grep -Fq "if(typ==='spoon')" "$d/objects.js"
+          grep -Fq "The soup belongs INSIDE" "$d/objects.js"
+          grep -Fq "w1:[960,1090,1.72]" "$d/main.js"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('films/papy-cuillere/episode.json').read_text(encoding='utf8'))
+          assert d['type']=='spoon'
+          assert len(d['eras'])==7 and len(d['lines'])==39 and len(d['sources'])>=6
+          assert {e[4] for e in d['eras']}=={'egypt-wood','roman','medieval-wood','apostle','silver','factory','modern'}
+          assert 'soupe' in ' '.join(d['lines'])
+          print('CUILLERE : 39 voix, 7 époques, date historique, vrai creux et mains complètes')
+          PY
+          bash "$d/tools/fonts.sh"
+          node core/render/still.mjs "$d" 14 30 46 61 76 91 106 121 136 --size 1080x1920 --out "$d/preflight-vertical"
+      - name: Rendre video verticale avec voix, musique, story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: bash films/papy-batch5/build-vertical.sh cuillere
+      - name: Verifier fichier MP4 et ZIP au nom court
+        run: |
+          set -euo pipefail
+          d=films/papy-cuillere
+          test -s "$d/L'histoire de la cuillère.mp4"
+          test -s "$d/L'histoire de la cuillère.zip"
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          p=Path("films/papy-cuillere/L'histoire de la cuillère.zip")
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              assert "L'histoire de la cuillère.mp4" in z.namelist()
+              assert 'story.jpg' in z.namelist()
+              assert 'publication.txt' in z.namelist()
+              assert 'controles-visuels.jpg' in z.namelist()
+          print('CUILLERE : MP4, STORY, VOIX, QC ET NOMS COURTS OK')
+          PY
+      - name: Livrer histoire de la cuillere
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la cuillère"
+          path: "films/papy-cuillere/L'histoire de la cuillère.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
