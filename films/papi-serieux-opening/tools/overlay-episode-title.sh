@@ -16,5 +16,8 @@ FONT="/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
 SAFE=$(printf '%s' "$TITLE" | sed "s/[':,;\\\\]/ /g")
 EN="between(t,$HOOK,$DUR)"
 VF="drawbox=x=205:y=1500:w=670:h=3:color=0xE8E3D8@0.95:t=fill:enable='$EN',drawtext=fontfile=$FONT:text='ÉPISODE $NUM':fontsize=68:fontcolor=0xF7F4E8:x=(w-text_w)/2:y=1530:enable='$EN',drawtext=fontfile=$FONT:text='$SAFE':fontsize=50:fontcolor=0xF7F4E8:x=(w-text_w)/2:y=1635:enable='$EN',drawbox=x=270:y=1722:w=540:h=2:color=0xE8E3D8@0.9:t=fill:enable='$EN'"
+# Persistent watermark throughout the finished film (independent of social platform).
+VF="$VF,drawtext=fontfile=$FONT:textfile=$(dirname \"$0\")/copyright.txt:fontcolor=0xF3EBDA@0.65:fontsize=32:borderw=1:bordercolor=0x191715@0.5:x=60:y=250"
+
 ffmpeg -y -hide_banner -loglevel error -i "$IN" -vf "$VF" -map 0:v:0 -map 0:a:0 -c:v libx264 -preset veryfast -crf 19 -pix_fmt yuv420p -c:a copy -movflags +faststart "$OUT"
 ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 "$OUT"
