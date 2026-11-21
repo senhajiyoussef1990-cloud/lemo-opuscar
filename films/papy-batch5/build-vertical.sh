@@ -82,7 +82,7 @@ echo "::group::Contrôle audio du master 9:16"
 python films/papy-batch5/audio_qc.py "$D" "$SLUG" --vertical-only
 echo "::endgroup::"
 
-if [[ "$SLUG" == "fermeture-eclair" || "$SLUG" == "ciseaux" || "$SLUG" == "fourchette" ]]; then
+if [[ "$SLUG" == "fermeture-eclair" || "$SLUG" == "ciseaux" || "$SLUG" == "fourchette" || "$SLUG" == "cuillere" ]]; then
   echo "::group::QC V2 - 25 captures reelles de la video finale"
   python films/papy-batch5/visual_qc.py "$D" "$SLUG"
   echo "::endgroup::"
@@ -101,7 +101,7 @@ for f,(w,hgt) in [(v,(1080,1920))]:
   assert (vs['width'],vs['height'])==(w,hgt),(f,vs)
   assert any(x['codec_type']=='audio' for x in st),(f,'missing voice track')
 names=[v.name,'story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md','audio-qc.json','audio-preflight.json']
-if slug in ('fermeture-eclair','ciseaux','fourchette'): names.append('controles-visuels.jpg')
+if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere'): names.append('controles-visuels.jpg')
 assert all((d/n).is_file() for n in names)
 # Nom court pour les utilisateurs : L'histoire des ciseaux.zip / .mp4.
 # Les noms internes techniques restent inchangés pour les tests audio et vidéo.
