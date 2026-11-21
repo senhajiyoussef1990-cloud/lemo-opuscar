@@ -1,0 +1,150 @@
+name: Le Livre de Papy - Couteau Assiette Verre
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/papy-trois-episodes-table.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: papy-trois-episodes-table
+  cancel-in-progress: false
+jobs:
+  production:
+    name: Trois episodes en sequence, avec noms courts
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier les trois episodes avant le rendu
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          python -m py_compile films/papy-batch5/prepare.py films/papy-batch5/audio_qc.py films/papy-batch5/visual_qc.py
+          bash -n films/papy-batch5/build-vertical.sh
+          for slug in couteau assiette verre; do
+            python films/papy-batch5/prepare.py "$slug"
+            d="films/papy-$slug"
+            for file in main story objects workshops chars people toon; do node --check "$d/$file.js"; done
+            grep -Fq "g.fillRect(0,0,W,128)" "$d/main.js"
+            grep -Fq "four separate rounded fingers" "$d/chars.js"
+            grep -Fq "m.holdF=Wd.heldObject(w,t)" "$d/main.js"
+            grep -Fq "function tableware(type,kind,era,t)" "$d/workshops.js"
+            grep -Fq "w1:[960,1090,1.72]" "$d/main.js"
+            python - "$d" <<'PY'
+          import json,sys
+          from pathlib import Path
+          e=json.loads((Path(sys.argv[1])/'episode.json').read_text())
+          assert len(e['lines'])==39 and len(e['eras'])==7 and len(e['sources'])>=4
+          assert e['type'] in ('tableknife','dish','drinkingglass')
+          print(e['title'], 'OK')
+          PY
+            bash "$d/tools/fonts.sh"
+            node core/render/still.mjs "$d" 15 31 46 61 76 91 106 121 136 --size 1080x1920 --out "$d/preflight-vertical"
+          done
+      - name: Produire couteau vertical avec deux voix et Story
+        id: render_couteau
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh couteau
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          p=Path("films/papy-couteau/L'histoire du couteau.zip")
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              assert "L'histoire du couteau.mp4" in z.namelist()
+              assert 'story.jpg' in z.namelist()
+              assert 'publication.txt' in z.namelist()
+              assert 'controles-visuels.jpg' in z.namelist()
+          print("LIVRABLE VERIFIE :", p)
+          PY
+      - name: Livrer couteau
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du couteau"
+          path: "films/papy-couteau/L'histoire du couteau.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+      - name: Produire assiette vertical avec deux voix et Story
+        id: render_assiette
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh assiette
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          p=Path("films/papy-assiette/L'histoire de l'assiette.zip")
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              assert "L'histoire de l'assiette.mp4" in z.namelist()
+              assert 'story.jpg' in z.namelist()
+              assert 'publication.txt' in z.namelist()
+              assert 'controles-visuels.jpg' in z.namelist()
+          print("LIVRABLE VERIFIE :", p)
+          PY
+      - name: Livrer assiette
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de l'assiette"
+          path: "films/papy-assiette/L'histoire de l'assiette.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+      - name: Produire verre vertical avec deux voix et Story
+        id: render_verre
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh verre
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          p=Path("films/papy-verre/L'histoire du verre.zip")
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              assert "L'histoire du verre.mp4" in z.namelist()
+              assert 'story.jpg' in z.namelist()
+              assert 'publication.txt' in z.namelist()
+              assert 'controles-visuels.jpg' in z.namelist()
+          print("LIVRABLE VERIFIE :", p)
+          PY
+      - name: Livrer verre
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du verre"
+          path: "films/papy-verre/L'histoire du verre.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
