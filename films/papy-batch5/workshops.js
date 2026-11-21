@@ -43,7 +43,7 @@ function arms(era,t,hx,hy,only=null){
   const fine=TYPE==='watch'||TYPE==='key';                       // delicate mechanisms: one hand with watchmaker's tweezers, the other resting on the bench
   let hands=[[hx,hy],[hx+44,hy+20]];
   if(fine){const s0=sh[0],dx=s0[0]-hx,dy=s0[1]-hy,d=Math.hypot(dx,dy)||1;hands=[[hx+dx/d*95,hy+dy/d*95],[BX-40,1178]];TW=[hands[0],[hx,hy]];}else TW=null;
-  const sturdy=TYPE==='zipper'||TYPE==='scissors'||TYPE==='fork'||TYPE==='spoon';  // V2: full, proportional upper/lower sleeves on the new pilot episode
+  const sturdy=TYPE==='zipper'||TYPE==='scissors'||TYPE==='fork'||TYPE==='spoon'||['tableknife','dish','drinkingglass'].includes(TYPE);  // V2: full, proportional upper/lower sleeves on the new pilot episode
   if(sturdy) hands[1]=[BX+4,1173];  // supporting hand resting on the workbench, not piled over the working hand
   (only!==null?[only]:fine?[0]:[1,0]).forEach(i=>{const [s,hd]=[sh[i],hands[i]];const [el,hp]=ik(s[0],s[1],hd[0],hd[1],sturdy?153:140,sturdy?147:135);
     const upper=sturdy?66:44,lower=sturdy?55:38;
@@ -1151,9 +1151,128 @@ function spoon(kind,era,t) {
   artisan(era,t,1103,1012-54*p);
 }
 
+
+/* Three complete, period-specific table objects. All motion relates to a real
+   meal or the craft being demonstrated; no generic flying mechanisms. */
+function tableware(type,kind,era,t){
+ const u=progress,p=u*u*(3-2*u),k=kind;
+ const metal='#b8c9c9',wood='#926b48';
+ const bench=()=>{B(815,1195,423,45,'#896044',9);B(843,1238,34,135,'#694b38',5);B(1185,1238,34,135,'#694b38',5);};
+ const dish=(x,y,rx=135,ry=57,mode='plain',food=false)=>{
+   const ancient=['greek','fish'].includes(mode),blue=['china','import'].includes(mode),ornate=mode==='meissen';
+   let col=ancient?'#c27e56':'#f6efdc',rim=ancient?'#593f35':blue?'#456f9f':ornate?'#b4a06d':'#8aa9a4';
+   shape(ell(x,y+10,rx,ry,46),{fill:rim,lw:5});
+   shape(ell(x,y,rx+2,ry,46),{fill:col,lw:6});
+   shape(ell(x,y,rx*.78,ry*.71,42),{fill:rim,lw:4});
+   shape(ell(x,y,rx*.69,ry*.58,42),{fill:ancient?'#d19e72':'#fff8e8',lw:3});
+   if(ancient||blue||ornate)for(let i=0;i<12;i++){const a=i*Math.PI/6;C(x+rx*.87*Math.cos(a),y+ry*.86*Math.sin(a),4,rim);}
+   if(mode==='fish'||blue){
+     shape(spline([[x-58,y],[x-27,y-19],[x+24,y-12],[x+45,y],[x+15,y+15],[x-29,y+16]]),{fill:rim,lw:3});
+     shape(spline([[x+40,y],[x+68,y-14],[x+65,y+14]]),{fill:rim,lw:3});C(x-41,y-2,4,'#f6e7c8');
+   }
+   if(food){for(let j=0;j<8;j++)stroke(spline([[x-62,y-16+j*5],[x-25,y-25+j*5],[x+25,y+7+j*3],[x+61,y-10+j*5]]),3,{line:'#e3ba69'});C(x-28,y+3,9,'#b96048');C(x+26,y-5,8,'#8ca160');}
+ };
+ const glass=(x,y,fac=1,mode=k,liquid=true)=>{
+   push();translate(x,y);scale(fac);
+   const stem=['venice','decorated'].includes(mode);
+   const tint=mode==='cast'?'#679d8b':mode==='medieval'?'#95b77e':'#b1dce0';
+   const bottom=stem?28:112;
+   shape(spline([[-55,-91],[55,-91],[42,bottom-7],[-42,bottom-7]]),{fill:tint,lw:5});
+   if(liquid&&!stem){
+     shape(spline([[-46,-12],[46,-12],[35,94],[-35,94]]),{fill:'#72b7d8',lw:3});
+     shape(ell(0,-12,46,11,30),{fill:'#bae2ef',lw:3});
+   }
+   shape(ell(0,-91,56,17,36),{fill:'#e5f2eb',lw:5});
+   shape(ell(0,-91,46,9,32),{fill:tint,lw:2});
+   if(stem){B(-7,24,14,77,tint,5);shape(ell(0,105,43,13,32),{fill:tint,lw:5});}
+   else shape(ell(0,108,42,12,32),{fill:tint,lw:4});
+   L(-37,-70,-29,bottom-17,'rgba(255,255,255,.85)',7);
+   if(['pressed','decorated','venice'].includes(mode))for(let j=0;j<5;j++)L(-33+j*17,-59,-25+j*12,bottom-15,'#d9eee7',3);
+   pop();
+ };
+ const knife=(x,y,angle=.3,mode=k)=>{
+   push();translate(x,y);rotate(angle);
+   if(mode==='stone'){
+     shape(spline([[-23,74],[-42,-3],[-27,-77],[9,-110],[41,-39],[20,54]]),{fill:'#8b9990',lw:6});
+     for(let j=0;j<4;j++)L(-32+j*15,-44,8+j*5,35,'#c8cbbb',3);
+   }else{
+     const old=['roman','personal','banquet'].includes(mode);
+     shape(spline([[-21,-148],[old?10:24,-148],[32,-112],[25,0],[-21,0]]),{fill:metal,lw:5});
+     L(-12,-130,-12,-15,'#f3f4e9',3);
+     B(-20,-2,40,105,old?wood:'#a6b9bc',14);C(0,18,4,'#e0c995');C(0,81,4,'#e0c995');
+   }
+   pop();
+ };
+ const napkin=()=>{shape(spline([[1145,1127],[1206,1129],[1218,1175],[1129,1172]]),{fill:'#f2ddbd',lw:4});};
+ bench();napkin();
+ if(type==='tableknife'){
+   // Safe culinary demonstration: cheese or bread is actually divided.
+   dish(985,1100,137,65);
+   let split=7+18*p;
+   for(let j=0;j<2;j++){
+     const x=947+j*(48+split);
+     shape(spline([[x-25,1077],[x+24,1065],[x+32,1116],[x-25,1120]]),{fill:'#e9c776',lw:5});
+     C(x-6,1091,5,'#bd984a');C(x+14,1106,4,'#c29953');
+   }
+   if(k==='factory'){
+     B(829,1014,67,78,'#697b81',8);B(845,990,34,25,'#b1bdbc',5);
+     knife(890,1054,-1.05,'rounded');
+   }else if(k==='banquet'||k==='rounded'){dish(851,1020,55,26);glass(852,963,.35,'decorated',false);}
+   else {B(833,1039,58,49,'#c29866',9);C(858,1053,14,'#dfb873');}
+   // The blade touches the division; the working hand follows the real handle.
+   const x=1068,y=1063+16*Math.sin(p*Math.PI);
+   knife(x,y,-.65);artisan(era,t,x+21,y+29);return;
+ }
+ if(type==='dish'){
+   if(['greek','fish','china','meissen'].includes(k)){
+     // A potter's wheel and the complete vessel immediately above it.
+     B(883,1139,164,17,'#694b3d',5);
+     B(937,1152,49,43,'#83705b',5);
+     dish(970,1091,151,70,k,false);
+     const px=1049-28*p,py=1057+13*Math.sin(p*Math.PI);
+     if(k==='china'||k==='fish'){
+       L(px,py,px-17,py+19,'#846343',8);C(px-18,py+20,5,k==='china'?'#456f9f':'#593f35');
+     }
+     artisan(era,t,px,py);
+   }else if(k==='factory'){
+     B(839,1008,146,117,'#697b80',8);B(862,987,105,23,'#aab9bc',6);
+     dish(918,1091,65,29,'plain',false);
+     dish(1061,1103,125,57,'plain',false);
+     dish(1061,1090,125,57,'plain',false);
+     artisan(era,t,1100,1108-25*p);
+   }else{
+     dish(980,1092,133,62,k,k==='modern');
+     dish(859,1032,54,26,k,false);glass(1174,1018,.38,'modern',true);
+     artisan(era,t,1098,1100-18*p);
+   }
+   return;
+ }
+ // Glassworks: moulded, blown, coloured, decorated, mechanically pressed.
+ if(k==='cast'||k==='roman-blown'||k==='medieval'||k==='venice'||k==='pressed'){
+   B(825,934,113,153,'#97715c',12);
+   shape(ell(881,1005,44,42,30),{fill:'#5d4a45',lw:5});
+   shape(ell(881,1009,24,22,26),{fill:'#df9d59',lw:3});
+   if(k==='pressed'||k==='cast'){
+     B(955,1061,134,65,'#75848a',8);
+     B(985,1004-31*p,72,53,'#aab8bb',7);
+     L(1021,981,1021,1006-31*p,'#64777f',14);
+   }else{
+     // The canne connects to a hot glass bubble; the vessel is not floating.
+     L(1102,1037,1003,1000,'#8d999b',11);
+     shape(ell(983,991,26+10*p,23+7*p,30),{fill:'#e2a85a',lw:4});
+   }
+   glass(1124,1090,.72,k,false);
+   artisan(era,t,1107,1038);
+ }else{
+   dish(887,1122,64,30,'plain',true);
+   glass(1005,1081,.83,k,true);glass(1128,1099,.58,k,true);
+   artisan(era,t,1085,1070-16*p);
+ }
+}
+
 export function renderWorkshop(type,kind,era,t){
  TYPE=type;
- const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);else if(type==='fork')fork(kind,era,t);else if(type==='spoon')spoon(kind,era,t);};
+ const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);else if(type==='fork')fork(kind,era,t);else if(type==='spoon')spoon(kind,era,t);else if(['tableknife','dish','drinkingglass'].includes(type))tableware(type,kind,era,t);};
  if(PROBE){const main=g,sid=S.sid;setCtx(PROBE.getContext('2d'));PASS='probe';TGT=null;try{run();}finally{setCtx(main);S.sid=sid;PASS='draw';}
    if(TGT){shape(ell(BX,BF+4,90,16,18),{fill:'rgba(20,10,30,.18)',lw:0,stroke:false});body(TGT.era,t);if(TYPE==='watch'||TYPE==='key')arms(TGT.era,t,TGT.hx,TGT.hy,1);}}   // the resting arm stays behind the work
  run();
