@@ -1,0 +1,99 @@
+name: Le Livre de Papy - Verre reprise voix
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/papy-verre-reprise.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: papy-verre-reprise
+  cancel-in-progress: false
+jobs:
+  verre:
+    name: L'histoire du verre - une seule production
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer FFmpeg, rendu graphique et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier et preparer le verre
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          python films/papy-batch5/prepare.py verre
+          d=films/papy-verre
+          for part in main story objects workshops chars people toon; do node --check "$d/$part.js"; done
+          grep -Fq "function tableware(type,kind,era,t)" "$d/workshops.js"
+          grep -Fq "if(typ==='drinkingglass')" "$d/objects.js"
+          grep -Fq "g.fillRect(0,0,W,128)" "$d/main.js"
+          grep -Fq "four separate rounded fingers" "$d/chars.js"
+          grep -Fq "m.holdF=Wd.heldObject(w,t)" "$d/main.js"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          e=json.loads(Path('films/papy-verre/episode.json').read_text())
+          assert e['type']=='drinkingglass' and len(e['lines'])==39 and len(e['eras'])==7
+          assert e['title']=="L'histoire du verre"
+          PY
+          bash "$d/tools/fonts.sh"
+          node core/render/still.mjs "$d" 15 31 46 61 76 91 106 121 136 --size 1080x1920 --out "$d/preflight-vertical"
+      - name: Reprendre les 39 voix avec nouvelles tentatives si le service ne repond pas
+        run: |
+          set -euo pipefail
+          d=films/papy-verre
+          for i in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              echo "39 repliques audio disponibles et validees"
+              test -s "$d/raw/dur.json"
+              exit 0
+            fi
+            echo "::warning::Service de voix indisponible pendant tentative $i sur 6"
+            if [ "$i" -lt 6 ]; then sleep $((i * 8)); fi
+          done
+          echo "::error::La voix est toujours indisponible apres les reprises"
+          exit 1
+      - name: Rendre uniquement le verre avec voix, Story et controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: bash films/papy-batch5/build-vertical.sh verre
+      - name: Verifier le fichier au nom court
+        run: |
+          test -s "films/papy-verre/L'histoire du verre.mp4"
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          p=Path("films/papy-verre/L'histoire du verre.zip")
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              assert "L'histoire du verre.mp4" in z.namelist()
+              assert 'story.jpg' in z.namelist()
+              assert 'publication.txt' in z.namelist()
+              assert 'controles-visuels.jpg' in z.namelist()
+          PY
+      - name: Livrer le verre
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du verre"
+          path: "films/papy-verre/L'histoire du verre.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
