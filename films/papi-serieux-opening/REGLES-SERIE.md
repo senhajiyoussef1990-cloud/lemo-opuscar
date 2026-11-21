@@ -65,3 +65,12 @@ Chaque épisode est livré avec **une affiche Story 9:16 unique** fondée sur le
 ## Opening de chaque vidéo — règle obligatoire
 
 Conserver l'accroche initiale puis le générique original ; **l'opening doit afficher explicitement « ÉPISODE N — [titre réel de l'épisode] »**, lisible à l'écran. Ne pas se contenter du nom de la série. Ensuite viennent le corps de l'épisode, la conclusion, l'annonce « Demain — Épisode N+1 : [titre] », et la formule « À demain ». Toujours contrôler la version exportée après le montage.
+
+## Dates de publication dans les noms de dossiers — calendrier quotidien
+
+- **Épisode 12 : dimanche 22 novembre 2026 à 18 h (Europe/Brussels)**. Un épisode supplémentaire chaque jour. Épisode 50 : mercredi 30 décembre 2026 à 18 h.
+- Tous les nouveaux dossiers et ZIP des épisodes 12 à 50 sont nommés selon **`AAAA-MM-JJ_EPnn_Sujet-court`**. Exemple : `2026-11-22_EP12_QR-codes`, puis `2026-11-23_EP13_Cloud`.
+- Inscrire aussi la date de publication dans `PUBLICATIONS-RESEAUX.md`, `LISEZ-MOI.txt` et le calendrier de publication.
+- Le calendrier complet, avec la date et le nom exact de **chaque** dossier, se trouve dans `films/papi-serieux-planning/CALENDRIER-EP12-50.md`.
+- Pour produire automatiquement un nom cohérent, utiliser `python films/papi-serieux-opening/tools/nom-date-publication.py 12 QR-codes --zip`.
+- Ne pas rétro-dater les épisodes 1–11. Ne pas annoncer une vidéo comme prête ni programmée simplement parce qu'un dossier daté existe.
