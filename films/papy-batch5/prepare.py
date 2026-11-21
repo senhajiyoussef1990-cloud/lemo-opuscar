@@ -24,7 +24,7 @@ shutil.copy2(BATCH/'people.js',out/'people.js')
 
 # Pilot V2: improve five-finger silhouette only in this newly generated episode.
 # Keep existing published chapters and shared character appearance unchanged.
-if slug in ('fermeture-eclair','ciseaux','fourchette'):
+if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere'):
     charpath=out/'chars.js'
     chars=charpath.read_text(encoding='utf8')
     first=chars.index('export function hand(')
@@ -170,7 +170,7 @@ main=main[:tag_start]+thin_tag+main[tag_end:]
 
 # Visual standard V2 for the NEW zipper story: restore a readable top ribbon,
 # and put the real episode object in Malik's hand (home, history, return).
-if slug in ('fermeture-eclair','ciseaux','fourchette'):
+if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere'):
     for before,after in [
         ('g.fillRect(0,0,W,100)','g.fillRect(0,0,W,128)'),
         ('g.fillRect(0,96,W,4)','g.fillRect(0,124,W,4)'),
@@ -232,6 +232,16 @@ if slug in ('fermeture-eclair','ciseaux','fourchette'):
         assert old_rush in main
         main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
     
+    if slug == 'cuillere':
+        # Never insert a straight apostrophe in a single-quoted JS title string.
+        main=main.replace("L'HISTOIRE DE LA CUILLÈRE","L’HISTOIRE DE LA CUILLÈRE")
+        # The same spoon is physically in Malik's hand in the two salon scenes.
+        old_prop="Wd.homeObject(x+18,y-28,t)"
+        assert old_prop in main
+        main=main.replace(old_prop,"Wd.homeObject(x+18,y-28,t,w)")
+        old_rush="malik(sucked({ ...m, nerv: 1 }, t, t0 + .05, t0 + .3));"
+        assert old_rush in main
+        main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
     if slug == 'fourchette':
         # French apostrophe must be typographic inside the JS title literal.
         main=main.replace("L'HISTOIRE DE LA FOURCHETTE","L’HISTOIRE DE LA FOURCHETTE")
