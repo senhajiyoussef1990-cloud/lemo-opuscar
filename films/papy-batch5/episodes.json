@@ -1043,6 +1043,338 @@
         "https://www.philamuseum.org/exhibitions/have-a-bite-20th-century-flatware-from-the-collection",
         "https://www.vam.ac.uk/articles/metalworking-techniques"
       ]
+    },
+    {
+      "slug": "couteau",
+      "title": "L'histoire du couteau",
+      "type": "tableknife",
+      "eras": [
+        [
+          "PRÉHISTOIRE",
+          "PALÉOLITHIQUE",
+          "DES ÉCLATS DE PIERRE POUR COUPER",
+          "antique",
+          "stone",
+          "courtyard"
+        ],
+        [
+          "ROME ANTIQUE",
+          "Ier–IIIe SIÈCLES",
+          "DES USTENSILES EN MÉTAL",
+          "antique",
+          "roman",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LE COUTEAU PERSONNEL",
+          "medieval",
+          "personal",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XVIe SIÈCLE",
+          "LES COUVERTS DE BANQUET",
+          "medieval",
+          "banquet",
+          "palace"
+        ],
+        [
+          "FRANCE",
+          "FIN DU XVIIe SIÈCLE",
+          "DES POINTES PLUS ARRONDIES",
+          "georgian",
+          "rounded",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES SERVICES DE TABLE",
+          "victorian",
+          "factory",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES COUTEAUX ADAPTÉS AUX ALIMENTS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "sources": [
+        "https://johnstoncollection.org/THE-ART-OF-DINING-THE-HISTORY-OF-THE-TABLE-KNIFE~67996",
+        "https://apps.jefpat.maryland.gov/diagnostic/SmallFinds/Knives.aspx",
+        "https://www.metmuseum.org/art/collection/search/187596",
+        "https://readingroo.ms/4/5/7/4/45741/45741-h/45741-h.htm"
+      ],
+      "lines": [
+        "Papy, mon morceau de fromage est trop grand !",
+        "Avec ton couteau de table, coupe-le en petits morceaux sur ton assiette.",
+        "Pourquoi le couteau de table a un bout rond ?",
+        "Sa forme a changé au fil des siècles pour s'adapter aux repas.",
+        "Il existait des couteaux avant les fourchettes ?",
+        "Bien avant ! Ouvrons Le Livre de Papy !",
+        "Mon couteau brille devant le portail !",
+        "À la préhistoire, les humains utilisent des éclats de pierre coupants.",
+        "Ils s'en servent notamment pour préparer leurs aliments.",
+        "Ce n'était même pas du métal !",
+        "Exactement, la pierre pouvait avoir un bord très tranchant.",
+        "Dans l'Antiquité, les couteaux en métal servent à de nombreuses tâches.",
+        "Ce cuisinier prépare des portions pour les convives.",
+        "Ils avaient déjà des manches ?",
+        "Oui, certains étaient en bois ou en os.",
+        "Les formes variaient selon les usages.",
+        "Au Moyen Âge, en Europe, beaucoup de convives apportent leur couteau personnel.",
+        "On s'en sert à table pour découper les aliments.",
+        "On apportait son couvert de chez soi ?",
+        "Oui, les habitudes de table étaient très différentes.",
+        "À la Renaissance, les banquets des riches utilisent des couverts spécialisés.",
+        "Le découpeur prépare les portions et les présente aux invités.",
+        "Même le repas était un spectacle !",
+        "Certaines pièces étaient de véritables objets d'orfèvrerie.",
+        "À la fin du dix-septième siècle apparaissent davantage de couteaux de table à bout arrondi.",
+        "Le couteau devient peu à peu un couvert destiné au repas.",
+        "Voilà enfin le bout rond !",
+        "Au dix-neuvième siècle, les services de table se répandent dans la bourgeoisie.",
+        "Les ateliers fabriquent des séries de manches et de lames assortis.",
+        "Toute la famille peut avoir le même couvert !",
+        "Aujourd'hui, il existe des couteaux différents selon les aliments.",
+        "Un couteau de table aide à couper les morceaux sur l'assiette.",
+        "Et un couteau à beurre sert à tartiner !",
+        "Oui, utilise toujours les ustensiles adaptés, avec un adulte si nécessaire.",
+        "Nous revoilà au salon, devant ton fromage.",
+        "Je vais le partager en petits morceaux.",
+        "Bravo ! Pour une fois, ce fromage ne fera pas un voyage entier !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour notre prochain voyage !"
+      ]
+    },
+    {
+      "slug": "assiette",
+      "title": "L'histoire de l'assiette",
+      "type": "dish",
+      "eras": [
+        [
+          "GRÈCE ANTIQUE",
+          "VIe–Ve SIÈCLES AV. J.-C.",
+          "DES PLATS EN TERRE CUITE",
+          "antique",
+          "greek",
+          "temple"
+        ],
+        [
+          "ITALIE DU SUD",
+          "IVe SIÈCLE AV. J.-C.",
+          "DES PLATS DÉCORÉS DE POISSONS",
+          "antique",
+          "fish",
+          "forum"
+        ],
+        [
+          "CHINE",
+          "XIVe SIÈCLE",
+          "LA PORCELAINE BLEUE ET BLANCHE",
+          "chinese",
+          "china",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XVIe–XVIIe SIÈCLES",
+          "LA PORCELAINE IMPORTÉE",
+          "georgian",
+          "import",
+          "market"
+        ],
+        [
+          "MEISSEN",
+          "1710–1740",
+          "LA PORCELAINE EUROPÉENNE",
+          "georgian",
+          "meissen",
+          "workshop"
+        ],
+        [
+          "ANGLETERRE",
+          "XVIIIe–XIXe SIÈCLES",
+          "DES SERVICES EN PLUS GRAND NOMBRE",
+          "victorian",
+          "factory",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES ASSIETTES POUR CHAQUE REPAS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "sources": [
+        "https://www.metmuseum.org/art/collection/search/254204",
+        "https://artmuseum.princeton.edu/art/collections/objects/32129",
+        "https://www.metmuseum.org/art/collection/search/39638",
+        "https://www.vam.ac.uk/articles/a-z-of-ceramics",
+        "https://www.ngv.vic.gov.au/explore/collection/work/153969/",
+        "https://www.vam.ac.uk/articles/on-the-white-road-edmund-de-waal"
+      ],
+      "lines": [
+        "Papy, pourquoi mon assiette est toute ronde ?",
+        "Sa forme permet de garder ton repas devant toi.",
+        "Mais qui a inventé l'assiette ?",
+        "Personne ne connaît un inventeur unique. Les plats existent depuis très longtemps.",
+        "Même avant les couverts de table ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Wouah, mon assiette brille !",
+        "Dans la Grèce antique, des potiers fabriquent des plats en terre cuite.",
+        "Ils donnent à l'argile une forme creuse et la font cuire.",
+        "Ça ressemble à une petite soucoupe !",
+        "Ces plats servent notamment à présenter des aliments.",
+        "Au quatrième siècle avant notre ère, certains plats sont décorés de poissons.",
+        "Le centre du plat peut recueillir du jus ou une sauce.",
+        "On dirait un aquarium sur la table !",
+        "Les potiers peignent des poissons et d'autres animaux marins.",
+        "La décoration fait aussi partie de l'histoire de la vaisselle.",
+        "Au quatorzième siècle, en Chine, on produit de magnifiques porcelaines.",
+        "Un artisan peint des motifs bleus puis recouvre la pièce d'une glaçure.",
+        "Pourquoi cette assiette est si blanche ?",
+        "La porcelaine est obtenue avec des matières particulières et une cuisson très chaude.",
+        "Les échanges commerciaux transportent la porcelaine chinoise jusqu'en Europe.",
+        "Ces objets sont recherchés pour leur finesse et leur blancheur.",
+        "Ils faisaient tout ce voyage pour une assiette ?",
+        "Oui, la porcelaine était alors un produit précieux.",
+        "En mille sept cent dix, la manufacture de Meissen est fondée en Saxe.",
+        "Les artisans européens maîtrisent peu à peu la porcelaine dure.",
+        "Ils peuvent enfin en fabriquer eux-mêmes !",
+        "Aux dix-huitième et dix-neuvième siècles, les manufactures multiplient les services de table.",
+        "Les ouvriers moulent, décorent et cuisent de nombreuses assiettes.",
+        "Il en faut beaucoup pour dresser une grande table !",
+        "Aujourd'hui, les assiettes existent en céramique, en verre et dans d'autres matières.",
+        "Les assiettes plates et creuses correspondent à des repas différents.",
+        "Celle-ci, c'est pour mes pâtes !",
+        "Exactement, et on utilise les assiettes de façon adaptée à leur matière.",
+        "Nous revoilà devant ton repas.",
+        "Je vais finir tout ce qu'il y a dans mon assiette !",
+        "Bravo, Malik ! Ton assiette a une longue histoire, mais ton déjeuner n'attendra pas !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour notre prochain voyage !"
+      ]
+    },
+    {
+      "slug": "verre",
+      "title": "L'histoire du verre",
+      "type": "drinkingglass",
+      "eras": [
+        [
+          "MÉDITERRANÉE ORIENTALE",
+          "AVANT NOTRE ÈRE",
+          "DES RÉCIPIENTS EN VERRE MOULÉ",
+          "antique",
+          "cast",
+          "temple"
+        ],
+        [
+          "EMPIRE ROMAIN",
+          "Ier SIÈCLE",
+          "LE SOUFFLAGE DU VERRE",
+          "antique",
+          "roman-blown",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "DES GOBELETS DE VERRE COLORÉ",
+          "medieval",
+          "medieval",
+          "workshop"
+        ],
+        [
+          "VENISE",
+          "XVe–XVIe SIÈCLES",
+          "DES VERRES RAFFINÉS",
+          "medieval",
+          "venice",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XVIIe–XVIIIe SIÈCLES",
+          "DES VERRES DÉCORÉS",
+          "georgian",
+          "decorated",
+          "palace"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1820",
+          "LE VERRE PRESSÉ MÉCANIQUEMENT",
+          "victorian",
+          "pressed",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES VERRES DE TOUS LES JOURS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "sources": [
+        "https://www.metmuseum.org/fr/essays/roman-glass",
+        "https://renvenetian.cmog.org/chapter/revival-and-continuing-influence/",
+        "https://info.cmog.org/publication/pressed-glass-1825-1925",
+        "https://allaboutglass.cmog.org/definition/pressed-glass"
+      ],
+      "lines": [
+        "Papy, je vois mon eau à travers mon verre !",
+        "C'est parce que le verre laisse passer la lumière.",
+        "Mais comment on a inventé ce récipient ?",
+        "Les verriers ont développé de nombreuses techniques au fil du temps.",
+        "On buvait déjà dans du verre il y a longtemps ?",
+        "Oui ! Ouvrons Le Livre de Papy !",
+        "Regarde, mon verre scintille devant le portail !",
+        "Bien avant notre ère, des artisans fabriquent des récipients en verre.",
+        "Ils donnent une forme à la matière chauffée, notamment grâce à des moules.",
+        "Le verre n'était pas toujours transparent ?",
+        "Non, il pouvait aussi être coloré ou opaque.",
+        "Le soufflage du verre apparaît dans la Méditerranée orientale avant notre ère.",
+        "À l'époque romaine, cette technique permet de multiplier les formes de récipients.",
+        "On souffle vraiment dans un tube ?",
+        "Oui, les verriers professionnels utilisent une longue canne.",
+        "Le verre soufflé se répand rapidement dans le monde romain.",
+        "Au Moyen Âge, les ateliers européens produisent des gobelets de différentes formes.",
+        "Certaines matières premières donnent au verre des teintes verdâtres.",
+        "On dirait la couleur d'une pomme !",
+        "La couleur dépend notamment de la composition du verre.",
+        "À la Renaissance, les verriers de Venise sont réputés pour leur savoir-faire.",
+        "Ils créent des verres fins, parfois ornés de motifs complexes.",
+        "Même le pied du verre est décoré !",
+        "Oui, ce sont de véritables œuvres d'art.",
+        "Aux dix-septième et dix-huitième siècles, les verriers perfectionnent leurs décorations.",
+        "Ils proposent des récipients aux formes variées pour les tables aisées.",
+        "Ils sont presque trop beaux pour boire dedans !",
+        "Dans les années mille huit cent vingt, le pressage mécanique du verre se développe aux États-Unis.",
+        "Un moule et une presse permettent de produire des objets de manière plus rapide.",
+        "Alors on peut en fabriquer beaucoup plus !",
+        "Aujourd'hui, les usines produisent toutes sortes de verres à boire.",
+        "Un verre transparent nous permet de voir la quantité de liquide qu'il contient.",
+        "Je peux enfin voir si j'en ai assez !",
+        "Et il faut manipuler la vaisselle en verre avec précaution.",
+        "Retour au salon, ton verre d'eau est toujours là.",
+        "Cette fois je vais le tenir à deux mains.",
+        "Bravo, Malik ! Une petite gorgée après un grand voyage !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour notre prochain voyage !"
+      ]
     }
   ]
 }
