@@ -1,0 +1,159 @@
+name: Papi serieux - refonte EP01 a EP03
+on:
+  push:
+    branches: [production/papi-serieux-refonte-01-03-20261121]
+    paths: [.github/workflows/papi-serieux-refonte-01-03.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  render:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        ep: [1, 2, 3]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 85
+    env:
+      LIB: ${{ github.workspace }}
+      EP: ${{ matrix.ep }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer FFmpeg, polices et outils
+        run: |
+          set -eux
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          npm ci --no-audit --no-fund
+          node node_modules/playwright-core/cli.js install chromium-headless-shell
+          python -m venv .venv
+          .venv/bin/python -m pip install -q -r requirements.txt edge-tts pillow imageio-ffmpeg
+          mkdir -p "$PWD/.local/bin"
+          ln -s "$(.venv/bin/python -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" "$PWD/.local/bin/ffmpeg"
+          ln -s "$(command -v ffprobe)" "$PWD/.local/bin/ffprobe"
+          echo "$PWD/.local/bin" >> "$GITHUB_PATH"
+      - name: Greffer les mains corrigees sans toucher aux visages des personnages
+        run: |
+          set -eux
+          E="films/papi-leo-ep$EP"
+          .venv/bin/python - <<'PY'
+          import os
+          from pathlib import Path
+          e=Path(f"films/papi-leo-ep{os.environ['EP']}/parts.js")
+          source=Path("films/papi-serieux-ep10/parts.js")
+          old=e.read_text(); fixed=source.read_text()
+          assert "export function glove(" in old and "export function glove(" in fixed
+          assert "// Big round-toed shoe" in old and "// Big round-toed shoe" in fixed
+          a=old.index("export function glove("); b=old.index("// Big round-toed shoe",a)
+          x=fixed.index("export function glove("); y=fixed.index("// Big round-toed shoe",x)
+          patched=old[:a]+fixed[x:y]+old[b:]
+          e.write_text(patched)
+          print("Gants re-dessines : index et quatre doigts/pouce pour",e)
+          PY
+          node --check "$E/parts.js"
+          node --check "$E/scenes.js"
+          node --check "$E/story.js"
+          sh "$E/tools/fonts.sh"
+          sh films/papi-serieux-opening/tools/fonts.sh
+          .venv/bin/python core/audio/sampler.py --need "$E/music/score.py"
+      - name: Produire voix naturelles, bruitages et musique
+        run: |
+          set -eux
+          E="films/papi-leo-ep$EP"
+          wss_proxy="${wss_proxy:-${HTTPS_PROXY:-}}" .venv/bin/python core/tts/tts_zh.py "$E/lines.json" "$E/voice"
+          .venv/bin/python "$E/tools/lip.py"
+          node core/render/events.mjs "$E" --size 1080x1920
+          .venv/bin/python "$E/music/score.py"
+          .venv/bin/python "$E/mix.py"
+          E="$E" node --input-type=module <<'JS'
+          import fs from "node:fs";
+          const d=process.env.E,m=await import("./"+d+"/story.js");
+          fs.mkdirSync(d+"/out",{recursive:true});
+          fs.writeFileSync(d+"/out/cues.json",JSON.stringify(m.SUBS.map(s=>({t0:s[0],t1:s[1],text:s.slice(2).join(" ")}))));
+          JS
+      - name: Verifier les mains et les scenes avant le rendu
+        run: |
+          set -eux
+          E="films/papi-leo-ep$EP"
+          mkdir -p "$E/out/verification"
+          node core/render/still.mjs "$E" 2 15 23 29 --size 1080x1920 --q nosub=1 --out "$E/out/verification" --prefix "scene_"
+          test -s "$E/out/verification/scene_2.jpg"
+      - name: Accroche, opening avec titre, episode, outro et filigrane permanent
+        run: |
+          set -eux
+          E="films/papi-leo-ep$EP"
+          case "$EP" in
+            1) TITLE="L'intelligence artificielle"; NEXT="Le GPS";;
+            2) TITLE="Le GPS"; NEXT="Les likes";;
+            3) TITLE="Les likes"; NEXT="Le Wi-Fi";;
+          esac
+          H=$(E="$E" node --input-type=module -e "const m=await import('./'+process.env.E+'/story.js');process.stdout.write(String(m.CUTS[0]));")
+          SUB="Abonne-toi, petit. À demain pour l'episode $((EP+1)) !" sh films/papi-serieux-opening/assemble-v2.sh "$E" "$H" "Demain — Episode $((EP+1)) : $NEXT" "$E/out/assemble.mp4"
+          sh films/papi-serieux-opening/tools/overlay-episode-title.sh "$E/out/assemble.mp4" "$EP" "$TITLE" "$H" "$E/out/title.mp4"
+          FONT="/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+          ffmpeg -y -hide_banner -loglevel error -i "$E/out/title.mp4" \
+            -vf "drawtext=fontfile=$FONT:text='© Papi\\, sérieux ?':fontcolor=0xF3EBDA@0.60:fontsize=32:borderw=1:bordercolor=0x191715@0.5:x=60:y=250" \
+            -map 0:v:0 -map 0:a:0 -c:v libx264 -preset veryfast -crf 19 -pix_fmt yuv420p \
+            -c:a copy -movflags +faststart "$E/out/final.mp4"
+          .venv/bin/python - <<'PY'
+          import os,subprocess,json
+          e=os.environ['EP'];file=f'films/papi-leo-ep{e}/out/final.mp4'
+          j=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_format','-show_streams','-of','json',file]))
+          assert float(j['format']['duration'])>25,j['format']
+          assert any(s['codec_type']=='audio' for s in j['streams']),'No voices/audio'
+          assert any(s['codec_type']=='video' and s['width']==1080 and s['height']==1920 for s in j['streams']),'Not vertical HD'
+          print('Verified',file,j['format']['duration'],'s')
+          PY
+      - name: Generer la Story illustree 9x16
+        run: |
+          set -eux
+          E="films/papi-leo-ep$EP"
+          case "$EP" in
+            1) TOPIC="l'intelligence artificielle";;
+            2) TOPIC="le GPS";;
+            3) TOPIC="les likes";;
+          esac
+          .venv/bin/python films/papi-serieux-batch12-18/poster.py \
+            "$EP" "$TOPIC" "SÉRIE" "$E/out/verification/scene_23.jpg" "$E/out/affiches"
+      - name: Composer un ZIP complet par episode
+        run: |
+          set -eux
+          mkdir -p PACKS
+          .venv/bin/python - <<'PY'
+          import os,zipfile
+          n=int(os.environ['EP'])
+          short={1:'Intelligence-artificielle',2:'GPS',3:'Likes'}[n]
+          folder=f'films/papi-leo-ep{n}'
+          path=f'PACKS/Papi-serieux-EP{n:02d}-{short}-REFONTE.zip'
+          entries=[
+            (f'{folder}/out/final.mp4',f'EP{n:02d}-Papi-serieux.mp4'),
+            (f'{folder}/out/assemble.srt',f'EP{n:02d}-sous-titres.srt'),
+            (f'{folder}/out/affiches/STORY_EP{n}.png',f'STORY_EP{n}.png'),
+            (f'{folder}/out/affiches/STORY_EP{n}.jpg',f'STORY_EP{n}.jpg'),
+            (f'films/papi-serieux-publications/ep{n}.md','PUBLICATIONS-RESEAUX.md'),
+            (f'{folder}/out/verification/scene_15.jpg','VERIFICATION-MAINS.jpg')
+          ]
+          with zipfile.ZipFile(path,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=4) as z:
+            for source,output in entries:
+              if not os.path.isfile(source) or os.path.getsize(source)==0:raise Exception('File missing '+source)
+              z.write(source,output)
+            z.writestr('LISEZ-MOI.txt',f'Papi, serieux ? — Episode {n}\nRefonte du cartoon original.\n' +
+            'Accroche — generique titre + numero — episode — annonce du prochain — a demain.\n' +
+            'Mains redessinees quatre doigts + pouce, filigrane © Papi, sérieux ? permanent.\n' +
+            'Aucun logo TikTok. MP4 1080x1920, voix et SRT, Story en PNG/JPG, textes pour tous les reseaux.\n')
+          print(path,os.path.getsize(path))
+          PY
+      - name: Livrer les ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Papi-serieux-REFONTE-EP${{ matrix.ep }}
+          path: PACKS/*.zip
+          if-no-files-found: error
+          retention-days: 21
