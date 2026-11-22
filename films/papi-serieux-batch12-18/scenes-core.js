@@ -148,6 +148,10 @@ export function makeEpisode({T,P,papi,leo,drawBG,hangingPans,wallClock,flourJar,
     p.armA={x:-46,y:-201,front:true,hand:'grab',rot:-1.48};
     p.armB={x:80,y:q===0?-206:-150,hand:(q===2?'point':'open'),rot:-1.15,front:true};
     if(q===5){p.armA={x:-37,y:-129,hand:'open',front:true};}
+    // Léo tend le téléphone hors de son visage : écran visible et main cohérente.
+    if(PHONE_EPISODE && q!==5 && q!==7){
+      p.armA={x:-128,y:-143,hand:'grab',rot:-1.48,front:true,bend:-18};
+    }
     if(q===7){p.phone=null;p.armB={x:104,y:-190,hand:'open',front:true};}
     return p;
   }
