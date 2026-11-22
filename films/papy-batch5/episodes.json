@@ -4680,6 +4680,1114 @@
         "https://americanhistory.si.edu/collections",
         "https://www.britannica.com/technology"
       ]
+    },
+    {
+      "slug": "radio",
+      "title": "L'histoire de la radio",
+      "type": "radio",
+      "eras": [
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "COMPRENDRE LES ONDES",
+          "victorian",
+          "waves",
+          "lab"
+        ],
+        [
+          "ITALIE",
+          "ANNÉES 1890",
+          "DES SIGNAUX SANS FIL",
+          "victorian",
+          "spark",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "ENTENDRE UNE VOIX",
+          "victorian",
+          "crystal",
+          "workshop"
+        ],
+        [
+          "LONDRES",
+          "1922",
+          "LES ÉMISSIONS DE RADIO",
+          "thirties",
+          "broadcast",
+          "city"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1930",
+          "LE POSTE FAMILIAL",
+          "thirties",
+          "wood",
+          "modern"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1954",
+          "LE POSTE À TRANSISTORS",
+          "fifties",
+          "transistor",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LA RADIO NUMÉRIQUE",
+          "modern",
+          "digital",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, j'entends une chanson, mais je ne vois pas le chanteur !",
+        "Le son arrive par des ondes que la radio reçoit.",
+        "Comment une voix peut-elle voyager dans l'air ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Le livre magique fait apparaître des ondes autour de nous !",
+        "Au dix-neuvième siècle, des savants étudient les phénomènes électriques et les ondes.",
+        "Un scientifique trace des oscillations et vérifie ses instruments.",
+        "On ne voit pas ces ondes à l'œil nu !",
+        "Pourtant, on peut en étudier les effets.",
+        "Dans les années mille huit cent quatre-vingt-dix, Marconi expérimente la télégraphie sans fil.",
+        "Un opérateur actionne une clé et reçoit des signaux codés.",
+        "Ce sont des points et des traits !",
+        "Les premiers messages ne sont pas encore des chansons.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Les techniques évoluent pour permettre la transmission de voix et de musique.",
+        "Un passionné règle un poste récepteur muni d'écouteurs.",
+        "On peut maintenant entendre quelqu'un parler !",
+        "Les premiers récepteurs demandent des réglages délicats.",
+        "En mille neuf cent vingt-deux, la BBC commence ses premières émissions radiophoniques.",
+        "Un animateur parle devant un microphone dans un studio.",
+        "Des familles peuvent écouter le même programme !",
+        "Les programmes deviennent un rendez-vous quotidien.",
+        "Dans les années trente, les radios à meuble et à lampes se répandent.",
+        "Un enfant tourne un bouton et entend le haut-parleur.",
+        "On se réunit autour de la radio !",
+        "En mille neuf cent cinquante-quatre, une radio commerciale à transistors est lancée.",
+        "Un technicien teste un appareil plus facilement transportable.",
+        "On peut écouter la radio en promenade !",
+        "Aujourd'hui, la radio peut aussi passer par le numérique et Internet.",
+        "Malik choisit une station sur un appareil compact.",
+        "On peut écouter des émissions de très loin !",
+        "Un programme radio peut être diffusé en direct ou réécouté.",
+        "Nous sommes de retour dans notre salon.",
+        "La radio du salon joue encore notre chanson.",
+        "Et moi, je voudrais annoncer la météo de demain !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.ofcom.org.uk/tv-radio-and-on-demand/analogue-radio/100-years-of-radio",
+        "https://www.sciencemuseum.org.uk/sites/default/files/2023-11/Large-print-guide-Information-Age.pdf",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "ordinateur",
+      "title": "L'histoire de l'ordinateur",
+      "type": "computer",
+      "eras": [
+        [
+          "EUROPE",
+          "XVIIe SIÈCLE",
+          "LES MACHINES À CALCULER",
+          "georgian",
+          "calculating",
+          "lab"
+        ],
+        [
+          "ANGLETERRE",
+          "ANNÉES 1830",
+          "LA MACHINE ANALYTIQUE",
+          "victorian",
+          "babbage",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1940",
+          "LES GROS CALCULATEURS",
+          "thirties",
+          "relay",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1946",
+          "ENIAC",
+          "thirties",
+          "eniac",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1970",
+          "LES MICROPROCESSEURS",
+          "modern",
+          "chip",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1980",
+          "L'ORDINATEUR PERSONNEL",
+          "modern",
+          "desktop",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES ORDINATEURS PORTABLES",
+          "modern",
+          "laptop",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi ton ordinateur fait-il autant de choses ?",
+        "Il suit des instructions et traite des informations.",
+        "Comment les premiers ordinateurs étaient-ils fabriqués ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Un écran s'allume dans le livre magique !",
+        "Dès le dix-septième siècle, des inventeurs créent des machines mécaniques pour calculer.",
+        "Un savant actionne des roues pour additionner.",
+        "Il faut tourner les engrenages !",
+        "Ces machines préparent de nouvelles idées.",
+        "Au dix-neuvième siècle, Charles Babbage imagine une machine analytique programmable.",
+        "Un dessinateur prépare le plan de roues et de mécanismes.",
+        "Elle ressemble à un immense assemblage !",
+        "Le projet est beaucoup plus avancé dans les idées que dans sa réalisation.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Au milieu du vingtième siècle, des machines électriques et électromécaniques calculent.",
+        "Un technicien commande une machine remplie de composants.",
+        "Elle occupe presque toute une pièce !",
+        "Des équipes entières s'en occupent.",
+        "En mille neuf cent quarante-six, ENIAC est présenté au public.",
+        "Une programmeuse prépare des réglages et des connexions pour un calcul.",
+        "Il faut tellement de câbles !",
+        "Les premières machines électroniques sont énormes.",
+        "Au cours des années soixante-dix, les microprocesseurs rendent de nouvelles machines compactes.",
+        "Un ingénieur pose une petite puce sur une carte électronique.",
+        "Tout ce travail dans un si petit composant !",
+        "Dans les années quatre-vingt, les ordinateurs personnels arrivent dans davantage de bureaux et de foyers.",
+        "Un enfant insère une disquette puis regarde l'écran.",
+        "On peut travailler et jouer dessus !",
+        "Aujourd'hui, beaucoup d'ordinateurs sont portables et reliés à Internet.",
+        "Malik ouvre l'écran puis tape quelques mots.",
+        "Le clavier et l'écran tiennent dans le même appareil !",
+        "Il faut aussi faire des pauses loin de l'écran.",
+        "Nous sommes de retour dans notre salon.",
+        "Maintenant, je comprends que l'ordinateur n'a pas toujours tenu sur un bureau.",
+        "Et moi, je vais lui demander d'organiser mes lunettes !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.computerhistory.org/timeline/computers/",
+        "https://www.computerhistory.org/revolution/early-computer-companies/5",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "clavier",
+      "title": "L'histoire du clavier",
+      "type": "keyboard",
+      "eras": [
+        [
+          "EUROPE",
+          "XVIIIe SIÈCLE",
+          "LES IDÉES DE MACHINE À ÉCRIRE",
+          "georgian",
+          "early",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1868",
+          "LE BREVET DE SHOLES",
+          "victorian",
+          "sholes",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1870",
+          "LA DISPOSITION QWERTY",
+          "victorian",
+          "typewriter",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES CLAVIERS DE BUREAU",
+          "thirties",
+          "mechanical",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1970",
+          "LES TERMINAUX INFORMATIQUES",
+          "modern",
+          "terminal",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1980",
+          "LE CLAVIER DE PC",
+          "modern",
+          "pc",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "CLAVIER PHYSIQUE OU TACTILE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi les lettres du clavier sont-elles dans cet ordre ?",
+        "Cette disposition vient d'une longue histoire des machines à écrire.",
+        "Qui a décidé où placer toutes les touches ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Un clavier géant apparaît dans notre livre !",
+        "Bien avant les ordinateurs, des inventeurs imaginent des machines pour écrire des lettres.",
+        "Un artisan dessine un mécanisme qui imprime des caractères.",
+        "On pensait déjà à écrire avec une machine !",
+        "Les modèles changent beaucoup d'un inventeur à l'autre.",
+        "En mille huit cent soixante-huit, Christopher Sholes et ses collaborateurs brevettent une machine à écrire.",
+        "Un inventeur appuie sur les touches qui actionnent des caractères.",
+        "Chaque lettre frappe le papier !",
+        "Plusieurs dispositions de touches sont expérimentées.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "La disposition QWERTY se répand avec des machines à écrire commerciales.",
+        "Une dactylographe frappe les lettres sur une feuille.",
+        "Les touches ne suivent pas l'alphabet !",
+        "D'autres pays utilisent d'autres dispositions.",
+        "Les machines à écrire deviennent des outils quotidiens de bureau.",
+        "Une secrétaire déplace une feuille au rouleau et tape au clavier.",
+        "Le petit bruit des touches remplit la pièce !",
+        "On ne peut pas effacer aussi facilement qu'à l'écran.",
+        "Les terminaux des ordinateurs utilisent des claviers pour entrer des commandes.",
+        "Un opérateur écrit des instructions sur un terminal.",
+        "Les lettres apparaissent sur un écran !",
+        "Les ordinateurs personnels se vendent avec leurs claviers.",
+        "Une usine assemble des interrupteurs sous des touches en plastique.",
+        "On peut taper très vite !",
+        "Aujourd'hui, on utilise des claviers physiques et des claviers tactiles.",
+        "Malik saisit un mot puis le corrige sur l'écran.",
+        "Une erreur se corrige en quelques touches !",
+        "Et on fait attention à bien positionner ses mains.",
+        "Nous sommes de retour dans notre salon.",
+        "Je vais maintenant écrire mon prénom sans regarder mes mains.",
+        "Et moi, je vais essayer d'écrire ma moustache en majuscules !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://americanhistory.si.edu/collections/object/nmah_850719",
+        "https://www.computerhistory.org/timeline/input-output/",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "souris-ordinateur",
+      "title": "L'histoire de la souris d'ordinateur",
+      "type": "mouse",
+      "eras": [
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1950",
+          "CHERCHER COMMENT POINTER",
+          "fifties",
+          "controls",
+          "lab"
+        ],
+        [
+          "CALIFORNIE",
+          "1964",
+          "LE PREMIER PROTOTYPE EN BOIS",
+          "modern",
+          "wood",
+          "lab"
+        ],
+        [
+          "SAN FRANCISCO",
+          "1968",
+          "UNE DÉMONSTRATION CÉLÈBRE",
+          "modern",
+          "demo",
+          "lab"
+        ],
+        [
+          "CALIFORNIE",
+          "ANNÉES 1970",
+          "LES LABORATOIRES XEROX",
+          "modern",
+          "ball",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1983",
+          "L'APPLE LISA",
+          "modern",
+          "lisa",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1990",
+          "LA SOURIS À BOULE",
+          "modern",
+          "rolling",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES SOURIS SANS FIL",
+          "modern",
+          "wireless",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi cette petite souris n'a-t-elle ni pattes ni moustaches ?",
+        "Elle sert à déplacer un pointeur sur l'écran.",
+        "Qui a eu l'idée d'appeler ça une souris ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Une souris en bois sort du livre magique !",
+        "Les chercheurs essaient plusieurs façons de commander les machines.",
+        "Un technicien manipule un stylet et un dispositif de pointage.",
+        "On cherche comment montrer quelque chose à l'écran !",
+        "Les interfaces ne ressemblent pas encore à nos bureaux.",
+        "En mille neuf cent soixante-quatre, un prototype de souris en bois est fabriqué dans l'équipe de Douglas Engelbart.",
+        "Un ingénieur fait rouler deux roues sous une petite boîte.",
+        "Elle est vraiment en bois !",
+        "Le dispositif transmet les déplacements à l'ordinateur.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "En mille neuf cent soixante-huit, Engelbart montre au public une souris informatique.",
+        "Il déplace un pointeur pendant une démonstration sur écran.",
+        "Le curseur suit ses gestes !",
+        "Cette présentation marque l'histoire de l'informatique.",
+        "Les laboratoires Xerox PARC développent des interfaces graphiques et des systèmes de pointage.",
+        "Un programmeur ouvre une fenêtre sur l'écran à l'aide d'une souris.",
+        "Les images peuvent servir à commander l'ordinateur !",
+        "Cette idée va gagner de nouveaux appareils.",
+        "En mille neuf cent quatre-vingt-trois, l'ordinateur Apple Lisa est vendu avec une souris.",
+        "Une employée sélectionne une icône sur l'écran.",
+        "Plus besoin d'apprendre toutes les commandes !",
+        "Les souris à boule deviennent des accessoires ordinaires des ordinateurs.",
+        "Malik voit une boule entraîner les déplacements du pointeur.",
+        "La boule roule sous la souris !",
+        "Aujourd'hui, des capteurs optiques mesurent le mouvement et des souris sont sans fil.",
+        "Malik fait glisser doucement la souris sur le bureau.",
+        "La flèche avance exactement comme ma main !",
+        "Il faut choisir un appareil adapté à sa main.",
+        "Nous sommes de retour dans notre salon.",
+        "Je sais maintenant faire bouger le pointeur.",
+        "Et celle-ci ne viendra pas grignoter mon fromage !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://computerhistory.org/sri-mouse-mn052024/",
+        "https://www.dougengelbart.org/content/view/162/000/",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "microphone",
+      "title": "L'histoire du microphone",
+      "type": "microphone",
+      "eras": [
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES PREMIÈRES EXPÉRIENCES SUR LE SON",
+          "victorian",
+          "sound",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1870",
+          "LES TRANSMETTEURS À CARBONE",
+          "victorian",
+          "carbon",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES PREMIERS STUDIOS",
+          "victorian",
+          "studio",
+          "workshop"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1930",
+          "LE MICROPHONE À RUBAN",
+          "thirties",
+          "ribbon",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "MILIEU DU XXe SIÈCLE",
+          "LES MICROS DYNAMIQUES",
+          "fifties",
+          "dynamic",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "LES PETITS MICROS",
+          "modern",
+          "lav",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES MICROS NUMÉRIQUES",
+          "modern",
+          "usb",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi ma voix devient-elle plus forte avec ce micro ?",
+        "Il transforme les vibrations du son en signal électrique.",
+        "Comment ce petit objet peut-il entendre une voix ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Une note de musique fait vibrer le livre magique !",
+        "Au dix-neuvième siècle, les inventeurs étudient comment convertir la voix en signal.",
+        "Un chercheur fait vibrer une membrane près d'un fil.",
+        "Le son fait bouger une petite pièce !",
+        "Ces expériences préparent le téléphone et le microphone.",
+        "Dans les années mille huit cent soixante-dix, les microphones à carbone sont perfectionnés.",
+        "Un ingénieur teste un transmetteur avec une source sonore.",
+        "La voix change le contact électrique !",
+        "Les inventions du téléphone et du microphone sont liées.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Avec les débuts de la radio, des microphones sont utilisés dans les studios.",
+        "Un chanteur reste devant un microphone volumineux.",
+        "Il faut se placer au bon endroit !",
+        "Le son est envoyé vers les équipements de diffusion.",
+        "Dans les années trente, les microphones à ruban trouvent leur place dans des studios.",
+        "Une fine bande métallique vibre sous l'effet des sons.",
+        "C'est minuscule à l'intérieur !",
+        "Le mécanisme réagit aux vibrations de l'air.",
+        "Les microphones dynamiques deviennent populaires pour la scène et la radio.",
+        "Un technicien place un micro sur un pied de scène.",
+        "On peut chanter devant un public !",
+        "Les micros miniatures sont utilisés à la télévision et dans des spectacles.",
+        "Une présentatrice fixe un micro discret sur sa veste.",
+        "On ne le voit presque plus !",
+        "Aujourd'hui, des microphones se branchent facilement à des appareils numériques.",
+        "Malik enregistre une phrase puis l'écoute sur un ordinateur.",
+        "C'est ma voix, mais elle sort des haut-parleurs !",
+        "On respecte la vie privée avant d'enregistrer quelqu'un.",
+        "Nous sommes de retour dans notre salon.",
+        "Je vais dire bonjour dans le microphone.",
+        "Et moi, je vais chanter très doucement pour ménager tes oreilles !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.sciencemuseum.org.uk/objects-and-stories/communication",
+        "https://www.britannica.com/technology/microphone",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "ventilateur",
+      "title": "L'histoire du ventilateur",
+      "type": "fan",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "LES ÉVENTAILS",
+          "antique",
+          "hand",
+          "temple"
+        ],
+        [
+          "ASIE",
+          "ÉPOQUES ANCIENNES",
+          "LES ÉVENTAILS PLIANTS",
+          "chinese",
+          "folding",
+          "market"
+        ],
+        [
+          "INDE",
+          "XIXe SIÈCLE",
+          "LES GRANDS ÉVENTAILS PUNKAH",
+          "victorian",
+          "punkah",
+          "palace"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1880",
+          "LE VENTILATEUR ÉLECTRIQUE",
+          "victorian",
+          "electric",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES GRILLES DE PROTECTION",
+          "thirties",
+          "caged",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "MILIEU DU XXe SIÈCLE",
+          "LES VENTILATEURS OSCILLANTS",
+          "fifties",
+          "oscillating",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES VENTILATEURS PLUS DISCRETS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, il fait très chaud dans le salon !",
+        "Un ventilateur fait circuler l'air pour nous rafraîchir.",
+        "Est-ce que les premiers ventilateurs avaient déjà un moteur ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Les pages du livre se mettent à tourner comme des pales !",
+        "Depuis l'Antiquité, des éventails sont utilisés pour créer un courant d'air.",
+        "Une personne agite un large éventail près d'une fenêtre.",
+        "C'est une petite brise faite à la main !",
+        "Il faut bouger le bras sans arrêt.",
+        "Dans plusieurs régions d'Asie, les éventails sont fabriqués avec des matériaux légers.",
+        "Un artisan ouvre un éventail pliant avec des baguettes.",
+        "Il se range dans une poche !",
+        "L'art de l'éventail prend des formes très différentes.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Dans certaines régions de l'Inde coloniale, des éventails suspendus sont actionnés par une corde.",
+        "Un employé tire sur la corde pour faire bouger l'éventail.",
+        "C'est tout le plafond qui bouge !",
+        "Ce système ventile une pièce sans moteur électrique.",
+        "À la fin du dix-neuvième siècle, les premiers ventilateurs électriques sont commercialisés.",
+        "Un ingénieur fait tourner une hélice à l'aide d'un moteur.",
+        "Les pales tournent sans effort humain !",
+        "L'électricité fait bouger l'air de la pièce.",
+        "Les fabricants ajoutent des grilles autour des pales tournantes.",
+        "Un ouvrier fixe une grille métallique sur le ventilateur.",
+        "On voit encore les pales derrière !",
+        "Les modèles oscillants permettent de diriger l'air alternativement de plusieurs côtés.",
+        "Une enfant regarde le ventilateur tourner lentement la tête.",
+        "Il envoie de l'air à tout le monde !",
+        "Aujourd'hui, les ventilateurs ont différentes tailles et vitesses.",
+        "Papy règle la vitesse puis place l'appareil hors de portée.",
+        "Je sens une petite brise sur mes cheveux !",
+        "On ne met jamais les doigts près des pales.",
+        "Nous sommes de retour dans notre salon.",
+        "Le ventilateur du salon souffle une petite brise.",
+        "Mais attention à ma moustache, elle va s'envoler !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.britannica.com/technology/electric-fan",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "grille-pain",
+      "title": "L'histoire du grille-pain",
+      "type": "toaster",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "DORER LE PAIN AU FEU",
+          "antique",
+          "fire",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES GRILLES DEVANT LE FOYER",
+          "victorian",
+          "grill",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES RÉSISTANCES ÉLECTRIQUES",
+          "victorian",
+          "coil",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1909",
+          "UN GRILLE-PAIN ÉLECTRIQUE COMMERCIAL",
+          "victorian",
+          "ge",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1920",
+          "LE GRILLE-PAIN AUTOMATIQUE",
+          "thirties",
+          "popup",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1950",
+          "LES MODÈLES DE CUISINE",
+          "fifties",
+          "chrome",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "RÉGLER LE DORAGE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, ma tartine vient de sauter toute seule !",
+        "Le grille-pain chauffe le pain puis libère les tranches.",
+        "Qui a imaginé une machine qui fait bondir le pain ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Une tartine dorée jaillit du portail magique !",
+        "Depuis très longtemps, les humains font griller du pain près d'une source de chaleur.",
+        "Un cuisinier tient une tranche à distance des braises.",
+        "Le pain devient croustillant !",
+        "Il faut le surveiller pour ne pas le brûler.",
+        "Avant les grille-pain électriques, des ustensiles maintiennent le pain devant une flamme.",
+        "Une cuisinière tourne une grille pour dorer les deux côtés.",
+        "On doit retourner la tranche !",
+        "La chaleur doit toucher le pain sans le brûler.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Les résistances électriques permettent de chauffer une tranche sans flamme.",
+        "Un inventeur teste un fil chauffant protégé dans un appareil.",
+        "Le fil devient chaud grâce à l'électricité !",
+        "Les premiers modèles demandent de surveiller le pain.",
+        "Au début du vingtième siècle, des grille-pain électriques sont commercialisés.",
+        "Un ouvrier assemble les parois et le fil chauffant.",
+        "La tartine tient debout sur la grille !",
+        "Les appareils restent assez simples.",
+        "Dans les années vingt, les grille-pain automatiques à éjection se développent.",
+        "Un petit mécanisme relâche le pain au bon moment.",
+        "Hop ! La tartine monte toute seule !",
+        "Au milieu du vingtième siècle, les modèles à deux fentes deviennent courants.",
+        "Une famille pose un appareil chromé sur la table.",
+        "On peut préparer deux tranches !",
+        "Aujourd'hui, de nombreux grille-pain permettent de choisir le niveau de dorage.",
+        "Papy règle l'appareil pendant que Malik prépare son assiette.",
+        "Je préfère mon pain juste un peu doré !",
+        "Seul un adulte touche l'appareil chaud et on n'y met jamais les doigts.",
+        "Nous sommes de retour dans notre salon.",
+        "Ma tartine est prête pour le petit-déjeuner.",
+        "Et moi, je saute moins haut que le pain, heureusement !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://americanhistory.si.edu/ne/collections/object/nmah_324284",
+        "https://www.si.edu/object/toastmaster-toaster%3Anmah_324284",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "bouilloire",
+      "title": "L'histoire de la bouilloire",
+      "type": "kettle",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "CHAUFFER L'EAU DANS UN RÉCIPIENT",
+          "antique",
+          "pot",
+          "courtyard"
+        ],
+        [
+          "ASIE",
+          "ÉPOQUES ANCIENNES",
+          "LES THÉIÈRES ET LES CHAUDRONS",
+          "chinese",
+          "copper",
+          "market"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LA BOUILLOIRE SUR LE FOURNEAU",
+          "victorian",
+          "stove",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XIXe SIÈCLE",
+          "LES PREMIÈRES BOUILLOIRES ÉLECTRIQUES",
+          "victorian",
+          "early-electric",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "LES RÉSISTANCES INTÉGRÉES",
+          "thirties",
+          "element",
+          "factory"
+        ],
+        [
+          "ROYAUME-UNI",
+          "ANNÉES 1950",
+          "L'ARRÊT AUTOMATIQUE",
+          "fifties",
+          "automatic",
+          "lab"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LA BOUILLOIRE SANS FIL",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi l'eau fait-elle de petites bulles ?",
+        "La bouilloire sert à chauffer de l'eau.",
+        "Comment les familles faisaient-elles avant les bouilloires électriques ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Un nuage de vapeur sort du livre magique !",
+        "Depuis l'Antiquité, les familles chauffent de l'eau dans des récipients posés sur un foyer.",
+        "Un adulte déplace un pot à distance du feu.",
+        "Il faut rester loin des flammes !",
+        "Les récipients varient selon les matériaux locaux.",
+        "Différentes cultures fabriquent des récipients spécialisés pour chauffer ou verser l'eau.",
+        "Un artisan façonne un bec verseur et une poignée.",
+        "Le bec aide à verser sans renverser !",
+        "Les formes évoluent avec les usages.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Au dix-neuvième siècle, les bouilloires en métal se chauffent sur des fourneaux.",
+        "Une cuisinière pose un récipient avec une poignée sur une plaque.",
+        "Il faut attendre que l'eau chauffe !",
+        "Une poignée permet d'éviter de toucher le corps chaud.",
+        "À la fin du dix-neuvième siècle apparaissent des bouilloires chauffées électriquement.",
+        "Un technicien raccorde une résistance à un appareil expérimental.",
+        "L'électricité remplace le feu !",
+        "Les premiers appareils sont moins pratiques qu'aujourd'hui.",
+        "Au vingtième siècle, les éléments chauffants sont mieux intégrés aux bouilloires.",
+        "Un ouvrier installe la résistance dans un récipient.",
+        "L'eau chauffe plus facilement !",
+        "Des bouilloires à arrêt automatique deviennent disponibles au milieu du vingtième siècle.",
+        "Un inventeur observe un thermostat couper le chauffage.",
+        "La bouilloire s'arrête toute seule !",
+        "De nombreuses bouilloires modernes se retirent d'une base électrique.",
+        "Un adulte soulève la bouilloire par sa poignée après l'arrêt.",
+        "Elle est plus facile à servir !",
+        "L'eau bouillante doit toujours rester entre les mains des adultes.",
+        "Nous sommes de retour dans notre salon.",
+        "L'eau de la bouilloire a fini de chauffer.",
+        "Et moi, je préfère attendre avant de la toucher !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.russellhobbs.com/about-us",
+        "https://www.britannica.com/technology/electric-kettle",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "robinet",
+      "title": "L'histoire du robinet",
+      "type": "faucet",
+      "eras": [
+        [
+          "ROME",
+          "ANTIQUITÉ",
+          "LES CONDUITES D'EAU",
+          "antique",
+          "pipe",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES VANNES SIMPLES",
+          "medieval",
+          "valve",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES ROBINETS À VIS",
+          "victorian",
+          "screw",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XIXe SIÈCLE",
+          "L'EAU CHAUDE ET FROIDE",
+          "victorian",
+          "two",
+          "modern"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1940",
+          "LE MITIGEUR À POIGNÉE UNIQUE",
+          "thirties",
+          "mixer",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "LES ROBINETS À CARTOUCHE",
+          "modern",
+          "cartridge",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES ROBINETS À CAPTEUR",
+          "modern",
+          "sensor",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi l'eau coule quand je tourne le robinet ?",
+        "Un mécanisme ouvre ou ferme le passage de l'eau.",
+        "Qui a imaginé de pouvoir arrêter l'eau d'un seul geste ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Une goutte bleue s'illumine au-dessus du livre !",
+        "Dans l'Empire romain, des conduites transportent de l'eau vers les villes.",
+        "Un artisan fait passer l'eau dans une canalisation.",
+        "L'eau ne vient pas toujours d'un puits !",
+        "Les fontaines et les bains utilisent ces réseaux.",
+        "Des installations anciennes utilisent des bouchons et des vannes pour réguler l'écoulement.",
+        "Un artisan tourne une pièce qui ferme une conduite.",
+        "Le passage de l'eau est bloqué !",
+        "Les mécanismes dépendent des métiers et des matériaux.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Les robinets à vis se diffusent avec le développement des réseaux domestiques.",
+        "Un plombier tourne une tige pour presser un joint.",
+        "L'eau coule moins puis s'arrête !",
+        "Le joint bloque le passage lorsqu'il est serré.",
+        "Les cuisines et salles de bain s'équipent progressivement de points d'eau chaude et froide.",
+        "Un ouvrier installe deux robinets près d'un lavabo.",
+        "Il faut régler les deux séparément !",
+        "De nouveaux systèmes cherchent à mélanger les températures.",
+        "Au vingtième siècle, les mitigeurs à commande unique se développent.",
+        "Un inventeur fait bouger un levier pour changer le débit et la température.",
+        "Un seul geste commande l'eau !",
+        "Les cartouches modernes rendent les réglages plus précis.",
+        "Un plombier remplace une pièce interne d'un robinet.",
+        "Le mécanisme se trouve à l'intérieur !",
+        "Certains robinets actuels détectent la présence des mains.",
+        "Malik place les mains sous le bec pour laisser passer l'eau.",
+        "L'eau s'arrête quand je retire mes mains !",
+        "Un bon robinet permet aussi d'économiser l'eau.",
+        "Nous sommes de retour dans notre salon.",
+        "Le robinet du salon est bien fermé.",
+        "Et moi, je vais garder chaque goutte pour ma prochaine aventure !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.moen.com/about-us/history",
+        "https://www.britannica.com/technology/plumbing",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "balai",
+      "title": "L'histoire du balai",
+      "type": "broom",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "BALAYER AVEC DES BRANCHES",
+          "antique",
+          "twigs",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES FAISCEAUX DE BRUYÈRE",
+          "medieval",
+          "heather",
+          "medieval"
+        ],
+        [
+          "AMÉRIQUE DU NORD",
+          "XVIIIe SIÈCLE",
+          "LE SORGHO À BALAIS",
+          "georgian",
+          "sorghum",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1797",
+          "LES BALAIS DE LEVI DICKENSON",
+          "georgian",
+          "dickinson",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "XIXe SIÈCLE",
+          "LES ATELIERS DE BALAIS",
+          "victorian",
+          "workshop",
+          "Au dix-neuvième siècle, les ateliers produisent des balais en plus grandes quantités."
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "LES BROSSES SYNTHÉTIQUES",
+          "fifties",
+          "nylon",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "NETTOYER TOUS LES SOLS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, il y a des miettes sous la table !",
+        "Un balai peut les rassembler sans faire de bruit.",
+        "Qui a inventé les premiers balais pour nettoyer le sol ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Un balai dessine un cercle de poussière autour du livre !",
+        "Depuis des temps anciens, on regroupe des brindilles pour nettoyer les sols.",
+        "Un habitant attache des branches à une poignée.",
+        "Ce balai ressemble à un petit buisson !",
+        "Les matériaux sont choisis près de chez soi.",
+        "Au Moyen Âge, les balais peuvent utiliser des brindilles et des plantes liées ensemble.",
+        "Un artisan serre une botte de bruyère autour d'un manche.",
+        "Les fibres ramassent la poussière !",
+        "La forme dépend du sol à nettoyer.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Le sorgho à balais sert à fabriquer des têtes de balai plus régulières.",
+        "Une artisane coupe les tiges et les lie à un manche.",
+        "Les brins sont tous alignés !",
+        "Cette plante possède des tiges adaptées.",
+        "En mille sept cent quatre-vingt-dix-sept, Levi Dickenson est associé à la fabrication de balais en sorgho.",
+        "Un artisan fixe une poignée de fibres sur un manche en bois.",
+        "On commence à fabriquer beaucoup de balais !",
+        "La production se développe progressivement.",
+        "Un ouvrier serre les fibres avec une machine.",
+        "La tête du balai tient mieux !",
+        null,
+        "Au vingtième siècle, les brosses en matières synthétiques se répandent.",
+        "Une machine fixe des fibres dans une tête de balai.",
+        "Les brins peuvent être colorés !",
+        "Aujourd'hui, il existe des balais adaptés aux sols intérieurs et extérieurs.",
+        "Malik pousse ses miettes dans une petite pelle.",
+        "Je peux aider à nettoyer la table !",
+        "Bravo, on nettoie doucement et on range le balai après usage.",
+        "Nous sommes de retour dans notre salon.",
+        "Le salon est de nouveau bien propre.",
+        "Mais je garde une miette pour mon petit gâteau de demain !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology/broom",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.britannica.com/technology"
+      ]
     }
   ]
 }
