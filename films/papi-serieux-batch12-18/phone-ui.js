@@ -96,15 +96,16 @@ export function drawPhoneMagnifier(ctx,kind,t,{shot,cam,phoneWorld={x:243,y:775}
   const starting={0:.5,2:8.75,4:21,6:28.65}[shot];
   if(starting===undefined || t<starting)return;
   const age=Math.min(1,(t-starting)/.52),ease=1-Math.pow(1-age,3);
-  const panelX=638+(1-ease)*130,panelY=560,sw=370,sh=626;
+  const panelX=707+(1-ease)*92,panelY=560,sw=343,sh=610;
   const pX=540+(phoneWorld.x-cam.x)*cam.z;
   const pY=960+(phoneWorld.y-cam.y)*cam.z;
   ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=age;
   ctx.strokeStyle=C.white;ctx.lineWidth=7;ctx.lineCap='round';
-  ctx.beginPath();ctx.moveTo(pX+18,pY-5);
-  ctx.bezierCurveTo(pX+110,pY-85,panelX-65,panelY+sh*.6,panelX-11,panelY+sh*.6);
+  ctx.beginPath();ctx.moveTo(pX+12,pY+18);
+  // Route the cable below Leo's face so the expression is never obscured.
+  ctx.bezierCurveTo(pX+86,pY+150,panelX-100,panelY+sh*.92,panelX-11,panelY+sh*.84);
   ctx.stroke();ctx.strokeStyle=C.ink;ctx.lineWidth=3;ctx.stroke();
-  ctx.beginPath();ctx.arc(pX+18,pY-5,13,0,7);ctx.fillStyle=C.white;ctx.fill();ctx.strokeStyle=C.ink;ctx.lineWidth=4;ctx.stroke();
+  ctx.beginPath();ctx.arc(pX+12,pY+18,13,0,7);ctx.fillStyle=C.white;ctx.fill();ctx.strokeStyle=C.ink;ctx.lineWidth=4;ctx.stroke();
   ctx.shadowColor='rgba(0,0,0,.35)';ctx.shadowBlur=18;ctx.shadowOffsetY=10;
   rr(ctx,panelX-13,panelY-13,sw+26,sh+26,38,C.ink,C.white,6);
   ctx.shadowBlur=0;ctx.shadowOffsetY=0;
