@@ -5,6 +5,7 @@ import {push,pop,translate,rotate,scale,shape,fillOnly,stroke,ell,arc,spline,rr,
 import {figure,VIEW} from './people.js';
 import {renderWorkshop,setWorkshopAction} from './workshops.js';
 import {drawGadget,GADGET_TYPES} from './gadgets.js';
+import {drawSchool,SCHOOL_TYPES} from './school.js';
 export const setAction=(id,u)=>setWorkshopAction(id,u);
 import {FLOOR,portal,GLOW,ground} from './worlds.js';
 export {FLOOR,portal,GLOW,VIEW};
@@ -335,14 +336,15 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
  }
 
  if(GADGET_TYPES.has(typ))drawGadget(typ,kind,t);
+ if(SCHOOL_TYPES.has(typ))drawSchool(typ,kind,t);
 
  pop();
 }
 // The key story starts with a giant old key found under the sofa, not a badge.
-const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':['scissors','fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)?'home':CFG.eras[6][4];
+const showcaseKind=CFG.type==='key'?'wood':CFG.type==='zipper'?'bag':(['scissors','fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)||SCHOOL_TYPES.has(CFG.type))?'home':CFG.eras[6][4];
 export const titleProp=(t)=>object(0,25,.5,{kind:showcaseKind,t,a:-.12});
-export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,['zipper','scissors','fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)?.40:.32,{kind,t,a:-.15});};
-export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:CFG.type==='fork'?.55:['spoon','tableknife','dish','drinkingglass'].includes(CFG.type)?.53:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):['fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)?(w==='home2'?'home2':'home'):showcaseKind,t});
+export const heldObject=(w,t)=>{const n=Number(w.slice(1))-1;if(!Number.isInteger(n)||n<0||n>6)return null;const kind=CFG.eras[n][4];return(x,y)=>object(x+30,y-70,(['zipper','scissors','fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)||SCHOOL_TYPES.has(CFG.type))?.40:.32,{kind,t,a:-.15});};
+export const homeObject=(x,y,t,w='home')=>object(x,y,CFG.type==='zipper'?.57:CFG.type==='scissors'?.48:CFG.type==='fork'?.55:(['spoon','tableknife','dish','drinkingglass'].includes(CFG.type)||SCHOOL_TYPES.has(CFG.type))?.53:.35,{kind:CFG.type==='zipper'?(w==='home2'?'bag-closed':'bag-stuck'):CFG.type==='scissors'?(w==='home2'?'dragon-ready':'dragon'):(['fork','spoon','tableknife','dish','drinkingglass'].includes(CFG.type)||SCHOOL_TYPES.has(CFG.type))?(w==='home2'?'home2':'home'):showcaseKind,t});
 export function home(t,{glow=0,clockT=t}={}){
  bg('#f1e2c8');
  for(let x=-900;x<2100;x+=180)line(x,-1200,x,FLOOR-35,'#dfceaf',3);
