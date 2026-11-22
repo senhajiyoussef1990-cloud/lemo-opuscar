@@ -1375,6 +1375,556 @@
         "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
         "Abonne-toi, et à demain pour notre prochain voyage !"
       ]
+    },
+    {
+      "slug": "telephone",
+      "title": "L'histoire du téléphone",
+      "type": "telephone",
+      "eras": [
+        [
+          "BOSTON",
+          "1876",
+          "LA VOIX VOYAGE DANS UN FIL",
+          "victorian",
+          "bell",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1880",
+          "DES OPÉRATRICES RELIENT LES APPELS",
+          "victorian",
+          "switchboard",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LE TÉLÉPHONE FIXÉ AU MUR",
+          "victorian",
+          "wall",
+          "city"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1930",
+          "LE CADRAN À TOURNER",
+          "thirties",
+          "rotary",
+          "modern"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1960",
+          "LES TOUCHES REMPLACENT LE CADRAN",
+          "fifties",
+          "button",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1980",
+          "LE TÉLÉPHONE DEVIENT MOBILE",
+          "modern",
+          "mobile",
+          "city"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES ÉCRANS DANS NOS POCHES",
+          "modern",
+          "smart",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, ton téléphone sonne alors que tu ne vois personne !",
+        "C'est une voix qui vient de loin, Malik.",
+        "Comment la voix traverse-t-elle les murs ?",
+        "Aujourd'hui, elle voyage grâce aux réseaux.",
+        "Mais comment les gens se parlaient-ils avant ?",
+        "Ouvrons Le Livre de Papy pour le découvrir !",
+        "Oh ! Le téléphone s'illumine près du livre !",
+        "En mille huit cent soixante-seize, Alexander Graham Bell fait fonctionner un téléphone expérimental.",
+        "Les vibrations de la voix peuvent être transmises grâce à un circuit électrique.",
+        "Il parlait vraiment à distance ?",
+        "Oui, cette invention a ouvert une nouvelle manière de communiquer.",
+        "Dans les premiers réseaux, des opératrices relient les appels à la main.",
+        "Elles branchent des fiches dans un grand tableau de connexions.",
+        "On dirait un énorme jeu de câbles !",
+        "Chaque fiche permet de mettre deux personnes en relation.",
+        "C'était un véritable métier, très important.",
+        "Au début du vingtième siècle, on trouve des téléphones fixés au mur.",
+        "Une personne décroche le combiné pour parler.",
+        "Il faut rester près du mur pour discuter ?",
+        "Souvent oui, puisqu'un fil relie l'appareil au réseau.",
+        "Puis les téléphones à cadran se répandent.",
+        "Pour composer un numéro, on fait tourner un disque troué.",
+        "Je voudrais essayer tous les numéros !",
+        "Doucement ! Il fallait attendre le retour du cadran entre les chiffres.",
+        "Des appareils à touches apparaissent au milieu du vingtième siècle.",
+        "Appuyer sur des boutons devient plus pratique que tourner le cadran.",
+        "Et ça va beaucoup plus vite !",
+        "Dans les années quatre-vingt, les téléphones mobiles deviennent commerciaux.",
+        "Ils sont gros et leurs batteries sont limitées.",
+        "Ce téléphone ressemble à une brique !",
+        "Aujourd'hui, beaucoup de téléphones sont aussi des appareils photo et des petits ordinateurs.",
+        "On touche l'écran pour appeler ou envoyer un message.",
+        "Papy, je peux appeler quelqu'un de l'autre côté de la Terre ?",
+        "Oui, mais demande toujours l'autorisation avant d'utiliser le téléphone.",
+        "Nous voilà revenus dans notre salon.",
+        "Le téléphone de Papy sonne encore !",
+        "C'est Mamie ! Je vais lui dire bonjour.",
+        "C'était Le Livre de Papy ! Un objet, sept époques et plein de découvertes.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://www.si.edu/spotlight/phones",
+        "https://americanhistory.si.edu/collections",
+        "https://www.sciencemuseum.org.uk/objects-and-stories/communication",
+        "https://www.britannica.com/technology/telephone"
+      ]
+    },
+    {
+      "slug": "television",
+      "title": "L'histoire de la télévision",
+      "type": "television",
+      "eras": [
+        [
+          "LONDRES",
+          "1926",
+          "LES IMAGES MÉCANIQUES DE BAIRD",
+          "thirties",
+          "mechanical",
+          "lab"
+        ],
+        [
+          "LONDRES",
+          "ANNÉES 1930",
+          "L'ÉCRAN ÉLECTRONIQUE",
+          "thirties",
+          "electronic",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1950",
+          "LE PETIT ÉCRAN NOIR ET BLANC",
+          "fifties",
+          "salon-bw",
+          "modern"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1960",
+          "L'ARRIVÉE DE LA COULEUR",
+          "fifties",
+          "color",
+          "city"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1980",
+          "LES ÉCRANS À TUBE",
+          "modern",
+          "crt",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 2000",
+          "LA TÉLÉVISION DEVIENT PLATE",
+          "modern",
+          "flat",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES VIDÉOS À LA DEMANDE",
+          "modern",
+          "stream",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, comment tous ces personnages sont entrés dans la télévision ?",
+        "Ils ne sont pas dedans, Malik. Ce sont des images envoyées à l'écran.",
+        "Mais qui a imaginé une boîte pleine d'images ?",
+        "Plusieurs inventeurs ont contribué à sa création.",
+        "Et avant, les émissions étaient comment ?",
+        "Ouvrons Le Livre de Papy !",
+        "Oh ! Notre écran devient un portail lumineux !",
+        "En mille neuf cent vingt-six, John Logie Baird présente un système de télévision mécanique.",
+        "Son appareil utilise notamment un disque en rotation pour reconstituer une image.",
+        "Un disque qui tourne pour dessiner des visages ?",
+        "Oui, les premières images sont très petites et peu détaillées.",
+        "Dans les années trente, la télévision électronique progresse.",
+        "Des caméras et des tubes permettent de transmettre des images autrement.",
+        "Ce n'est plus le même mécanisme !",
+        "Non, l'électronique va remplacer les systèmes mécaniques.",
+        "Les émissions deviennent peu à peu plus régulières.",
+        "Dans les années cinquante, davantage de familles découvrent la télévision.",
+        "On se réunit devant un petit écran en noir et blanc.",
+        "Pourquoi tout le monde est gris ?",
+        "Parce que cette télévision n'affiche pas encore les couleurs.",
+        "Dans les années soixante, les émissions en couleur se développent.",
+        "Les téléviseurs capables de montrer plusieurs couleurs arrivent dans les salons.",
+        "Oh ! Les vêtements sont enfin colorés !",
+        "La transition se fait à des dates différentes selon les pays.",
+        "Longtemps, les télévisions utilisent un gros tube à l'intérieur.",
+        "Ce tube explique pourquoi les appareils sont si profonds.",
+        "On dirait une armoire avec un écran !",
+        "Dans les années deux mille, les écrans plats se répandent.",
+        "Les téléviseurs deviennent plus minces et parfois très grands.",
+        "Il y a plus de place dans le salon !",
+        "Aujourd'hui, on peut choisir des programmes à la demande.",
+        "Un écran connecté affiche des films et des dessins animés.",
+        "Alors je peux regarder l'histoire de Papy ?",
+        "Oui, mais pensons aussi à jouer dehors et à reposer nos yeux.",
+        "Retour dans le salon, notre téléviseur fonctionne toujours.",
+        "Je préfère notre écran en couleur !",
+        "Et moi, je préfère te raconter les histoires avant le générique.",
+        "C'était Le Livre de Papy ! Merci d'avoir voyagé avec nous.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://collection.sciencemuseumgroup.org.uk/objects/co34789",
+        "https://blog.scienceandmediamuseum.org.uk/history-of-british-television-timeline/",
+        "https://blog.scienceandmediamuseum.org.uk/the-decline-of-black-and-white-tv/",
+        "https://www.scienceandmediamuseum.org.uk/objects-and-stories/television"
+      ]
+    },
+    {
+      "slug": "appareil-photo",
+      "title": "L'histoire de l'appareil photo",
+      "type": "camera",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT LE XIXe SIÈCLE",
+          "LA CHAMBRE NOIRE PROJETTE L'IMAGE",
+          "georgian",
+          "obscura",
+          "lab"
+        ],
+        [
+          "FRANCE",
+          "1839",
+          "LE DAGUERRÉOTYPE FIXE UNE IMAGE",
+          "victorian",
+          "daguerre",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "MILIEU DU XIXe SIÈCLE",
+          "LES GRANDES CAMÉRAS DE STUDIO",
+          "victorian",
+          "wetplate",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1888",
+          "LE KODAK FACILITE LES PHOTOS",
+          "victorian",
+          "kodak",
+          "city"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1900",
+          "LE BROWNIE POUR LES FAMILLES",
+          "victorian",
+          "brownie",
+          "modern"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1975",
+          "UN PROTOTYPE D'APPAREIL NUMÉRIQUE",
+          "modern",
+          "digital",
+          "lab"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES PHOTOS SUR TÉLÉPHONE",
+          "modern",
+          "smart",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, je peux garder une image de notre voyage ?",
+        "Bien sûr, on peut prendre une photo.",
+        "Mais qui a inventé l'appareil photo ?",
+        "L'idée s'est construite grâce à de nombreux inventeurs.",
+        "Avant les téléphones, on faisait comment ?",
+        "Ouvrons Le Livre de Papy !",
+        "Souris, Papy ! Le livre vient de prendre une photo !",
+        "Depuis longtemps, une chambre noire projette une image venant de l'extérieur.",
+        "La lumière traverse un petit trou et forme une image renversée.",
+        "Mais elle apparaît à l'envers !",
+        "Oui, et il restait à trouver comment la conserver.",
+        "En mille huit cent trente-neuf, le daguerréotype est présenté au public.",
+        "Une surface préparée permet de fixer une image après exposition et traitement.",
+        "Il faut attendre longtemps sans bouger ?",
+        "Les premières techniques demandent beaucoup de patience.",
+        "Les personnes photographiées posent très sérieusement !",
+        "Au milieu du dix-neuvième siècle, des photographes travaillent avec de grands appareils.",
+        "Ils préparent des plaques sensibles et manipulent du matériel de laboratoire.",
+        "C'est presque une expérience scientifique !",
+        "Les procédés demandent du savoir-faire et de nombreuses précautions.",
+        "En mille huit cent quatre-vingt-huit, George Eastman commercialise un Kodak simple à utiliser.",
+        "La photographie devient plus accessible aux amateurs.",
+        "On peut photographier sans tout apprendre ?",
+        "L'appareil et le service de développement simplifient les démarches.",
+        "En mille neuf cents, l'appareil Brownie rend la photo encore plus abordable.",
+        "De nombreuses familles peuvent désormais conserver des souvenirs.",
+        "Comme les photos de famille chez nous !",
+        "En mille neuf cent soixante-quinze, un prototype d'appareil numérique est conçu chez Kodak.",
+        "Il enregistre une image sous forme de données électroniques.",
+        "Une photo sans pellicule ?",
+        "Aujourd'hui, beaucoup de téléphones possèdent plusieurs objectifs.",
+        "On peut voir la photo aussitôt après l'avoir prise.",
+        "Je vais faire une photo de ton sourire !",
+        "Bonne idée, mais on demande toujours avant de photographier quelqu'un.",
+        "Retour au salon. Malik tient son appareil photo.",
+        "Papy, montre-moi ton plus beau sourire !",
+        "Attention, tu vas capturer mes moustaches pour l'éternité !",
+        "C'était Le Livre de Papy ! Merci d'avoir découvert cette invention.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://www.eastman.org/camera-obscura-revolutionary-kodak",
+        "https://www.eastman.org/george-eastman-house-camera-book-illustrates-history-photography-daguerreotype-digital",
+        "https://www.eastman.org/camera-easy-pencil-george-eastmans-goal-achieved",
+        "https://www.nms.ac.uk/discover-catalogue/inventors-of-photography-exploring-victorian-photographic-techniques"
+      ]
+    },
+    {
+      "slug": "refrigerateur",
+      "title": "L'histoire du réfrigérateur",
+      "type": "fridge",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT LE XIXe SIÈCLE",
+          "CONSERVER LA GLACE EN HIVER",
+          "georgian",
+          "icecellar",
+          "courtyard"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "FIN DU XIXe SIÈCLE",
+          "LE MEUBLE À BLOCS DE GLACE",
+          "victorian",
+          "icebox",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1914",
+          "UN DES PREMIERS FRIGOS ÉLECTRIQUES",
+          "thirties",
+          "domelre",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1930",
+          "LE FRIGO ENTRE DANS LA CUISINE",
+          "thirties",
+          "monitor",
+          "modern"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1930",
+          "DES RANGEMENTS DANS LA PORTE",
+          "thirties",
+          "shelves",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "SECONDE MOITIÉ DU XXe SIÈCLE",
+          "FRIGOS AVEC CONGÉLATEUR",
+          "fifties",
+          "freezer",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "GARDER LES ALIMENTS AU FRAIS",
+          "modern",
+          "smart",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi le lait reste froid dans le frigo ?",
+        "Parce que cet appareil enlève de la chaleur à l'intérieur.",
+        "Comment on faisait avant l'électricité ?",
+        "On cherchait déjà des moyens de garder les aliments au frais.",
+        "Même sans prise ?",
+        "Ouvrons Le Livre de Papy !",
+        "Brrr ! Le livre souffle un vent glacé !",
+        "Pendant longtemps, les habitants conservent des blocs de glace dans des endroits frais.",
+        "Les caves et les réserves limitent la fonte pendant un certain temps.",
+        "Ils gardaient vraiment la glace de l'hiver ?",
+        "Oui, selon les régions, la glace servait encore durant les saisons chaudes.",
+        "À la fin du dix-neuvième siècle, de nombreux foyers utilisent des glacières.",
+        "On livre un gros bloc de glace dans un meuble isolé.",
+        "Il faut remplacer la glace quand elle fond !",
+        "Exactement, le meuble ne fabrique pas le froid.",
+        "Et il faut aussi évacuer l'eau de fonte.",
+        "En mille neuf cent quatorze, un appareil appelé Domelre est commercialisé.",
+        "Ce système électrique contribue aux débuts du réfrigérateur domestique.",
+        "Il faut une machine pour retirer la chaleur ?",
+        "Oui, les systèmes de réfrigération utilisent des mécanismes spécifiques.",
+        "Dans les années trente, les frigos électriques se font une place dans les cuisines.",
+        "Les portes ferment bien et les aliments restent à basse température.",
+        "C'est beaucoup plus pratique qu'un bloc de glace !",
+        "Mais ce n'est pas encore un objet présent dans tous les foyers.",
+        "Certains modèles proposent des étagères jusque dans la porte.",
+        "On peut y ranger plus facilement bouteilles et petits aliments.",
+        "Oh, voilà de la place pour le lait !",
+        "Au fil du vingtième siècle, le compartiment congélateur se développe.",
+        "Il maintient certains aliments à une température bien plus basse.",
+        "On peut y conserver des glaçons !",
+        "Aujourd'hui, de nombreux réfrigérateurs permettent de régler la température.",
+        "Ils aident à conserver les aliments périssables au frais.",
+        "Donc je referme vite la porte !",
+        "Bravo ! Et on demande toujours l'aide d'un adulte pour les aliments.",
+        "Nous revoilà devant notre réfrigérateur.",
+        "Le lait est toujours bien froid.",
+        "Et tu as pensé à refermer la porte. Quel progrès !",
+        "C'était Le Livre de Papy ! Une invention qui a changé les cuisines.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://americanhistory.si.edu/explore/stories/keeping-your-food-cool-ice-harvesting-electric-refrigeration",
+        "https://americanhistory.si.edu/explore/exhibitions/object-project/online/refrigerators/ice-tongs",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co49001/shelvador-electric-compression-domestic-refrigerator-c-1934-1935-refrigerators",
+        "https://www.nps.gov/articles/000/the-icebox-the-predecessor-of-modern-refrigeration.htm"
+      ]
+    },
+    {
+      "slug": "machine-a-laver",
+      "title": "L'histoire de la machine à laver",
+      "type": "washer",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT LE XIXe SIÈCLE",
+          "FROTTER LE LINGE À LA MAIN",
+          "georgian",
+          "washboard",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LA CUVE À MANIVELLE",
+          "victorian",
+          "tub",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES ROULEAUX POUR ESSORER",
+          "victorian",
+          "wringer",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1920",
+          "LE MOTEUR ÉLECTRIQUE AIDE AU LAVAGE",
+          "thirties",
+          "electric",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "MILIEU DU XXe SIÈCLE",
+          "LES MACHINES AUTOMATIQUES",
+          "fifties",
+          "autodrum",
+          "modern"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XXe SIÈCLE",
+          "CHOISIR UN PROGRAMME",
+          "modern",
+          "program",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LE TAMBOUR TOURNE DANS LE SALON... NON !",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, les vêtements tournent dans la machine !",
+        "C'est le tambour qui lave notre linge.",
+        "Qui a eu l'idée de faire tourner les chaussettes ?",
+        "Les machines à laver ont évolué pendant très longtemps.",
+        "Autrefois on les frottait toutes à la main ?",
+        "Ouvrons Le Livre de Papy !",
+        "Oh non ! Ma chaussette traverse le portail !",
+        "Avant les machines modernes, on lave le linge dans de l'eau avec du savon.",
+        "On frotte les tissus à la main ou sur une planche.",
+        "Ça doit fatiguer les bras !",
+        "Oui, laver le linge demandait beaucoup de temps et d'efforts.",
+        "Au dix-neuvième siècle, des machines à manivelle apparaissent.",
+        "On fait tourner le linge dans une cuve en actionnant une poignée.",
+        "Il faut quand même tourner tout le temps !",
+        "Oui, mais le mécanisme aide à déplacer le linge.",
+        "Les modèles changent beaucoup d'un fabricant à l'autre.",
+        "Au début du vingtième siècle, certaines machines possèdent des rouleaux essoreurs.",
+        "Le linge passe entre les rouleaux pour retirer une partie de l'eau.",
+        "Ça le rend moins mouillé ?",
+        "Oui, mais les anciens rouleaux demandaient beaucoup de précautions.",
+        "Au cours des années vingt, l'électricité entraîne certains mécanismes de lavage.",
+        "Un moteur aide à faire bouger l'eau et le linge.",
+        "C'est le moteur qui travaille maintenant !",
+        "Il faut encore souvent déplacer le linge pour l'essorer.",
+        "Au milieu du vingtième siècle, les machines automatiques se répandent progressivement.",
+        "Elles enchaînent davantage d'étapes du lavage sans intervention.",
+        "Et le linge tourne tout seul !",
+        "Puis les programmes deviennent plus variés.",
+        "On choisit selon le type de textile et le cycle souhaité.",
+        "Mes chaussettes ont leur propre programme ?",
+        "Aujourd'hui, les machines modernes régulent l'eau, le mouvement et l'essorage.",
+        "Le tambour tourne dans un sens puis dans l'autre.",
+        "J'ai retrouvé ma chaussette !",
+        "Parfait ! On laisse toujours les produits de lessive aux adultes.",
+        "Nous sommes de retour dans le salon.",
+        "Ma chaussette est propre !",
+        "Oui, mais où est passée la deuxième ?",
+        "C'était Le Livre de Papy ! Une histoire pleine de bulles.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://artsandculture.google.com/story/machines-make-doing-the-laundry-look-easy-nemo-science-museum/2wXhoidkwxl-JA?hl=en",
+        "https://collection.sciencemuseumgroup.org.uk/search/objects/object_type/washing-machine",
+        "https://www.dar.org/museum/creating-ideal-home-1800-1939-comfort-and-convenience-america",
+        "https://www.history.com/articles/inventions-that-transformed-housework"
+      ]
     }
   ]
 }
