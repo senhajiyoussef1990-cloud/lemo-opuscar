@@ -1925,6 +1925,556 @@
         "https://www.dar.org/museum/creating-ideal-home-1800-1939-comfort-and-convenience-america",
         "https://www.history.com/articles/inventions-that-transformed-housework"
       ]
+    },
+    {
+      "slug": "aspirateur",
+      "title": "L'histoire de l'aspirateur",
+      "type": "vacuum",
+      "eras": [
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "BALAYER ET BROSSER LES TAPIS",
+          "victorian",
+          "broom",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1881",
+          "LA BALAYEUSE MÉCANIQUE",
+          "victorian",
+          "sweeper",
+          "workshop"
+        ],
+        [
+          "LONDRES",
+          "1901",
+          "LE GRAND APPAREIL DE CECIL BOOTH",
+          "victorian",
+          "booth",
+          "city"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES ASPIRATEURS ÉLECTRIQUES",
+          "thirties",
+          "upright",
+          "modern"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1950",
+          "LES MODÈLES AVEC TUYAU",
+          "fifties",
+          "canister",
+          "modern"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1990",
+          "LE TOURBILLON SANS SAC",
+          "modern",
+          "cyclone",
+          "lab"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LE PETIT ROBOT ASPIRATEUR",
+          "modern",
+          "robot",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi ton aspirateur avale-t-il les miettes ?",
+        "Il aspire de l'air qui entraîne les petites poussières.",
+        "Avant, on passait tout le temps le balai ?",
+        "Oui, et les inventeurs ont imaginé d'autres façons de nettoyer.",
+        "Un appareil qui mange les miettes, c'est rigolo !",
+        "Ouvrons Le Livre de Papy !",
+        "Vroum ! Une miette entre dans le portail !",
+        "Au dix-neuvième siècle, les tapis sont souvent battus et brossés.",
+        "Le balai déplace les saletés, mais ne les aspire pas.",
+        "Tout ce nuage de poussière !",
+        "Oui, il fallait souvent ouvrir les fenêtres après le nettoyage.",
+        "En mille huit cent quatre-vingt-un, des balayeuses mécaniques sont perfectionnées.",
+        "Une brosse roule dans le boîtier quand on le pousse.",
+        "Ça tourne sans moteur électrique ?",
+        "Oui, le mouvement des roues entraîne une brosse.",
+        "C'est déjà un grand changement pour les tapis.",
+        "En mille neuf cent un, l'ingénieur Hubert Cecil Booth imagine une machine aspirante.",
+        "Son immense appareil est transporté et utilise des tuyaux.",
+        "Mais cet aspirateur est plus grand qu'une voiture !",
+        "Il faut encore trouver comment le rendre pratique dans les maisons.",
+        "Au début du vingtième siècle, les aspirateurs électriques domestiques se développent.",
+        "Le moteur fait circuler l'air pour ramasser poussières et miettes.",
+        "On n'a plus besoin d'une énorme machine dehors !",
+        "Exactement, les appareils deviennent plus faciles à déplacer.",
+        "Dans les années cinquante, différents aspirateurs à traîneau se répandent.",
+        "On tire le corps de la machine derrière un tuyau flexible.",
+        "On dirait un petit animal en laisse !",
+        "Plus tard, certains modèles séparent la poussière de l'air par un tourbillon.",
+        "Le mouvement de l'air fait tomber les particules dans un réservoir.",
+        "Un mini cyclone dans l'aspirateur !",
+        "Depuis les années deux mille, il existe des aspirateurs robots.",
+        "Un petit disque motorisé se déplace pour nettoyer le sol.",
+        "Papy, il peut ramasser les miettes de mon goûter ?",
+        "Oui, mais le mieux reste de ne pas en mettre partout !",
+        "Retour au salon. Il reste une petite miette sous la table.",
+        "Je lance le robot pour la chercher !",
+        "Et moi, je garde l'œil sur mes biscuits.",
+        "C'était Le Livre de Papy ! Merci d'avoir suivi notre voyage.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://collection.sciencemuseumgroup.org.uk/objects/co48604/original-vacuum-cleaner-from-to-royal-naval-college-vacuum-cleaner",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co8412068/hoover-constellation-vacuum-cleaner-with-attachments-vacuum-cleaner",
+        "https://www.si.edu/object/nmah_1448432",
+        "https://www.dar.org/museum/creating-ideal-home-1800-1939-comfort-and-convenience-america"
+      ]
+    },
+    {
+      "slug": "fer-a-repasser",
+      "title": "L'histoire du fer à repasser",
+      "type": "iron",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT LE XIXe SIÈCLE",
+          "LISSER LES TISSUS AVEC UN OUTIL CHAUD",
+          "georgian",
+          "sadiron",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "CHAUFFER UN FER SUR LE POÊLE",
+          "victorian",
+          "stove",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1882",
+          "LE FER À REPASSER ÉLECTRIQUE",
+          "victorian",
+          "electric",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1930",
+          "DES MODÈLES PLUS PRATIQUES",
+          "thirties",
+          "thermostat",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "MILIEU DU XXe SIÈCLE",
+          "LA VAPEUR AIDE À LISSER LE LINGE",
+          "fifties",
+          "steam",
+          "modern"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XXe SIÈCLE",
+          "DES SEMELLES QUI GLISSENT",
+          "modern",
+          "light",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "RÉGLER LA TEMPÉRATURE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, comment cette chemise est devenue toute lisse ?",
+        "Avec un fer à repasser, mais attention, sa semelle devient très chaude.",
+        "Pourquoi utilise-t-on la chaleur ?",
+        "Elle aide à détendre les plis des tissus.",
+        "C'était déjà comme ça il y a longtemps ?",
+        "Ouvrons Le Livre de Papy !",
+        "Oh ! Le livre déplie une chemise magique !",
+        "Depuis longtemps, on utilise différents outils pour lisser le linge.",
+        "Un fer massif chauffé peut aplatir les plis d'un tissu.",
+        "Ce fer a l'air très lourd !",
+        "Oui, et sa température devait être surveillée avec soin.",
+        "Au dix-neuvième siècle, on chauffe de nombreux fers sur un poêle.",
+        "On en garde parfois plusieurs pour continuer à repasser.",
+        "Pendant qu'un fer chauffe, on utilise l'autre ?",
+        "Exactement, cela permet de poursuivre le travail.",
+        "Mais le métal chaud peut brûler le tissu.",
+        "En mille huit cent quatre-vingt-deux, Henry Seely brevète un fer électrique.",
+        "L'électricité produit de la chaleur directement dans l'appareil.",
+        "Plus besoin de le mettre sur le poêle !",
+        "Oui, mais les premiers modèles sont encore très rudimentaires.",
+        "Au vingtième siècle, les fers électriques deviennent plus pratiques.",
+        "Des réglages aident à éviter une chaleur excessive.",
+        "On peut choisir selon le vêtement ?",
+        "C'est essentiel, car les tissus ne supportent pas tous la même chaleur.",
+        "Les fers à vapeur se développent au cours du vingtième siècle.",
+        "De la vapeur d'eau accompagne la chaleur pour aider à détendre les fibres.",
+        "On dirait un petit nuage !",
+        "Les fabricants améliorent les surfaces qui glissent sur le tissu.",
+        "Le repassage demande moins d'efforts qu'avec un ancien fer massif.",
+        "Il se déplace plus facilement !",
+        "Aujourd'hui, les fers modernes combinent température réglable et vapeur.",
+        "Il faut vérifier le type de tissu avant de commencer.",
+        "Je peux essayer tout seul ?",
+        "Non, le fer chaud se manipule uniquement avec un adulte.",
+        "Nous revoilà dans le salon, devant la chemise de Papy.",
+        "Elle n'a plus un seul pli !",
+        "Et ma moustache, qui va la repasser ?",
+        "C'était Le Livre de Papy ! Une histoire qui ne manque pas de fer.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://www.history.com/articles/inventions-that-transformed-housework",
+        "https://www.livingheritagemuseum.org/2024/5/8/12439/ironing-through-the-ages/",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co8419986/the-xcel-electric-iron",
+        "https://www.dar.org/museum/creating-ideal-home-1800-1939-comfort-and-convenience-america"
+      ]
+    },
+    {
+      "slug": "telecommande",
+      "title": "L'histoire de la télécommande",
+      "type": "remote",
+      "eras": [
+        [
+          "ÉTATS-UNIS",
+          "1898",
+          "COMMANDER UN OBJET À DISTANCE",
+          "victorian",
+          "tesla",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1950",
+          "LA TÉLÉCOMMANDE AVEC UN FIL",
+          "fifties",
+          "wired",
+          "modern"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1955",
+          "UN FAISCEAU DE LUMIÈRE",
+          "fifties",
+          "flash",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1956",
+          "LES ULTRASONS COMMANDENT LA TÉLÉ",
+          "fifties",
+          "ultrasound",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1980",
+          "LA LUMIÈRE INFRAROUGE",
+          "modern",
+          "infrared",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 2000",
+          "DE PLUS EN PLUS DE BOUTONS",
+          "modern",
+          "digital",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES COMMANDES SANS FIL",
+          "modern",
+          "smart",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, j'ai perdu la télécommande sous le canapé !",
+        "Ah, le fameux objet qui disparaît toujours.",
+        "Mais comment change-t-elle les chaînes sans toucher la télévision ?",
+        "Elle envoie un signal que le téléviseur comprend.",
+        "Elle a toujours fonctionné sans fil ?",
+        "Ouvrons Le Livre de Papy !",
+        "Oh ! Même le livre change de page tout seul !",
+        "En mille huit cent quatre-vingt-dix-huit, Nikola Tesla présente un bateau radiocommandé.",
+        "Il montre qu'un signal peut piloter un objet sans contact direct.",
+        "Un bateau qui obéit à distance ?",
+        "Oui, mais ce n'est pas encore une télécommande de télévision.",
+        "En mille neuf cent cinquante, une télécommande de télévision utilise un long câble.",
+        "On change de chaîne sans se lever, mais on reste relié au poste.",
+        "On risque de se prendre les pieds dans le fil !",
+        "C'est justement l'un de ses défauts.",
+        "Les fabricants cherchent alors des solutions sans câble.",
+        "En mille neuf cent cinquante-cinq apparaît la Flash-Matic.",
+        "Elle envoie un faisceau lumineux vers des capteurs de la télévision.",
+        "On dirait une petite lampe de poche !",
+        "Mais une lumière extérieure peut parfois gêner le fonctionnement.",
+        "En mille neuf cent cinquante-six, la Space Command utilise des ultrasons.",
+        "Des commandes produisent de petits sons à des fréquences élevées.",
+        "Donc ce n'est plus une lumière ?",
+        "Exactement, le téléviseur reconnaît ces signaux sonores.",
+        "Dans les années quatre-vingt, les commandes infrarouges se répandent.",
+        "Une lumière invisible transmet les codes des boutons.",
+        "Invisible, mais le téléviseur la comprend !",
+        "Les télécommandes deviennent capables de commander de nombreuses fonctions.",
+        "On peut régler le son, choisir un programme ou ouvrir un menu.",
+        "Il y a presque trop de boutons !",
+        "Aujourd'hui, certaines commandes passent aussi par des réseaux sans fil.",
+        "Des télécommandes et des téléphones peuvent piloter des écrans connectés.",
+        "Papy, j'ai trouvé la télécommande !",
+        "Parfait, elle était bien sous le coussin, comme d'habitude.",
+        "Retour au salon. La télévision attend notre choix.",
+        "Je change de chaîne sans quitter le canapé !",
+        "Très bien, mais n'oublie pas de ranger la télécommande.",
+        "C'était Le Livre de Papy ! Merci d'avoir suivi notre voyage.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://zenith.com/heritage/remote-background/",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co8676884/zenith-flash-matic-remote-control",
+        "https://www.earlytelevision.org/zenith_flashmatic.html",
+        "https://www.newyorker.com/tech/annals-of-technology/object-of-interest-remote-control"
+      ]
+    },
+    {
+      "slug": "micro-ondes",
+      "title": "L'histoire du micro-ondes",
+      "type": "microwave",
+      "eras": [
+        [
+          "EUROPE",
+          "ANNÉES 1940",
+          "DES ONDES POUR LE RADAR",
+          "thirties",
+          "radar",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1945",
+          "PERCY SPENCER ET LES MICRO-ONDES",
+          "thirties",
+          "spencer",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1947",
+          "UN GRAND FOUR COMMERCIAL",
+          "fifties",
+          "radarange",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1950",
+          "UN APPAREIL DESTINÉ À LA MAISON",
+          "fifties",
+          "home-early",
+          "modern"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1967",
+          "LE MODÈLE À POSER SUR UN PLAN DE TRAVAIL",
+          "modern",
+          "countertop",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1970",
+          "DE PLUS EN PLUS DE FOYERS ÉQUIPÉS",
+          "modern",
+          "buttons",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "CHAUFFER UN REPAS AVEC PRÉCAUTION",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, mon bol est froid et je voudrais le réchauffer.",
+        "Le micro-ondes peut réchauffer certains plats, mais c'est un adulte qui s'en occupe.",
+        "Pourquoi ça chauffe aussi vite ?",
+        "Il utilise des ondes électromagnétiques pour chauffer les aliments.",
+        "Ça vient de la cuisine ?",
+        "Pas vraiment ! Ouvrons Le Livre de Papy !",
+        "Oh ! Le livre fait apparaître un bol fumant !",
+        "Pendant la Seconde Guerre mondiale, des chercheurs travaillent sur les systèmes radar.",
+        "Ils utilisent un composant appelé magnétron pour produire des micro-ondes.",
+        "Le radar servait à cuisiner ?",
+        "Non, il servait à détecter des objets à distance.",
+        "En mille neuf cent quarante-cinq, l'ingénieur Percy Spencer étudie ces ondes.",
+        "Il remarque qu'elles peuvent aussi chauffer des aliments.",
+        "Quelle drôle de découverte !",
+        "Cette observation aide à imaginer un nouveau type de four.",
+        "Mais il faut encore concevoir un appareil adapté.",
+        "En mille neuf cent quarante-sept, le Radarange est commercialisé.",
+        "Cet énorme appareil est d'abord destiné à des professionnels.",
+        "Il est plus grand que moi !",
+        "Oui, les premiers modèles sont très volumineux et coûteux.",
+        "Dans les années cinquante, des fabricants conçoivent des modèles pour les foyers.",
+        "Ils restent souvent encombrants et chers.",
+        "C'est pour ça qu'on n'en voyait pas partout ?",
+        "Exactement, leur adoption a demandé du temps.",
+        "En mille neuf cent soixante-sept, un modèle de comptoir devient commercialement disponible.",
+        "Il se place plus facilement dans une cuisine.",
+        "Enfin, il ressemble à celui de la maison !",
+        "Dans les années soixante-dix, les micro-ondes domestiques se diffusent davantage.",
+        "Ils servent notamment à réchauffer rapidement certains repas.",
+        "Ça doit changer les habitudes de cuisine !",
+        "Aujourd'hui, les appareils proposent des réglages de puissance et de durée.",
+        "Il faut employer des récipients adaptés et faire attention aux aliments chauds.",
+        "Je peux y mettre n'importe quel bol ?",
+        "Non ! Seul un adulte choisit les récipients qui conviennent.",
+        "Retour au salon. Papy vérifie notre bol.",
+        "Attention, le repas peut être très chaud.",
+        "Alors je souffle doucement avant de goûter !",
+        "C'était Le Livre de Papy ! Une invention venue des recherches sur les ondes.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://www.si.edu/collections/snapshot/microwave-oven",
+        "https://www.si.edu/object/tappan-model-rl-1-microwave-oven%3Anmah_1088040",
+        "https://lemelson.mit.edu/resources/percy-spencer",
+        "https://spectrum.ieee.org/a-history-of-the-microwave-oven"
+      ]
+    },
+    {
+      "slug": "seche-cheveux",
+      "title": "L'histoire du sèche-cheveux",
+      "type": "hairdryer",
+      "eras": [
+        [
+          "EUROPE",
+          "FIN DU XIXe SIÈCLE",
+          "DES SYSTÈMES POUR SÉCHER LES CHEVEUX",
+          "victorian",
+          "salon",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1920",
+          "LES APPAREILS SUR PIED",
+          "thirties",
+          "hood",
+          "workshop"
+        ],
+        [
+          "ALLEMAGNE",
+          "VERS 1925",
+          "UN SÈCHE-CHEVEUX À SOUFFLERIE",
+          "thirties",
+          "sol",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1930",
+          "LES PREMIERS MODÈLES PORTATIFS COURANTS",
+          "thirties",
+          "metal",
+          "modern"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1950",
+          "DES BOÎTIERS PLUS LÉGERS",
+          "fifties",
+          "bakelite",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1960",
+          "DES COIFFURES FAÇONNÉES AU SOUFFLE",
+          "fifties",
+          "style",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "SÉCHER SANS CHAUFFER TROP",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, mes cheveux sont tout mouillés !",
+        "Après le bain, une serviette et parfois un sèche-cheveux peuvent aider.",
+        "Pourquoi cet appareil souffle-t-il de l'air chaud ?",
+        "Un ventilateur et une résistance peuvent envoyer de l'air plus chaud.",
+        "Il a toujours été aussi petit ?",
+        "Ouvrons Le Livre de Papy !",
+        "Fouuu ! Le portail ébouriffe les cheveux de Papy !",
+        "À la fin du dix-neuvième siècle, on expérimente des appareils pour sécher les cheveux.",
+        "Certains dispositifs sont destinés aux salons de coiffure.",
+        "On ne pouvait pas les mettre dans sa poche !",
+        "Non, les machines sont souvent grandes et peu pratiques.",
+        "Au début du vingtième siècle, on trouve des sèche-cheveux sur pied.",
+        "Une coiffe diffuse de l'air autour de la tête.",
+        "On dirait un énorme casque !",
+        "Oui, les clients s'installent sous la coiffe.",
+        "Cela laisse les mains libres au coiffeur.",
+        "Vers mille neuf cent vingt-cinq, des appareils électriques à ventilateur existent déjà.",
+        "Un fabricant allemand propose un sèche-cheveux avec des réglages de chaleur.",
+        "On peut régler l'air qui sort ?",
+        "Certains modèles anciens offrent déjà plusieurs possibilités.",
+        "Dans les années trente, les appareils portatifs deviennent plus répandus.",
+        "Un petit moteur fait tourner un ventilateur dans le boîtier.",
+        "On peut le tenir comme un outil !",
+        "Mais ils sont souvent plus lourds que les appareils actuels.",
+        "Dans les années cinquante, les boîtiers changent de matériaux et de couleurs.",
+        "Les fabricants améliorent progressivement la prise en main.",
+        "Celui-ci ressemble presque à un jouet !",
+        "Les salons et les familles utilisent des embouts adaptés aux coiffures.",
+        "L'air dirigé aide à mettre les cheveux en forme.",
+        "Même les cheveux de Papy ?",
+        "Aujourd'hui, les sèche-cheveux offrent plusieurs vitesses et températures.",
+        "On les utilise à une distance adaptée, sans chaleur excessive.",
+        "Papy, mes cheveux sont secs !",
+        "Parfait, mais les appareils électriques restent entre les mains des adultes.",
+        "Retour au salon, Malik a retrouvé sa coiffure.",
+        "Papy, tes moustaches ont bougé avec le vent !",
+        "Ne souffle pas trop fort, elles vont s'envoler !",
+        "C'était Le Livre de Papy ! Merci d'avoir écouté notre histoire.",
+        "Abonne-toi, et à demain pour une nouvelle histoire !"
+      ],
+      "sources": [
+        "https://collection.sciencemuseumgroup.org.uk/objects/co49019/sol-hairdryer-germany-c-1925",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co8408051/electric-hand-held-hairdryer-with-metallic-nozzle-and-bayonet-plug",
+        "https://collection.sciencemuseumgroup.org.uk/search/objects/object_type/hair-dryer",
+        "https://americanhistory.si.edu/collections/object/nmah_363416"
+      ]
     }
   ]
 }
