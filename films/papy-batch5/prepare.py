@@ -339,6 +339,9 @@ AUJOURD'HUI À 18 H
 if slug in ('crayon','fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux'):
     publication=publication.replace(f"YouTube — format classique 16:9 — titre\n{subj} | Le Livre de Papy — un voyage à travers 7 époques\n\n","")
     publication=publication.replace("Deux formats : Shorts 9:16 et vidéo YouTube 16:9. Voix de Papy et Malik dans les deux.","Format vertical 9:16 pour TikTok, Reels, Facebook et Shorts. Voix de Papy et Malik.")
+# Publication sur iPhone : deux lignes vides entre CHAQUE ligne de texte.
+# Un bloc par intitulé / phrase / hashtag, prêt à sélectionner et copier.
+publication='\n\n\n'.join(line.strip() for line in publication.splitlines() if line.strip())+'\n'
 (out/'publication.txt').write_text(publication,encoding='utf8')
 script='# '+subj+' — Le Livre de Papy\n\n'
 for id,line in zip(DATA['ids'],lines):
