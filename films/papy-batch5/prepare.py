@@ -24,7 +24,7 @@ shutil.copy2(BATCH/'people.js',out/'people.js')
 
 # Pilot V2: improve five-finger silhouette only in this newly generated episode.
 # Keep existing published chapters and shared character appearance unchanged.
-if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice'):
+if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice','radio','ordinateur','clavier','souris-ordinateur','microphone','ventilateur','grille-pain','bouilloire','robinet','balai'):
     charpath=out/'chars.js'
     chars=charpath.read_text(encoding='utf8')
     first=chars.index('export function hand(')
@@ -52,6 +52,7 @@ if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assi
 shutil.copy2(BATCH/'objects.js',out/'objects.js')
 shutil.copy2(BATCH/'gadgets.js',out/'gadgets.js')
 shutil.copy2(BATCH/'school.js',out/'school.js')
+shutil.copy2(BATCH/'batch20b.js',out/'batch20b.js')
 shutil.copy2(BATCH/'workshops.js',out/'workshops.js')
 for name in ['score.py','synth.py','mix.py','voice.py','foley.py','fonts.sh']:
     shutil.copy2(BASE/'tools'/name,out/'tools'/name)
@@ -172,7 +173,7 @@ main=main[:tag_start]+thin_tag+main[tag_end:]
 
 # Visual standard V2 for the NEW zipper story: restore a readable top ribbon,
 # and put the real episode object in Malik's hand (home, history, return).
-if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice'):
+if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice','radio','ordinateur','clavier','souris-ordinateur','microphone','ventilateur','grille-pain','bouilloire','robinet','balai'):
     for before,after in [
         ('g.fillRect(0,0,W,100)','g.fillRect(0,0,W,128)'),
         ('g.fillRect(0,96,W,4)','g.fillRect(0,124,W,4)'),
@@ -234,7 +235,7 @@ if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assi
         assert old_rush in main
         main=main.replace(old_rush,"malik(sucked({ ...m, nerv: 1, holdF:(x,y)=>Wd.homeObject(x+18,y-28,t,'home'), armF:{h:[36,34],bend:12,fist:true} }, t, t0 + .05, t0 + .3));")
     
-    if slug in ('couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice'):
+    if slug in ('couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice','radio','ordinateur','clavier','souris-ordinateur','microphone','ventilateur','grille-pain','bouilloire','robinet','balai'):
         # Avoid literal apostrophes inside the generated JavaScript title.
         title=e['title'].upper()
         main=main.replace(title.replace("L'HISTOIRE DE ","L’HISTOIRE DE "),title.replace("'","’"))
@@ -337,7 +338,7 @@ NOUVEL ÉPISODE
 AUJOURD'HUI À 18 H
 """
 # New episodes use a SINGLE vertical master; no redundant 16:9 YouTube master.
-if slug in ('crayon','fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice'):
+if slug in ('crayon','fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice','radio','ordinateur','clavier','souris-ordinateur','microphone','ventilateur','grille-pain','bouilloire','robinet','balai'):
     publication=publication.replace(f"YouTube — format classique 16:9 — titre\n{subj} | Le Livre de Papy — un voyage à travers 7 époques\n\n","")
     publication=publication.replace("Deux formats : Shorts 9:16 et vidéo YouTube 16:9. Voix de Papy et Malik dans les deux.","Format vertical 9:16 pour TikTok, Reels, Facebook et Shorts. Voix de Papy et Malik.")
 # Publication sur iPhone : deux lignes vides entre CHAQUE ligne de texte.
@@ -348,4 +349,4 @@ script='# '+subj+' — Le Livre de Papy\n\n'
 for id,line in zip(DATA['ids'],lines):
     script+=f"**{'Papy' if line['who']=='PAPY' else 'Malik'} ({id}) :** « {line['text']} »\n\n"
 (out/'SCENARIO.md').write_text(script,encoding='utf8')
-print('Episode prêt:',slug,'39 voix, 7 époques, format vertical 1080x1920' if slug in ('crayon','fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice') else 'double format')
+print('Episode prêt:',slug,'39 voix, 7 époques, format vertical 1080x1920' if slug in ('crayon','fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice','radio','ordinateur','clavier','souris-ordinateur','microphone','ventilateur','grille-pain','bouilloire','robinet','balai') else 'double format')
