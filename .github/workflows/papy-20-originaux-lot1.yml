@@ -1,0 +1,761 @@
+name: Le Livre de Papy - 20 sujets initiaux - Lot 1 sur 2
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/papy-20-originaux-lot1.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: papy-20-ecole-lot1
+  cancel-in-progress: false
+jobs:
+  preflight:
+    name: Verifier 10 histoires / 70 epoques et les dessins de controle
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils graphiques
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Tester les scenarii et les images 9x16
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          python -m py_compile films/papy-batch5/prepare.py films/papy-batch5/audio_qc.py films/papy-batch5/visual_qc.py
+          bash -n films/papy-batch5/build-vertical.sh
+          for slug in stylo gomme cahier regle taille-crayon agrafeuse trombone ruban-adhesif colle calculatrice; do
+            python films/papy-batch5/prepare.py "$slug"
+            d="films/papy-$slug"
+            for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+            grep -Fq "g.fillRect(0,0,W,128)" "$d/main.js"
+            grep -Fq "four separate rounded fingers" "$d/chars.js"
+            grep -Fq "m.holdF=Wd.heldObject(w,t)" "$d/main.js"
+            grep -Fq "schoolWorkshop(type,kind,era,t,progress,artisan)" "$d/workshops.js"
+            python - "$d" <<'PY'
+          from pathlib import Path
+          import json,sys
+          d=Path(sys.argv[1]);e=json.loads((d/'episode.json').read_text(encoding='utf8'))
+          assert e['title'].startswith("L'histoire")
+          assert len(e['lines'])==39 and len(e['eras'])==7 and len(e['sources'])>=4
+          assert e['type'] in ('pen','eraser','notebook','ruler','sharpener','stapler','paperclip','tape','glue','calculator')
+          pub=(d/'publication.txt').read_text(encoding='utf8')
+          assert '\n\n\n' in pub, 'two blank lines between texts are required'
+          print("CONTROLE OK",e['title'])
+          PY
+            bash "$d/tools/fonts.sh"
+            node core/render/still.mjs "$d" 15 48 --size 1080x1920 --out "$d/preflight-vertical"
+          done
+  episode_01:
+    name: 01 - stylo - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de stylo
+        run: |
+          python films/papy-batch5/prepare.py stylo
+          d=films/papy-stylo
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-stylo
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh stylo
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-stylo")
+          z=d/"L'histoire du stylo.zip"
+          assert (d/"L'histoire du stylo.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire du stylo.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer stylo
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du stylo"
+          path: "films/papy-stylo/L'histoire du stylo.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_02:
+    name: 02 - gomme - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_01]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de gomme
+        run: |
+          python films/papy-batch5/prepare.py gomme
+          d=films/papy-gomme
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-gomme
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh gomme
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-gomme")
+          z=d/"L'histoire de la gomme.zip"
+          assert (d/"L'histoire de la gomme.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire de la gomme.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer gomme
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la gomme"
+          path: "films/papy-gomme/L'histoire de la gomme.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_03:
+    name: 03 - cahier - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_02]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de cahier
+        run: |
+          python films/papy-batch5/prepare.py cahier
+          d=films/papy-cahier
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-cahier
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh cahier
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-cahier")
+          z=d/"L'histoire du cahier.zip"
+          assert (d/"L'histoire du cahier.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire du cahier.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer cahier
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du cahier"
+          path: "films/papy-cahier/L'histoire du cahier.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_04:
+    name: 04 - regle - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_03]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de regle
+        run: |
+          python films/papy-batch5/prepare.py regle
+          d=films/papy-regle
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-regle
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh regle
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-regle")
+          z=d/"L'histoire de la règle.zip"
+          assert (d/"L'histoire de la règle.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire de la règle.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer regle
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la règle"
+          path: "films/papy-regle/L'histoire de la règle.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_05:
+    name: 05 - taille-crayon - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_04]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de taille-crayon
+        run: |
+          python films/papy-batch5/prepare.py taille-crayon
+          d=films/papy-taille-crayon
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-taille-crayon
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh taille-crayon
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-taille-crayon")
+          z=d/"L'histoire du taille-crayon.zip"
+          assert (d/"L'histoire du taille-crayon.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire du taille-crayon.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer taille-crayon
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du taille-crayon"
+          path: "films/papy-taille-crayon/L'histoire du taille-crayon.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_06:
+    name: 06 - agrafeuse - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_05]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de agrafeuse
+        run: |
+          python films/papy-batch5/prepare.py agrafeuse
+          d=films/papy-agrafeuse
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-agrafeuse
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh agrafeuse
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-agrafeuse")
+          z=d/"L'histoire de l'agrafeuse.zip"
+          assert (d/"L'histoire de l'agrafeuse.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire de l'agrafeuse.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer agrafeuse
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de l'agrafeuse"
+          path: "films/papy-agrafeuse/L'histoire de l'agrafeuse.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_07:
+    name: 07 - trombone - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_06]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de trombone
+        run: |
+          python films/papy-batch5/prepare.py trombone
+          d=films/papy-trombone
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-trombone
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh trombone
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-trombone")
+          z=d/"L'histoire du trombone.zip"
+          assert (d/"L'histoire du trombone.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire du trombone.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer trombone
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du trombone"
+          path: "films/papy-trombone/L'histoire du trombone.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_08:
+    name: 08 - ruban-adhesif - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_07]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de ruban-adhesif
+        run: |
+          python films/papy-batch5/prepare.py ruban-adhesif
+          d=films/papy-ruban-adhesif
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-ruban-adhesif
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh ruban-adhesif
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-ruban-adhesif")
+          z=d/"L'histoire du ruban adhésif.zip"
+          assert (d/"L'histoire du ruban adhésif.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire du ruban adhésif.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer ruban-adhesif
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du ruban adhésif"
+          path: "films/papy-ruban-adhesif/L'histoire du ruban adhésif.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_09:
+    name: 09 - colle - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_08]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de colle
+        run: |
+          python films/papy-batch5/prepare.py colle
+          d=films/papy-colle
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-colle
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh colle
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-colle")
+          z=d/"L'histoire de la colle.zip"
+          assert (d/"L'histoire de la colle.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire de la colle.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer colle
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la colle"
+          path: "films/papy-colle/L'histoire de la colle.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_10:
+    name: 10 - calculatrice - video, voix, Story, ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_09]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer les outils video et voix
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Preparer l'histoire de calculatrice
+        run: |
+          python films/papy-batch5/prepare.py calculatrice
+          d=films/papy-calculatrice
+          for js in main story objects workshops school gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Synthese des 39 repliques avec reprises automatiques
+        run: |
+          set -euo pipefail
+          d=films/papy-calculatrice
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Voix indisponibles apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre vertical avec les deux voix, Story et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh calculatrice
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path("films/papy-calculatrice")
+          z=d/"L'histoire de la calculatrice.zip"
+          assert (d/"L'histoire de la calculatrice.mp4").stat().st_size>1000000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for name in ["L'histoire de la calculatrice.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"]:
+                  assert name in a.namelist(), (name,a.namelist())
+              assert '\n\n\n' in a.read("publication.txt").decode()
+          print("ZIP vérifié:",z)
+          PY
+      - name: Livrer calculatrice
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la calculatrice"
+          path: "films/papy-calculatrice/L'histoire de la calculatrice.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
