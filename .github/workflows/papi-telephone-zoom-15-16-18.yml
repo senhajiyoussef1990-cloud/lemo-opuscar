@@ -1,4 +1,4 @@
-name: Papi serieux - zoom telephone Bluetooth Position Updates
+name: Papi serieux - ecran de smartphone agrandi - cadrage final
 on:
   push:
     branches: [production/papi-serieux-zoom-ecran-15-16-18-20261123]
