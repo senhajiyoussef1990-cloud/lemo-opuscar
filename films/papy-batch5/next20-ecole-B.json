@@ -1,0 +1,549 @@
+{
+  "episodes": [
+    {
+      "slug": "agrafeuse",
+      "title": "L'histoire de l'agrafeuse",
+      "type": "stapler",
+      "eras": [
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LIER LES PAGES AVEC DU FIL",
+          "medieval",
+          "sewing",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XVIIIe SIÈCLE",
+          "RÉUNIR DES DOCUMENTS",
+          "georgian",
+          "pin",
+          "palace"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1866",
+          "LES PREMIERS BREVETS DE FIXATION",
+          "victorian",
+          "fastener",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "FIN DU XIXe SIÈCLE",
+          "L'AGRAFE ET LE MÉCANISME",
+          "victorian",
+          "staple",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "XXe SIÈCLE",
+          "L'AGRAFEUSE DE BUREAU",
+          "thirties",
+          "desktop",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "LES PETITES AGRAFEUSES",
+          "modern",
+          "mini",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "ASSEMBLER EN SÉCURITÉ",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, toutes mes feuilles se sont envolées !",
+        "Une agrafeuse peut les assembler, Malik.",
+        "Elle attache les feuilles avec une toute petite pièce de métal ?",
+        "Oui, l'agrafe traverse le papier puis se replie dessous.",
+        "Comment réunissait-on des feuilles autrefois ?",
+        "Ouvrons Le Livre de Papy !",
+        "Le livre attrape toutes tes feuilles dans un tourbillon !",
+        "Pendant longtemps, on relie des pages avec du fil et des aiguilles",
+        "Un artisan perce les feuillets puis les coud soigneusement",
+        "Il faut coudre chaque feuille !",
+        "Les livres demandent un travail patient.",
+        "Dans les bureaux, on attache aussi des documents avec des rubans ou des épingles",
+        "Un secrétaire relie une petite liasse de papiers",
+        "On pouvait les séparer ensuite ?",
+        "Oui, ces attaches étaient souvent faciles à retirer.",
+        "Oui, ces attaches étaient souvent faciles à retirer.",
+        "Au dix-neuvième siècle, des inventeurs brevettent des systèmes de fixation du papier",
+        "Un mécanicien fabrique une pince qui rapproche des feuilles",
+        "Cela devient plus rapide !",
+        "Les systèmes ne ressemblent pas encore tous à l'agrafeuse actuelle.",
+        "Les fabricants perfectionnent les machines qui poussent une agrafe métallique",
+        "Un ouvrier appuie sur une poignée pour réunir une liasse",
+        "L'agrafe se replie sous le papier !",
+        "Le papier reste rassemblé sans ficelle.",
+        "Au vingtième siècle, l'agrafeuse de bureau devient courante",
+        "Une employée fixe une série de dossiers avec un appareil compact",
+        "Tout tient ensemble !",
+        "Des modèles plus petits sont conçus pour l'école et le bureau",
+        "Un fabricant assemble le ressort, le chargeur et la poignée",
+        "Elle peut tenir dans une trousse !",
+        "Aujourd'hui, certaines agrafeuses sont manuelles et d'autres électriques",
+        "Malik demande à Papy de fixer les feuilles avec l'agrafeuse",
+        "Il faut garder les doigts loin de la sortie !",
+        "Exactement, les petites agrafes peuvent piquer.",
+        "Nous revoilà au salon, avec toutes tes feuilles.",
+        "Je vais les attacher dans le bon ordre.",
+        "Très bien ! Mon bureau va enfin retrouver son calme.",
+        "C'était Le Livre de Papy ! Chaque objet raconte une aventure.",
+        "Abonne-toi pour découvrir le prochain objet !"
+      ],
+      "sources": [
+        "https://americanhistory.si.edu/collections",
+        "https://patents.google.com/",
+        "https://collection.sciencemuseumgroup.org.uk/"
+      ]
+    },
+    {
+      "slug": "trombone",
+      "title": "L'histoire du trombone",
+      "type": "paperclip",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT LE XIXe SIÈCLE",
+          "DES RUBANS AUTOUR DES FEUILLES",
+          "georgian",
+          "ribbon",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LE FIL MÉTALLIQUE INDUSTRIEL",
+          "victorian",
+          "wire",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1890",
+          "LES ATTACHES DE PAPIER EN FIL",
+          "victorian",
+          "early",
+          "lab"
+        ],
+        [
+          "ROYAUME-UNI",
+          "VERS 1900",
+          "LA FORME GEM",
+          "victorian",
+          "gem",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "L'ATTACHE DU BUREAU",
+          "thirties",
+          "office",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "DES FORMES COLORÉES",
+          "modern",
+          "colored",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "UN OBJET RÉUTILISABLE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, je veux garder ces dessins ensemble sans faire de trous !",
+        "Un trombone peut tenir plusieurs feuilles, Malik.",
+        "Ce petit fil tordu fait tout ça ?",
+        "Oui, sa forme exerce une pression sur le papier.",
+        "Qui a eu l'idée de le plier comme ça ?",
+        "Ouvrons Le Livre de Papy !",
+        "Oh, le trombone forme un grand serpentin lumineux !",
+        "Pendant longtemps, des documents sont liés avec des rubans ou du fil",
+        "Un secrétaire entoure un paquet de pages avec un ruban",
+        "C'est joli, mais il faut faire un nœud !",
+        "D'autres utilisent aussi des épingles.",
+        "Les machines du dix-neuvième siècle produisent du fil métallique en grandes quantités",
+        "Un ouvrier tire un long fil d'acier à travers une machine",
+        "On peut le plier en petites formes !",
+        "Le fil est solide tout en restant flexible.",
+        "Le fil est solide tout en restant flexible.",
+        "À la fin du dix-neuvième siècle, différentes attaches en fil pour papier sont commercialisées",
+        "Un employé glisse une attache courbée sur deux feuillets",
+        "Pas besoin de trouer la feuille !",
+        "Les formes ne sont pas toutes identiques.",
+        "Le trombone de type Gem devient une forme très répandue",
+        "Une machine plie le fil en boucles superposées",
+        "Je reconnais mon trombone !",
+        "Sa double boucle retient les feuilles.",
+        "Au vingtième siècle, les trombones sont utilisés dans les écoles et les bureaux",
+        "Une secrétaire trie des factures avec plusieurs trombones",
+        "Les piles restent bien rangées !",
+        "Des trombones colorés et recouverts de plastique apparaissent",
+        "Un fabricant recouvre un fil d'une couleur vive",
+        "On peut classer les feuilles par couleur !",
+        "Aujourd'hui, un trombone peut servir plusieurs fois sans abîmer les pages",
+        "Malik retire le trombone puis l'utilise pour un autre dessin",
+        "C'est pratique et réutilisable !",
+        "On garde les petites pièces hors de portée des tout-petits.",
+        "Nous revoilà au salon avec tes dessins.",
+        "Je les rassemble sans les abîmer.",
+        "Bravo ! Un tout petit objet pour une grande organisation.",
+        "C'était Le Livre de Papy ! Les petites inventions comptent aussi.",
+        "Abonne-toi et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.britannica.com/technology/paper-clip",
+        "https://americanhistory.si.edu/collections",
+        "https://www.metmuseum.org/art/collection"
+      ]
+    },
+    {
+      "slug": "ruban-adhesif",
+      "title": "L'histoire du ruban adhésif",
+      "type": "tape",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "DES MATIÈRES QUI COLLIENT",
+          "antique",
+          "resin",
+          "temple"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES BANDES COLLANTES",
+          "victorian",
+          "medical",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1925",
+          "LE RUBAN DE MASQUAGE DE DREW",
+          "thirties",
+          "masking",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1930",
+          "LE RUBAN TRANSPARENT",
+          "thirties",
+          "transparent",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "MILIEU DU XXe SIÈCLE",
+          "LE DÉVIDOIR DE BUREAU",
+          "fifties",
+          "dispenser",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "DES RUBANS POUR EMBALLER",
+          "modern",
+          "packing",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES RUBANS POUR CHAQUE USAGE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, mon dessin se décolle du mur !",
+        "Un petit morceau de ruban adhésif peut le fixer.",
+        "Pourquoi ce ruban colle-t-il d'un seul côté ?",
+        "Il porte une couche de matière collante sur un support souple.",
+        "Est-ce que le ruban transparent a toujours existé ?",
+        "Ouvrons Le Livre de Papy !",
+        "Un ruban lumineux se déroule jusque dans le portail !",
+        "Depuis l'Antiquité, différentes résines et colles servent à fixer des matériaux",
+        "Un artisan applique une résine pour maintenir deux éléments ensemble",
+        "Ça colle, mais ce n'est pas un ruban !",
+        "La couche adhésive doit être portée par un support.",
+        "Au dix-neuvième siècle, on utilise déjà des bandes enduites d'adhésif pour divers usages",
+        "Un fabricant étale une couche collante sur une bande de tissu",
+        "On peut dérouler une bande entière !",
+        "Il existe plusieurs matières de support.",
+        "Il existe plusieurs matières de support.",
+        "En mille neuf cent vingt-cinq, Richard Drew met au point un ruban de masquage",
+        "Un peintre protège une zone avant de pulvériser la peinture",
+        "Le ruban empêche de peindre au mauvais endroit !",
+        "Il doit se retirer sans abîmer la surface.",
+        "En mille neuf cent trente, Richard Drew développe un ruban transparent à base de cellophane",
+        "Un employé tire une bande claire sur un paquet",
+        "On voit le papier à travers !",
+        "Le ruban facilite de petites réparations.",
+        "Les dévidoirs facilitent l'usage de ruban adhésif au bureau",
+        "Une secrétaire tire le ruban puis le découpe",
+        "On obtient la bonne longueur !",
+        "Des rubans plus larges sont conçus pour fermer des cartons",
+        "Un préparateur scelle un colis avec une bande adhésive",
+        "Le paquet reste fermé !",
+        "Aujourd'hui, certains rubans sont repositionnables et d'autres très résistants",
+        "Malik découpe une petite bande avec l'aide de Papy",
+        "Je choisis celui qui convient au dessin !",
+        "On ne colle pas de ruban directement sur la peau.",
+        "Nous sommes de retour devant ton dessin.",
+        "Je vais le fixer avec un ruban qui convient au mur.",
+        "Parfait, et pas de ruban sur ma moustache !",
+        "C'était Le Livre de Papy ! Les inventions nous facilitent la vie.",
+        "Abonne-toi, un nouvel objet arrive demain !"
+      ],
+      "sources": [
+        "https://www.3m.com/3M/en_US/company-us/about-3m/history/",
+        "https://www.acs.org/education/whatischemistry/landmarks/scotchtape.html",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "colle",
+      "title": "L'histoire de la colle",
+      "type": "glue",
+      "eras": [
+        [
+          "PRÉHISTOIRE",
+          "ÉPOQUES ANCIENNES",
+          "LES RÉSINES NATURELLES",
+          "antique",
+          "resin",
+          "courtyard"
+        ],
+        [
+          "ÉGYPTE",
+          "ANTIQUITÉ",
+          "LES COLLES ANIMALES",
+          "antique",
+          "animal",
+          "temple"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES COLLES À BASE D'AMIDON",
+          "medieval",
+          "starch",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES COLLES FABRIQUÉES EN ATELIER",
+          "victorian",
+          "factory",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "XXe SIÈCLE",
+          "LES ADHÉSIFS SYNTHÉTIQUES",
+          "thirties",
+          "synthetic",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "LES BÂTONS DE COLLE",
+          "modern",
+          "stick",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES COLLES ADAPTÉES AUX ENFANTS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, la roue de mon château en carton est tombée !",
+        "Une petite quantité de colle peut la refixer.",
+        "Mais comment une pâte peut-elle tenir deux morceaux ensemble ?",
+        "La colle adhère aux surfaces puis se fixe en séchant ou en durcissant.",
+        "On collait déjà des objets autrefois ?",
+        "Ouvrons Le Livre de Papy !",
+        "Deux pages du livre se rapprochent comme des aimants !",
+        "Depuis très longtemps, des humains utilisent des résines naturelles pour fixer des éléments",
+        "Un artisan applique une matière collante sur un manche d'outil",
+        "La résine tient les pièces ensemble !",
+        "Les recettes varient selon les lieux.",
+        "Des artisans de l'Antiquité emploient aussi des colles d'origine animale",
+        "Un ébéniste assemble des pièces de bois pour un meuble",
+        "La colle sert même aux meubles !",
+        "La matière est souvent préparée à chaud.",
+        "La matière est souvent préparée à chaud.",
+        "Au Moyen Âge, des colles à base d'amidon servent notamment aux métiers du livre",
+        "Un relieur applique une pâte sur une couverture",
+        "Les pages peuvent être réunies !",
+        "Des recettes simples utilisent des matières végétales.",
+        "L'industrialisation développe la fabrication de différentes colles",
+        "Un ouvrier prépare un mélange en grande cuve",
+        "On peut en produire beaucoup !",
+        "Chaque colle est adaptée à un matériau.",
+        "Au vingtième siècle, les chimistes créent de nouveaux adhésifs synthétiques",
+        "Un laboratoire teste une colle sur deux plaquettes",
+        "Elle peut tenir très fortement !",
+        "Les bâtons de colle rendent certains travaux scolaires plus faciles",
+        "Un enfant tourne un petit tube de colle",
+        "Mes doigts sont moins collants !",
+        "Aujourd'hui, il existe des colles adaptées au papier, au bois et à d'autres matériaux",
+        "Malik applique une colle scolaire sur un carton",
+        "Une petite dose suffit !",
+        "On utilise seulement la colle prévue pour notre activité.",
+        "Retour au salon, ton château attend sa roue.",
+        "Je colle la pièce au bon endroit.",
+        "Et cette fois, laisse-la sécher avant de jouer !",
+        "C'était Le Livre de Papy ! Chaque objet a son histoire.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.britannica.com/technology/adhesive",
+        "https://www.acs.org/education/whatischemistry/landmarks.html",
+        "https://collection.sciencemuseumgroup.org.uk/"
+      ]
+    },
+    {
+      "slug": "calculatrice",
+      "title": "L'histoire de la calculatrice",
+      "type": "calculator",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "COMPTER AVEC DES JETONS",
+          "antique",
+          "tokens",
+          "temple"
+        ],
+        [
+          "ASIE",
+          "ÉPOQUES ANCIENNES",
+          "LES BOULIERS",
+          "chinese",
+          "abacus",
+          "market"
+        ],
+        [
+          "FRANCE",
+          "1642",
+          "LA PASCALINE",
+          "georgian",
+          "pascal",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES MACHINES À MANIVELLE",
+          "victorian",
+          "arithmometer",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "XXe SIÈCLE",
+          "LES CALCULATRICES DE BUREAU",
+          "thirties",
+          "desk",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1970",
+          "LES CALCULATRICES ÉLECTRONIQUES",
+          "modern",
+          "pocket",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "CALCULER SUR UN ÉCRAN",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, j'ai trop de nombres à additionner !",
+        "Une calculatrice peut t'aider à vérifier ton résultat.",
+        "Pourquoi une petite machine sait-elle calculer ?",
+        "Elle suit des règles mathématiques grâce à son mécanisme ou à ses circuits.",
+        "Les anciens avaient des calculatrices ?",
+        "Ouvrons Le Livre de Papy !",
+        "Des chiffres lumineux tournent autour du livre !",
+        "Depuis l'Antiquité, on utilise des jetons et des tables pour compter",
+        "Un marchand déplace les jetons pour totaliser ses marchandises",
+        "Chaque jeton représente une quantité !",
+        "Les règles de calcul sont très anciennes.",
+        "Dans plusieurs régions d'Asie, des bouliers permettent de compter et de calculer",
+        "Un marchand fait glisser les perles sur des tiges",
+        "Les perles vont très vite !",
+        "Chaque rangée peut représenter une valeur différente.",
+        "Chaque rangée peut représenter une valeur différente.",
+        "En mille six cent quarante-deux, Blaise Pascal conçoit une machine à calculer",
+        "Il tourne des roues numérotées pour additionner",
+        "Des roues qui font des maths !",
+        "La mécanique effectue une partie du travail.",
+        "Au dix-neuvième siècle, les machines arithmétiques se développent",
+        "Un employé tourne une manivelle pour obtenir un résultat",
+        "Il faut encore actionner la machine !",
+        "Ces appareils sont utiles dans les bureaux.",
+        "Au vingtième siècle, les machines de bureau deviennent plus compactes",
+        "Une comptable appuie sur les touches d'une calculatrice",
+        "Elle gagne du temps !",
+        "Dans les années soixante-dix, les calculatrices électroniques de poche se répandent",
+        "Un ouvrier assemble un petit écran et des boutons",
+        "Elle tient dans la main !",
+        "Aujourd'hui, les calculatrices existent sur des appareils dédiés et des téléphones",
+        "Malik saisit une addition, puis compare le résultat avec son cahier",
+        "Je peux vérifier mon calcul !",
+        "Mais il est important d'apprendre aussi à compter soi-même.",
+        "Nous revoilà devant ton exercice de calcul.",
+        "Je vais d'abord réfléchir, puis vérifier avec la calculatrice.",
+        "Très bonne méthode, Malik !",
+        "C'était Le Livre de Papy ! Les nombres ont aussi leur histoire.",
+        "Abonne-toi pour notre prochain voyage !"
+      ],
+      "sources": [
+        "https://www.computerhistory.org/revolution/calculators/1",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections"
+      ]
+    }
+  ]
+}
