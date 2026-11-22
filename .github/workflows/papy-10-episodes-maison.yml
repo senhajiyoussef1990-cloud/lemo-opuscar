@@ -1,0 +1,751 @@
+name: Le Livre de Papy - 10 nouveaux episodes
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/papy-10-episodes-maison.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: papy-dix-episodes-9x16
+  cancel-in-progress: false
+jobs:
+  preflight:
+    name: Preflight - dix scenarii, dix objets et 70 epoques
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer le navigateur de rendu
+        run: |
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Verifier les scripts, la chronologie et des plans 9x16
+        env:
+          LEMO_ANGLE: swiftshader
+        run: |
+          set -euo pipefail
+          python -m py_compile films/papy-batch5/prepare.py films/papy-batch5/audio_qc.py films/papy-batch5/visual_qc.py
+          bash -n films/papy-batch5/build-vertical.sh
+          slugs="telephone television appareil-photo refrigerateur machine-a-laver aspirateur fer-a-repasser telecommande micro-ondes seche-cheveux"
+          for slug in $slugs; do
+            python films/papy-batch5/prepare.py "$slug"
+            d="films/papy-$slug"
+            for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+            grep -Fq "g.fillRect(0,0,W,128)" "$d/main.js"
+            grep -Fq "four separate rounded fingers" "$d/chars.js"
+            grep -Fq "m.holdF=Wd.heldObject(w,t)" "$d/main.js"
+            grep -Fq "gadgetWorkshop(type,kind,era,t,progress,artisan)" "$d/workshops.js"
+            python - "$d" <<'PY'
+          from pathlib import Path
+          import json,sys
+          d=Path(sys.argv[1]); e=json.loads((d/'episode.json').read_text(encoding='utf8'))
+          assert len(e['eras'])==7 and len(e['lines'])==39 and len(e['sources'])>=4
+          assert e['title'].startswith("L'histoire")
+          assert (d/'SCENARIO.md').exists() and (d/'publication.txt').exists()
+          assert e['type'] in ('telephone','television','camera','fridge','washer','vacuum','iron','remote','microwave','hairdryer')
+          print("PREFLIGHT",e['title'],"39 répliques, 7 époques")
+          PY
+            bash "$d/tools/fonts.sh"
+            node core/render/still.mjs "$d" 15 48 --size 1080x1920 --out "$d/preflight-vertical"
+          done
+  episode_01:
+    name: 1 - telephone - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier telephone
+        run: |
+          python films/papy-batch5/prepare.py telephone
+          d=films/papy-telephone
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-telephone
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre telephone vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh telephone
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-telephone')
+          z=d/"L'histoire du téléphone.zip"
+          assert (d/"L'histoire du téléphone.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire du téléphone.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire du téléphone
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du téléphone"
+          path: "films/papy-telephone/L'histoire du téléphone.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_02:
+    name: 2 - television - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_01]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier television
+        run: |
+          python films/papy-batch5/prepare.py television
+          d=films/papy-television
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-television
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre television vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh television
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-television')
+          z=d/"L'histoire de la télévision.zip"
+          assert (d/"L'histoire de la télévision.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire de la télévision.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire de la télévision
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la télévision"
+          path: "films/papy-television/L'histoire de la télévision.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_03:
+    name: 3 - appareil-photo - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_02]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier appareil-photo
+        run: |
+          python films/papy-batch5/prepare.py appareil-photo
+          d=films/papy-appareil-photo
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-appareil-photo
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre appareil-photo vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh appareil-photo
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-appareil-photo')
+          z=d/"L'histoire de l'appareil photo.zip"
+          assert (d/"L'histoire de l'appareil photo.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire de l'appareil photo.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire de l'appareil photo
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de l'appareil photo"
+          path: "films/papy-appareil-photo/L'histoire de l'appareil photo.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_04:
+    name: 4 - refrigerateur - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_03]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier refrigerateur
+        run: |
+          python films/papy-batch5/prepare.py refrigerateur
+          d=films/papy-refrigerateur
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-refrigerateur
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre refrigerateur vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh refrigerateur
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-refrigerateur')
+          z=d/"L'histoire du réfrigérateur.zip"
+          assert (d/"L'histoire du réfrigérateur.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire du réfrigérateur.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire du réfrigérateur
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du réfrigérateur"
+          path: "films/papy-refrigerateur/L'histoire du réfrigérateur.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_05:
+    name: 5 - machine-a-laver - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_04]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier machine-a-laver
+        run: |
+          python films/papy-batch5/prepare.py machine-a-laver
+          d=films/papy-machine-a-laver
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-machine-a-laver
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre machine-a-laver vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh machine-a-laver
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-machine-a-laver')
+          z=d/"L'histoire de la machine à laver.zip"
+          assert (d/"L'histoire de la machine à laver.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire de la machine à laver.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire de la machine à laver
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la machine à laver"
+          path: "films/papy-machine-a-laver/L'histoire de la machine à laver.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_06:
+    name: 6 - aspirateur - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_05]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier aspirateur
+        run: |
+          python films/papy-batch5/prepare.py aspirateur
+          d=films/papy-aspirateur
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-aspirateur
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre aspirateur vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh aspirateur
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-aspirateur')
+          z=d/"L'histoire de l'aspirateur.zip"
+          assert (d/"L'histoire de l'aspirateur.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire de l'aspirateur.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire de l'aspirateur
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de l'aspirateur"
+          path: "films/papy-aspirateur/L'histoire de l'aspirateur.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_07:
+    name: 7 - fer-a-repasser - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_06]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier fer-a-repasser
+        run: |
+          python films/papy-batch5/prepare.py fer-a-repasser
+          d=films/papy-fer-a-repasser
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-fer-a-repasser
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre fer-a-repasser vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh fer-a-repasser
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-fer-a-repasser')
+          z=d/"L'histoire du fer à repasser.zip"
+          assert (d/"L'histoire du fer à repasser.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire du fer à repasser.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire du fer à repasser
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du fer à repasser"
+          path: "films/papy-fer-a-repasser/L'histoire du fer à repasser.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_08:
+    name: 8 - telecommande - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_07]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier telecommande
+        run: |
+          python films/papy-batch5/prepare.py telecommande
+          d=films/papy-telecommande
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-telecommande
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre telecommande vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh telecommande
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-telecommande')
+          z=d/"L'histoire de la télécommande.zip"
+          assert (d/"L'histoire de la télécommande.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire de la télécommande.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire de la télécommande
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire de la télécommande"
+          path: "films/papy-telecommande/L'histoire de la télécommande.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_09:
+    name: 9 - micro-ondes - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_08]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier micro-ondes
+        run: |
+          python films/papy-batch5/prepare.py micro-ondes
+          d=films/papy-micro-ondes
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-micro-ondes
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre micro-ondes vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh micro-ondes
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-micro-ondes')
+          z=d/"L'histoire du micro-ondes.zip"
+          assert (d/"L'histoire du micro-ondes.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire du micro-ondes.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire du micro-ondes
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du micro-ondes"
+          path: "films/papy-micro-ondes/L'histoire du micro-ondes.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  episode_10:
+    name: 10 - seche-cheveux - voix, Story et ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    needs: [preflight, episode_09]
+    if: ${{ always() && needs.preflight.result == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: le-livre-de-papy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer navigateur et synthese vocale
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          npm ci
+          npx playwright-core install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r requirements.txt edge-tts
+      - name: Verifier seche-cheveux
+        run: |
+          python films/papy-batch5/prepare.py seche-cheveux
+          d=films/papy-seche-cheveux
+          for js in main story objects workshops gadgets chars people toon; do node --check "$d/$js.js"; done
+          bash "$d/tools/fonts.sh"
+      - name: Recuperer toutes les voix Papy et Malik avec 6 tentatives
+        run: |
+          set -euo pipefail
+          d=films/papy-seche-cheveux
+          for attempt in 1 2 3 4 5 6; do
+            if python core/tts/tts_zh.py "$d/lines.json" "$d/raw"; then
+              test -s "$d/raw/dur.json"
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then echo "::error::Echec des voix apres 6 essais"; exit 1; fi
+            sleep $((attempt * 7))
+          done
+      - name: Rendre seche-cheveux vertical avec les voix et 25 controles
+        env:
+          LEMO_ANGLE: swiftshader
+          PYTHONUNBUFFERED: '1'
+          FPS: '12'
+          RENDER_WORKERS: '4'
+        run: |
+          set -euo pipefail
+          bash films/papy-batch5/build-vertical.sh seche-cheveux
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          d=Path('films/papy-seche-cheveux')
+          z=d/"L'histoire du sèche-cheveux.zip"
+          assert (d/"L'histoire du sèche-cheveux.mp4").stat().st_size > 1_000_000
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              for part in ("L'histoire du sèche-cheveux.mp4","story.jpg","publication.txt","controles-visuels.jpg","SCENARIO.md","SOURCES.md"):
+                  assert part in a.namelist(), (part,a.namelist())
+          print('ARCHIVE VERIFIEE :',z)
+          PY
+      - name: Livrer L'histoire du sèche-cheveux
+        uses: actions/upload-artifact@v4
+        with:
+          name: "L'histoire du sèche-cheveux"
+          path: "films/papy-seche-cheveux/L'histoire du sèche-cheveux.zip"
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
