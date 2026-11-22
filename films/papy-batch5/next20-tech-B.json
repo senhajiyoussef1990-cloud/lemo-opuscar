@@ -1,0 +1,557 @@
+{
+  "episodes": [
+    {
+      "slug": "ventilateur",
+      "title": "L'histoire du ventilateur",
+      "type": "fan",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "LES ÉVENTAILS",
+          "antique",
+          "hand",
+          "temple"
+        ],
+        [
+          "ASIE",
+          "ÉPOQUES ANCIENNES",
+          "LES ÉVENTAILS PLIANTS",
+          "chinese",
+          "folding",
+          "market"
+        ],
+        [
+          "INDE",
+          "XIXe SIÈCLE",
+          "LES GRANDS ÉVENTAILS PUNKAH",
+          "victorian",
+          "punkah",
+          "palace"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1880",
+          "LE VENTILATEUR ÉLECTRIQUE",
+          "victorian",
+          "electric",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES GRILLES DE PROTECTION",
+          "thirties",
+          "caged",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "MILIEU DU XXe SIÈCLE",
+          "LES VENTILATEURS OSCILLANTS",
+          "fifties",
+          "oscillating",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES VENTILATEURS PLUS DISCRETS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, il fait très chaud dans le salon !",
+        "Un ventilateur fait circuler l'air pour nous rafraîchir.",
+        "Est-ce que les premiers ventilateurs avaient déjà un moteur ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Les pages du livre se mettent à tourner comme des pales !",
+        "Depuis l'Antiquité, des éventails sont utilisés pour créer un courant d'air.",
+        "Une personne agite un large éventail près d'une fenêtre.",
+        "C'est une petite brise faite à la main !",
+        "Il faut bouger le bras sans arrêt.",
+        "Dans plusieurs régions d'Asie, les éventails sont fabriqués avec des matériaux légers.",
+        "Un artisan ouvre un éventail pliant avec des baguettes.",
+        "Il se range dans une poche !",
+        "L'art de l'éventail prend des formes très différentes.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Dans certaines régions de l'Inde coloniale, des éventails suspendus sont actionnés par une corde.",
+        "Un employé tire sur la corde pour faire bouger l'éventail.",
+        "C'est tout le plafond qui bouge !",
+        "Ce système ventile une pièce sans moteur électrique.",
+        "À la fin du dix-neuvième siècle, les premiers ventilateurs électriques sont commercialisés.",
+        "Un ingénieur fait tourner une hélice à l'aide d'un moteur.",
+        "Les pales tournent sans effort humain !",
+        "L'électricité fait bouger l'air de la pièce.",
+        "Les fabricants ajoutent des grilles autour des pales tournantes.",
+        "Un ouvrier fixe une grille métallique sur le ventilateur.",
+        "On voit encore les pales derrière !",
+        "Les modèles oscillants permettent de diriger l'air alternativement de plusieurs côtés.",
+        "Une enfant regarde le ventilateur tourner lentement la tête.",
+        "Il envoie de l'air à tout le monde !",
+        "Aujourd'hui, les ventilateurs ont différentes tailles et vitesses.",
+        "Papy règle la vitesse puis place l'appareil hors de portée.",
+        "Je sens une petite brise sur mes cheveux !",
+        "On ne met jamais les doigts près des pales.",
+        "Nous sommes de retour dans notre salon.",
+        "Le ventilateur du salon souffle une petite brise.",
+        "Mais attention à ma moustache, elle va s'envoler !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.britannica.com/technology/electric-fan",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "grille-pain",
+      "title": "L'histoire du grille-pain",
+      "type": "toaster",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "DORER LE PAIN AU FEU",
+          "antique",
+          "fire",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES GRILLES DEVANT LE FOYER",
+          "victorian",
+          "grill",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES RÉSISTANCES ÉLECTRIQUES",
+          "victorian",
+          "coil",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1909",
+          "UN GRILLE-PAIN ÉLECTRIQUE COMMERCIAL",
+          "victorian",
+          "ge",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1920",
+          "LE GRILLE-PAIN AUTOMATIQUE",
+          "thirties",
+          "popup",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "ANNÉES 1950",
+          "LES MODÈLES DE CUISINE",
+          "fifties",
+          "chrome",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "RÉGLER LE DORAGE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, ma tartine vient de sauter toute seule !",
+        "Le grille-pain chauffe le pain puis libère les tranches.",
+        "Qui a imaginé une machine qui fait bondir le pain ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Une tartine dorée jaillit du portail magique !",
+        "Depuis très longtemps, les humains font griller du pain près d'une source de chaleur.",
+        "Un cuisinier tient une tranche à distance des braises.",
+        "Le pain devient croustillant !",
+        "Il faut le surveiller pour ne pas le brûler.",
+        "Avant les grille-pain électriques, des ustensiles maintiennent le pain devant une flamme.",
+        "Une cuisinière tourne une grille pour dorer les deux côtés.",
+        "On doit retourner la tranche !",
+        "La chaleur doit toucher le pain sans le brûler.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Les résistances électriques permettent de chauffer une tranche sans flamme.",
+        "Un inventeur teste un fil chauffant protégé dans un appareil.",
+        "Le fil devient chaud grâce à l'électricité !",
+        "Les premiers modèles demandent de surveiller le pain.",
+        "Au début du vingtième siècle, des grille-pain électriques sont commercialisés.",
+        "Un ouvrier assemble les parois et le fil chauffant.",
+        "La tartine tient debout sur la grille !",
+        "Les appareils restent assez simples.",
+        "Dans les années vingt, les grille-pain automatiques à éjection se développent.",
+        "Un petit mécanisme relâche le pain au bon moment.",
+        "Hop ! La tartine monte toute seule !",
+        "Au milieu du vingtième siècle, les modèles à deux fentes deviennent courants.",
+        "Une famille pose un appareil chromé sur la table.",
+        "On peut préparer deux tranches !",
+        "Aujourd'hui, de nombreux grille-pain permettent de choisir le niveau de dorage.",
+        "Papy règle l'appareil pendant que Malik prépare son assiette.",
+        "Je préfère mon pain juste un peu doré !",
+        "Seul un adulte touche l'appareil chaud et on n'y met jamais les doigts.",
+        "Nous sommes de retour dans notre salon.",
+        "Ma tartine est prête pour le petit-déjeuner.",
+        "Et moi, je saute moins haut que le pain, heureusement !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://americanhistory.si.edu/ne/collections/object/nmah_324284",
+        "https://www.si.edu/object/toastmaster-toaster%3Anmah_324284",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "bouilloire",
+      "title": "L'histoire de la bouilloire",
+      "type": "kettle",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "CHAUFFER L'EAU DANS UN RÉCIPIENT",
+          "antique",
+          "pot",
+          "courtyard"
+        ],
+        [
+          "ASIE",
+          "ÉPOQUES ANCIENNES",
+          "LES THÉIÈRES ET LES CHAUDRONS",
+          "chinese",
+          "copper",
+          "market"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LA BOUILLOIRE SUR LE FOURNEAU",
+          "victorian",
+          "stove",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XIXe SIÈCLE",
+          "LES PREMIÈRES BOUILLOIRES ÉLECTRIQUES",
+          "victorian",
+          "early-electric",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "LES RÉSISTANCES INTÉGRÉES",
+          "thirties",
+          "element",
+          "factory"
+        ],
+        [
+          "ROYAUME-UNI",
+          "ANNÉES 1950",
+          "L'ARRÊT AUTOMATIQUE",
+          "fifties",
+          "automatic",
+          "lab"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LA BOUILLOIRE SANS FIL",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi l'eau fait-elle de petites bulles ?",
+        "La bouilloire sert à chauffer de l'eau.",
+        "Comment les familles faisaient-elles avant les bouilloires électriques ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Un nuage de vapeur sort du livre magique !",
+        "Depuis l'Antiquité, les familles chauffent de l'eau dans des récipients posés sur un foyer.",
+        "Un adulte déplace un pot à distance du feu.",
+        "Il faut rester loin des flammes !",
+        "Les récipients varient selon les matériaux locaux.",
+        "Différentes cultures fabriquent des récipients spécialisés pour chauffer ou verser l'eau.",
+        "Un artisan façonne un bec verseur et une poignée.",
+        "Le bec aide à verser sans renverser !",
+        "Les formes évoluent avec les usages.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Au dix-neuvième siècle, les bouilloires en métal se chauffent sur des fourneaux.",
+        "Une cuisinière pose un récipient avec une poignée sur une plaque.",
+        "Il faut attendre que l'eau chauffe !",
+        "Une poignée permet d'éviter de toucher le corps chaud.",
+        "À la fin du dix-neuvième siècle apparaissent des bouilloires chauffées électriquement.",
+        "Un technicien raccorde une résistance à un appareil expérimental.",
+        "L'électricité remplace le feu !",
+        "Les premiers appareils sont moins pratiques qu'aujourd'hui.",
+        "Au vingtième siècle, les éléments chauffants sont mieux intégrés aux bouilloires.",
+        "Un ouvrier installe la résistance dans un récipient.",
+        "L'eau chauffe plus facilement !",
+        "Des bouilloires à arrêt automatique deviennent disponibles au milieu du vingtième siècle.",
+        "Un inventeur observe un thermostat couper le chauffage.",
+        "La bouilloire s'arrête toute seule !",
+        "De nombreuses bouilloires modernes se retirent d'une base électrique.",
+        "Un adulte soulève la bouilloire par sa poignée après l'arrêt.",
+        "Elle est plus facile à servir !",
+        "L'eau bouillante doit toujours rester entre les mains des adultes.",
+        "Nous sommes de retour dans notre salon.",
+        "L'eau de la bouilloire a fini de chauffer.",
+        "Et moi, je préfère attendre avant de la toucher !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.russellhobbs.com/about-us",
+        "https://www.britannica.com/technology/electric-kettle",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "robinet",
+      "title": "L'histoire du robinet",
+      "type": "faucet",
+      "eras": [
+        [
+          "ROME",
+          "ANTIQUITÉ",
+          "LES CONDUITES D'EAU",
+          "antique",
+          "pipe",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES VANNES SIMPLES",
+          "medieval",
+          "valve",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES ROBINETS À VIS",
+          "victorian",
+          "screw",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XIXe SIÈCLE",
+          "L'EAU CHAUDE ET FROIDE",
+          "victorian",
+          "two",
+          "modern"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "ANNÉES 1940",
+          "LE MITIGEUR À POIGNÉE UNIQUE",
+          "thirties",
+          "mixer",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "LES ROBINETS À CARTOUCHE",
+          "modern",
+          "cartridge",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES ROBINETS À CAPTEUR",
+          "modern",
+          "sensor",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, pourquoi l'eau coule quand je tourne le robinet ?",
+        "Un mécanisme ouvre ou ferme le passage de l'eau.",
+        "Qui a imaginé de pouvoir arrêter l'eau d'un seul geste ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Une goutte bleue s'illumine au-dessus du livre !",
+        "Dans l'Empire romain, des conduites transportent de l'eau vers les villes.",
+        "Un artisan fait passer l'eau dans une canalisation.",
+        "L'eau ne vient pas toujours d'un puits !",
+        "Les fontaines et les bains utilisent ces réseaux.",
+        "Des installations anciennes utilisent des bouchons et des vannes pour réguler l'écoulement.",
+        "Un artisan tourne une pièce qui ferme une conduite.",
+        "Le passage de l'eau est bloqué !",
+        "Les mécanismes dépendent des métiers et des matériaux.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Les robinets à vis se diffusent avec le développement des réseaux domestiques.",
+        "Un plombier tourne une tige pour presser un joint.",
+        "L'eau coule moins puis s'arrête !",
+        "Le joint bloque le passage lorsqu'il est serré.",
+        "Les cuisines et salles de bain s'équipent progressivement de points d'eau chaude et froide.",
+        "Un ouvrier installe deux robinets près d'un lavabo.",
+        "Il faut régler les deux séparément !",
+        "De nouveaux systèmes cherchent à mélanger les températures.",
+        "Au vingtième siècle, les mitigeurs à commande unique se développent.",
+        "Un inventeur fait bouger un levier pour changer le débit et la température.",
+        "Un seul geste commande l'eau !",
+        "Les cartouches modernes rendent les réglages plus précis.",
+        "Un plombier remplace une pièce interne d'un robinet.",
+        "Le mécanisme se trouve à l'intérieur !",
+        "Certains robinets actuels détectent la présence des mains.",
+        "Malik place les mains sous le bec pour laisser passer l'eau.",
+        "L'eau s'arrête quand je retire mes mains !",
+        "Un bon robinet permet aussi d'économiser l'eau.",
+        "Nous sommes de retour dans notre salon.",
+        "Le robinet du salon est bien fermé.",
+        "Et moi, je vais garder chaque goutte pour ma prochaine aventure !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.moen.com/about-us/history",
+        "https://www.britannica.com/technology/plumbing",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "balai",
+      "title": "L'histoire du balai",
+      "type": "broom",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "BALAYER AVEC DES BRANCHES",
+          "antique",
+          "twigs",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES FAISCEAUX DE BRUYÈRE",
+          "medieval",
+          "heather",
+          "medieval"
+        ],
+        [
+          "AMÉRIQUE DU NORD",
+          "XVIIIe SIÈCLE",
+          "LE SORGHO À BALAIS",
+          "georgian",
+          "sorghum",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1797",
+          "LES BALAIS DE LEVI DICKENSON",
+          "georgian",
+          "dickinson",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "XIXe SIÈCLE",
+          "LES ATELIERS DE BALAIS",
+          "victorian",
+          "workshop",
+          "Au dix-neuvième siècle, les ateliers produisent des balais en plus grandes quantités."
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "LES BROSSES SYNTHÉTIQUES",
+          "fifties",
+          "nylon",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "NETTOYER TOUS LES SOLS",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, il y a des miettes sous la table !",
+        "Un balai peut les rassembler sans faire de bruit.",
+        "Qui a inventé les premiers balais pour nettoyer le sol ?",
+        "Cette invention est le résultat du travail de plusieurs générations.",
+        "Est-ce qu'on peut voir comment elle fonctionnait autrefois ?",
+        "Bien sûr, ouvrons Le Livre de Papy !",
+        "Un balai dessine un cercle de poussière autour du livre !",
+        "Depuis des temps anciens, on regroupe des brindilles pour nettoyer les sols.",
+        "Un habitant attache des branches à une poignée.",
+        "Ce balai ressemble à un petit buisson !",
+        "Les matériaux sont choisis près de chez soi.",
+        "Au Moyen Âge, les balais peuvent utiliser des brindilles et des plantes liées ensemble.",
+        "Un artisan serre une botte de bruyère autour d'un manche.",
+        "Les fibres ramassent la poussière !",
+        "La forme dépend du sol à nettoyer.",
+        "Chaque progrès prépare de nouvelles utilisations.",
+        "Le sorgho à balais sert à fabriquer des têtes de balai plus régulières.",
+        "Une artisane coupe les tiges et les lie à un manche.",
+        "Les brins sont tous alignés !",
+        "Cette plante possède des tiges adaptées.",
+        "En mille sept cent quatre-vingt-dix-sept, Levi Dickenson est associé à la fabrication de balais en sorgho.",
+        "Un artisan fixe une poignée de fibres sur un manche en bois.",
+        "On commence à fabriquer beaucoup de balais !",
+        "La production se développe progressivement.",
+        "Un ouvrier serre les fibres avec une machine.",
+        "La tête du balai tient mieux !",
+        null,
+        "Au vingtième siècle, les brosses en matières synthétiques se répandent.",
+        "Une machine fixe des fibres dans une tête de balai.",
+        "Les brins peuvent être colorés !",
+        "Aujourd'hui, il existe des balais adaptés aux sols intérieurs et extérieurs.",
+        "Malik pousse ses miettes dans une petite pelle.",
+        "Je peux aider à nettoyer la table !",
+        "Bravo, on nettoie doucement et on range le balai après usage.",
+        "Nous sommes de retour dans notre salon.",
+        "Le salon est de nouveau bien propre.",
+        "Mais je garde une miette pour mon petit gâteau de demain !",
+        "C'était Le Livre de Papy ! Une invention peut cacher des siècles d'histoire.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology/broom",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.britannica.com/technology"
+      ]
+    }
+  ]
+}
