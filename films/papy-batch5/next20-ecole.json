@@ -1,0 +1,559 @@
+{
+  "episodes": [
+    {
+      "slug": "stylo",
+      "title": "L'histoire du stylo",
+      "type": "pen",
+      "eras": [
+        [
+          "ÉGYPTE",
+          "ANTIQUITÉ",
+          "DES CALAMES POUR ÉCRIRE",
+          "antique",
+          "reed",
+          "temple"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LA PLUME D'OISEAU",
+          "medieval",
+          "quill",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LA PLUME MÉTALLIQUE",
+          "victorian",
+          "nib",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "FIN DU XIXe SIÈCLE",
+          "LES STYLOS À RÉSERVOIR",
+          "victorian",
+          "fountain",
+          "lab"
+        ],
+        [
+          "HONGRIE",
+          "1938",
+          "LE STYLO À BILLE DE BÍRÓ",
+          "thirties",
+          "biro",
+          "lab"
+        ],
+        [
+          "FRANCE",
+          "1950",
+          "LE STYLO-BILLE POPULAIRE",
+          "fifties",
+          "bic",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES STYLOS DE TOUTES SORTES",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "mon stylo ne laisse plus d'encre sur la feuille !",
+        "L'encre est presque terminée, Malik.",
+        "Comment fait-on pour écrire avec un stylo ?",
+        "Un petit réservoir guide l'encre jusqu'à la pointe.",
+        "Et avant les stylos modernes, ils écrivaient comment ?",
+        "Ouvrons Le Livre de Papy pour remonter le temps !",
+        "la pointe du stylo lance des étincelles !",
+        "Dans l'Égypte antique, des scribes tracent des signes avec des roseaux taillés.",
+        "Un scribe trempe son calame dans l'encre et écrit sur un papyrus.",
+        "Il fallait retremper tout le temps ?",
+        "Oui, le calame ne contient pas de grande réserve d'encre.",
+        "Au Moyen Âge, beaucoup de manuscrits européens sont écrits à la plume.",
+        "Un copiste taille une plume et la trempe soigneusement dans l'encrier.",
+        "Les lettres ressemblent à des dessins !",
+        "La forme de la pointe change l'épaisseur du trait.",
+        "Les moines copistes passent des heures à remplir les pages.",
+        "Au dix-neuvième siècle, les plumes métalliques se fabriquent en grandes quantités.",
+        "Un ouvrier fixe une pointe d'acier au bout d'un porte-plume.",
+        "Ça écrit mieux que les plumes d'oiseau ?",
+        "Elles sont durables, mais il faut encore de l'encre à côté.",
+        "Les stylos-plume à réservoir deviennent plus pratiques.",
+        "Un inventeur remplit le réservoir, puis écrit plusieurs phrases.",
+        "Cette fois, plus besoin de tremper la pointe !",
+        "Exactement, l'encre circule depuis le corps du stylo.",
+        "En mille neuf cent trente-huit, László Bíró dépose un brevet de stylo à bille.",
+        "Une petite bille roule et dépose une couche d'encre sur le papier.",
+        "La bille est minuscule !",
+        "À partir de mille neuf cent cinquante, le BIC Cristal rend le stylo à bille très courant.",
+        "Une usine assemble le tube transparent, la pointe et le capuchon.",
+        "On peut même voir la réserve d'encre !",
+        "Aujourd'hui, on trouve des stylos à bille, à encre gel et à plume.",
+        "Malik dessine une spirale, puis écrit son prénom sans changer d'outil.",
+        "Maintenant, j'ai envie d'écrire une histoire !",
+        "Bonne idée, le stylo transforme tes idées en mots.",
+        "Tu as retrouvé ta feuille de dessin.",
+        "Je vais écrire le nom de Papy en grand !",
+        "Avec cette signature, je suis officiellement un grand inventeur !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire passionnante.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.asme.org/about-asme/engineering-history/landmarks/236-birome-ballpoint-pen-collection",
+        "https://collection.sciencemuseumgroup.org.uk/objects/co8057178/biro-ballpoint-pen",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.metmuseum.org/art/collection",
+        "https://www.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "gomme",
+      "title": "L'histoire de la gomme",
+      "type": "eraser",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT LE XVIIIe SIÈCLE",
+          "EFFACER AVEC LA MIE DE PAIN",
+          "georgian",
+          "bread",
+          "workshop"
+        ],
+        [
+          "ANGLETERRE",
+          "1770",
+          "LE CAOUTCHOUC EFFACE LE GRAPHITE",
+          "georgian",
+          "rubber",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1839",
+          "LE CAOUTCHOUC VULCANISÉ",
+          "victorian",
+          "vulcan",
+          "factory"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "XIXe SIÈCLE",
+          "LA GOMME AU BOUT DU CRAYON",
+          "victorian",
+          "tip",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "XXe SIÈCLE",
+          "DES FORMES PLUS VARIÉES",
+          "fifties",
+          "block",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "DES MATIÈRES SYNTHÉTIQUES",
+          "modern",
+          "synthetic",
+          "lab"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "EFFACER SANS ABÎMER LA FEUILLE",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "j'ai dépassé les contours de mon dessin !",
+        "Une gomme peut enlever certains traits de crayon.",
+        "Pourquoi le crayon s'efface-t-il ?",
+        "La matière de la gomme accroche une partie du graphite.",
+        "Est-ce que les enfants avaient déjà des gommes autrefois ?",
+        "Ouvrons Le Livre de Papy pour remonter le temps !",
+        "une gomme géante efface une étoile du livre !",
+        "Pendant longtemps, certains dessinateurs utilisent de la mie de pain pour corriger un trait.",
+        "Un artiste roule doucement une petite boule de mie sur le dessin.",
+        "Ils utilisaient leur goûter ?",
+        "Parfois, mais cette méthode n'était pas très pratique.",
+        "En mille sept cent soixante-dix, Joseph Priestley décrit l'usage du caoutchouc pour effacer le crayon.",
+        "Un dessinateur frotte un morceau de gomme naturelle sur son papier.",
+        "Oh ! Le trait disparaît !",
+        "Oui, le caoutchouc peut enlever le graphite.",
+        "Mais les premiers morceaux de caoutchouc vieillissent mal.",
+        "Au dix-neuvième siècle, la vulcanisation améliore la stabilité du caoutchouc.",
+        "Un fabricant prépare une matière plus résistante aux variations de température.",
+        "La gomme s'abîme moins vite !",
+        "Cette amélioration facilite plusieurs objets en caoutchouc.",
+        "Des fabricants associent de petites gommes à l'extrémité des crayons.",
+        "Un ouvrier fixe une petite pièce souple sur un crayon en bois.",
+        "Le crayon transporte sa gomme !",
+        "C'est pratique quand on écrit à l'école.",
+        "Au vingtième siècle, les gommes sont fabriquées dans de nombreuses formes.",
+        "Une machine découpe des petits blocs rectangulaires.",
+        "Elles ressemblent à des bonbons !",
+        "Des gommes modernes utilisent aussi des matières synthétiques.",
+        "Un fabricant teste des gommes adaptées à différents supports.",
+        "Certaines sont très douces !",
+        "Aujourd'hui, on choisit une gomme selon le crayon et le papier.",
+        "Malik efface seulement le mauvais trait et conserve le reste du dessin.",
+        "C'est mieux que de recommencer toute la page !",
+        "On frotte doucement pour ne pas abîmer le papier.",
+        "Le dessin t'attend toujours.",
+        "Je peux corriger mon erreur sans déchirer la feuille !",
+        "Exactement, même les grands inventeurs recommencent parfois.",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire passionnante.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.metmuseum.org/art/collection",
+        "https://www.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "cahier",
+      "title": "L'histoire du cahier",
+      "type": "notebook",
+      "eras": [
+        [
+          "ROME",
+          "ANTIQUITÉ",
+          "DES TABLETTES DE CIRE",
+          "antique",
+          "wax",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "DES FEUILLETS PLIÉS",
+          "medieval",
+          "quire",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XVe–XVIe SIÈCLES",
+          "LES CAHIERS DE PAPIER",
+          "medieval",
+          "paper",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES CAHIERS SCOLAIRES",
+          "victorian",
+          "school",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "XXe SIÈCLE",
+          "LES CAHIERS À SPIRALE",
+          "fifties",
+          "spiral",
+          "factory"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XXe SIÈCLE",
+          "LIGNES, CARREAUX ET COULEURS",
+          "modern",
+          "grid",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES CAHIERS ET DU PAPIER RECYCLÉ",
+          "modern",
+          "recycled",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "mon cahier est presque rempli !",
+        "Chaque page garde une partie de tes idées.",
+        "Qui a inventé ce petit livre pour écrire ?",
+        "Les feuilles assemblées ont connu de nombreuses formes.",
+        "Les écoliers ont toujours eu des cahiers ?",
+        "Ouvrons Le Livre de Papy pour remonter le temps !",
+        "les pages du cahier se changent en portes !",
+        "Dans l'Antiquité romaine, on utilise des tablettes de bois recouvertes de cire.",
+        "Un élève trace des signes avec un stylet puis lisse la cire pour recommencer.",
+        "On effaçait toute la page ?",
+        "On pouvait réutiliser la même surface.",
+        "Au Moyen Âge, les copistes plient des feuillets pour former des cahiers de parchemin.",
+        "Un artisan assemble plusieurs feuillets avant de les coudre ensemble.",
+        "Ça ressemble déjà à un petit livre !",
+        "Oui, plusieurs cahiers cousus peuvent former un manuscrit.",
+        "Il fallait préparer chaque feuille avec beaucoup de soin.",
+        "Avec l'usage croissant du papier, les cahiers deviennent plus accessibles.",
+        "Un artisan plie, aligne et coud des feuilles de papier.",
+        "Les pages sont plus souples !",
+        "Le cahier peut servir aux comptes, aux notes ou à l'apprentissage.",
+        "Au dix-neuvième siècle, l'école utilise largement des cahiers d'écriture.",
+        "Un fabricant imprime des lignes pour aider les enfants à former leurs lettres.",
+        "Les lignes empêchent les mots de danser !",
+        "Elles permettent d'écrire plus régulièrement.",
+        "Au vingtième siècle, les cahiers à spirale deviennent courants.",
+        "Une machine passe une spirale dans des trous alignés.",
+        "Les feuilles se tournent très facilement !",
+        "Les fabricants proposent de multiples réglures et couvertures.",
+        "Une écolière choisit des carreaux adaptés à son exercice.",
+        "Je préfère les pages quadrillées !",
+        "Aujourd'hui, certains cahiers utilisent du papier recyclé.",
+        "Malik écrit un mot sur la première page et range soigneusement le cahier.",
+        "Mon cahier peut raconter toute une année !",
+        "Et chaque page mérite d'être utilisée sans gaspillage.",
+        "Nous revoilà devant tes exercices.",
+        "J'ai encore de la place pour dessiner Papy !",
+        "Laisse-moi une petite page pour ma moustache !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire passionnante.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.metmuseum.org/art/collection",
+        "https://www.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "regle",
+      "title": "L'histoire de la règle",
+      "type": "ruler",
+      "eras": [
+        [
+          "ÉGYPTE",
+          "ANTIQUITÉ",
+          "LA COUDÉE COMME MESURE",
+          "antique",
+          "cubit",
+          "temple"
+        ],
+        [
+          "ROME",
+          "ANTIQUITÉ",
+          "DES RÈGLES EN MÉTAL",
+          "antique",
+          "roman",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "DES MESURES LOCALES",
+          "medieval",
+          "wood",
+          "workshop"
+        ],
+        [
+          "FRANCE",
+          "1795",
+          "LE MÈTRE SE GÉNÉRALISE PEU À PEU",
+          "georgian",
+          "meter",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LA RÈGLE D'ÉCOLIER",
+          "victorian",
+          "school",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "PLASTIQUE ET MÉTAL",
+          "modern",
+          "plastic",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "MESURER AVEC PRÉCISION",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "ma ligne est toute tordue !",
+        "Avec une règle, elle sera bien droite.",
+        "Pourquoi y a-t-il des petits chiffres dessus ?",
+        "Ils servent à mesurer une longueur.",
+        "Les anciens construisaient déjà avec des règles ?",
+        "Ouvrons Le Livre de Papy pour remonter le temps !",
+        "la règle devient un pont au-dessus du livre !",
+        "Dans l'Égypte antique, les artisans utilisent notamment la coudée comme unité.",
+        "Un bâtisseur compare une longueur à une règle de mesure graduée.",
+        "Ils n'avaient pas des centimètres ?",
+        "Non, les unités étaient différentes selon les époques et les lieux.",
+        "Dans le monde romain, des outils de mesure facilitent les constructions.",
+        "Un artisan pose une règle sur une planche et marque une longueur.",
+        "Les soldats pouvaient aussi mesurer ?",
+        "Les mesures servent à bâtir, fabriquer et commercer.",
+        "De nombreux métiers ont besoin d'outils fiables.",
+        "Au Moyen Âge, les règles et unités de longueur varient entre les régions.",
+        "Un menuisier reporte plusieurs fois la même mesure sur une pièce de bois.",
+        "Et si deux villes n'utilisent pas la même règle ?",
+        "Cela peut compliquer les échanges.",
+        "À partir de la Révolution française, le système métrique est officiellement développé.",
+        "Un savant présente une mesure de longueur appelée mètre.",
+        "Enfin tout le monde peut comparer !",
+        "Il faudra cependant du temps pour que les usages changent.",
+        "Les règles graduées deviennent des outils scolaires courants.",
+        "Un élève trace une ligne nette à côté d'un cahier.",
+        "La règle tient même dans une trousse !",
+        "Les règles sont fabriquées en bois, en métal et en plastique.",
+        "Une machine imprime des graduations bien régulières.",
+        "Celles en plastique peuvent être transparentes !",
+        "Aujourd'hui, les règles servent autant à l'école que dans les ateliers.",
+        "Malik mesure vingt centimètres et trace un trait droit.",
+        "C'est plus précis qu'à l'œil !",
+        "Bravo, mesure d'abord et trace ensuite.",
+        "Nous revoilà devant ton dessin.",
+        "Je peux mesurer mon château en centimètres !",
+        "Excellent, mais évitons de mesurer mes moustaches !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire passionnante.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://www.ucl.ac.uk/museums-static/digitalegypt/weights/lenght.html",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.metmuseum.org/art/collection",
+        "https://www.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    },
+    {
+      "slug": "taille-crayon",
+      "title": "L'histoire du taille-crayon",
+      "type": "sharpener",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT LE XIXe SIÈCLE",
+          "TAILLER AU PETIT COUTEAU",
+          "georgian",
+          "knife",
+          "workshop"
+        ],
+        [
+          "FRANCE",
+          "1828",
+          "LE BREVET DE LASSIMONE",
+          "georgian",
+          "lassimone",
+          "lab"
+        ],
+        [
+          "FRANCE",
+          "1847",
+          "UN TAILLE-CRAYON PLUS COMPACT",
+          "victorian",
+          "estivaux",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES MODÈLES DE BUREAU",
+          "victorian",
+          "desk",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "MILIEU DU XXe SIÈCLE",
+          "LES PETITS MODÈLES PORTATIFS",
+          "fifties",
+          "portable",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "DES COULEURS ET DES RÉSERVOIRS",
+          "modern",
+          "container",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "TAILLER À LA BONNE LONGUEUR",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "mon crayon est devenu tout plat !",
+        "La pointe est usée, Malik.",
+        "Comment la rendre pointue sans casser le crayon ?",
+        "Un taille-crayon retire un peu de bois autour de la mine.",
+        "Il existait avant les crayons de couleur ?",
+        "Ouvrons Le Livre de Papy pour remonter le temps !",
+        "une montagne de copeaux tourne autour du livre !",
+        "Avant les taille-crayons, les artistes façonnent la pointe avec un petit couteau.",
+        "Un artisan retire doucement du bois pour dégager la mine.",
+        "Il fallait faire très attention !",
+        "Oui, aujourd'hui cette tâche doit rester réservée aux adultes.",
+        "En mille huit cent vingt-huit, Bernard Lassimone dépose un brevet pour un instrument à tailler les crayons.",
+        "Un inventeur fixe un crayon dans un outil mécanique.",
+        "Les inventions ressemblent parfois à des machines bizarres !",
+        "Cette idée aide à rendre la taille plus régulière.",
+        "Mais l'appareil n'est pas encore le petit modèle moderne.",
+        "En mille huit cent quarante-sept, Thierry des Estivaux dépose un brevet pour un nouveau taille-crayon.",
+        "Une lame métallique enlève le bois lorsque le crayon tourne.",
+        "On commence à reconnaître sa forme !",
+        "La pointe prend progressivement une forme conique.",
+        "Au début du vingtième siècle, des taille-crayons de bureau se répandent.",
+        "Un enfant tourne une manivelle pendant qu'un mécanisme coupe le bois.",
+        "Ça fait des copeaux en spirale !",
+        "Certains modèles recueillent les copeaux dans un petit réservoir.",
+        "Au milieu du vingtième siècle, les petits taille-crayons métalliques sont courants.",
+        "Une usine fabrique la pièce et la lame à l'aide de machines.",
+        "Il tient dans la poche !",
+        "Des modèles en plastique proposent un réservoir à copeaux.",
+        "Malik ouvre le petit récipient pour vider les déchets.",
+        "Je garde ma table propre !",
+        "Les taille-crayons existent en version manuelle ou électrique.",
+        "Malik utilise son taille-crayon fermé et récupère les copeaux.",
+        "Ça marche aussi pour les crayons de couleur !",
+        "Oui, avec la taille adaptée pour ne pas casser la mine.",
+        "Nous revoilà avec ton crayon bien taillé.",
+        "Il ressemble à une petite fusée !",
+        "Une fusée qui dessine, voilà une belle invention !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire passionnante.",
+        "Abonne-toi, et à demain pour une nouvelle découverte !"
+      ],
+      "sources": [
+        "https://patent-infos.de/overview/history-pencil-sharpeners-1850",
+        "https://localhistories.org/a-history-of-pencils/",
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.metmuseum.org/art/collection",
+        "https://www.si.edu/collections",
+        "https://www.britannica.com/technology"
+      ]
+    }
+  ]
+}
