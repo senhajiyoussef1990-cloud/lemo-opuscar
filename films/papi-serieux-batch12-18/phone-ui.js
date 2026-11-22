@@ -1,5 +1,5 @@
 // L'interface du telephone, dessinee UNE SEULE FOIS pour le petit ecran et son agrandissement.
-// EP15/16/18 : aucun symbole ni carte n'est dessine flottant dans le salon.
+// EP12 a EP18 : les QR codes, le cloud, les stories, Bluetooth, la carte, les filtres et les mises a jour ne flottent pas dans le salon.
 const C={
   paper:'#F3EBDD', white:'#FFF9EF', ink:'#161513', gray:'#77736D',
   soft:'#E5DAC8', mid:'#B8AE9E'
@@ -74,6 +74,121 @@ function renderUpdate(ctx,t){
   txt(ctx,t>=28.65?'REDÉMARRAGE...':'TÉLÉCHARGEMENT...',160,485,18,C.ink,'center');
   txt(ctx,t>=28.65?'Encore un petit instant !':'Ne pas éteindre l’appareil',160,530,15,C.gray,'center');
 }
+
+// Interfaces uniques: reproduites en miniature dans le téléphone et à droite en grand.
+function finder(ctx,x,y,cell){
+  ctx.fillStyle=C.ink;ctx.fillRect(x,y,cell*5,cell*5);
+  ctx.fillStyle=C.white;ctx.fillRect(x+cell,y+cell,cell*3,cell*3);
+  ctx.fillStyle=C.ink;ctx.fillRect(x+2*cell,y+2*cell,cell,cell);
+}
+function renderQR(ctx,t){
+  txt(ctx,'SCANNER UN QR CODE',19,127,20);
+  rr(ctx,20,157,280,292,20,C.white,C.mid,3);
+  const sz=11, x0=69,y0=188;
+  ctx.fillStyle=C.paper;ctx.fillRect(x0-12,y0-12,sz*17+24,sz*17+24);
+  finder(ctx,x0,y0,sz);finder(ctx,x0+sz*10,y0,sz);finder(ctx,x0,y0+sz*10,sz);
+  for(let y=0;y<15;y++)for(let x=0;x<15;x++){
+    if((x<5&&y<5)||(x>=10&&y<5)||(x<5&&y>=10))continue;
+    if((x*17+y*23+x*y*9)%7<3){ctx.fillStyle=C.ink;ctx.fillRect(x0+x*sz,y0+y*sz,sz-1,sz-1);}
+  }
+  ctx.strokeStyle=C.ink;ctx.lineWidth=4;ctx.lineCap='round';
+  for(const [x,y,sx,sy] of [[40,176,1,1],[278,176,-1,1],[40,420,1,-1],[278,420,-1,-1]]){
+    ctx.beginPath();ctx.moveTo(x+sx*31,y);ctx.lineTo(x,y);ctx.lineTo(x,y+sy*30);ctx.stroke();
+  }
+  if(t<9){
+    const yy=195+(t*8)%170;
+    ctx.strokeStyle=C.gray;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(48,yy);ctx.lineTo(269,yy);ctx.stroke();
+  }
+  rr(ctx,25,468,270,54,12,t>=9?C.ink:C.soft);
+  txt(ctx,t>=9?'MENU DU RESTAURANT':'CADREZ LE CODE',160,493,20,t>=9?C.white:C.ink,'center');
+  txt(ctx,t>=28.65?'Service introuvable':'Scan avec votre appareil photo',160,545,14,C.gray,'center');
+}
+function cloudIcon(ctx,cx,cy,scale=1){
+  ctx.save();ctx.translate(cx,cy);ctx.scale(scale,scale);ctx.beginPath();
+  ctx.moveTo(-66,36);ctx.bezierCurveTo(-108,36,-101,-21,-65,-29);
+  ctx.bezierCurveTo(-56,-83,11,-89,38,-38);
+  ctx.bezierCurveTo(91,-40,99,38,60,38);
+  ctx.closePath();ctx.fillStyle=C.white;ctx.fill();ctx.strokeStyle=C.ink;ctx.lineWidth=6;ctx.stroke();
+  ctx.restore();
+}
+function photo(ctx,x,y,tilt,label){
+  ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
+  rr(ctx,-49,-63,98,133,8,C.white,C.ink,3);
+  rr(ctx,-40,-54,80,89,3,C.soft);
+  ctx.fillStyle=C.mid;ctx.beginPath();ctx.arc(0,-16,21,0,7);ctx.fill();
+  ctx.fillStyle=C.gray;ctx.beginPath();ctx.moveTo(-32,32);ctx.quadraticCurveTo(-5,-15,36,32);ctx.fill();
+  txt(ctx,label,0,54,13,C.ink,'center');
+  ctx.restore();
+}
+function renderCloud(ctx,t){
+  txt(ctx,'MES PHOTOS · CLOUD',20,125,21);
+  rr(ctx,20,157,280,194,19,C.white,C.mid,2);
+  cloudIcon(ctx,160,237,.9);
+  txt(ctx,t<9?'ENVOI EN COURS':'PHOTOS SAUVEGARDÉES',160,324,15,C.ink,'center');
+  txt(ctx,'ALBUM DE FAMILLE',22,385,19);
+  photo(ctx,86,466,-.11,'1950');
+  photo(ctx,217,466,.13,t>28.65?'PAPI':'2026');
+  if(t>28.65){
+    rr(ctx,41,392,238,123,15,C.white,C.ink,3);
+    txt(ctx,'VIEILLE PHOTO !',160,420,22,C.ink,'center');
+    txt(ctx,'Souvenir de Papi',160,465,20,C.gray,'center');
+  }
+  txt(ctx,t>28.65?'1 ancien souvenir retrouvé':'Toutes vos photos sont en ligne',160,547,14,C.gray,'center');
+}
+function renderStory(ctx,t){
+  txt(ctx,'MA STORY · PAPI',20,123,21);
+  rr(ctx,20,154,280,345,23,C.ink);
+  ctx.save();ctx.beginPath();ctx.roundRect(28,162,264,329,17);ctx.clip();
+  ctx.fillStyle=C.mid;ctx.fillRect(28,162,264,329);
+  ctx.fillStyle=C.soft;ctx.fillRect(28,350,264,141);
+  // A Papi portrait inside the vertical story, never a floating face in the room.
+  ctx.fillStyle=C.white;ctx.beginPath();ctx.ellipse(160,360,79,98,0,0,7);ctx.fill();
+  ctx.fillStyle=C.ink;ctx.beginPath();ctx.ellipse(160,261,81,28,0,Math.PI,Math.PI*2);ctx.fill();
+  ctx.strokeStyle=C.ink;ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(160,230);ctx.lineTo(166,208);ctx.stroke();
+  for(const x of [131,191]){ctx.fillStyle=C.ink;ctx.beginPath();ctx.arc(x,351,8,0,7);ctx.fill();}
+  ctx.strokeStyle=C.ink;ctx.lineWidth=9;
+  ctx.beginPath();ctx.moveTo(110,390);ctx.quadraticCurveTo(148,368,160,394);
+  ctx.quadraticCurveTo(191,364,213,391);ctx.stroke();
+  txt(ctx,'PAPI, SÉRIEUX ?',160,463,18,C.ink,'center');
+  ctx.restore();
+  const progress=Math.max(.015,1-Math.max(0,t-.5)/30);
+  rr(ctx,28,171,264,6,3,C.gray);rr(ctx,28,171,264*progress,6,3,C.white);
+  rr(ctx,31,521,258,30,12,t>=28.65?C.ink:C.soft);
+  txt(ctx,t>=28.65?'STORY EXPIRÉE':'VISIBLE PENDANT 24 H',160,536,17,t>=28.65?C.white:C.ink,'center');
+}
+function renderFilter(ctx,t){
+  txt(ctx,'CAMÉRA · FILTRES',20,124,22);
+  rr(ctx,20,155,280,343,22,C.white,C.mid,3);
+  ctx.save();ctx.beginPath();ctx.roundRect(29,164,262,325,15);ctx.clip();
+  ctx.fillStyle=C.mid;ctx.fillRect(29,164,262,325);
+  const rabbit=t>=9&&t<21.5,princess=t>=21.5&&t<28.65,normal=t>=28.65;
+  if(rabbit){
+    for(const x of [106,214]){
+      ctx.save();ctx.translate(x,237);ctx.rotate(x===106?-.22:.22);
+      ctx.fillStyle=C.white;ctx.strokeStyle=C.ink;ctx.lineWidth=5;
+      ctx.beginPath();ctx.ellipse(0,-63,24,94,0,0,7);ctx.fill();ctx.stroke();
+      ctx.fillStyle=C.soft;ctx.beginPath();ctx.ellipse(0,-63,11,64,0,0,7);ctx.fill();ctx.restore();
+    }
+  }
+  if(princess){
+    ctx.fillStyle=C.white;ctx.strokeStyle=C.ink;ctx.lineWidth=6;
+    ctx.beginPath();ctx.moveTo(96,263);ctx.lineTo(111,203);ctx.lineTo(145,229);
+    ctx.lineTo(169,194);ctx.lineTo(200,229);ctx.lineTo(225,202);ctx.lineTo(233,263);
+    ctx.closePath();ctx.fill();ctx.stroke();
+    ctx.fillStyle=C.ink;for(const x of [123,161,200]){ctx.beginPath();ctx.arc(x,249,5,0,7);ctx.fill();}
+  }
+  ctx.fillStyle=C.white;ctx.beginPath();ctx.ellipse(160,348,90,107,0,0,7);ctx.fill();
+  ctx.strokeStyle=C.ink;ctx.lineWidth=5;ctx.stroke();
+  ctx.fillStyle=C.ink;for(const x of [122,195]){ctx.beginPath();ctx.arc(x,331,8,0,7);ctx.fill();}
+  ctx.lineWidth=10;ctx.lineCap='round';ctx.beginPath();
+  ctx.moveTo(108,374);ctx.quadraticCurveTo(145,361,162,382);
+  ctx.quadraticCurveTo(182,363,218,374);ctx.stroke();
+  txt(ctx,normal?'FILTRE RETIRÉ':rabbit?'OREILLES DE LAPIN':princess?'PRINCESSE':'FILTRES OFF',160,463,18,C.ink,'center');
+  ctx.restore();
+  rr(ctx,112,510,95,38,19,C.ink);
+  txt(ctx,normal?'NORMAL':rabbit?'LAPIN':princess?'PRINCESSE':'CHOISIR',160,529,16,C.white,'center');
+}
+
 export function drawPhoneUI(ctx,kind,x,y,w,h,t){
   ctx.save();
   ctx.translate(x,y);ctx.scale(w/320,h/560);
@@ -88,6 +203,10 @@ export function drawPhoneUI(ctx,kind,x,y,w,h,t){
   if(kind==='bluetooth')renderBluetooth(ctx,t);
   if(kind==='map')renderMap(ctx,t);
   if(kind==='update')renderUpdate(ctx,t);
+  if(kind==='qr')renderQR(ctx,t);
+  if(kind==='cloud')renderCloud(ctx,t);
+  if(kind==='story')renderStory(ctx,t);
+  if(kind==='filter')renderFilter(ctx,t);
   ctx.restore();
 }
 // UX : l'agrandissement est visuellement attache au VRAI telephone de Leo.
