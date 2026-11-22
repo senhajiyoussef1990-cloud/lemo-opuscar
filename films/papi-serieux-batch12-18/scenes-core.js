@@ -1,8 +1,11 @@
 // Shared Papi, sérieux ? scene animator for EP12–18.
 // Real original show character rigs, kitchen, black/white film treatment, corrected gloves.
 import {lerp,seg,ss,clamp} from '/core/lib.js';
+import {drawPhoneMagnifier} from './phone-ui.js';
 export function makeEpisode({T,P,papi,leo,drawBG,hangingPans,wallClock,flourJar,ST}) {
   const EP=ST.EPISODE; let BG,SG,LIP;
+  const PHONE_MODE=EP===15?'bluetooth':EP===16?'map':EP===18?'update':null;
+  const PHONE_EPISODE=PHONE_MODE!==null;
   const at=(t,a,b)=>t>=a&&t<b;
   const twos=t=>Math.floor(t*12+1e-6)/12;
   const breath=t=>Math.cos(Math.PI*2*ST.beats(twos(t)));
@@ -136,7 +139,7 @@ export function makeEpisode({T,P,papi,leo,drawBG,hangingPans,wallClock,flourJar,
   }
   function leoPose(t){
     const q=ST.shotAt(t);
-    const p={x:289,y:1000,turn:.48,talk:talk('leo',t),phone:{rot:-.14}};
+    const p={x:289,y:1000,turn:.48,talk:talk('leo',t),phone:{rot:-.14,ui:PHONE_MODE,uiTime:t}};
     p.brows=(q===4||q===6)?'sad':'up';
     p.eyes=(q===2||q===4)?'wide':'open';
     p.mouth={type:q===7?'beam':q===2?'o':q===4?'frown':'smile'};
@@ -150,6 +153,9 @@ export function makeEpisode({T,P,papi,leo,drawBG,hangingPans,wallClock,flourJar,
   }
   function camOf(t){
     const q=ST.shotAt(t);
+    if(PHONE_EPISODE && q===0)return {x:305,y:740,z:1.85};
+    if(PHONE_EPISODE && q===4)return {x:305,y:761,z:2.10};
+    if(PHONE_EPISODE && q===6)return {x:315,y:759,z:2.05};
     if(q===0)return {x:515,y:745,z:1.53+seg(t,0,4.4)*.08};
     if(q===1)return {x:713,y:688,z:2.08};
     if(q===2)return {x:308,y:761,z:2.21};
@@ -172,17 +178,18 @@ export function makeEpisode({T,P,papi,leo,drawBG,hangingPans,wallClock,flourJar,
     drawBG(SG,BG,c,b*.006);
     T.frame(t);T.transform(c.z,0,0,c.z,540-c.x*c.z,960-c.y*c.z);
     wallClock(b,t,ST.beats(twos(t)));hangingPans(b,t);flourJar(b);
-    if(idx!==4){
+    if(idx!==4 || PHONE_EPISODE){
       papi(papiPose(t));table();
       leo(leoPose(t));
-      if(idx===0||idx===2){motif(335,687,.45+Math.sin(t*4)*.025,t);}
-      if(idx===5||idx===6)motif(562,736,.55,t);
-      if(idx===7)motif(606,764,.4,t);
+      if(!PHONE_EPISODE && (idx===0||idx===2)){motif(335,687,.45+Math.sin(t*4)*.025,t);}
+      if(!PHONE_EPISODE && (idx===5||idx===6))motif(562,736,.55,t);
+      if(!PHONE_EPISODE && idx===7)motif(606,764,.4,t);
     }else {
       // The fifth shot is a distinct full-screen visualization for each episode.
       T.shape(T.ell(540,757,210,240),{fill:P.pale,lw:T.S.lw});
       motif(540,754,1.22,t);
     }
+    if(PHONE_EPISODE)drawPhoneMagnifier(SG,PHONE_MODE,t,{shot:idx,cam:c});
     irisMask(t,c);
     if(!nosub)subtitles(t);
   }

@@ -4,6 +4,7 @@ import * as T from './toon.js';
 import { P, pieEye, brow, mouth, glove, shoe, hose, union, ribbon } from './parts.js';
 import { clamp, lerp } from '/core/lib.js';
 import { PICTO } from './pictos.js';
+import {drawPhoneUI} from '../papi-serieux-batch12-18/phone-ui.js';
 const { shape, stroke, ell, arc, spline, quad, rr, push, pop, translate, rotate, scale, tx, S } = T;
 
 function fillLocal(pts, col) { const s = pts.map(p => tx(p[0], p[1])); const g = T.g; g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = col; g.beginPath(); g.moveTo(s[0][0], s[0][1]); for (const q of s) g.lineTo(q[0], q[1]); g.closePath(); g.fill(); }
@@ -95,7 +96,7 @@ export function leo(p) {
     hose([-20, -74], [-24, -14], -3, 15); hose([20, -74], [24, -14], 3, 15);
     shoe(-17, 0, -1, 1.08); shoe(17, 0, 1, 1.08);
   }
-  const phone = () => { if (!p.phone) return; push(); translate(A.x, A.y); rotate(p.phone.rot ?? -.2); shape(rr(-17, -52, 34, 60, 6), { fill: P.dark, lw: S.lw * .8 }); shape(rr(-12, -46, 24, 44, 3), { fill: p.phone.dead ? P.ink : P.white, stroke: false, boil: .3 }); if (p.phone.dead || p.phone.blank) { /* nothing on the screen */ } else if (p.phone.icon) { PICTO[p.phone.icon](0, -24, 9); } else if (p.phone.batt != null) { battery(0, -26, 17, p.phone.batt, S.lw * .5); } else if (p.phone.wifi) { wifi(0, -18, 5.2, p.phone.wifi === 'off', S.lw * .55); } else if (p.phone.n != null) { shape(heart(0, -38, 6.5), { fill: P.ink, stroke: false, boil: .3 }); T.text(String(p.phone.n), 0, -22, { font: '15px Limelight', fill: P.ink }); } else for (let i = 0; i < 4; i++) fillLocal([[-8, -40 + i * 9], [i % 2 ? 4 : 8, -40 + i * 9], [i % 2 ? 4 : 8, -36 + i * 9], [-8, -36 + i * 9]], P.mid); pop(); };
+  const phone = () => { if (!p.phone) return; push(); translate(A.x, A.y); rotate(p.phone.rot ?? -.2); shape(rr(-17, -52, 34, 60, 6), { fill: P.dark, lw: S.lw * .8 }); shape(rr(-12, -46, 24, 44, 3), { fill: p.phone.dead ? P.ink : P.white, stroke: false, boil: .3 }); if (p.phone.dead || p.phone.blank) { /* nothing on the screen */ } else if (p.phone.ui) { const m=T.getM(),g=T.g; g.save(); g.setTransform(...m); drawPhoneUI(g,p.phone.ui,-12,-46,24,44,p.phone.uiTime??0); g.restore(); } else if (p.phone.icon) { PICTO[p.phone.icon](0, -24, 9); } else if (p.phone.batt != null) { battery(0, -26, 17, p.phone.batt, S.lw * .5); } else if (p.phone.wifi) { wifi(0, -18, 5.2, p.phone.wifi === 'off', S.lw * .55); } else if (p.phone.n != null) { shape(heart(0, -38, 6.5), { fill: P.ink, stroke: false, boil: .3 }); T.text(String(p.phone.n), 0, -22, { font: '15px Limelight', fill: P.ink }); } else for (let i = 0; i < 4; i++) fillLocal([[-8, -40 + i * 9], [i % 2 ? 4 : 8, -40 + i * 9], [i % 2 ? 4 : 8, -36 + i * 9], [-8, -36 + i * 9]], P.mid); pop(); };
   if (!A.front) { hose(shA, [A.x, A.y], A.bend ?? -12, 15, P.pale); phone(); glove(A.x, A.y, A.rot ?? Math.atan2(A.y - shA[1], A.x - shA[0]), A.hand || 'grab', .88, { flip: true }); }
   if (!B.front) { hose(shB, [B.x, B.y], B.bend ?? 12, 15, P.pale); glove(B.x, B.y, B.rot ?? Math.atan2(B.y - shB[1], B.x - shB[0]), B.hand || 'open', .88, {}); }
   // hood (behind the head) + oversized hoodie
