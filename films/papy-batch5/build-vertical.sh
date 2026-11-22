@@ -82,7 +82,7 @@ echo "::group::Contrôle audio du master 9:16"
 python films/papy-batch5/audio_qc.py "$D" "$SLUG" --vertical-only
 echo "::endgroup::"
 
-if [[ "$SLUG" == "fermeture-eclair" || "$SLUG" == "ciseaux" || "$SLUG" == "fourchette" || "$SLUG" == "cuillere" || "$SLUG" == "couteau" || "$SLUG" == "assiette" || "$SLUG" == "verre" || "$SLUG" == "telephone" || "$SLUG" == "television" || "$SLUG" == "appareil-photo" || "$SLUG" == "refrigerateur" || "$SLUG" == "machine-a-laver" || "$SLUG" == "aspirateur" || "$SLUG" == "fer-a-repasser" || "$SLUG" == "telecommande" || "$SLUG" == "micro-ondes" || "$SLUG" == "seche-cheveux" || "$SLUG" == "stylo" || "$SLUG" == "gomme" || "$SLUG" == "cahier" || "$SLUG" == "regle" || "$SLUG" == "taille-crayon" || "$SLUG" == "agrafeuse" || "$SLUG" == "trombone" || "$SLUG" == "ruban-adhesif" || "$SLUG" == "colle" || "$SLUG" == "calculatrice" ]]; then
+if [[ "$SLUG" == "fermeture-eclair" || "$SLUG" == "ciseaux" || "$SLUG" == "fourchette" || "$SLUG" == "cuillere" || "$SLUG" == "couteau" || "$SLUG" == "assiette" || "$SLUG" == "verre" || "$SLUG" == "telephone" || "$SLUG" == "television" || "$SLUG" == "appareil-photo" || "$SLUG" == "refrigerateur" || "$SLUG" == "machine-a-laver" || "$SLUG" == "aspirateur" || "$SLUG" == "fer-a-repasser" || "$SLUG" == "telecommande" || "$SLUG" == "micro-ondes" || "$SLUG" == "seche-cheveux" || "$SLUG" == "stylo" || "$SLUG" == "gomme" || "$SLUG" == "cahier" || "$SLUG" == "regle" || "$SLUG" == "taille-crayon" || "$SLUG" == "agrafeuse" || "$SLUG" == "trombone" || "$SLUG" == "ruban-adhesif" || "$SLUG" == "colle" || "$SLUG" == "calculatrice" || "$SLUG" == "radio" || "$SLUG" == "ordinateur" || "$SLUG" == "clavier" || "$SLUG" == "souris-ordinateur" || "$SLUG" == "microphone" || "$SLUG" == "ventilateur" || "$SLUG" == "grille-pain" || "$SLUG" == "bouilloire" || "$SLUG" == "robinet" || "$SLUG" == "balai" ]]; then
   echo "::group::QC V2 - 25 captures reelles de la video finale"
   python films/papy-batch5/visual_qc.py "$D" "$SLUG"
   echo "::endgroup::"
@@ -101,7 +101,7 @@ for f,(w,hgt) in [(v,(1080,1920))]:
   assert (vs['width'],vs['height'])==(w,hgt),(f,vs)
   assert any(x['codec_type']=='audio' for x in st),(f,'missing voice track')
 names=[v.name,'story.jpg','publication.txt','papy-texte-timeline.txt','SCENARIO.md','SOURCES.md','audio-qc.json','audio-preflight.json']
-if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice'): names.append('controles-visuels.jpg')
+if slug in ('fermeture-eclair','ciseaux','fourchette','cuillere','couteau','assiette','verre','telephone','television','appareil-photo','refrigerateur','machine-a-laver','aspirateur','fer-a-repasser','telecommande','micro-ondes','seche-cheveux','stylo','gomme','cahier','regle','taille-crayon','agrafeuse','trombone','ruban-adhesif','colle','calculatrice','radio','ordinateur','clavier','souris-ordinateur','microphone','ventilateur','grille-pain','bouilloire','robinet','balai'): names.append('controles-visuels.jpg')
 assert all((d/n).is_file() for n in names)
 # Nom court pour les utilisateurs : L'histoire des ciseaux.zip / .mp4.
 # Les noms internes techniques restent inchangés pour les tests audio et vidéo.
