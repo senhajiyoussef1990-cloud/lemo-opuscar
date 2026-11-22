@@ -2475,6 +2475,1106 @@
         "https://collection.sciencemuseumgroup.org.uk/search/objects/object_type/hair-dryer",
         "https://americanhistory.si.edu/collections/object/nmah_363416"
       ]
+    },
+    {
+      "slug": "fenetre",
+      "title": "L'histoire de la fenêtre",
+      "type": "window",
+      "eras": [
+        [
+          "MAISONS ANCIENNES",
+          "ANTIQUITÉ",
+          "LES OUVERTURES POUR LA LUMIÈRE",
+          "antique",
+          "opening",
+          "courtyard"
+        ],
+        [
+          "EMPIRE ROMAIN",
+          "Ier–IIIe SIÈCLES",
+          "DES VITRES DANS CERTAINS BÂTIMENTS",
+          "antique",
+          "roman",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES PETITES VITRES",
+          "medieval",
+          "medieval",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XVIIe SIÈCLE",
+          "LES CHÂSSIS À CARREAUX",
+          "georgian",
+          "sash",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "DES VITRES PLUS GRANDES",
+          "victorian",
+          "large",
+          "factory"
+        ],
+        [
+          "ANGLETERRE",
+          "1959",
+          "LE PROCÉDÉ FLOAT",
+          "fifties",
+          "float",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LE DOUBLE VITRAGE",
+          "modern",
+          "double",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, je vois le jardin sans sortir !",
+        "Oui Malik, la fenêtre laisse entrer la lumière.",
+        "Dis Papy, les maisons ont-elles toujours eu des vitres ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Les habitations ont d'abord des ouvertures sans vitrage.",
+        "Un maçon ménage un passage de lumière dans un mur.",
+        "Il n'y a pas de vitre !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Certains bâtiments romains utilisent déjà des panneaux de verre.",
+        "Un artisan fixe une vitre dans un châssis de bois.",
+        "La lumière traverse le verre !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des vitraux assemblent des morceaux de verre.",
+        "Un verrier assemble des pièces colorées.",
+        "On dirait un puzzle !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les menuisiers divisent les fenêtres en plusieurs carreaux.",
+        "Un artisan installe un châssis qui peut s'ouvrir.",
+        "On peut laisser passer l'air !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "L'industrie facilite la fabrication de grandes vitres.",
+        "Un ouvrier porte une large plaque de verre.",
+        "La pièce paraît plus lumineuse !",
+        "Le procédé de verre flotté est annoncé en mille neuf cent cinquante-neuf.",
+        "Une feuille de verre avance sur un bain d'étain liquide.",
+        "C'est presque parfaitement plat !",
+        "Les fenêtres modernes peuvent comporter plusieurs vitres séparées.",
+        "Un installateur vérifie l'étanchéité d'un vitrage isolant.",
+        "Cela aide à garder la chaleur !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant la fenêtre autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.pilkington.com/en/gbl/about-us/pilkington-history/invention-of-float-glass",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "porte",
+      "title": "L'histoire de la porte",
+      "type": "door",
+      "eras": [
+        [
+          "MAISONS ANCIENNES",
+          "ANTIQUITÉ",
+          "FERMER L'ENTRÉE",
+          "antique",
+          "hide",
+          "courtyard"
+        ],
+        [
+          "ÉGYPTE",
+          "ANTIQUITÉ",
+          "LES PORTES EN BOIS",
+          "antique",
+          "wood",
+          "temple"
+        ],
+        [
+          "ROME",
+          "ANTIQUITÉ",
+          "LES PIVOTS",
+          "antique",
+          "pivot",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES PORTES DE FORTERESSE",
+          "medieval",
+          "gate",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XVIIIe SIÈCLE",
+          "LES PORTES À PANNEAUX",
+          "georgian",
+          "panel",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LA FABRICATION INDUSTRIELLE",
+          "victorian",
+          "factory",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES PORTES AUTOMATIQUES",
+          "modern",
+          "automatic",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, la porte grince !",
+        "Oui Malik, ses charnières tournent pour l'ouvrir.",
+        "Dis Papy, les maisons avaient-elles déjà des portes ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Les anciennes habitations protègent leurs ouvertures avec des fermetures simples.",
+        "Un habitant place un panneau devant son entrée.",
+        "C'était utile contre le vent !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des artisans égyptiens réalisent des portes avec des pièces de bois.",
+        "Un menuisier relie des planches et vérifie leur assemblage.",
+        "Le bois semble très épais !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des portes romaines peuvent tourner sur des pivots.",
+        "Un artisan fait tourner un lourd battant sur son axe.",
+        "Elle s'ouvre sans rouler !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les portes de château peuvent être renforcées de fer.",
+        "Un forgeron fixe de grandes pièces métalliques.",
+        "C'est une porte de géant !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les menuisiers construisent des portes intérieures à panneaux.",
+        "Un ouvrier emboîte les éléments dans un cadre.",
+        "Le dessin des panneaux est joli !",
+        "Les machines facilitent la découpe des portes en série.",
+        "Un atelier scie des montants de taille identique.",
+        "Elles ont presque toutes la même taille !",
+        "Certaines portes modernes s'ouvrent grâce à un détecteur.",
+        "Une porte coulissante s'écarte à l'approche d'un visiteur.",
+        "Même pas besoin de pousser !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant la porte autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.metmuseum.org/art/collection",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "poignee-de-porte",
+      "title": "L'histoire de la poignée de porte",
+      "type": "handle",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "TIRER AVEC UNE CORDE",
+          "antique",
+          "rope",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "L'ANNEAU DE FER",
+          "medieval",
+          "ring",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XVIIe SIÈCLE",
+          "LES LOQUETS",
+          "georgian",
+          "latch",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES BOUTONS TOURNANTS",
+          "victorian",
+          "knob",
+          "city"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1878",
+          "UN DISPOSITIF ANTI-CLAQUEMENT",
+          "victorian",
+          "holder",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1920",
+          "LE DESIGN MODERNE",
+          "thirties",
+          "bauhaus",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES POIGNÉES ACCESSIBLES",
+          "modern",
+          "lever",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, la poignée tourne !",
+        "Oui Malik, elle agit sur le loquet de la porte.",
+        "Dis Papy, avant, comment ouvrait-on une porte ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Certaines portes anciennes utilisent une corde pour être tirées.",
+        "Un habitant tire sur une corde fixée au battant.",
+        "C'est une poignée très simple !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des anneaux et heurtoirs sont fixés à des portes anciennes.",
+        "Un forgeron façonne un anneau de fer.",
+        "On peut frapper et tirer !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des leviers permettent de soulever le loquet d'une porte.",
+        "Un menuisier appuie sur un petit mécanisme.",
+        "Le verrou bouge !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les poignées rondes équipent de nombreuses maisons.",
+        "Un fondeur fabrique puis polit un bouton métallique.",
+        "Il suffit de le tourner !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Osbourn Dorsey brevète un dispositif permettant de maintenir la porte ouverte.",
+        "Un mécanisme retient la porte pour qu'elle ne claque pas.",
+        "Pratique quand il y a du vent !",
+        "Les designers simplifient les formes des poignées.",
+        "Un artisan fabrique une poignée aux lignes droites.",
+        "Elle ressemble à un petit levier !",
+        "Les poignées actuelles sont conçues pour différents usages.",
+        "Malik appuie sur un levier et ouvre doucement la porte.",
+        "C'est facile à saisir !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant la poignée de porte autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://patents.google.com/patent/US210764A/en",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "serrure",
+      "title": "L'histoire de la serrure",
+      "type": "lock",
+      "eras": [
+        [
+          "ÉGYPTE",
+          "ANTIQUITÉ",
+          "LES CHEVILLES DE BOIS",
+          "antique",
+          "woodpins",
+          "temple"
+        ],
+        [
+          "ROME",
+          "ANTIQUITÉ",
+          "LES CLÉS DE MÉTAL",
+          "antique",
+          "roman",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES SERRURES À GARNITURES",
+          "medieval",
+          "ward",
+          "medieval"
+        ],
+        [
+          "LONDRES",
+          "1784",
+          "LA SERRURE DE BRAMAH",
+          "georgian",
+          "bramah",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1861",
+          "LES GOUPILLES DE YALE",
+          "victorian",
+          "yale",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "LES CYLINDRES DE SÉRIE",
+          "modern",
+          "cylinder",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES SERRURES ÉLECTRONIQUES",
+          "modern",
+          "smart",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, la porte est verrouillée !",
+        "Oui Malik, une serrure bloque l'ouverture.",
+        "Dis Papy, comment la serrure reconnaît-elle la clé ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Des serrures anciennes utilisent des chevilles en bois.",
+        "Un artisan soulève les chevilles avec une grande clé.",
+        "Cette clé est énorme !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Dans le monde romain, on utilise des serrures et des clés métalliques.",
+        "Un forgeron prépare une clé et son petit mécanisme.",
+        "Il faut la bonne forme !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les serrures peuvent comporter des obstacles internes.",
+        "Un serrurier lime les dents d'une clé.",
+        "Cela ressemble à un labyrinthe !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Joseph Bramah fait breveter une serrure à mécanisme complexe.",
+        "Un artisan contrôle les petites pièces d'une serrure de précision.",
+        "Il y a beaucoup de pièces !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Linus Yale Junior brevète une serrure à cylindre et goupilles.",
+        "Une clé met les goupilles à la bonne hauteur.",
+        "Elles s'alignent toutes !",
+        "Les cylindres de serrure sont fabriqués en grandes séries.",
+        "Une machine usine les composants métalliques.",
+        "Chaque clé a sa forme !",
+        "Certaines portes utilisent un code ou une commande électronique.",
+        "Un adulte autorisé déverrouille une porte connectée.",
+        "On n'utilise pas toujours une clé !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant la serrure autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.yaledws.co.uk/uk/en/about-us/history-of-yale/the-yale-pin-tumbler-invention",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "escalier",
+      "title": "L'histoire de l'escalier",
+      "type": "stairs",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "LES MARCHES DE PIERRE",
+          "antique",
+          "stone",
+          "temple"
+        ],
+        [
+          "GRÈCE",
+          "ANTIQUITÉ",
+          "LES ESCALIERS DES TEMPLES",
+          "antique",
+          "temple",
+          "temple"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES ESCALIERS EN SPIRALE",
+          "medieval",
+          "spiral",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "RENAISSANCE",
+          "LES GRANDS ESCALIERS",
+          "georgian",
+          "palace",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES ESCALIERS MÉTALLIQUES",
+          "victorian",
+          "metal",
+          "factory"
+        ],
+        [
+          "NEW YORK",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES ESCALIERS MÉCANIQUES",
+          "victorian",
+          "escalator",
+          "city"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES RAMPES DE SÉCURITÉ",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, les marches sont hautes !",
+        "Oui Malik, elles nous permettent de monter progressivement.",
+        "Dis Papy, les anciens utilisaient-ils des escaliers ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Des bâtisseurs antiques disposent des pierres en marches.",
+        "Un maçon aligne des blocs pour créer un accès.",
+        "On peut monter tout en haut !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des escaliers mènent à de nombreux édifices anciens.",
+        "Un tailleur de pierre façonne une large marche.",
+        "C'est un escalier immense !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Certaines tours médiévales possèdent des escaliers en colimaçon.",
+        "Un bâtisseur pose une marche autour d'une colonne.",
+        "On tourne en montant !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les palais de la Renaissance montrent de grands escaliers décorés.",
+        "Un artisan taille un large palier de pierre.",
+        "Ça ressemble à un château !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les escaliers en métal se développent avec l'industrie.",
+        "Un ouvrier boulonne les marches sur une structure.",
+        "Ça semble très solide !",
+        "Les escaliers mécaniques arrivent dans des bâtiments publics et magasins.",
+        "Un moteur entraîne une rangée de marches mobiles.",
+        "Les marches bougent toutes seules !",
+        "Les escaliers modernes comprennent souvent des rampes et des garde-corps.",
+        "Malik pose sa main sur la rampe avant de monter.",
+        "Je garde mon équilibre !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant l'escalier autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.britannica.com/technology/stairway",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "ascenseur",
+      "title": "L'histoire de l'ascenseur",
+      "type": "elevator",
+      "eras": [
+        [
+          "ANTIQUITÉ",
+          "ÉPOQUES ANCIENNES",
+          "LES CORDES ET LES POULIES",
+          "antique",
+          "rope",
+          "temple"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES TREUILS DE CHANTIER",
+          "medieval",
+          "winch",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES MONTE-CHARGES",
+          "victorian",
+          "hoist",
+          "factory"
+        ],
+        [
+          "NEW YORK",
+          "1854",
+          "LA DÉMONSTRATION DE SÉCURITÉ D'OTIS",
+          "victorian",
+          "brake",
+          "city"
+        ],
+        [
+          "NEW YORK",
+          "1857",
+          "UN ASCENSEUR POUR PASSAGERS",
+          "victorian",
+          "passenger",
+          "city"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XIXe SIÈCLE",
+          "LES MOTEURS ÉLECTRIQUES",
+          "victorian",
+          "electric",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES ASCENSEURS AUTOMATIQUES",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, l'ascenseur monte tout seul !",
+        "Oui Malik, il utilise un système de levage.",
+        "Dis Papy, comment les gens montaient-ils sans cet appareil ?",
+        "Cette invention a connu beaucoup de changements.",
+        "On peut découvrir comment elle fonctionnait avant ?",
+        "Ouvrons Le Livre de Papy !",
+        "Le livre s'illumine, et le portail s'ouvre !",
+        "Depuis longtemps, les bâtisseurs utilisent des cordes et des poulies pour soulever des charges.",
+        "Un ouvrier tire sur une corde pour élever un panier.",
+        "Le panier monte sans escalier !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Sur les chantiers anciens, les treuils aident à monter du matériel.",
+        "Deux ouvriers tournent une grande roue pour enrouler une corde.",
+        "Il faut beaucoup de force !",
+        "Les artisans trouvent de nouvelles façons de faire.",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Au dix-neuvième siècle, des machines soulèvent des charges dans les bâtiments industriels.",
+        "Un opérateur actionne un système de levage pour des marchandises.",
+        "C'était d'abord pour les caisses !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "En mille huit cent cinquante-quatre, Elisha Otis présente un dispositif de frein de sécurité.",
+        "Il montre qu'une plateforme peut rester retenue si la corde cède.",
+        "La plateforme ne tombe pas !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "En mille huit cent cinquante-sept, un ascenseur de sécurité pour passagers fonctionne dans un grand magasin.",
+        "Un visiteur monte dans une cabine pour rejoindre un étage.",
+        "On peut monter sans gravir les marches !",
+        "Les mécanismes de levage électriques se développent à la fin du dix-neuvième siècle.",
+        "Un technicien teste le moteur qui élève la cabine.",
+        "Le moteur travaille à notre place !",
+        "Aujourd'hui, les ascenseurs s'arrêtent aux étages choisis avec des systèmes de sécurité.",
+        "Malik appuie sur un bouton et attend derrière les portes.",
+        "Il faut attendre l'ouverture complète !",
+        "Et surtout, il faut suivre les règles de sécurité.",
+        "Nous sommes de retour dans le salon.",
+        "Cette invention a vraiment parcouru du chemin !",
+        "Et notre livre magique n'a pas encore fini de nous surprendre !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour un nouveau voyage !"
+      ],
+      "sources": [
+        "https://www.otis.com/en/company/about-us/history",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "interrupteur",
+      "title": "L'histoire de l'interrupteur",
+      "type": "switch",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT L'ÉLECTRICITÉ",
+          "LA LUMIÈRE DES BOUGIES",
+          "georgian",
+          "candle",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES LAMPES À GAZ",
+          "victorian",
+          "gas",
+          "city"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "VERS 1880",
+          "LES INSTALLATIONS ÉLECTRIQUES",
+          "victorian",
+          "early",
+          "lab"
+        ],
+        [
+          "ANGLETERRE",
+          "1884",
+          "L'INTERRUPTEUR À COUPURE RAPIDE",
+          "victorian",
+          "holmes",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "XXe SIÈCLE",
+          "LES INTERRUPTEURS MURAUX",
+          "thirties",
+          "toggle",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "DES BOUTONS PLUS DISCRETS",
+          "modern",
+          "rocker",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LA LUMIÈRE CONNECTÉE",
+          "modern",
+          "smart",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, la lumière s'allume quand j'appuie !",
+        "Oui Malik, l'interrupteur commande un circuit électrique.",
+        "Dis Papy, comment faisait-on avant d'appuyer sur un bouton ?",
+        "Cette invention a connu beaucoup de changements.",
+        "On peut découvrir comment elle fonctionnait avant ?",
+        "Ouvrons Le Livre de Papy !",
+        "Le livre s'illumine, et le portail s'ouvre !",
+        "Avant les lampes électriques, on éclaire les maisons avec des flammes.",
+        "Un adulte allume prudemment une bougie près d'une table.",
+        "Il fallait faire attention au feu !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Au dix-neuvième siècle, des lampes à gaz éclairent certaines villes et habitations.",
+        "Un employé règle un robinet de gaz pour éclairer un luminaire.",
+        "Ce n'est pas encore un bouton électrique !",
+        "Les artisans trouvent de nouvelles façons de faire.",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Avec l'arrivée des lampes électriques, il devient nécessaire de commander le courant.",
+        "Un électricien connecte un dispositif de commande.",
+        "La lumière s'éteint sans souffle !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "En mille huit cent quatre-vingt-quatre, John Henry Holmes brevette un interrupteur à coupure rapide.",
+        "Un mécanisme sépare rapidement deux contacts pour réduire les étincelles.",
+        "Le contact se coupe d'un seul coup !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Les interrupteurs muraux deviennent courants dans les logements électrifiés.",
+        "Un artisan fixe une petite commande à côté d'une porte.",
+        "On la retrouve facilement !",
+        "Les fabricants produisent des interrupteurs à bascule et à poussoir.",
+        "Une machine assemble un bouton plat dans un boîtier.",
+        "Le clic est tout petit !",
+        "Aujourd'hui, certains interrupteurs commandent la lumière par un système connecté.",
+        "Un adulte appuie sur une commande et la lampe change d'intensité.",
+        "Même la luminosité peut changer !",
+        "Et surtout, il faut suivre les règles de sécurité.",
+        "Nous sommes de retour dans le salon.",
+        "Cette invention a vraiment parcouru du chemin !",
+        "Et notre livre magique n'a pas encore fini de nous surprendre !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour un nouveau voyage !"
+      ],
+      "sources": [
+        "https://artsandculture.google.com/story/click-how-the-lights-go-on/9gXRv7KJE5gadA?hl=en",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "prise-electrique",
+      "title": "L'histoire de la prise électrique",
+      "type": "socket",
+      "eras": [
+        [
+          "EUROPE",
+          "AVANT L'ÉLECTRICITÉ",
+          "PAS DE PRISE À LA MAISON",
+          "georgian",
+          "none",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "FIN DU XIXe SIÈCLE",
+          "DES FILS POUR LES PREMIERS APPAREILS",
+          "victorian",
+          "wires",
+          "lab"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1904",
+          "DES FICHES AMOVIBLES",
+          "victorian",
+          "hubbell",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "XXe SIÈCLE",
+          "DES PRISES DANS LES LOGEMENTS",
+          "thirties",
+          "wall",
+          "modern"
+        ],
+        [
+          "EUROPE",
+          "MILIEU DU XXe SIÈCLE",
+          "LA MISE À LA TERRE",
+          "fifties",
+          "earth",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "PLUSIEURS FORMES DE PRISES",
+          "modern",
+          "types",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "DES PRISES PROTÉGÉES",
+          "modern",
+          "safe",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, le chargeur va dans la prise !",
+        "Oui Malik, la prise permet de raccorder un appareil électrique.",
+        "Dis Papy, pourquoi y a-t-il des trous dans le mur ?",
+        "Cette invention a connu beaucoup de changements.",
+        "On peut découvrir comment elle fonctionnait avant ?",
+        "Ouvrons Le Livre de Papy !",
+        "Le livre s'illumine, et le portail s'ouvre !",
+        "Avant les installations électriques, les appareils domestiques n'utilisent pas de prises murales.",
+        "Un habitant utilise une lampe à huile pour s'éclairer.",
+        "Il n'y a aucun câble !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Les premières installations électriques utilisent des raccordements variés.",
+        "Un technicien relie un luminaire à un circuit.",
+        "Cela demande un professionnel !",
+        "Les artisans trouvent de nouvelles façons de faire.",
+        "Les idées évoluent d'une génération à l'autre.",
+        "En mille neuf cent quatre, Harvey Hubbell dépose un brevet lié à une fiche de raccordement.",
+        "Un inventeur insère une fiche dans un connecteur adapté.",
+        "On peut retirer l'appareil !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Les prises murales se multiplient avec les équipements électriques.",
+        "Un électricien installe un boîtier dans un mur.",
+        "Il faut le bon type de prise !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Des prises avec liaison de terre aident à renforcer la sécurité de certains appareils.",
+        "Un technicien vérifie le raccordement de protection.",
+        "La sécurité compte beaucoup !",
+        "Les formes des fiches et prises varient selon les pays.",
+        "Un voyageur compare deux modèles de prises.",
+        "Elles ne sont pas toutes identiques !",
+        "Aujourd'hui, les installations électriques utilisent des protections adaptées.",
+        "Papy montre une prise sans laisser Malik toucher les ouvertures.",
+        "On ne met jamais les doigts dedans !",
+        "Et surtout, il faut suivre les règles de sécurité.",
+        "Nous sommes de retour dans le salon.",
+        "Cette invention a vraiment parcouru du chemin !",
+        "Et notre livre magique n'a pas encore fini de nous surprendre !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour un nouveau voyage !"
+      ],
+      "sources": [
+        "https://patents.google.com/patent/US776326A/en",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "lampe-de-poche",
+      "title": "L'histoire de la lampe de poche",
+      "type": "flashlight",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "LES TORCHES",
+          "antique",
+          "torch",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES LANTERNES",
+          "medieval",
+          "lantern",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES LAMPES À HUILE",
+          "victorian",
+          "oil",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1899",
+          "LA TORCHE ÉLECTRIQUE PORTATIVE",
+          "victorian",
+          "misell",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "LES LAMPES À PILES",
+          "thirties",
+          "battery",
+          "factory"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "LES PETITES LAMPES",
+          "modern",
+          "compact",
+          "modern"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LA LUMIÈRE LED",
+          "modern",
+          "led",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, il fait sombre sous le lit !",
+        "Oui Malik, une lampe de poche éclaire les petits coins.",
+        "Dis Papy, comment transportait-on de la lumière auparavant ?",
+        "Cette invention a connu beaucoup de changements.",
+        "On peut découvrir comment elle fonctionnait avant ?",
+        "Ouvrons Le Livre de Papy !",
+        "Le livre s'illumine, et le portail s'ouvre !",
+        "Dans l'Antiquité, certaines torches permettent de porter une flamme.",
+        "Un adulte transporte une torche allumée à distance des autres.",
+        "Ça éclaire mais c'est brûlant !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Les lanternes protègent en partie une flamme contre le vent.",
+        "Un artisan ferme les parois d'une petite lanterne.",
+        "Le vent l'éteint moins facilement !",
+        "Les artisans trouvent de nouvelles façons de faire.",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Des lanternes à huile sont utilisées pour se déplacer la nuit.",
+        "Un voyageur soulève une lanterne pour éclairer le chemin.",
+        "Il faut de l'huile pour l'allumer !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Vers mille huit cent quatre-vingt-dix-neuf, David Misell fait breveter une lampe électrique portative.",
+        "Un inventeur place des piles et une ampoule dans un tube.",
+        "La lumière fonctionne sans flamme !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Les lampes de poche à piles deviennent des objets courants.",
+        "Un ouvrier installe une ampoule derrière un réflecteur.",
+        "La lumière se dirige vers l'avant !",
+        "Des modèles plus compacts tiennent facilement dans une poche.",
+        "Une campeuse éclaire son sac avec une petite lampe.",
+        "Elle tient dans la main !",
+        "Aujourd'hui, beaucoup de lampes utilisent des diodes LED.",
+        "Malik éclaire le dessous du canapé sans toucher à une prise.",
+        "J'ai retrouvé mon jouet !",
+        "Et surtout, il faut suivre les règles de sécurité.",
+        "Nous sommes de retour dans le salon.",
+        "Cette invention a vraiment parcouru du chemin !",
+        "Et notre livre magique n'a pas encore fini de nous surprendre !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour un nouveau voyage !"
+      ],
+      "sources": [
+        "https://catalog.afi.com/Film/44939-GENERAL-ELECTRIC-FLASH-LIGHT",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "sonnette",
+      "title": "L'histoire de la sonnette",
+      "type": "doorbell",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "FRAPPER À LA PORTE",
+          "antique",
+          "knock",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES HEURTOIRS",
+          "medieval",
+          "knocker",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XVIIIe SIÈCLE",
+          "LES CLOCHETTES À CORDE",
+          "georgian",
+          "pull",
+          "palace"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1831",
+          "UNE CLOCHE ÉLECTROMAGNÉTIQUE",
+          "georgian",
+          "henry",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "XXe SIÈCLE",
+          "LE BOUTON DE SONNETTE",
+          "thirties",
+          "button",
+          "modern"
+        ],
+        [
+          "MONDE",
+          "FIN DU XXe SIÈCLE",
+          "LES CARILLONS ÉLECTRONIQUES",
+          "modern",
+          "chime",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LA SONNETTE AVEC CAMÉRA",
+          "modern",
+          "video",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, quelqu'un fait ding dong !",
+        "Oui Malik, la sonnette nous prévient d'un visiteur.",
+        "Dis Papy, comment annonçait-on son arrivée autrefois ?",
+        "Cette invention a connu beaucoup de changements.",
+        "On peut découvrir comment elle fonctionnait avant ?",
+        "Ouvrons Le Livre de Papy !",
+        "Le livre s'illumine, et le portail s'ouvre !",
+        "Depuis longtemps, les visiteurs frappent pour signaler leur présence.",
+        "Un invité frappe doucement sur une porte en bois.",
+        "C'est la sonnette la plus simple !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Des heurtoirs métalliques sont fixés sur des portes.",
+        "Un forgeron prépare un anneau de porte qui fait du bruit.",
+        "On l'entend de loin !",
+        "Les artisans trouvent de nouvelles façons de faire.",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Dans certaines maisons, un système de cordes actionne une clochette.",
+        "Un visiteur tire une poignée reliée à une petite cloche.",
+        "La cloche sonne plus loin !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "En mille huit cent trente-et-un, Joseph Henry montre un dispositif de cloche électromagnétique.",
+        "Le courant active un aimant qui fait bouger un petit marteau.",
+        "La cloche sonne grâce à l'électricité !",
+        "Les idées évoluent d'une génération à l'autre.",
+        "Les sonnettes électriques avec un bouton se répandent à l'entrée des maisons.",
+        "Un visiteur appuie et un carillon sonne dans la maison.",
+        "Un seul doigt suffit !",
+        "Des carillons électroniques peuvent produire plusieurs mélodies.",
+        "Un fabricant assemble un bouton et un petit haut-parleur.",
+        "La sonnette peut jouer une musique !",
+        "Certaines sonnettes modernes comprennent une caméra et une connexion sans fil.",
+        "Papy consulte l'image d'un visiteur avant d'ouvrir.",
+        "On vérifie toujours avant d'ouvrir la porte !",
+        "Et surtout, il faut suivre les règles de sécurité.",
+        "Nous sommes de retour dans le salon.",
+        "Cette invention a vraiment parcouru du chemin !",
+        "Et notre livre magique n'a pas encore fini de nous surprendre !",
+        "C'était Le Livre de Papy ! Chaque objet du quotidien a une histoire étonnante.",
+        "Abonne-toi, et à demain pour un nouveau voyage !"
+      ],
+      "sources": [
+        "https://www.americanhistory.si.edu/collections/object/nmah_890915",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
     }
   ]
 }
