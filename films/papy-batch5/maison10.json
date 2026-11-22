@@ -1,0 +1,554 @@
+{
+  "episodes": [
+    {
+      "slug": "fenetre",
+      "title": "L'histoire de la fenêtre",
+      "type": "window",
+      "eras": [
+        [
+          "MAISONS ANCIENNES",
+          "ANTIQUITÉ",
+          "LES OUVERTURES POUR LA LUMIÈRE",
+          "antique",
+          "opening",
+          "courtyard"
+        ],
+        [
+          "EMPIRE ROMAIN",
+          "Ier–IIIe SIÈCLES",
+          "DES VITRES DANS CERTAINS BÂTIMENTS",
+          "antique",
+          "roman",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES PETITES VITRES",
+          "medieval",
+          "medieval",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XVIIe SIÈCLE",
+          "LES CHÂSSIS À CARREAUX",
+          "georgian",
+          "sash",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "DES VITRES PLUS GRANDES",
+          "victorian",
+          "large",
+          "factory"
+        ],
+        [
+          "ANGLETERRE",
+          "1959",
+          "LE PROCÉDÉ FLOAT",
+          "fifties",
+          "float",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LE DOUBLE VITRAGE",
+          "modern",
+          "double",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, je vois le jardin sans sortir !",
+        "Oui Malik, la fenêtre laisse entrer la lumière.",
+        "Dis Papy, les maisons ont-elles toujours eu des vitres ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Les habitations ont d'abord des ouvertures sans vitrage.",
+        "Un maçon ménage un passage de lumière dans un mur.",
+        "Il n'y a pas de vitre !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Certains bâtiments romains utilisent déjà des panneaux de verre.",
+        "Un artisan fixe une vitre dans un châssis de bois.",
+        "La lumière traverse le verre !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des vitraux assemblent des morceaux de verre.",
+        "Un verrier assemble des pièces colorées.",
+        "On dirait un puzzle !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les menuisiers divisent les fenêtres en plusieurs carreaux.",
+        "Un artisan installe un châssis qui peut s'ouvrir.",
+        "On peut laisser passer l'air !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "L'industrie facilite la fabrication de grandes vitres.",
+        "Un ouvrier porte une large plaque de verre.",
+        "La pièce paraît plus lumineuse !",
+        "Le procédé de verre flotté est annoncé en mille neuf cent cinquante-neuf.",
+        "Une feuille de verre avance sur un bain d'étain liquide.",
+        "C'est presque parfaitement plat !",
+        "Les fenêtres modernes peuvent comporter plusieurs vitres séparées.",
+        "Un installateur vérifie l'étanchéité d'un vitrage isolant.",
+        "Cela aide à garder la chaleur !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant la fenêtre autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.pilkington.com/en/gbl/about-us/pilkington-history/invention-of-float-glass",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "porte",
+      "title": "L'histoire de la porte",
+      "type": "door",
+      "eras": [
+        [
+          "MAISONS ANCIENNES",
+          "ANTIQUITÉ",
+          "FERMER L'ENTRÉE",
+          "antique",
+          "hide",
+          "courtyard"
+        ],
+        [
+          "ÉGYPTE",
+          "ANTIQUITÉ",
+          "LES PORTES EN BOIS",
+          "antique",
+          "wood",
+          "temple"
+        ],
+        [
+          "ROME",
+          "ANTIQUITÉ",
+          "LES PIVOTS",
+          "antique",
+          "pivot",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES PORTES DE FORTERESSE",
+          "medieval",
+          "gate",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XVIIIe SIÈCLE",
+          "LES PORTES À PANNEAUX",
+          "georgian",
+          "panel",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LA FABRICATION INDUSTRIELLE",
+          "victorian",
+          "factory",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES PORTES AUTOMATIQUES",
+          "modern",
+          "automatic",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, la porte grince !",
+        "Oui Malik, ses charnières tournent pour l'ouvrir.",
+        "Dis Papy, les maisons avaient-elles déjà des portes ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Les anciennes habitations protègent leurs ouvertures avec des fermetures simples.",
+        "Un habitant place un panneau devant son entrée.",
+        "C'était utile contre le vent !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des artisans égyptiens réalisent des portes avec des pièces de bois.",
+        "Un menuisier relie des planches et vérifie leur assemblage.",
+        "Le bois semble très épais !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des portes romaines peuvent tourner sur des pivots.",
+        "Un artisan fait tourner un lourd battant sur son axe.",
+        "Elle s'ouvre sans rouler !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les portes de château peuvent être renforcées de fer.",
+        "Un forgeron fixe de grandes pièces métalliques.",
+        "C'est une porte de géant !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les menuisiers construisent des portes intérieures à panneaux.",
+        "Un ouvrier emboîte les éléments dans un cadre.",
+        "Le dessin des panneaux est joli !",
+        "Les machines facilitent la découpe des portes en série.",
+        "Un atelier scie des montants de taille identique.",
+        "Elles ont presque toutes la même taille !",
+        "Certaines portes modernes s'ouvrent grâce à un détecteur.",
+        "Une porte coulissante s'écarte à l'approche d'un visiteur.",
+        "Même pas besoin de pousser !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant la porte autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.metmuseum.org/art/collection",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "poignee-de-porte",
+      "title": "L'histoire de la poignée de porte",
+      "type": "handle",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "TIRER AVEC UNE CORDE",
+          "antique",
+          "rope",
+          "courtyard"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "L'ANNEAU DE FER",
+          "medieval",
+          "ring",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "XVIIe SIÈCLE",
+          "LES LOQUETS",
+          "georgian",
+          "latch",
+          "workshop"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES BOUTONS TOURNANTS",
+          "victorian",
+          "knob",
+          "city"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1878",
+          "UN DISPOSITIF ANTI-CLAQUEMENT",
+          "victorian",
+          "holder",
+          "lab"
+        ],
+        [
+          "EUROPE",
+          "ANNÉES 1920",
+          "LE DESIGN MODERNE",
+          "thirties",
+          "bauhaus",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES POIGNÉES ACCESSIBLES",
+          "modern",
+          "lever",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, la poignée tourne !",
+        "Oui Malik, elle agit sur le loquet de la porte.",
+        "Dis Papy, avant, comment ouvrait-on une porte ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Certaines portes anciennes utilisent une corde pour être tirées.",
+        "Un habitant tire sur une corde fixée au battant.",
+        "C'est une poignée très simple !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des anneaux et heurtoirs sont fixés à des portes anciennes.",
+        "Un forgeron façonne un anneau de fer.",
+        "On peut frapper et tirer !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des leviers permettent de soulever le loquet d'une porte.",
+        "Un menuisier appuie sur un petit mécanisme.",
+        "Le verrou bouge !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les poignées rondes équipent de nombreuses maisons.",
+        "Un fondeur fabrique puis polit un bouton métallique.",
+        "Il suffit de le tourner !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Osbourn Dorsey brevète un dispositif permettant de maintenir la porte ouverte.",
+        "Un mécanisme retient la porte pour qu'elle ne claque pas.",
+        "Pratique quand il y a du vent !",
+        "Les designers simplifient les formes des poignées.",
+        "Un artisan fabrique une poignée aux lignes droites.",
+        "Elle ressemble à un petit levier !",
+        "Les poignées actuelles sont conçues pour différents usages.",
+        "Malik appuie sur un levier et ouvre doucement la porte.",
+        "C'est facile à saisir !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant la poignée de porte autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://patents.google.com/patent/US210764A/en",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "serrure",
+      "title": "L'histoire de la serrure",
+      "type": "lock",
+      "eras": [
+        [
+          "ÉGYPTE",
+          "ANTIQUITÉ",
+          "LES CHEVILLES DE BOIS",
+          "antique",
+          "woodpins",
+          "temple"
+        ],
+        [
+          "ROME",
+          "ANTIQUITÉ",
+          "LES CLÉS DE MÉTAL",
+          "antique",
+          "roman",
+          "forum"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES SERRURES À GARNITURES",
+          "medieval",
+          "ward",
+          "medieval"
+        ],
+        [
+          "LONDRES",
+          "1784",
+          "LA SERRURE DE BRAMAH",
+          "georgian",
+          "bramah",
+          "workshop"
+        ],
+        [
+          "ÉTATS-UNIS",
+          "1861",
+          "LES GOUPILLES DE YALE",
+          "victorian",
+          "yale",
+          "lab"
+        ],
+        [
+          "MONDE",
+          "XXe SIÈCLE",
+          "LES CYLINDRES DE SÉRIE",
+          "modern",
+          "cylinder",
+          "factory"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES SERRURES ÉLECTRONIQUES",
+          "modern",
+          "smart",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, la porte est verrouillée !",
+        "Oui Malik, une serrure bloque l'ouverture.",
+        "Dis Papy, comment la serrure reconnaît-elle la clé ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Des serrures anciennes utilisent des chevilles en bois.",
+        "Un artisan soulève les chevilles avec une grande clé.",
+        "Cette clé est énorme !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Dans le monde romain, on utilise des serrures et des clés métalliques.",
+        "Un forgeron prépare une clé et son petit mécanisme.",
+        "Il faut la bonne forme !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les serrures peuvent comporter des obstacles internes.",
+        "Un serrurier lime les dents d'une clé.",
+        "Cela ressemble à un labyrinthe !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Joseph Bramah fait breveter une serrure à mécanisme complexe.",
+        "Un artisan contrôle les petites pièces d'une serrure de précision.",
+        "Il y a beaucoup de pièces !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Linus Yale Junior brevète une serrure à cylindre et goupilles.",
+        "Une clé met les goupilles à la bonne hauteur.",
+        "Elles s'alignent toutes !",
+        "Les cylindres de serrure sont fabriqués en grandes séries.",
+        "Une machine usine les composants métalliques.",
+        "Chaque clé a sa forme !",
+        "Certaines portes utilisent un code ou une commande électronique.",
+        "Un adulte autorisé déverrouille une porte connectée.",
+        "On n'utilise pas toujours une clé !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant la serrure autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.yaledws.co.uk/uk/en/about-us/history-of-yale/the-yale-pin-tumbler-invention",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    },
+    {
+      "slug": "escalier",
+      "title": "L'histoire de l'escalier",
+      "type": "stairs",
+      "eras": [
+        [
+          "MONDE ANCIEN",
+          "ANTIQUITÉ",
+          "LES MARCHES DE PIERRE",
+          "antique",
+          "stone",
+          "temple"
+        ],
+        [
+          "GRÈCE",
+          "ANTIQUITÉ",
+          "LES ESCALIERS DES TEMPLES",
+          "antique",
+          "temple",
+          "temple"
+        ],
+        [
+          "EUROPE",
+          "MOYEN ÂGE",
+          "LES ESCALIERS EN SPIRALE",
+          "medieval",
+          "spiral",
+          "medieval"
+        ],
+        [
+          "EUROPE",
+          "RENAISSANCE",
+          "LES GRANDS ESCALIERS",
+          "georgian",
+          "palace",
+          "palace"
+        ],
+        [
+          "EUROPE",
+          "XIXe SIÈCLE",
+          "LES ESCALIERS MÉTALLIQUES",
+          "victorian",
+          "metal",
+          "factory"
+        ],
+        [
+          "NEW YORK",
+          "DÉBUT DU XXe SIÈCLE",
+          "LES ESCALIERS MÉCANIQUES",
+          "victorian",
+          "escalator",
+          "city"
+        ],
+        [
+          "AUJOURD’HUI",
+          "XXIe SIÈCLE",
+          "LES RAMPES DE SÉCURITÉ",
+          "modern",
+          "modern",
+          "modern"
+        ]
+      ],
+      "lines": [
+        "Papy, les marches sont hautes !",
+        "Oui Malik, elles nous permettent de monter progressivement.",
+        "Dis Papy, les anciens utilisaient-ils des escaliers ?",
+        "Cette invention a changé au fil des siècles.",
+        "On peut voir les différentes façons de la fabriquer ?",
+        "Bien sûr ! Ouvrons Le Livre de Papy !",
+        "Regarde, l'objet s'illumine et le portail apparaît !",
+        "Des bâtisseurs antiques disposent des pierres en marches.",
+        "Un maçon aligne des blocs pour créer un accès.",
+        "On peut monter tout en haut !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Des escaliers mènent à de nombreux édifices anciens.",
+        "Un tailleur de pierre façonne une large marche.",
+        "C'est un escalier immense !",
+        "Les artisans transmettent leurs idées et améliorent leurs outils.",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Certaines tours médiévales possèdent des escaliers en colimaçon.",
+        "Un bâtisseur pose une marche autour d'une colonne.",
+        "On tourne en montant !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les palais de la Renaissance montrent de grands escaliers décorés.",
+        "Un artisan taille un large palier de pierre.",
+        "Ça ressemble à un château !",
+        "Chaque époque apporte une nouvelle façon de faire.",
+        "Les escaliers en métal se développent avec l'industrie.",
+        "Un ouvrier boulonne les marches sur une structure.",
+        "Ça semble très solide !",
+        "Les escaliers mécaniques arrivent dans des bâtiments publics et magasins.",
+        "Un moteur entraîne une rangée de marches mobiles.",
+        "Les marches bougent toutes seules !",
+        "Les escaliers modernes comprennent souvent des rampes et des garde-corps.",
+        "Malik pose sa main sur la rampe avant de monter.",
+        "Je garde mon équilibre !",
+        "Oui, mais on utilise toujours cet objet avec prudence.",
+        "Nous voilà de retour dans le salon.",
+        "Je vois maintenant l'escalier autrement !",
+        "Et moi, je crois que notre livre a encore envie de voyager !",
+        "C'était Le Livre de Papy ! Chaque objet cache une histoire étonnante.",
+        "Abonne-toi, et à demain pour une nouvelle aventure !"
+      ],
+      "sources": [
+        "https://www.britannica.com/technology/stairway",
+        "https://www.britannica.com/technology",
+        "https://collection.sciencemuseumgroup.org.uk/objects",
+        "https://americanhistory.si.edu/collections"
+      ]
+    }
+  ]
+}
