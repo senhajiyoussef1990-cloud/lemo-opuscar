@@ -4,6 +4,7 @@ import {hash,lerp,TAU} from '/core/lib.js';
 import {push,pop,translate,rotate,scale,shape,fillOnly,stroke,ell,arc,spline,rr,rect,dot,text} from './toon.js';
 import {figure,VIEW} from './people.js';
 import {renderWorkshop,setWorkshopAction} from './workshops.js';
+import {drawGadget,GADGET_TYPES} from './gadgets.js';
 export const setAction=(id,u)=>setWorkshopAction(id,u);
 import {FLOOR,portal,GLOW,ground} from './worlds.js';
 export {FLOOR,portal,GLOW,VIEW};
@@ -332,6 +333,8 @@ export function object(x,y,s=1,{kind='home',t=0,a=0}={}){
    line(-54,-93,-41,bottom-18,'rgba(255,255,255,.81)',8);
    if(['pressed','decorated','venice'].includes(kind))for(let i=0;i<5;i++)line(-42+i*21,-77,-30+i*15,bottom-13,'#e4eddf',3);
  }
+
+ if(GADGET_TYPES.has(typ))drawGadget(typ,kind,t);
 
  pop();
 }
