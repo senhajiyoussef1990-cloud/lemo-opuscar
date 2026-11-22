@@ -4,6 +4,7 @@
 import {push,pop,translate,rotate,scale,shape,stroke,ell,rr,spline,dot,text,fillOnly,rect,arc,quad,noodle,setCtx,g,S,W,H} from './toon.js';
 import {figure,LOOK,FIG_K} from './people.js';
 import {hand} from './chars.js';
+import {gadgetWorkshop,GADGET_TYPES} from './gadgets.js';
 let activeId=null,progress=0;
 export function setWorkshopAction(id,u){activeId=id;progress=Math.max(0,Math.min(1,Number(u)||0));}
 const B=(x,y,w,h,c,r=8)=>shape(rr(x,y,w,h,r),{fill:c,lw:5,shade:()=>{fillOnly(rect(x,y,w,Math.max(3,h*.16)),'rgba(255,255,255,.2)',{boil:.2});fillOnly(rect(x,y+h*.8,w,h*.2+2),'rgba(20,10,0,.16)',{boil:.2});fillOnly(rect(x+w*.82,y,w*.18,h),'rgba(20,10,0,.08)',{boil:.2});}});
@@ -1272,7 +1273,7 @@ function tableware(type,kind,era,t){
 
 export function renderWorkshop(type,kind,era,t){
  TYPE=type;
- const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);else if(type==='fork')fork(kind,era,t);else if(type==='spoon')spoon(kind,era,t);else if(['tableknife','dish','drinkingglass'].includes(type))tableware(type,kind,era,t);};
+ const run=()=>{if(type==='paper')paper(kind,era,t);else if(type==='watch')watch(kind,era,t);else if(type==='umbrella')umbrella(kind,era,t);else if(type==='key')key(kind,era,t);else if(type==='pencil')pencil(kind,era,t);else if(type==='zipper')zipper(kind,era,t);else if(type==='scissors')scissors(kind,era,t);else if(type==='fork')fork(kind,era,t);else if(type==='spoon')spoon(kind,era,t);else if(['tableknife','dish','drinkingglass'].includes(type))tableware(type,kind,era,t);else if(GADGET_TYPES.has(type))gadgetWorkshop(type,kind,era,t,progress,artisan);};
  if(PROBE){const main=g,sid=S.sid;setCtx(PROBE.getContext('2d'));PASS='probe';TGT=null;try{run();}finally{setCtx(main);S.sid=sid;PASS='draw';}
    if(TGT){shape(ell(BX,BF+4,90,16,18),{fill:'rgba(20,10,30,.18)',lw:0,stroke:false});body(TGT.era,t);if(TYPE==='watch'||TYPE==='key')arms(TGT.era,t,TGT.hx,TGT.hy,1);}}   // the resting arm stays behind the work
  run();
