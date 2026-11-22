@@ -1,4 +1,4 @@
-name: Papi serieux - ecran de smartphone agrandi - cadrage final
+name: Papi serieux - telephone bien visible - version finale
 on:
   push:
     branches: [production/papi-serieux-zoom-ecran-15-16-18-20261123]
