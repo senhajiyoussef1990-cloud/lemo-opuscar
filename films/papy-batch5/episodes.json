@@ -4237,7 +4237,8 @@
       "sources": [
         "https://americanhistory.si.edu/collections",
         "https://patents.google.com/",
-        "https://collection.sciencemuseumgroup.org.uk/"
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.britannica.com/technology"
       ]
     },
     {
@@ -4346,7 +4347,8 @@
       "sources": [
         "https://www.britannica.com/technology/paper-clip",
         "https://americanhistory.si.edu/collections",
-        "https://www.metmuseum.org/art/collection"
+        "https://www.metmuseum.org/art/collection",
+        "https://www.britannica.com/technology"
       ]
     },
     {
@@ -4455,7 +4457,8 @@
       "sources": [
         "https://www.3m.com/3M/en_US/company-us/about-3m/history/",
         "https://www.acs.org/education/whatischemistry/landmarks/scotchtape.html",
-        "https://americanhistory.si.edu/collections"
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
       ]
     },
     {
@@ -4564,7 +4567,8 @@
       "sources": [
         "https://www.britannica.com/technology/adhesive",
         "https://www.acs.org/education/whatischemistry/landmarks.html",
-        "https://collection.sciencemuseumgroup.org.uk/"
+        "https://collection.sciencemuseumgroup.org.uk/",
+        "https://www.britannica.com/technology"
       ]
     },
     {
@@ -4673,7 +4677,8 @@
       "sources": [
         "https://www.computerhistory.org/revolution/calculators/1",
         "https://collection.sciencemuseumgroup.org.uk/",
-        "https://americanhistory.si.edu/collections"
+        "https://americanhistory.si.edu/collections",
+        "https://www.britannica.com/technology"
       ]
     }
   ]
