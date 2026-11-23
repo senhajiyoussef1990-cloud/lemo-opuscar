@@ -1,4 +1,4 @@
-name: Papi serieux - episodes 70 85 86 - reprise de securite
+name: Papi serieux - EP85 EP86 - ffmpeg retry
 on:
   push:
     branches: [production/papi-serieux-40-nouveaux-ep59-98-20261123]
@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       max-parallel: 3
       matrix:
-        ep: [70, 85, 86]
+        ep: [85, 86]
     runs-on: ubuntu-24.04
     timeout-minutes: 75
     env:
@@ -30,9 +30,9 @@ jobs:
       - name: Preparer environnement de production
         run: |
           set -eux
+          (timeout 180 sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-dejavu-core) || (timeout 150 sudo apt-get update -qq && timeout 180 sudo apt-get install -y -qq ffmpeg fonts-dejavu-core)
           command -v ffmpeg
           command -v ffprobe
-          fc-list | grep -q 'DejaVu' || sudo apt-get install -y -qq fonts-dejavu-core
           npm ci --no-audit --no-fund
           node node_modules/playwright-core/cli.js install chromium-headless-shell
           python -m venv .venv
