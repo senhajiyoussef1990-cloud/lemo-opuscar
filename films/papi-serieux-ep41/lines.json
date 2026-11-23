@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, le menu du restaurant est sur tablette.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "Elle est où, la soupe écrite à la craie ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Fais glisser pour voir les plats.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "Le serveur connaissait toute la carte.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Tu peux ajouter des suppléments.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "Alors ajoute surtout du pain.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Tu as choisi vingt garnitures !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "Parfait, il restera de quoi déjeuner !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]

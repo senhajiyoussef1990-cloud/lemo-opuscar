@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, ton téléphone reconnaît ton visage !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "Même avant mon café ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Regarde, il se déverrouille sans code.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "Le boulanger reconnaissait ma moustache.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Et avec des lunettes, ça marche ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "Il me reconnaît surtout à ma brioche.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Il refuse ton visage, Papi !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "Normal. J'ai mis ma tête du lundi !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]

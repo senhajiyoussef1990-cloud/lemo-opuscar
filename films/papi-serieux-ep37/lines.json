@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, regarde ce petit drone dans le jardin.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "C'est une mouche qui a fait des études ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Il filme depuis le ciel avec une caméra.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "On montait à l'échelle pour voir plus loin.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Il peut survoler la terrasse.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "Alors qu'il vérifie mes gouttières.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Il revient avec une branche !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "Au moins, lui ramène du bois !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]

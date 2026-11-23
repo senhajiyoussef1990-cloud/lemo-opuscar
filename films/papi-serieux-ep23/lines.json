@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, je t'envoie un GIF rigolo.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "Un gif ? Ça se mange avec du café ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "C'est une petite image qui bouge.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "On faisait bouger les photos au cinéma.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Regarde, le chat tombe en boucle !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "Pauvre bête ! Qui va le relever ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Tu l'as regardé quarante fois !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+7%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "J'attends qu'il atterrisse enfin !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]
