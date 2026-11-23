@@ -4,7 +4,7 @@ import {lerp,seg,ss,clamp} from '/core/lib.js';
 import {drawPhoneMagnifier} from './phone-ui.js';
 export function makeEpisode({T,P,papi,leo,drawBG,hangingPans,wallClock,flourJar,ST}) {
   const EP=ST.EPISODE; let BG,SG,LIP;
-  const PHONE_MODE=({12:'qr',13:'cloud',14:'story',15:'bluetooth',16:'map',17:'filter',18:'update'})[EP]??null;
+  const PHONE_MODE=EP>=19&&EP<=58?'screen-'+EP:(({12:'qr',13:'cloud',14:'story',15:'bluetooth',16:'map',17:'filter',18:'update'})[EP]??null);
   const PHONE_EPISODE=PHONE_MODE!==null;
   const at=(t,a,b)=>t>=a&&t<b;
   const twos=t=>Math.floor(t*12+1e-6)/12;
