@@ -2,6 +2,8 @@
 // EP12 a EP18 : les QR codes, le cloud, les stories, Bluetooth, la carte, les filtres et les mises a jour ne flottent pas dans le salon.
 import {SCREEN_CONFIG} from '../papi-serieux-production19-58/screen-data.js';
 import {drawModernUI} from '../papi-serieux-production19-58/screen-icons.js';
+import {SCREEN_CONFIG59} from '../papi-serieux-production59-98/screen-data.js';
+import {drawNewUI} from '../papi-serieux-production59-98/screen-icons.js';
 const C={
   paper:'#F3EBDD', white:'#FFF9EF', ink:'#161513', gray:'#77736D',
   soft:'#E5DAC8', mid:'#B8AE9E'
@@ -209,6 +211,10 @@ export function drawPhoneUI(ctx,kind,x,y,w,h,t){
   if(kind==='cloud')renderCloud(ctx,t);
   if(kind==='story')renderStory(ctx,t);
   if(kind==='filter')renderFilter(ctx,t);
+  if(typeof kind==='string' && kind.startsWith('new-')){
+    const cfg=SCREEN_CONFIG59[Number(kind.slice(4))];
+    if(cfg)drawNewUI(ctx,cfg,t);
+  }
   if(typeof kind==='string' && kind.startsWith('screen-')){
     const cfg=SCREEN_CONFIG[Number(kind.slice(7))];
     if(cfg)drawModernUI(ctx,cfg,t);
