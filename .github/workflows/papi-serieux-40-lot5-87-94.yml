@@ -1,0 +1,157 @@
+name: Papi serieux - 40 episodes suplementaires - lot 5 (87-94)
+on:
+  push:
+    branches: [production/papi-serieux-40-nouveaux-ep59-98-20261123]
+    paths:
+      - .github/workflows/papi-serieux-40-lot5-87-94.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  film:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        ep: [87, 88, 89, 90, 91, 92, 93, 94]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 95
+    env:
+      LIB: ${{ github.workspace }}
+      EP: ${{ matrix.ep }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparer environnement de production
+        run: |
+          set -eux
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          npm ci --no-audit --no-fund
+          node node_modules/playwright-core/cli.js install chromium-headless-shell
+          python -m venv .venv
+          .venv/bin/python -m pip install -q -r requirements.txt edge-tts imageio-ffmpeg pillow
+          mkdir -p "$PWD/.local/bin"
+          ln -s "$(.venv/bin/python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')" "$PWD/.local/bin/ffmpeg"
+          ln -s "$(command -v ffprobe)" "$PWD/.local/bin/ffprobe"
+          echo "$PWD/.local/bin" >> "$GITHUB_PATH"
+      - name: Recuperer les assets et verifier le scenario
+        run: |
+          set -eux
+          E="films/papi-serieux-ep$EP"
+          cp -r -n films/papi-serieux-ep10/. "$E/"
+          test -s "$E/people.js" && test -s "$E/index.html"
+          node --check "$E/parts.js"
+          node --check "$E/story.js"
+          node --check "$E/scenes.js"
+          node --check films/papi-serieux-batch12-18/scenes-core.js
+          node --check films/papi-serieux-batch12-18/phone-ui.js
+          node --check films/papi-serieux-production59-98/screen-icons.js
+          node --check films/papi-serieux-production59-98/screen-data.js
+          node --check "$E/people.js"
+          sh "$E/tools/fonts.sh"
+          sh films/papi-serieux-opening/tools/fonts.sh
+          .venv/bin/python core/audio/sampler.py --need "$E/music/score.py"
+      - name: Generer les voix et le mix original
+        run: |
+          set -eux
+          E="films/papi-serieux-ep$EP"
+          wss_proxy="${wss_proxy:-${HTTPS_PROXY:-}}" .venv/bin/python core/tts/tts_zh.py "$E/lines.json" "$E/voice"
+          .venv/bin/python "$E/tools/lip.py"
+          node core/render/events.mjs "$E" --size 1080x1920
+          .venv/bin/python "$E/music/score.py"
+          .venv/bin/python "$E/mix.py"
+          E="$E" node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const d=process.env.E,m=await import('./'+d+'/story.js');
+          fs.mkdirSync(d+'/out',{recursive:true});
+          fs.writeFileSync(d+'/out/cues.json',JSON.stringify(m.SUBS.map(s=>({t0:s[0],t1:s[1],text:s.slice(2).join(' ')}))));
+          JS
+      - name: Valider quatre images du cartoon avant rendu complet
+        run: |
+          set -eux
+          E="films/papi-serieux-ep$EP"
+          mkdir -p "$E/out/verification"
+          node core/render/still.mjs "$E" 1.5 11.2 22.4 30.8 34 --size 1080x1920 --q nosub=1 --out "$E/out/verification" --prefix "scene_"
+          test -s "$E/out/verification/scene_11.2.jpg"
+          test -s "$E/out/verification/scene_22.4.jpg"
+          test -s "$E/out/verification/scene_30.8.jpg"
+      - name: Monter video, titre numerote, outro et subtitles
+        run: |
+          set -eux
+          E="films/papi-serieux-ep$EP"
+          TITLE=$(python3 -c "import json,os; a=json.load(open('films/papi-serieux-production59-98/topics.json'));print(next(x['title'] for x in a if x['n']==int(os.environ['EP'])))")
+          NEXT=$(python3 -c "import json,os; a=json.load(open('films/papi-serieux-production59-98/topics.json'));print(next((x['title'] for x in a if x['n']==int(os.environ['EP'])+1),'La prochaine aventure'))")
+          H=$(E="$E" node --input-type=module -e "const m=await import('./'+process.env.E+'/story.js');process.stdout.write(String(m.CUTS[0]));")
+          SUB="Abonne-toi, petit. À demain pour l'épisode $((EP+1)) !" \
+            sh films/papi-serieux-opening/assemble-v2.sh "$E" "$H" "Demain — Épisode $((EP+1)) : $NEXT" "$E/out/assemble.mp4"
+          sh films/papi-serieux-opening/tools/overlay-episode-title.sh \
+            "$E/out/assemble.mp4" "$EP" "$TITLE" "$H" "$E/out/final.mp4"
+          .venv/bin/python - <<'PY'
+          import os,json,subprocess
+          p=f"films/papi-serieux-ep{os.environ['EP']}/out/final.mp4"
+          d=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_format","-show_streams","-of","json",p]))
+          assert float(d['format']['duration'])>32,d['format']
+          assert any(s['codec_type']=='audio' for s in d['streams']),"Missing audio"
+          assert any(s['codec_type']=='video' and s['width']==1080 and s['height']==1920 for s in d['streams']),"Invalid video dimensions"
+          print("Video verified:",d['format']['duration'],d['format']['size'])
+          PY
+      - name: Creer affiche Story illustree depuis le vrai dessin anime
+        run: |
+          set -eux
+          E="films/papi-serieux-ep$EP"
+          T=$(python3 -c "import json,os; a=json.load(open('films/papi-serieux-production59-98/topics.json'));print(next(x['title'].lower() for x in a if x['n']==int(os.environ['EP'])))")
+          DATE=$(python3 -c "from datetime import date,timedelta; print(date(2027,1,8)+timedelta(days=int('$EP')-59))")
+          .venv/bin/python films/papi-serieux-batch12-18/poster.py "$EP" "$T" "$DATE" \
+             "$E/out/verification/scene_11.2.jpg" "$E/out/affiches"
+      - name: ZIP date avec MP4 sous-titres Story et publications
+        run: |
+          set -eux
+          mkdir -p PACKS
+          .venv/bin/python - <<'PY'
+          import os,zipfile,subprocess
+          n=int(os.environ['EP'])
+          topics=__import__('json').load(open('films/papi-serieux-production59-98/topics.json'))
+          names={x['n']:x['short'] for x in topics}
+          from datetime import date,timedelta
+          day=date(2027,1,8)+timedelta(days=n-59)
+          name=f'{day:%Y-%m-%d}_EP{n:02d}_{names[n]}'
+          e=f'films/papi-serieux-ep{n}'
+          files=[
+            (f'{e}/out/final.mp4',f'EP{n:02d}-Papi-serieux.mp4'),
+            (f'{e}/out/assemble.srt',f'EP{n:02d}-sous-titres.srt'),
+            (f'{e}/out/affiches/STORY_EP{n}.jpg',f'STORY_EP{n}.jpg'),
+            (f'{e}/out/affiches/STORY_EP{n}.png',f'STORY_EP{n}.png'),
+            (f'films/papi-serieux-publications/ep{n}.md','PUBLICATIONS-RESEAUX.md'),
+            (f'{e}/README.md','SCENARIO.md'),
+            (f'{e}/out/verification/scene_1.5.jpg','VERIF_1.jpg'),
+            (f'{e}/out/verification/scene_11.2.jpg','VERIF_2.jpg'),
+            (f'{e}/out/verification/scene_22.4.jpg','VERIF_3.jpg'),
+            (f'{e}/out/verification/scene_30.8.jpg','VERIF_4.jpg')
+          ]
+          for a,b in files:
+            if not os.path.getsize(a):raise RuntimeError('Missing '+a)
+          zname='PACKS/'+name+'.zip'
+          with zipfile.ZipFile(zname,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=4) as z:
+            for src,dst in files:z.write(src,dst)
+            z.writestr('LISEZ-MOI.txt',
+              f'Papi, serieux ? - Episode {n}\nPublication prevue: {day:%Y-%m-%d} a 18h Europe/Brussels.\n'
+              'Video: MP4 vertical 1080x1920 avec voix, musique, accroche, opening numerote et outro.\n'
+              'Ecran du telephone de Leo agrandi et synchronise; interface specifique au sujet sans elements flottants.\n'
+              'Story: 9x16, poster illustre a partir des images de la serie (PNG+JPG).\n'
+              'Description Snapchat: adapte une publication TikTok / Shorts du dossier PUBLICATIONS-RESEAUX.md.\n'
+              'Les dates indiquent le calendrier, pas une publication automatique.\n')
+          print(zname,os.path.getsize(zname))
+          PY
+      - name: Exporter episode et ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Papi-serieux-EP${{ matrix.ep }}-production-59-98
+          path: PACKS/*.zip
+          if-no-files-found: error
+          retention-days: 21
