@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, regarde comment réparer la chaise en vidéo.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "La chaise doit aussi regarder ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Il explique toutes les étapes une par une.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "On apprenait en réparant ses erreurs.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Il dit de visser vers la droite.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "J'ai toujours fait confiance à mon tournevis.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "La chaise a maintenant trois pieds !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "C'est une version spéciale pour danser !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]

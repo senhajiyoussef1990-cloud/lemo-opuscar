@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, ton colis est dans un casier automatique.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "Il a été mis en prison ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Tape le code pour ouvrir la bonne porte.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "Le facteur sonnait et on lui offrait du café.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Appuie sur le numéro douze !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "J'ai trouvé la porte treize, elle est plus jolie.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Tu as ouvert le casier vide !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "Le cadeau, c'est l'espace de rangement !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]

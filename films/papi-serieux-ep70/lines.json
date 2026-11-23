@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, envoie un autocollant rigolo à Mamie.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "Je vais décoller celui du réfrigérateur ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Non, regarde ce petit chat qui danse.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "On collait des timbres sur les enveloppes.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Choisis un autocollant qui te ressemble.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "Alors celui qui dort dans un fauteuil.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Tu as envoyé une grenouille géante !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "Elle me ressemble les jours de pluie !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]

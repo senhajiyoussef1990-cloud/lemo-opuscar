@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, parle : le téléphone écrit à ta place.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "Même les fautes d'orthographe ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Dis simplement : j'arrive dans cinq minutes.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "On usait nos doigts sur les lettres.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "J'arrive dans cinq minutes, virgule !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "Il a écrit j'arrive dans cinq limaces !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Pourquoi tu cries ponctuation ?",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "Pour qu'il n'oublie pas les points !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]

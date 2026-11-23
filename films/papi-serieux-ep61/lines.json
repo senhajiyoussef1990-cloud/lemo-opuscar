@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l1",
+    "who": "leo",
+    "text": "Papi, ton doigt peut déverrouiller le téléphone.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l2",
+    "who": "papi",
+    "text": "Et mon coude, il peut essayer ?",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l3",
+    "who": "leo",
+    "text": "Pose simplement le pouce sur le capteur.",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l4",
+    "who": "papi",
+    "text": "Dans mon temps…",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l4b",
+    "who": "papi",
+    "text": "On reconnaissait le boulanger à sa farine.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l5",
+    "who": "leo",
+    "text": "Ton empreinte n'est pas reconnue !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l6",
+    "who": "papi",
+    "text": "C'est le beurre de ma tartine.",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  },
+  {
+    "id": "l7",
+    "who": "leo",
+    "text": "Nettoie ton pouce, Papi !",
+    "voice": "fr-FR-EloiseNeural",
+    "rate": "+6%"
+  },
+  {
+    "id": "l8",
+    "who": "papi",
+    "text": "Et perdre mon petit-déjeuner ? Jamais !",
+    "voice": "fr-FR-HenriNeural",
+    "rate": "-8%",
+    "pitch": "-12Hz"
+  }
+]
