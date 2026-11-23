@@ -1,0 +1,104 @@
+name: Papi serieux - Integrale 40 videos EP58-97
+on:
+  push:
+    branches:
+      - production/papi-serieux-40-nouveaux-ep59-98-20261123
+    paths:
+      - .github/workflows/papi-serieux-integrale-58-97.yml
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  regrouper:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Installer les outils de verification
+        run: |
+          set -euo pipefail
+          gh --version
+          python3 --version
+          ffprobe -version | head -1
+      - name: Recuperer les 40 rendus deja exportes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p raw
+          for ep in $(seq 58 97); do
+            if [ "$ep" = 58 ]; then
+              run=45256904217
+              artifact="Papi-serieux-EP58-production-40"
+            else
+              if [ "$ep" -le 62 ]; then run=45276421512
+              elif [ "$ep" -le 70 ]; then run=45277148166
+              elif [ "$ep" -le 78 ]; then run=45277148138
+              elif [ "$ep" = 85 ]; then run=45282212040
+              elif [ "$ep" -le 86 ]; then run=45277148486
+              elif [ "$ep" -le 94 ]; then run=45277148268
+              else run=45277148279
+              fi
+              artifact="Papi-serieux-EP$ep-production-59-98"
+            fi
+            echo "Recuperation EP$ep / Run $run / $artifact"
+            mkdir -p "raw/$ep"
+            gh run download "$run" -R "$GITHUB_REPOSITORY" -n "$artifact" -D "raw/$ep"
+            find "raw/$ep" -maxdepth 1 -name '*.zip' -size +10M | grep .
+          done
+      - name: Verifier les 40 MP4 et creer les archives finales
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib, zipfile, subprocess, json, datetime
+          root=pathlib.Path.cwd()
+          episodes=root/"episodes"
+          episodes.mkdir(exist_ok=True)
+          for n in range(58,98):
+              candidates=list((root/"raw"/str(n)).rglob("*.zip"))
+              assert len(candidates)==1, (n,[str(x) for x in candidates])
+              target=episodes/f"EP{n:02d}"
+              target.mkdir(exist_ok=True)
+              with zipfile.ZipFile(candidates[0]) as z:
+                  assert z.testzip() is None,n
+                  z.extractall(target)
+              mp4=target/f"EP{n:02d}-Papi-serieux.mp4"
+              assert mp4.is_file() and mp4.stat().st_size>10_000_000, n
+              probe=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_format","-show_streams","-of","json",str(mp4)]))
+              streams=probe["streams"]
+              assert any(s.get("codec_type")=="video" and s.get("width")==1080 and s.get("height")==1920 for s in streams),n
+              assert any(s.get("codec_type")=="audio" for s in streams),n
+              assert float(probe["format"]["duration"])>32,n
+              print(f"VERIFIE EP{n}: {probe['format']['duration']} sec.",flush=True)
+          out=root/"livraison"
+          out.mkdir(exist_ok=True)
+          def archive(filename,nums):
+              path=out/filename
+              with zipfile.ZipFile(path,'w',zipfile.ZIP_STORED,allowZip64=True) as z:
+                  z.writestr("LISEZ-MOI.txt","PAPI, SERIEUX ? | Saison d'episodes 58 a 97. Chaque dossier contient video MP4 avec voix, Story, sous-titres et textes de publication. Les dates des scenarios sont des propositions, les publications ne sont pas programmees.\\n")
+                  for n in nums:
+                      for p in sorted((episodes/f"EP{n:02d}").rglob("*")):
+                          if p.is_file():z.write(p,p.relative_to(episodes))
+              print(f"ARCHIVE {filename}: {path.stat().st_size} octets",flush=True)
+          for a,b in [(58,67),(68,77),(78,87),(88,97)]:
+              archive(f"Papi_serieux_EP{a}-{b}.zip",range(a,b+1))
+          archive("Papi_serieux_40_EP58-97_COMPLET.zip",range(58,98))
+          PY
+      - name: Publier le ZIP integral de 40 episodes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Papi-serieux-40-episodes-58-a-97-INTEGRALE
+          path: livraison/Papi_serieux_40_EP58-97_COMPLET.zip
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+      - name: Publier les 4 lots de 10 episodes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Papi-serieux-40-episodes-58-a-97-LOTS
+          path: livraison/Papi_serieux_EP*.zip
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
